@@ -5,6 +5,7 @@ import useMediaQueries from "../../hooks/useMediaQueries";
 const Wrapper = styled.div`
   display: flex;
   width: 100vw;
+  /* 프롭스 */
   height: ${(props) =>
     props.isMobile ? "100px" : props.isTablet ? "180px" : "280px"};
   padding: ${(props) => "0px 20px"};
