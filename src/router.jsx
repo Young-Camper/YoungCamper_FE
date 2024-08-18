@@ -3,8 +3,10 @@ import App from "./App";
 import Home from "./pages/Home/index";
 import Location from "./pages/Location/index";
 import Performance from "./pages/Performance/index";
-import Notification from "./pages/Notification/index";
-import Promotion from "./pages/Promotion/index";
+import Notification from "./pages/Notification/main/index";
+import Promotion from "./pages/Promotion/main/index";
+import NotificationDetail from "./pages/Notification/detail/index";
+import PromotionDetail from "./pages/Promotion/detail/index";
 import FAQ from "./pages/FAQ/index";
 import Review from "./pages/Review/index";
 import About from "./pages/About/index";
@@ -26,9 +28,11 @@ const router = createBrowserRouter([
 
       // 공지 페이지
       { path: "/notification", element: <Notification /> },
+      { path: "/notification/:id", element: <NotificationDetail /> },
 
       // 홍보 페이지
       { path: "/promotion", element: <Promotion /> },
+      { path: "/promotion/:id", element: <PromotionDetail /> },
 
       // FAQ 페이지
       { path: "/FAQ", element: <FAQ /> },
