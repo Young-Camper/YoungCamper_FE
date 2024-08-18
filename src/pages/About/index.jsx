@@ -1,7 +1,13 @@
 import React from "react";
+import MainTitle from "../../components/ui/MainTitle";
+import { ContentWrapper } from "../../style/commonStyle";
 
 const index = () => {
-  return <div>영캠프 소개</div>;
+  return (
+    <ContentWrapper>
+      <MainTitle title="영캠프 안내" />
+    </ContentWrapper>
+  );
 };
 
 export default index;
