@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import useMediaQueries from "../../hooks/useMediaQueries";
 
 const Wrapper = styled.div`
   display: flex;
   width: 100vw;
-  height: 280px;
-  padding: var(--Spacing-0, 0px) var(--line-height-2xs, 20px);
+  height: ${(props) =>
+    props.isMobile ? "100px" : props.isTablet ? "180px" : "280px"};
+  padding: ${(props) => "0px 20px"};
   flex-direction: column;
   justify-content: center;
   align-items: start;
@@ -13,14 +15,21 @@ const Wrapper = styled.div`
   color: var(--text-real-black, #0a0b0a);
   text-align: center;
   font-family: "Noto Sans KR";
-  font-size: 40px;
+  font-size: ${(props) =>
+    props.isMobile ? "20px" : props.isTablet ? "30px" : "40px"};
   font-style: normal;
   font-weight: 700;
-  line-height: 120%; /* 48px */
+  line-height: 120%;
 `;
 
 const MainTitle = ({ title }) => {
-  return <Wrapper>{title}</Wrapper>;
+  const { isMobile, isTablet, isDesktop } = useMediaQueries();
+
+  return (
+    <Wrapper isMobile={isMobile} isTablet={isTablet} isDesktop={isDesktop}>
+      {title}
+    </Wrapper>
+  );
 };
 
 export default MainTitle;
