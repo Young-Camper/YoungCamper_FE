@@ -1,0 +1,44 @@
+{
+  "hash": "8e37a705",
+  "browserHash": "67fa941b",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "f7c19caf",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "f71764a3",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "d93b237a",
+      "needsInterop": false
+    },
+    "styled-components": {
+      "src": "../../node_modules/styled-components/dist/styled-components.browser.esm.js",
+      "file": "styled-components.js",
+      "fileHash": "5a369075",
+      "needsInterop": false
+    },
+    "react-responsive": {
+      "src": "../../node_modules/react-responsive/dist/esm/index.js",
+      "file": "react-responsive.js",
+      "fileHash": "52c6314f",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-E4RJ5AND": {
+      "file": "chunk-E4RJ5AND.js"
+    },
+    "chunk-Q34MU4L5": {
+      "file": "chunk-Q34MU4L5.js"
+    }
+  }
+}
