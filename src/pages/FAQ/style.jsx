@@ -26,13 +26,9 @@ export const MainTitle = styled.div`
 
   color: var(--text-black, #0A0B0A);
   text-align: center;
-  /* secondary/Desktop/Hero2 */
-  font-family: "Sandoll GtNeoExt";
-  font-size: ${(props) =>
-    props.isMobile ? "20px" : props.isTablet ? "30px" : "38px"};
-  font-style: normal;
-  font-style: normal;
-  font-weight: 400;
+  font-family: Montserrat;
+  font-size: 38px;
+  font-weight: 800;
   line-height: normal;
   letter-spacing: -3.04px;
 `;
@@ -51,10 +47,8 @@ export const SubTitle = styled.div`
 
 export const FAQWrapper = styled.div`
   display: flex;
-  width: 1100px;
-
+  width: 100%;
   padding: 132px 0px;
-
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -64,23 +58,22 @@ export const FAQWrapper = styled.div`
 
 export const FAQBox = styled.div`
   display: flex;
-  width: 1100px;
+  width: 100%;
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  flex-direction: column; /* 세로 방향으로 배치 */
+  flex-direction: column;
 
   border-radius: 8px;
   border: solid 1px #CED7DE;
-  opacity: var(--sds-size-stroke-border);
-  background: var(--Base-Real-White, #FFF);
+  background: #FFFFFF;
 `;
 
 export const FAQContent = styled.div`
   display: flex;
-  padding: 10px 15px;
+  padding: 12px 16px;
   min-height: 80px;
-  flex-direction: row; /* 질문과 버튼을 가로 방향으로 배치 */
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -91,27 +84,22 @@ export const FAQTextContainer = styled.div`
   flex-direction: row;
   align-items: center;
   width: 100%;
-  gap: 8px;
+  gap: 6px;
 `;
 
 export const FAQText1 = styled.div`
   color: var(--main-primary, #05FB47);
-  /* primary/Desktop/H2 */
   font-family: Pretendard;
   font-size: 24px;
-  font-style: normal;
   font-weight: 600;
   line-height: 28px; /* 116.667% */
   letter-spacing: 0.48px;
 `;
 
 export const FAQText2 = styled.div`
-  opacity: var(--sds-size-stroke-border);
-  color: var(--Base-Base-Black, #0A0B0A);
-  /* primary/Desktop/H2 */
+  color: #0A0B0A;
   font-family: Pretendard;
   font-size: 24px;
-  font-style: normal;
   font-weight: 600;
   line-height: 28px;
   letter-spacing: 0.48px;
@@ -119,10 +107,8 @@ export const FAQText2 = styled.div`
 
 export const FAQText3 = styled.div`
   color: #15B097;
-  /* primary/Desktop/H2 */
   font-family: Pretendard;
   font-size: 24px;
-  font-style: normal;
   font-weight: 600;
   line-height: 28px; /* 116.667% */
   letter-spacing: 0.48px;
@@ -143,11 +129,8 @@ export const AnswerBox = styled.div`
   padding: 10px 15px;
   align-items: center;
   align-self: stretch;
-
   border-radius: 0px 0px 8px 8px;
   border: var(--sds-size-stroke-border) solid var(--sds-color-border-default-default);
-  opacity: var(--sds-size-stroke-border);
-
   background: var(--main-neutral100, #E7EBEF);
 `;
 
