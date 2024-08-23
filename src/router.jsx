@@ -10,6 +10,7 @@ import PromotionDetail from "./pages/Promotion/detail/index";
 import FAQ from "./pages/FAQ/index";
 import Review from "./pages/Review/index";
 import About from "./pages/About/index";
+import Admin from "./pages/Admin/index";
 import NotFound from "./NotFound";
 
 const router = createBrowserRouter([
@@ -42,6 +43,9 @@ const router = createBrowserRouter([
 
       // 영캠퍼 소개 페이지
       { path: "/about", element: <About /> },
+
+      // 관리자 페이지
+      { path: "/admin42794", element: <Admin /> },
     ],
     errorElement: <NotFound />,
   },
