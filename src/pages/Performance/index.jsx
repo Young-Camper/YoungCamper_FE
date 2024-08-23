@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MainTitle from "../../components/ui/MainTitle";
 import { ContentWrapper } from "../../style/commonStyle";
 import TimeTable from "./TimeTable";
+import Attention from "../../components/ui/Attention";
 
 const index = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -14,6 +15,7 @@ const index = () => {
       />
       <ContentWrapper>
         <TimeTable modalOpen={modalOpen} setModalOpen={setModalOpen} />
+        <Attention />
       </ContentWrapper>
     </>
   );

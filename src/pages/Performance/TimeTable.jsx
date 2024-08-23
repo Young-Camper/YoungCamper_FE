@@ -21,7 +21,7 @@ const TimeTable = ({ modalOpen, setModalOpen }) => {
         mainText="타임테이블"
         subText="영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다."
       />
-      <div style={{ display: "flex", gap: "30px" }}>
+      <div style={{ display: "flex", gap: "30px", padding: "100px 0px" }}>
         {artists &&
           artists.map((artist) => (
             <div key={artist.id}>
