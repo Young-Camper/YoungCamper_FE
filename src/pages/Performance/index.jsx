@@ -1,16 +1,19 @@
 import React from "react";
-import MainTitle from "../../components/ui/MainTitle";
+import Banner from "../../components/ui/MainTitle";
 import { ContentWrapper } from "../../style/commonStyle";
-import A from "./A";
-import B from "./B";
+import TimeTable from "./TimeTable";
 
 const index = () => {
   return (
-    <ContentWrapper>
-      <MainTitle title="공연안내" />
-      <A />
-      <B />
-    </ContentWrapper>
+    <>
+      <Banner
+        mainText="공연안내"
+        subText="영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다."
+      />
+      <ContentWrapper>
+        <TimeTable />
+      </ContentWrapper>
+    </>
   );
 };
 
