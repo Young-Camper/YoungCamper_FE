@@ -3,6 +3,9 @@ import * as S from "./style";
 import PropTypes from 'prop-types';
 import useMediaQueries from "../../hooks/useMediaQueries";
 
+import openImage from './Chevron down.png';
+import closeImage from './Chevron up.png';
+
 const FAQBox = ({ question, answer }) => {
 	const { isMobile, isTablet, isDesktop } = useMediaQueries();
 	
@@ -24,7 +27,10 @@ const FAQBox = ({ question, answer }) => {
 				</S.FAQText2>
 			</S.FAQTextContainer>
 			<S.FAQButton onClick={handleToggle}>
-				{isOpen ? '닫기' : '보기'}
+				<img 
+				src={isOpen ? closeImage : openImage} 
+				alt={isOpen ? '닫기 이미지' : '보기 이미지'} 
+				/>
 			</S.FAQButton>
 		  </S.FAQContent>
 		  {isOpen && (
