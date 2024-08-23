@@ -10,10 +10,11 @@ const BackGroundColor = styled.div`
   min-height: 100vh;
   flex-direction: column;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
   margin: 0 auto;
   background-color: #fff;
+  overflow: hidden;
 `;
 
 const Wrapper = styled.div`
@@ -22,8 +23,10 @@ const Wrapper = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  font-family: Pretendard; /* 폰트 변경 */
+`;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const Layout = () => {
