@@ -1,8 +1,44 @@
-/* 폰트 확정시 변경할 것 */
+/* title font */
 
 @font-face {
-  /* font-family: 'Pretendard';
-  src: url("../assets/fonts/Dongguk.woff") format('woff');
-  font-weight: 400;
-  font-style: normal; */
+  font-family: "MonAExtraBold";
+  src: url("../assets/fonts/MontserratAlternates-ExtraBold.woff");
+}
+
+@font-face {
+  font-family: "MonARegular";
+  src: url("../assets/fonts/MontserratAlternates-Regular.woff");
+}
+
+/* secondary font */
+
+@font-face {
+  font-family: "MonExtraBold";
+  src: url("../assets/fonts/Montserrat-ExtraBold.woff");
+}
+
+@font-face {
+  font-family: "MonSemiBold";
+  src: url("../assets/fonts/Montserrat-SemiBold.woff");
+}
+
+@font-face {
+  font-family: "MonRegular";
+  src: url("../assets/fonts/Montserrat-Regular.woff");
+}
+
+/* primary font */
+@font-face {
+  font-family: "PretendardExtrabold";
+  src: url("../assets/fonts/Pretendard-ExtraBold.woff");
+}
+
+@font-face {
+  font-family: "PretendardSemiBold";
+  src: url("../assets/fonts/Pretendard-SemiBold.woff");
+}
+
+@font-face {
+  font-family: "PretendardRegular";
+  src: url("../assets/fonts/Pretendard-Regular.woff");
 }

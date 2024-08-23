@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Header from "./layouts/Header";
 import Nav from "./layouts/Nav";
 import Footer from "./layouts/Footer";
+import "../src/style/font.css";
 
 const BackGroundColor = styled.div`
   width: 100vw;
