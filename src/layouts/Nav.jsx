@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom"; // Link를 NavLink로 변경
 import styled from "styled-components";
 
