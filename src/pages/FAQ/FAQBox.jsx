@@ -36,9 +36,9 @@ const FAQBox = ({ question, answer }) => {
 		  {isOpen && (
 			<S.AnswerBox>
 				<S.FAQTextContainer>
-				<S.FAQText3>
+				<S.FAQText1>
 				A.
-				</S.FAQText3>
+				</S.FAQText1>
 				<S.FAQText2>
 				대단한 사람들이지~
 				</S.FAQText2>
