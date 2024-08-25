@@ -1,23 +1,74 @@
 [
   {
     "id": 1,
-    "name": "뉴진스님",
-    "time": "18:00 ~ 19:00",
+    "name": "입장마감",
+    "time": "16:40",
     "imgURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUVYzkTpBSzWF2l8CkYItiFASp65XvypBIgw&s",
-    "etc": "흥을 잃은 중생들이여 내가 왔도다"
+    "etc": "흥을 잃은 중생들이여 내가 왔도다",
+    "is_event": false
   },
   {
     "id": 2,
-    "name": "뉴진스님",
-    "time": "18:00 ~ 19:00",
+    "name": "수계식",
+    "time": "17:00",
     "imgURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUVYzkTpBSzWF2l8CkYItiFASp65XvypBIgw&s",
-    "etc": "흥을 잃은 중생들이여 내가 왔도다"
+    "etc": "흥을 잃은 중생들이여 내가 왔도다",
+    "is_event": true
   },
   {
     "id": 3,
-    "name": "뉴진스님",
-    "time": "18:00 ~ 19:00",
+    "name": "쉬는시간",
+    "time": "18:00",
     "imgURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUVYzkTpBSzWF2l8CkYItiFASp65XvypBIgw&s",
-    "etc": "흥을 잃은 중생들이여 내가 왔도다"
+    "etc": "흥을 잃은 중생들이여 내가 왔도다",
+    "is_event": false
+  },
+  {
+    "id": 4,
+    "name":["MC 섭이", "뉴진스님"],
+    "time": "18:00",
+    "imgURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUVYzkTpBSzWF2l8CkYItiFASp65XvypBIgw&s",
+    "etc": "흥을 잃은 중생들이여 내가 왔도다",
+    "is_event": true
+  },
+  {
+    "id": 5,
+    "name": "쉬는시간",
+    "time": "19:20",
+    "imgURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUVYzkTpBSzWF2l8CkYItiFASp65XvypBIgw&s",
+    "etc": "흥을 잃은 중생들이여 내가 왔도다",
+    "is_event": false
+  },
+  {
+    "id": 6,
+    "name": "트리플에스",
+    "time": "19:30",
+    "imgURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUVYzkTpBSzWF2l8CkYItiFASp65XvypBIgw&s",
+    "etc": "흥을 잃은 중생들이여 내가 왔도다",
+    "is_event": true
+  },
+  {
+    "id": 7,
+    "name": "케이윌",
+    "time": "20:00",
+    "imgURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUVYzkTpBSzWF2l8CkYItiFASp65XvypBIgw&s",
+    "etc": "흥을 잃은 중생들이여 내가 왔도다",
+    "is_event": true
+  },
+  {
+    "id": 8,
+    "name": "다이나믹 듀오",
+    "time": "20:30",
+    "imgURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUVYzkTpBSzWF2l8CkYItiFASp65XvypBIgw&s",
+    "etc": "흥을 잃은 중생들이여 내가 왔도다",
+    "is_event": true
+  },
+  {
+    "id": 9,
+    "name": "퇴장",
+    "time": "21:00",
+    "imgURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUVYzkTpBSzWF2l8CkYItiFASp65XvypBIgw&s",
+    "etc": "흥을 잃은 중생들이여 내가 왔도다",
+    "is_event": false
   }
 ]
