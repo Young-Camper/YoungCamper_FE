@@ -28,7 +28,7 @@ const router = createBrowserRouter([
 
       // 공지 페이지
       { path: "/notification", element: <Notification /> },
-      { path: "/notification/:id", element: <NotificationDetail /> },
+      { path: "/notification/:num", element: <NotificationDetail /> },
 
       // 홍보 페이지
       { path: "/promotion", element: <Promotion /> },
