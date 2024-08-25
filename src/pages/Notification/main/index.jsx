@@ -1,19 +1,21 @@
 import React from "react";
 import MainTitle from "../../../components/ui/MainTitle";
 import { ContentWrapper } from "../../../style/commonStyle";
-import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Search from "./Search";
+import Content from "./Content";
+
+const Wrapper = styled.div``;
 
 const index = () => {
   return (
-    <ContentWrapper>
-      <MainTitle title="공지" />
-      <Link to={"/notification/1"}>1번 디테일 페이지</Link>
-      <br />
-      <Link to={"/notification/2"}>2번 디테일 페이지</Link>
-      <br />
-      <Link to={"/notification/3"}>3번 디테일 페이지</Link>
-      <br />
-    </ContentWrapper>
+    <Wrapper>
+      <MainTitle title="공지 사항" />
+      <ContentWrapper>
+        <Search />
+        <Content />
+      </ContentWrapper>
+    </Wrapper>
   );
 };
 
