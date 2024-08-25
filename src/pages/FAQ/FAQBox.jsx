@@ -1,53 +1,39 @@
 import React, { useState } from 'react';
 import * as S from "./style";
 import PropTypes from 'prop-types';
-import useMediaQueries from "../../hooks/useMediaQueries";
 
-import openImage from './Chevron down.png';
-import closeImage from './Chevron up.png';
+import openImage from '../../assets/images/FAQ_1.png';
+import closeImage from '../../assets/images/FAQ_2.png';
 
 const FAQBox = ({ question, answer }) => {
-	const { isMobile, isTablet, isDesktop } = useMediaQueries();
-	
+
 	const [isOpen, setIsOpen] = useState(false); // 답변을 보여줄지 여부
-  
-	const handleToggle = () => {
-	  setIsOpen(prevState => !prevState); // 상태 토글
-	};
   
 	return (
 		<S.FAQBox>
 		  <S.FAQContent>
 			<S.FAQTextContainer>
-				<S.FAQText1>
-				Q.
-				</S.FAQText1>
-				<S.FAQText2>
-				영캠퍼가 누구야?
-				</S.FAQText2>
+				<S.FAQText1>Q.</S.FAQText1>
+				<S.FAQText2>{question}</S.FAQText2>
 			</S.FAQTextContainer>
-			<S.FAQButton onClick={handleToggle}>
+			<S.FAQButton onClick={() => setIsOpen(!isOpen)}>
 				<img 
 				src={isOpen ? closeImage : openImage} 
-				alt={isOpen ? '닫기 이미지' : '보기 이미지'} 
+				alt={isOpen ? '닫기' : '보기'} 
 				/>
 			</S.FAQButton>
 		  </S.FAQContent>
 		  {isOpen && (
 			<S.AnswerBox>
-				<S.FAQTextContainer>
-				<S.FAQText1>
-				A.
-				</S.FAQText1>
-				<S.FAQText2>
-				대단한 사람들이지~
-				</S.FAQText2>
-				</S.FAQTextContainer>
+			<S.FAQTextContainer>
+			<S.FAQText1>A.</S.FAQText1>
+			<S.FAQText2>{answer}</S.FAQText2>
+			</S.FAQTextContainer>
 			</S.AnswerBox>
 		  )}
 		</S.FAQBox>
 	);
-  }
+  };
   
   FAQBox.propTypes = {
 	question: PropTypes.string.isRequired,
