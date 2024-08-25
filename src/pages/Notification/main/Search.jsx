@@ -1,18 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import * as S from "./Style";
 import SearchIcon from "../../../assets/images/Notification/SearchIcon.png";
 
-const Search = () => {
+const Search = ({ onSearch }) => {
   const [keyword, setKeyword] = useState("");
 
-  //추후 변경 필요
   const keywordChangeHandler = (event) => {
     setKeyword(event.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(keyword);
+    onSearch(keyword);
   };
 
   return (
@@ -24,7 +23,7 @@ const Search = () => {
           value={keyword}
           onChange={keywordChangeHandler}
         />
-        <S.SearhIcon src={SearchIcon} onClick={handleSubmit} />
+        <S.SearchIcon src={SearchIcon} onClick={handleSubmit} />
       </S.SearchContainer>
     </S.SearchWrapper>
   );
