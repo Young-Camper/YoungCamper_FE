@@ -2,25 +2,47 @@ import React, { useState } from "react";
 import * as S from "./Style";
 import Subtitle from "./Subtitle";
 import data from "../../../data/notice.json";
+import Urgent from "./Urgent";
 
 const Content = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-  const maxPage = 5;
+  const maxPage = 5; // 최대 페이지 번호 수
 
-  // 전체 페이지 수 계산
-  const totalPage = Math.ceil(data.length / itemsPerPage);
+  // 필독 공지, 일반 공지 분리
+  const urgentItems = data.filter((item) => item.urgent === "yes");
+  const regularItems = data.filter((item) => item.urgent !== "yes");
 
   // 현재 페이지에 맞는 데이터 계산
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const getCurrentPageItems = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
 
+    //필독 공지사항 개수
+    const urgentCount = urgentItems.length;
+
+    //일반 공지사항 개수
+    const regularCount = Math.max(itemsPerPage - urgentCount, 0);
+
+    return [
+      ...urgentItems, // 필독 공지
+      ...regularItems.slice(startIndex, startIndex + regularCount), // 일반 공지
+    ];
+  };
+
+  // 전체 페이지 수 계산
+  const totalPages = Math.ceil(
+    (regularItems.length + urgentItems.length) / itemsPerPage
+  );
+
+  // 현재 페이지에 맞는 데이터 계산
+  const currentItems = getCurrentPageItems();
+
+  // 현재 보여줄 페이지 번호 범위 계산
   const startPage = Math.max(
     1,
-    Math.min(currentPage - Math.floor(maxPage / 2), totalPage - maxPage + 1)
+    Math.min(currentPage - Math.floor(maxPage / 2), totalPages - maxPage + 1)
   );
-  const endPage = Math.min(totalPage, startPage + maxPage - 1);
+  const endPage = Math.min(totalPages, startPage + maxPage - 1);
 
   const pageNumbers = [];
   for (let i = startPage; i <= endPage; i++) {
@@ -38,7 +60,7 @@ const Content = () => {
   };
 
   const handleNextClick = () => {
-    setCurrentPage((prev) => Math.min(prev + 1, totalPage));
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -55,9 +77,19 @@ const Content = () => {
         $marginBottom="0"
       />
       <S.ContentContainer>
-        {currentItems.map((item, index) => (
+        {/* 현재 페이지의 필독 공지 */}
+        {urgentItems.slice(0, itemsPerPage).map((item, index) => (
           <Subtitle
-            key={index}
+            key={`urgent-${index}`}
+            num={<Urgent />}
+            title={item.title}
+            date={item.date}
+          />
+        ))}
+        {/* 현재 페이지의 일반 공지 */}
+        {currentItems.slice(urgentItems.length).map((item, index) => (
+          <Subtitle
+            key={`regular-${index}`}
             num={item.num}
             title={item.title}
             date={item.date}
@@ -77,7 +109,7 @@ const Content = () => {
             {number}
           </S.PageNumber>
         ))}
-        {endPage < totalPage && (
+        {endPage < totalPages && (
           <S.PageArrow onClick={handleNextClick}>&gt;</S.PageArrow>
         )}
       </S.Pagination>

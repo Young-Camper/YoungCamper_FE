@@ -56,19 +56,23 @@ export const SubTitleWrapper = styled.div`
 
 export const NumContainer = styled.div`
   padding: 14px;
-  width: 10%;
+  width: 15%;
   font-weight: 700;
   display: flex;
   justify-content: center;
   font-size: 16px;
   color: ${(props) => props.color || "#92A5B5"};
+  display: flex;
+  align-items: center;
 `;
 
 export const TitleContainer = styled.div`
   padding: 14px;
-  width: 80%;
+  width: 75%;
   font-size: 16px;
   font-weight: ${(props) => props.fontWeight || 600};
+  display: flex;
+  align-items: center;
 `;
 
 //Content.jsx
@@ -79,6 +83,7 @@ export const ContentWrapper = styled.div`
 
 export const ContentContainer = styled.div`
   margin-bottom: 50px;
+  cursor: pointer;
 `;
 
 export const Pagination = styled.div`
