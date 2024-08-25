@@ -2,7 +2,7 @@ import React from "react";
 import MainTitle from "../../components/ui/MainTitle";
 import { ContentWrapper } from "../../style/commonStyle";
 import Section from "./Section";
-import { leaderProfiles, memberProfiles } from "./profileData";
+import { leaderProfiles, memberProfiles } from "../../data/profileData";
 
 
 const index = () => {

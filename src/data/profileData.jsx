@@ -1,4 +1,4 @@
-import sampleImage from '../../assets/images/about_sample.jpg'
+import sampleImage from '../assets/images/about_sample.jpg'
 
 export const leaderProfiles = [
 	{ id: 1, name: "황진경", role: "TF장", image: sampleImage },
