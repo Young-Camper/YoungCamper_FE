@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import MainTitle from "../../components/ui/MainTitle";
 import { ContentWrapper } from "../../style/commonStyle";
-import A from "./A";
-import B from "./B";
+import TimeTable from "./TimeTable";
+import Attention from "../../components/ui/Attention";
 
 const index = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
-    <ContentWrapper>
-      <MainTitle title="공연안내" />
-      <A />
-      <B />
-    </ContentWrapper>
+    <>
+      <MainTitle
+        mainText="공연안내"
+        subText="영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다."
+      />
+      <ContentWrapper>
+        <TimeTable modalOpen={modalOpen} setModalOpen={setModalOpen} />
+        <Attention />
+      </ContentWrapper>
+    </>
   );
 };
 
