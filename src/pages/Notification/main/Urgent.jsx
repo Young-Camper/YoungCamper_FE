@@ -3,6 +3,7 @@ import styled from "styled-components";
 const UrgentWrapper = styled.div`
   background-color: #0068ff;
   border-radius: 100px;
+  max-width: 80px;
   display: flex;
   padding: 8px 18px;
   justify-content: center;

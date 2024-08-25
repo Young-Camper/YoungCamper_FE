@@ -1,16 +1,19 @@
 import React from "react";
+import styled from "styled-components";
 import MainTitle from "../../../components/ui/MainTitle";
 import { ContentWrapper } from "../../../style/commonStyle";
-import { useParams } from "react-router-dom";
+import Content from "./Content.jsx";
+
+const Wrapper = styled.div``;
 
 const index = () => {
-  const { id } = useParams();
-
   return (
-    <ContentWrapper>
-      <MainTitle title="공지 디테일" />
-      <div>{id}번째 페이지</div>
-    </ContentWrapper>
+    <Wrapper>
+      <MainTitle title="공지사항" />
+      <ContentWrapper>
+        <Content />
+      </ContentWrapper>
+    </Wrapper>
   );
 };
 
