@@ -1,12 +1,14 @@
 import React from "react";
 import MainTitle from "../../components/ui/MainTitle";
-import { ContentWrapper } from "../../style/commonStyle";
+import FAQContainer from "./FAQContainer";
 
 const index = () => {
+
   return (
-    <ContentWrapper>
+    <>
       <MainTitle title="FAQ" />
-    </ContentWrapper>
+      <FAQContainer />
+    </>
   );
 };
 
