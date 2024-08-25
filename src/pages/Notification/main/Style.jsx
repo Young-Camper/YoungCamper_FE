@@ -33,7 +33,7 @@ export const SearchInput = styled.input`
   }
 `;
 
-export const SearhIcon = styled.img`
+export const SearchIcon = styled.img`
   position: absolute;
   right: 15px;
   top: 50%;
@@ -117,4 +117,13 @@ export const PageArrow = styled.div`
   &:hover {
     background-color: #e7ebef;
   }
+`;
+
+export const NoResults = styled.div`
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #e7ebef;
 `;

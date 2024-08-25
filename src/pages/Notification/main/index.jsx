@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MainTitle from "../../../components/ui/MainTitle";
 import { ContentWrapper } from "../../../style/commonStyle";
 import styled from "styled-components";
@@ -7,16 +7,22 @@ import Content from "./Content";
 
 const Wrapper = styled.div``;
 
-const index = () => {
+const Index = () => {
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  const handleSearch = (keyword) => {
+    setSearchKeyword(keyword);
+  };
+
   return (
     <Wrapper>
       <MainTitle title="공지 사항" />
       <ContentWrapper>
-        <Search />
-        <Content />
+        <Search onSearch={handleSearch} />
+        <Content keyword={searchKeyword} />
       </ContentWrapper>
     </Wrapper>
   );
 };
 
-export default index;
+export default Index;

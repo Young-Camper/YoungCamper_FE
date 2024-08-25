@@ -4,7 +4,7 @@ import Subtitle from "./Subtitle";
 import data from "../../../data/notice.json";
 import Urgent from "./Urgent";
 
-const Content = () => {
+const Content = ({ keyword }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const maxPage = 5; // 최대 페이지 번호 수
@@ -13,25 +13,46 @@ const Content = () => {
   const urgentItems = data.filter((item) => item.urgent === "yes");
   const regularItems = data.filter((item) => item.urgent !== "yes");
 
+  // 검색어에 맞는 필독 공지 필터링
+  const filteredUrgentItems = urgentItems.filter(
+    (item) =>
+      (item.title &&
+        item.title.toLowerCase().includes(keyword.toLowerCase())) ||
+      (item.content &&
+        item.content.toLowerCase().includes(keyword.toLowerCase()))
+  );
+
+  // 검색어에 맞는 일반 공지 필터링
+  const filteredRegularItems = regularItems.filter(
+    (item) =>
+      (item.title &&
+        item.title.toLowerCase().includes(keyword.toLowerCase())) ||
+      (item.content &&
+        item.content.toLowerCase().includes(keyword.toLowerCase()))
+  );
+
+  // 검색된 필독 공지 + 검색된 일반 공지
+  const filteredItems = [...filteredUrgentItems, ...filteredRegularItems];
+
   // 현재 페이지에 맞는 데이터 계산
   const getCurrentPageItems = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
 
-    //필독 공지사항 개수
+    // 필독 공지사항 개수
     const urgentCount = urgentItems.length;
 
-    //일반 공지사항 개수
-    const regularCount = Math.max(itemsPerPage - urgentCount, 0);
+    // 현재 페이지에서 표시할 일반 공지사항 (필독 제외)
+    const regularItemsForCurrentPage = filteredRegularItems.slice(
+      startIndex,
+      startIndex + Math.max(itemsPerPage - urgentCount, 0)
+    );
 
-    return [
-      ...urgentItems, // 필독 공지
-      ...regularItems.slice(startIndex, startIndex + regularCount), // 일반 공지
-    ];
+    return [...urgentItems, ...regularItemsForCurrentPage];
   };
 
   // 전체 페이지 수 계산
   const totalPages = Math.ceil(
-    (regularItems.length + urgentItems.length) / itemsPerPage
+    (filteredRegularItems.length + urgentItems.length) / itemsPerPage
   );
 
   // 현재 페이지에 맞는 데이터 계산
@@ -77,7 +98,7 @@ const Content = () => {
         $marginBottom="0"
       />
       <S.ContentContainer>
-        {/* 현재 페이지의 필독 공지 */}
+        {/* 필독 공지사항 표시 */}
         {urgentItems.slice(0, itemsPerPage).map((item, index) => (
           <Subtitle
             key={`urgent-${index}`}
@@ -86,33 +107,40 @@ const Content = () => {
             date={item.date}
           />
         ))}
-        {/* 현재 페이지의 일반 공지 */}
-        {currentItems.slice(urgentItems.length).map((item, index) => (
-          <Subtitle
-            key={`regular-${index}`}
-            num={item.num}
-            title={item.title}
-            date={item.date}
-          />
-        ))}
+        {filteredItems.length > 0 ? (
+          currentItems
+            .slice(urgentItems.length)
+            .map((item, index) => (
+              <Subtitle
+                key={`item-${index}`}
+                num={item.num}
+                title={item.title}
+                date={item.date}
+              />
+            ))
+        ) : (
+          <S.NoResults>등록된 게시글이 없습니다.</S.NoResults>
+        )}
       </S.ContentContainer>
-      <S.Pagination>
-        {startPage > 1 && (
-          <S.PageArrow onClick={handlePrevClick}>&lt;</S.PageArrow>
-        )}
-        {pageNumbers.map((number) => (
-          <S.PageNumber
-            key={number}
-            $isActive={number === currentPage}
-            onClick={() => handleClick(number)}
-          >
-            {number}
-          </S.PageNumber>
-        ))}
-        {endPage < totalPages && (
-          <S.PageArrow onClick={handleNextClick}>&gt;</S.PageArrow>
-        )}
-      </S.Pagination>
+      {filteredItems.length > 0 && (
+        <S.Pagination>
+          {startPage > 1 && (
+            <S.PageArrow onClick={handlePrevClick}>&lt;</S.PageArrow>
+          )}
+          {pageNumbers.map((number) => (
+            <S.PageNumber
+              key={number}
+              $isActive={number === currentPage}
+              onClick={() => handleClick(number)}
+            >
+              {number}
+            </S.PageNumber>
+          ))}
+          {endPage < totalPages && (
+            <S.PageArrow onClick={handleNextClick}>&gt;</S.PageArrow>
+          )}
+        </S.Pagination>
+      )}
     </S.ContentWrapper>
   );
 };
