@@ -9,7 +9,6 @@ export const Container = styled.div`
   width: 1000px;
   display: flex;
   flex-direction: column;
-  background-color: aliceblue;
 `;
 export const Section = styled.div`
   display: flex;
