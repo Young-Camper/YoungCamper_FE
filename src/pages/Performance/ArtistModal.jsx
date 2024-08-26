@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
 import * as S from "./style";
+import CloseBtn from "../../assets/images/timetable/closeBtn.png";
+import YoutubeBtn from "../../assets/images/timetable/Social.png";
 
 const ArtistModal = ({ artist, setModalOpen }) => {
   const modal = useRef();
@@ -13,13 +15,19 @@ const ArtistModal = ({ artist, setModalOpen }) => {
   return (
     <S.ModalContainer onClick={handleCloseModal}>
       <S.Modal ref={modal}>
-        <S.ModalCloseBtn onClick={() => setModalOpen(false)}>X</S.ModalCloseBtn>
-        <S.ModalPosterImg src={artist.imgURL} />
+        <S.ModalCloseBtn onClick={() => setModalOpen(false)}>
+          <img src={CloseBtn} alt="X" />
+        </S.ModalCloseBtn>
+        <S.ModalPosterImg src={artist.artist_image} />
         <S.ModalContent>
-          <S.ModalDetail></S.ModalDetail>
-          <S.ModalTitle>{artist.name}</S.ModalTitle>
-          <S.ModalOverview>{artist.etc}</S.ModalOverview>
-          <S.ModalOverview>{artist.time}</S.ModalOverview>
+          <S.ArtistName>
+            <S.Line>{artist.name}</S.Line>
+          </S.ArtistName>
+          <S.DetailText>{artist.etc}</S.DetailText>
+          <S.SubText>대표곡</S.SubText>
+          <S.ModalMusic>
+            {artist.music} <img src={YoutubeBtn} />
+          </S.ModalMusic>
         </S.ModalContent>
       </S.Modal>
     </S.ModalContainer>
