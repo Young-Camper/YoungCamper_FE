@@ -4,8 +4,11 @@ import TitleSet from "../../components/ui/TitleSet";
 import { timetable, lineup } from "../../data/timetable";
 import ArtistModal from "./ArtistModal";
 import Arrow from "../../assets/images/timetable/arrow_icon.png";
+import useMediaQueries from "../../hooks/useMediaQueries";
 
 const TimeTable = ({ modalOpen, setModalOpen }) => {
+  const { isMobile, isTablet, isDesktop } = useMediaQueries();
+
   const lineupOpen = false; /* 라인업 공개 여부 */
   const [artists, setArtists] = useState([]);
   const [clickedArtist, setClickedArtist] = useState({});
@@ -33,51 +36,123 @@ const TimeTable = ({ modalOpen, setModalOpen }) => {
 
   const TimeTableSection = () => {
     return (
-      <S.Container>
+      <S.Container
+        $isMobile={isMobile}
+        $isTablet={isTablet}
+        $isDesktop={isDesktop}
+      >
         {timetable.map((event) => {
           const currentArtists = getArtistsByTime(event.time);
 
           return event.is_event ? (
             event.id === 2 /* 수계식 */ ? (
-              <S.Section key={event.id} isright={event.id}>
-                <S.EventTime src={event.cover_image} />
+              <S.Section
+                key={event.id}
+                $isMobile={isMobile}
+                $isTablet={isTablet}
+                $isDesktop={isDesktop}
+                $isRight={event.id}
+                $isEvent={false}
+              >
+                <S.EventTime
+                  $isMobile={isMobile}
+                  $isTablet={isTablet}
+                  $isDesktop={isDesktop}
+                  $isEvent={false}
+                >
+                  {event.time}
+                </S.EventTime>
+                {/* <S.EventTime src={event.cover_image} /> */}
                 <S.EventName>{event.name}</S.EventName>
               </S.Section>
             ) : (
-              <S.Section key={event.id} isright={event.id}>
-                <S.EventTime src={event.cover_image} />
+              <S.Section
+                key={event.id}
+                $isMobile={isMobile}
+                $isTablet={isTablet}
+                $isDesktop={isDesktop}
+                $isRight={event.id}
+                $isEvent={true}
+              >
+                {/* <S.EventTime
+                  src={event.cover_image}
+                  $isMobile={isMobile}
+                  $isTablet={isTablet}
+                  $isDesktop={isDesktop}
+                  $isEvent={true}
+                /> */}
+                <S.EventTime
+                  $isMobile={isMobile}
+                  $isTablet={isTablet}
+                  $isDesktop={isDesktop}
+                  $isEvent={true}
+                >
+                  {event.time}
+                </S.EventTime>
                 <S.ArtistWrapper>
-                  <S.EventName>
-                    <S.SmallText>{event.index}</S.SmallText>
+                  <S.EventName
+                    $isMobile={isMobile}
+                    $isTablet={isTablet}
+                    $isDesktop={isDesktop}
+                    $isEvent={true}
+                  >
+                    <S.SmallText
+                      $isMobile={isMobile}
+                      $isTablet={isTablet}
+                      $isDesktop={isDesktop}
+                    >
+                      {event.index}
+                    </S.SmallText>
                     {currentArtists.length > 1 ? (
                       <>
-                        <S.EventText>
+                        <S.EventText
+                          $isMobile={isMobile}
+                          $isTablet={isTablet}
+                          $isDesktop={isDesktop}
+                        >
                           {currentArtists[0]?.name}
                           <S.Arrow
                             src={Arrow}
                             onClick={() => {
                               handleOpenModal(currentArtists[0]);
                             }}
+                            $isMobile={isMobile}
+                            $isTablet={isTablet}
+                            $isDesktop={isDesktop}
                           />
                         </S.EventText>
-                        <S.EventTextRight>
+                        <S.EventTextRight
+                          $isMobile={isMobile}
+                          $isTablet={isTablet}
+                          $isDesktop={isDesktop}
+                        >
                           {currentArtists[1]?.name}
                           <S.Arrow
                             src={Arrow}
                             onClick={() => {
                               handleOpenModal(currentArtists[1]);
                             }}
+                            $isMobile={isMobile}
+                            $isTablet={isTablet}
+                            $isDesktop={isDesktop}
                           />
                         </S.EventTextRight>
                       </>
                     ) : (
-                      <S.EventText>
+                      <S.EventText
+                        $isMobile={isMobile}
+                        $isTablet={isTablet}
+                        $isDesktop={isDesktop}
+                      >
                         {currentArtists[0]?.name}
                         <S.Arrow
                           src={Arrow}
                           onClick={() => {
                             handleOpenModal(currentArtists[0]);
                           }}
+                          $isMobile={isMobile}
+                          $isTablet={isTablet}
+                          $isDesktop={isDesktop}
                         />
                       </S.EventText>
                     )}
@@ -86,9 +161,27 @@ const TimeTable = ({ modalOpen, setModalOpen }) => {
               </S.Section>
             )
           ) : (
-            <S.Section key={event.id} isright={event.id}>
-              <S.GuideTime>{event.time}</S.GuideTime>
-              <S.GuideName>{event.name}</S.GuideName>
+            <S.Section
+              key={event.id}
+              $isRight={event.id}
+              $isMobile={isMobile}
+              $isTablet={isTablet}
+              $isDesktop={isDesktop}
+            >
+              <S.GuideTime
+                $isMobile={isMobile}
+                $isTablet={isTablet}
+                $isDesktop={isDesktop}
+              >
+                {event.time}
+              </S.GuideTime>
+              <S.GuideName
+                $isMobile={isMobile}
+                $isTablet={isTablet}
+                $isDesktop={isDesktop}
+              >
+                {event.name}
+              </S.GuideName>
             </S.Section>
           );
         })}
