@@ -2,8 +2,10 @@ import React, { useRef } from "react";
 import * as S from "./style";
 import CloseBtn from "../../assets/images/timetable/closeBtn.png";
 import YoutubeBtn from "../../assets/images/timetable/Social.png";
+import useMediaQueries from "../../hooks/useMediaQueries";
 
 const ArtistModal = ({ artist, setModalOpen }) => {
+  const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const modal = useRef();
 
   const handleCloseModal = (event) => {
@@ -13,17 +15,48 @@ const ArtistModal = ({ artist, setModalOpen }) => {
   };
 
   return (
-    <S.ModalContainer onClick={handleCloseModal}>
-      <S.Modal ref={modal}>
-        <S.ModalCloseBtn onClick={() => setModalOpen(false)}>
+    <S.ModalContainer
+      onClick={handleCloseModal}
+      $isMobile={isMobile}
+      $isTablet={isTablet}
+      $isDesktop={isDesktop}
+    >
+      <S.Modal
+        ref={modal}
+        $isMobile={isMobile}
+        $isTablet={isTablet}
+        $isDesktop={isDesktop}
+      >
+        <S.ModalCloseBtn
+          onClick={() => setModalOpen(false)}
+          $isMobile={isMobile}
+          $isTablet={isTablet}
+          $isDesktop={isDesktop}
+        >
           <img src={CloseBtn} alt="X" />
         </S.ModalCloseBtn>
-        <S.ModalPosterImg src={artist.artist_image} />
-        <S.ModalContent>
+        <S.ModalPosterImg
+          $isMobile={isMobile}
+          $isTablet={isTablet}
+          $isDesktop={isDesktop}
+        >
+          <img src={artist.artist_image} />
+        </S.ModalPosterImg>
+        <S.ModalContent
+          $isMobile={isMobile}
+          $isTablet={isTablet}
+          $isDesktop={isDesktop}
+        >
           <S.ArtistName>
             <S.Line>{artist.name}</S.Line>
           </S.ArtistName>
-          <S.DetailText>{artist.etc}</S.DetailText>
+          <S.DetailText
+            $isMobile={isMobile}
+            $isTablet={isTablet}
+            $isDesktop={isDesktop}
+          >
+            {artist.etc}
+          </S.DetailText>
           <S.SubText>대표곡</S.SubText>
           <S.ModalMusic>
             {artist.music} <img src={YoutubeBtn} />
