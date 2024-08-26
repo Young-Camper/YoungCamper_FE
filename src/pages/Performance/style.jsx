@@ -182,17 +182,19 @@ export const ModalContainer = styled.div`
 
 export const Modal = styled.div`
   position: absolute;
-  top: 22%;
+  overflow: scroll;
+  top: ${(props) => (props.$isDesktop ? "10%" : "10%")};
 
-  width: 580px;
-  min-height: 780px;
+  width: ${(props) => (props.$isDesktop ? "580px" : "340px")};
+  /* min-height: ${(props) => (props.$isDesktop ? "780px" : "")}; */
 
-  padding: 10px 40px 48px 40px;
+  padding: ${(props) =>
+    props.$isDesktop ? "10px 40px 48px 40px" : "10px 20px 40px 20px"};
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: ${(props) => (props.$isDesktop ? "20px" : "")};
   border-radius: var(--sds-size-radius-200);
   background: #fff;
 
@@ -214,10 +216,16 @@ export const ModalCloseBtn = styled.div`
   }
 `;
 
-export const ModalPosterImg = styled.img`
-  height: 400px;
-  object-fit: contain;
+export const ModalPosterImg = styled.div`
+  max-height: ${(props) => (props.$isMobile ? "300px" : "400px")};
+  border-radius: 8px;
   align-self: stretch;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;
 
 export const ModalContent = styled.div`
@@ -232,11 +240,13 @@ export const ArtistName = styled.div`
 
   /* Primary/Desktop/H1 */
   font-family: Montserrat;
-  font-size: 32px;
+  font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
   font-style: normal;
   font-weight: 800;
   line-height: 36px; /* 112.5% */
   letter-spacing: -1.92px;
+
+  padding-top: ${(props) => (props.$isDesktop ? "" : "25px")};
 `;
 export const Line = styled.span`
   border-bottom: 1px solid #0068ff;
@@ -247,13 +257,13 @@ export const DetailText = styled.div`
 
   /* Primary/Desktop/Body3 */
   font-family: Montserrat;
-  font-size: 16px;
+  font-size: ${(props) => (props.$isDesktop ? "16px" : "12px")};
   font-style: normal;
   font-weight: 400;
-  line-height: 24px; /* 150% */
-  letter-spacing: -0.04px;
+  line-height: ${(props) => (props.$isDesktop ? "24px" : "normal")};
+  letter-spacing: ${(props) => (props.$isDesktop ? "-0.04px" : "-0.06px")};
 
-  padding: 15px 0 30px 0;
+  padding: ${(props) => (props.$isDesktop ? "15px 0 30px 0" : "15px 0 25px 0")};
 `;
 export const SubText = styled.div`
   padding-bottom: 10px;
@@ -278,4 +288,5 @@ export const ModalMusic = styled.div`
 
   display: flex;
   align-items: center;
+  gap: 10px;
 `;
