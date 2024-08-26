@@ -1,20 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import MainTitle from "../../../components/ui/MainTitle";
 import { ContentWrapper } from "../../../style/commonStyle";
-import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Search from "./Search";
+import Content from "./Content";
 
-const index = () => {
+const Wrapper = styled.div``;
+
+const Index = () => {
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  const handleSearch = (keyword) => {
+    setSearchKeyword(keyword);
+  };
+
   return (
-    <ContentWrapper>
-      <MainTitle title="공지" />
-      <Link to={"/notification/1"}>1번 디테일 페이지</Link>
-      <br />
-      <Link to={"/notification/2"}>2번 디테일 페이지</Link>
-      <br />
-      <Link to={"/notification/3"}>3번 디테일 페이지</Link>
-      <br />
-    </ContentWrapper>
+    <Wrapper>
+      <MainTitle title="공지사항" />
+      <ContentWrapper>
+        <Search onSearch={handleSearch} />
+        <Content keyword={searchKeyword} />
+      </ContentWrapper>
+    </Wrapper>
   );
 };
 
-export default index;
+export default Index;
