@@ -6,33 +6,66 @@ export const ArtistWrapper = styled.div`
   flex-direction: column;
 `;
 export const Container = styled.div`
-  width: 1000px;
+  width: ${(props) =>
+    props.$isDesktop ? "1000px" : props.$isTablet ? "727px" : ""};
+  /* props.$isDesktop ? "1000px" : props.$isTablet ? "727px" : "320px"}; */
   display: flex;
   flex-direction: column;
+  margin: ${(props) => (props.$isTablet || props.$isMobile) && "0 auto"};
 `;
 export const Section = styled.div`
   display: flex;
   flex-direction: row;
-  margin-left: ${(props) => (props.isright % 2 == 1 ? "0" : "auto")};
+  margin-left: ${(props) =>
+    props.$isDesktop && props.$isRight % 2 == 1 ? "0" : "auto"};
+  height: ${(props) =>
+    props.$isEvent && (props.$isTablet || props.$isMobile) && "250px"};
 `;
-export const EventTime = styled.img`
-  width: 250px;
-  height: 250px;
+export const EventTime = styled.div`
+  width: ${(props) => (props.$isDesktop ? "250px" : "90px")};
+  height: ${(props) => (props.$isDesktop || props.$isEvent ? "250px" : "90px")};
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    ),
+    var(--new-main-primary, #0068ff);
+
+  color: var(--new-main-white, #fafafa);
+
+  /* btn/pressed/a */
+  text-shadow: 0px 84px 24px rgba(0, 0, 0, 0), 0px 54px 22px rgba(0, 0, 0, 0.02),
+    0px 30px 18px rgba(0, 0, 0, 0.06), 0px 14px 14px rgba(0, 0, 0, 0.1),
+    0px 3px 7px rgba(0, 0, 0, 0.12);
+
+  /* Primary/Mobile/Body1 */
+  font-family: Montserrat;
+  font-size: ${(props) => (props.$isDesktop ? "32px" : "18px")};
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 122.222% */
+  letter-spacing: -0.09px;
 `;
 export const EventName = styled.div`
   display: flex;
-  width: 500px;
-  height: 250px;
+  width: ${(props) =>
+    props.$isDesktop ? "500px" : props.$isTablet ? "637px" : "60vw"};
+  /* props.$isDesktop ? "500px" : props.$isTablet ? "637px" : "230px"}; */
+  height: ${(props) => (props.$isDesktop || props.$isEvent ? "250px" : "90px")};
   padding: 30px;
   flex-direction: column;
   align-items: flex-start;
-  opacity: var(--sds-size-stroke-border);
   background: var(--new-main-primary, #0068ff);
   color: var(--Base-Real-White, #fff);
 
   /* Primary/Desktop/H1_regular */
   font-family: Montserrat;
-  font-size: 32px;
+  font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
   font-style: normal;
   font-weight: 400;
   line-height: 36px; /* 112.5% */
@@ -46,9 +79,9 @@ export const SmallText = styled.div`
 
   /* Primary/Desktop/H1_regular */
   font-family: Montserrat;
-  font-size: 32px;
+  font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
   font-style: normal;
-  font-weight: 400;
+  font-weight: ${(props) => (props.$isDesktop ? "400" : "800")};
   line-height: 36px; /* 112.5% */
   letter-spacing: -1.6px;
 `;
@@ -60,7 +93,7 @@ export const EventText = styled.div`
 
   /* Primary/Desktop/Hero1_regular */
   font-family: Montserrat;
-  font-size: 48px;
+  font-size: ${(props) => (props.$isDesktop ? "48px" : "28px")};
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -75,15 +108,16 @@ export const EventTextRight = styled(EventText)`
   border: 0;
 `;
 export const Arrow = styled.img`
-  width: 40px;
-  margin-left: 24px;
+  width: ${(props) => (props.$isDesktop ? "40px" : "30px")};
+  margin-left: ${(props) => (props.$isDesktop ? "24px" : "10px")};
 `;
 export const GuideTime = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 250px;
-  height: 100px;
+
+  width: ${(props) => (props.$isDesktop ? "250px" : "90px")};
+  height: ${(props) => (props.$isDesktop || props.$isEvent ? "100px" : "90px")};
   background: linear-gradient(
       0deg,
       rgba(0, 0, 0, 0.2) 0%,
@@ -100,7 +134,7 @@ export const GuideTime = styled.div`
 
   /* Primary/Desktop/H1_regular */
   font-family: Montserrat;
-  font-size: 32px;
+  font-size: ${(props) => (props.$isDesktop ? "32px" : "18px")};
   font-style: normal;
   font-weight: 400;
   line-height: 36px; /* 112.5% */
@@ -108,8 +142,12 @@ export const GuideTime = styled.div`
 `;
 export const GuideName = styled.div`
   display: flex;
-  width: 500px;
-  height: var(--XXL, 100px);
+
+  width: ${(props) =>
+    props.$isDesktop ? "500px" : props.$isTablet ? "637px" : "60vw"};
+  /* props.$isDesktop ? "500px" : props.$isTablet ? "637px" : "230px"}; */
+  height: ${(props) => (props.$isDesktop ? "100px" : "90px")};
+
   padding: 0 30px;
   flex-direction: column;
   justify-content: center;
@@ -121,7 +159,7 @@ export const GuideName = styled.div`
 
   /* Primary/Desktop/H1_regular */
   font-family: Montserrat;
-  font-size: 32px;
+  font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
   font-style: normal;
   font-weight: 400;
   line-height: 36px; /* 112.5% */
@@ -136,7 +174,6 @@ export const ModalContainer = styled.div`
   left: 0;
   height: 100vh;
   width: 100vw;
-  /* background-color: rgb(0 0 0 / 71%); */
   -webkit-tap-highlight-color: transparent;
   display: flex;
   flex-direction: column;
