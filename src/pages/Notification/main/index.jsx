@@ -16,7 +16,7 @@ const Index = () => {
 
   return (
     <Wrapper>
-      <MainTitle title="공지 사항" />
+      <MainTitle title="공지사항" />
       <ContentWrapper>
         <Search onSearch={handleSearch} />
         <Content keyword={searchKeyword} />
