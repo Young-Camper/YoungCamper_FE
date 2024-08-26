@@ -3,6 +3,7 @@ import * as S from "./Style";
 import Subtitle from "./Subtitle";
 import data from "../../../data/notice.json";
 import Urgent from "./Urgent";
+import { Link } from "react-router-dom";
 
 const Content = ({ keyword }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -99,25 +100,17 @@ const Content = ({ keyword }) => {
       />
       <S.ContentContainer>
         {/* 필독 공지사항 표시 */}
-        {urgentItems.slice(0, itemsPerPage).map((item, index) => (
-          <Subtitle
-            key={`urgent-${index}`}
-            num={<Urgent />}
-            title={item.title}
-            date={item.date}
-          />
+        {filteredUrgentItems.slice(0, itemsPerPage).map((item, index) => (
+          <Link to={`/notification/${item.num}`}>
+            <Subtitle num={<Urgent />} title={item.title} date={item.date} />
+          </Link>
         ))}
         {filteredItems.length > 0 ? (
-          currentItems
-            .slice(urgentItems.length)
-            .map((item, index) => (
-              <Subtitle
-                key={`item-${index}`}
-                num={item.num}
-                title={item.title}
-                date={item.date}
-              />
-            ))
+          currentItems.slice(urgentItems.length).map((item, index) => (
+            <Link to={`/notification/${item.num}`}>
+              <Subtitle num={item.num} title={item.title} date={item.date} />
+            </Link>
+          ))
         ) : (
           <S.NoResults>등록된 게시글이 없습니다.</S.NoResults>
         )}
