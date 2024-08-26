@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo_kr from "../assets/images/Nav/Logo_kr.png";
 import { useState } from 'react';
+// import { ContentWrapper } from "../style/commonStyle";
 
 const Wrapper = styled.div`
   /* background-color: #f4ffdd; */
@@ -36,9 +37,9 @@ const LangSlider = styled.span`
 
   &:before {
     position: absolute;
-    content: "한국어";
+    content: "KO";
     font-size: 12px;
-    left: 45px; 
+    left: 55px; 
     top: 50%;
     transform: translateY(-50%);
     color: #000;
@@ -47,9 +48,9 @@ const LangSlider = styled.span`
 
   &:after {
     position: absolute;
-    content: "영어";
+    content: "EN";
     font-size: 12px;
-    right: 5px; 
+    right: 10px; 
     top: 50%;
     transform: translateY(-50%);
     color: transparent;
