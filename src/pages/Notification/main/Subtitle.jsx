@@ -12,6 +12,7 @@ const Subtitle = ({
   marginBottom,
   fontSize,
   isDesktop,
+  isTablet,
   gap,
 }) => {
   return (
@@ -20,7 +21,9 @@ const Subtitle = ({
       marginTop={marginTop}
       marginBottom={marginBottom}
     >
-      <S.NumContainer color={color}>{num}</S.NumContainer>
+      <S.NumContainer color={color} $isDesktop={isDesktop} $isTablet={isTablet}>
+        {num}
+      </S.NumContainer>
 
       {!isDesktop && (
         <S.TitleDateContainer gap={gap}>

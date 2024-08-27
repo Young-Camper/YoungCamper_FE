@@ -57,7 +57,8 @@ export const SubTitleWrapper = styled.div`
 
 export const NumContainer = styled.div`
   padding: 14px;
-  width: 15%;
+  width: ${(props) =>
+    props.$isDesktop ? "15%" : props.$isTablet ? "20%" : "45%"};
   font-weight: 700;
   display: flex;
   justify-content: center;
@@ -69,7 +70,7 @@ export const NumContainer = styled.div`
 
 export const DateContainer = styled.div`
   padding: ${(props) => (props.$isDesktop ? "14px" : "")};
-  width: 15%;
+  width: 25%;
   font-weight: 700;
   display: flex;
   justify-content: ${(props) => (props.$isDesktop ? "center" : "")};
@@ -81,7 +82,7 @@ export const DateContainer = styled.div`
 
 export const TitleDateContainer = styled.div`
   display: flex;
-  width: 70%;
+  width: ${(props) => (props.$isDesktop ? "70%" : "100%")};
   flex-direction: column;
   padding: 15px 0px;
   gap: ${(props) => props.gap || "7px"};
@@ -90,7 +91,7 @@ export const TitleDateContainer = styled.div`
 
 export const TitleContainer = styled.div`
   padding: ${(props) => (props.$isDesktop ? "14px" : "")};
-  width: 70%;
+  /* width: 70%; */
   font-size: ${(props) => props.fontSize || "16px"};
   font-weight: ${(props) => props.fontWeight || 600};
   display: flex;
