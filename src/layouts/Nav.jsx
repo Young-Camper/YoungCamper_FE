@@ -2,25 +2,58 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo_kr from "../assets/images/Nav/Logo_kr.png";
 import { useState } from 'react';
-// import { ContentWrapper } from "../style/commonStyle";
 
 const Wrapper = styled.div`
-  /* background-color: #f4ffdd; */
-  display: flex; 
-  align-Items: center;
-  justify-content: space-around; 
   width: 100%;
   height: 100%;
-  padding : 5px 48px;
-  margin: 0 auto;
+  padding: 19px 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px #9747FF dotted;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 18px;
 `;
 
+const Container = styled.div`
+  align-self: stretch;
+  padding: 5px 144px;
+  background: white;
+  backdrop-filter: blur(64px);
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+`;
+
+const FlexContainer = styled.div`
+  flex: 1 1 0;
+  height: 73px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+`;
+
+
 const LogoKr = styled.img`
+  width: 123px;
   height: 45px;
 `;
 
 const StyledLink = styled(Link)`
+  color: #0A0B0A;
   font-size: 20px;
+  font-family: "Pretendard"; // 여기 도와주세요~
+  font-weight: 600;
+  line-height: 24px;
+  word-wrap: break-word;
+  text-align: center;
+
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  display:flex;
 `;
 
 const LangSlider = styled.span`
@@ -118,22 +151,26 @@ const Nav = () => {
   };
   return (
     <Wrapper>
-      <StyledLink to={"/"}>
-        <LogoKr src={logo_kr} alt="Logo_kr" />
-      </StyledLink>
-      <StyledLink to={"/notification"}>공지</StyledLink>
-      <StyledLink to={"/promotion"}>동아리</StyledLink>
-      <StyledLink to={"/performance"}>공연일정</StyledLink>
-      <StyledLink to={"/location"}>장소</StyledLink>
-      <StyledLink to={"/review"}>후기</StyledLink>
-      <StyledLink to={"/FAQ"}>FAQ</StyledLink>
-      <StyledLink to={"/about"}>기획단</StyledLink>
-      <LangToggleWrapper>
-      <CheckBox type="checkbox" checked={isChecked} onChange={handleToggle} />
-      <LangSlider>
-        <ToggleCircle />
-      </LangSlider>
-    </LangToggleWrapper>
+      <Container>
+        <FlexContainer>
+          <StyledLink to={"/"}>
+            <LogoKr src={logo_kr} alt="Logo_kr" />
+          </StyledLink>
+          <StyledLink to={"/notification"}>공지</StyledLink>
+          <StyledLink to={"/promotion"}>동아리</StyledLink>
+          <StyledLink to={"/performance"}>공연일정</StyledLink>
+          <StyledLink to={"/location"}>장소</StyledLink>
+          <StyledLink to={"/review"}>후기</StyledLink>
+          <StyledLink to={"/FAQ"}>FAQ</StyledLink>
+          <StyledLink to={"/about"}>기획단</StyledLink>
+          <LangToggleWrapper>
+            <CheckBox type="checkbox" checked={isChecked} onChange={handleToggle} />
+            <LangSlider>
+              <ToggleCircle />
+            </LangSlider>
+          </LangToggleWrapper>
+      </FlexContainer>
+    </Container>
     </Wrapper>
   );
 };  
