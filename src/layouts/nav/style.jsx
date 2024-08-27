@@ -88,6 +88,19 @@ export const LogoKr = styled.img`
 
   }
 `;
+export const LogoEn = styled.img`
+  @media only screen and (min-width: 1024px){
+    width: 123px;
+    height: 76.13px;
+  }
+  @media only screen and (max-width: 768px) {
+    width: 72px;
+    height: 26px; 
+  }
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
+
+  }
+`;
 
 export const StyledLink = styled(Link)`
   color: #0A0B0A;
@@ -117,6 +130,7 @@ export const LangSlider = styled.span`
   box-shadow: 0px 2.933px 3.911px 1.467px rgba(0, 0, 0, 0.10) inset;
 
   &:before {
+    z-index: 0;
     position: absolute;
     content: "한국어";
     font-size: 12px;
@@ -128,6 +142,7 @@ export const LangSlider = styled.span`
   }
 
   &:after {
+    z-index: 0;
     position: absolute;
     content: "ENG";
     font-size: 12px;
@@ -147,7 +162,6 @@ export const CheckBox = styled.input`
   opacity: 0;
   width: 0;
   height: 0;
-
   &:checked + ${LangSlider} {
     background-color: #B9FF9C;
   }
@@ -178,7 +192,7 @@ export const ToggleCircle = styled.span`
   box-shadow: 0.978px 0.489px 2.933px rgba(0, 0, 0, 0.25);
   transition: 0.4s;
   border-radius: 50%;
-
+  z-index: 900;
   ${CheckBox}:checked + ${LangSlider} & {
     transform: translateX(45px); 
   }
