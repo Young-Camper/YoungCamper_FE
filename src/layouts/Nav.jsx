@@ -2,43 +2,93 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo_kr from "../assets/images/Nav/Logo_kr.png";
 import { useState } from 'react';
+import useMediaQueries from "../hooks/useMediaQueries";
+import menubar from "../assets/images/Nav/menubar.png";
 
 const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 19px 20px;
-  border-radius: 5px;
-  overflow: hidden;
-  border: 1px #9747FF dotted;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 18px;
+  @media only screen and (min-width: 1024px) {
+    width: 100%;
+    height: 100%;
+    padding: 19px 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px #9747FF dotted;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  
+  @media only screen and (max-width:768px) {
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+  }
+
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
+    
+  }
 `;
 
 const Container = styled.div`
-  align-self: stretch;
-  padding: 5px 144px;
-  background: white;
-  backdrop-filter: blur(64px);
-  justify-content: center;
-  align-items: center;
-  display: inline-flex;
+  @media only screen and (min-width: 1024px){
+    align-self: stretch;
+    padding: 5px 144px;
+    background: white;
+    backdrop-filter: blur(64px);
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+  }
+  @media only screen and (max-width:768px) {
+    flex: 1 1 0;
+    align-self: stretch;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
+    
+  }
 `;
 
 const FlexContainer = styled.div`
-  flex: 1 1 0;
-  height: 73px;
-  justify-content: space-between;
-  align-items: center;
-  display: flex;
+  @media only screen and (min-width: 1024px){
+    flex: 1 1 0;
+    height: 73px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+  }
+  @media only screen and (max-width:768px) {
+    width: 360px;
+    align-self: stretch;
+    padding: 12px 20px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+  }
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
+    
+  }
+
 `;
 
-
 const LogoKr = styled.img`
-  width: 123px;
-  height: 45px;
+  @media only screen and (min-width: 1024px){
+    width: 123px;
+    height: 45px;
+  }
+  @media only screen and (max-width: 768px) {
+    width: 72px;
+    height: 26px; 
+  }
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
+
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -143,14 +193,48 @@ const LangToggleWrapper = styled.label`
   height: 44px;
 `;
 
+//mobile & tablet
+const MenubarContainer = styled.div`
+  width: 28px;
+  align-self: stretch;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  display: flex;
+`;
+
+const MenubarWrapper = styled.div`
+  width: 28px;
+  height: 28px;
+  position: relative;
+`;
+
+const Menubar = styled.button`
+  width: 21px;
+  height: 14px;
+  left: 3.5px;
+  top: 7px;
+  position: absolute;
+  background-image: url(${props => props.menubar});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+`;
+
 const Nav = () => {
+  const { isMobile, isTablet, isDesktop } = useMediaQueries();
+  const [modalOpen, setModalOpen] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const handleToggle = () => {
     setIsChecked(!isChecked);
     // 언어 변경 로직 추가
   };
   return (
-    <Wrapper>
+    <>
+    {isDesktop && 
+      <Wrapper>
       <Container>
         <FlexContainer>
           <StyledLink to={"/"}>
@@ -171,7 +255,29 @@ const Nav = () => {
           </LangToggleWrapper>
       </FlexContainer>
     </Container>
-    </Wrapper>
+    </Wrapper> }
+    {isTablet && 
+      <>테블릿
+    </>}
+    
+    {isMobile && 
+      <Wrapper>
+        <Container>
+          <FlexContainer>
+            <LogoKr src={logo_kr} alt="Logo_kr" />
+            <MenubarContainer>
+              <MenubarWrapper>
+                <Menubar menubar={menubar} />
+              </MenubarWrapper>
+            </MenubarContainer>
+          </FlexContainer>
+        </Container>
+    </Wrapper>}
+
+    </>
+
+    
+
   );
 };  
 
