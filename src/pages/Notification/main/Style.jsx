@@ -5,7 +5,6 @@ export const SearchWrapper = styled.div`
   margin-top: ${(props) => (props.$isDesktop ? "50px" : "")};
   justify-content: flex-end;
   display: flex;
-  margin-bottom: 50px;
   width: 100%;
   margin-right: ${(props) => (props.$isDesktop ? "" : "20px")};
 `;
@@ -70,7 +69,7 @@ export const NumContainer = styled.div`
 
 export const DateContainer = styled.div`
   padding: ${(props) => (props.$isDesktop ? "14px" : "")};
-  width: 25%;
+  width: 15%;
   font-weight: 700;
   display: flex;
   justify-content: ${(props) => (props.$isDesktop ? "center" : "")};
@@ -91,7 +90,7 @@ export const TitleDateContainer = styled.div`
 
 export const TitleContainer = styled.div`
   padding: ${(props) => (props.$isDesktop ? "14px" : "")};
-  /* width: 70%; */
+  width: 80%;
   font-size: ${(props) => props.fontSize || "16px"};
   font-weight: ${(props) => props.fontWeight || 600};
   display: flex;
@@ -101,19 +100,18 @@ export const TitleContainer = styled.div`
 //Content.jsx
 
 export const ContentWrapper = styled.div`
-  margin-bottom: 100px;
   width: ${(props) => (props.$isDesktop ? "100%" : "90%")};
 `;
 
 export const ContentContainer = styled.div`
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
   cursor: pointer;
 `;
 
 export const Pagination = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 50px;
 `;
 
 export const PageNumber = styled.div`

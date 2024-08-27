@@ -39,7 +39,13 @@ const Subtitle = ({
           <S.TitleContainer fontWeight={fontWeight} fontSize={fontSize}>
             {title}
           </S.TitleContainer>
-          <S.NumContainer color={color}>{date}</S.NumContainer>
+          <S.NumContainer
+            color={color}
+            $isDesktop={isDesktop}
+            $isTablet={isTablet}
+          >
+            {date}
+          </S.NumContainer>
         </>
       )}
     </S.SubTitleWrapper>
