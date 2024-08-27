@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const ContentWrapper = styled.div`
   /* padding: 100px 170px; */
   display: flex;
-  width: 1100px;
+  max-width: 1100px;
   padding: var(--XXL, 100px) var(--Spacing-0, 0px);
   flex-direction: column;
   justify-content: center;
