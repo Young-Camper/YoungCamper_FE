@@ -1,4 +1,5 @@
 import logo_kr from "../../assets/images/Nav/Logo_kr.png";
+import logo_en from "../../assets/images/Nav/Logo_en.png";
 import { useState } from 'react';
 import useMediaQueries from "../../hooks/useMediaQueries";
 import menubar from "../../assets/images/Nav/Menubar.png";
@@ -11,6 +12,7 @@ const Nav = () => {
   const handleToggle = () => {
     setIsChecked(!isChecked);
     // 언어 변경 로직 추가
+    
   };
   
   const [modalOpen, setModalOpen] = useState(false);
@@ -22,7 +24,8 @@ const Nav = () => {
       <S.Container>
         <S.FlexContainer>
           <S.StyledLink to={"/"}>
-            <S.LogoKr src={logo_kr} alt="Logo_kr" />
+            {isChecked ? (<S.LogoEn src={logo_en} alt="Logo_en" />) 
+            : (<S.LogoKr src={logo_kr} alt="Logo_kr" />)}
           </S.StyledLink>
           <S.StyledLink to={"/notification"}>공지</S.StyledLink>
           <S.StyledLink to={"/promotion"}>동아리</S.StyledLink>
