@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import logo_kr from "../assets/images/Nav/Logo_kr.png";
-import { useState } from 'react';
-import useMediaQueries from "../hooks/useMediaQueries";
-import menubar from "../assets/images/Nav/menubar.png";
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   @media only screen and (min-width: 1024px) {
     width: 100%;
     height: 100%;
@@ -33,10 +29,10 @@ const Wrapper = styled.div`
   }
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   @media only screen and (min-width: 1024px){
     align-self: stretch;
-    padding: 5px 144px;
+    padding: 5px 5%;
     background: white;
     backdrop-filter: blur(64px);
     justify-content: center;
@@ -55,7 +51,7 @@ const Container = styled.div`
   }
 `;
 
-const FlexContainer = styled.div`
+export const FlexContainer = styled.div`
   @media only screen and (min-width: 1024px){
     flex: 1 1 0;
     height: 73px;
@@ -64,12 +60,14 @@ const FlexContainer = styled.div`
     display: flex;
   }
   @media only screen and (max-width:768px) {
-    width: 360px;
+    /* width: 360px; */
+    width: 100vw;
     align-self: stretch;
     padding: 12px 20px;
     justify-content: space-between;
     align-items: center;
     display: flex;
+    background-color: white;
   }
   @media only screen and ((min-width: 769px) and (max-width: 1023px)){
     
@@ -77,7 +75,7 @@ const FlexContainer = styled.div`
 
 `;
 
-const LogoKr = styled.img`
+export const LogoKr = styled.img`
   @media only screen and (min-width: 1024px){
     width: 123px;
     height: 45px;
@@ -91,7 +89,7 @@ const LogoKr = styled.img`
   }
 `;
 
-const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)`
   color: #0A0B0A;
   font-size: 20px;
   font-family: "Pretendard"; // 여기 도와주세요~
@@ -106,7 +104,7 @@ const StyledLink = styled(Link)`
   display:flex;
 `;
 
-const LangSlider = styled.span`
+export const LangSlider = styled.span`
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -145,7 +143,7 @@ const LangSlider = styled.span`
   }
 `;
 
-const CheckBox = styled.input`
+export const CheckBox = styled.input`
   opacity: 0;
   width: 0;
   height: 0;
@@ -169,7 +167,7 @@ const CheckBox = styled.input`
   }
 `;
 
-const ToggleCircle = styled.span`
+export const ToggleCircle = styled.span`
   position: absolute;
   content: "";
   height: 34.22px;
@@ -186,7 +184,7 @@ const ToggleCircle = styled.span`
   }
 `;
 
-const LangToggleWrapper = styled.label`
+export const LangToggleWrapper = styled.label`
   position: relative;
   display: inline-block;
   width: 90px;
@@ -194,7 +192,7 @@ const LangToggleWrapper = styled.label`
 `;
 
 //mobile & tablet
-const MenubarContainer = styled.div`
+export const MenubarContainer = styled.div`
   width: 28px;
   align-self: stretch;
   justify-content: center;
@@ -203,13 +201,13 @@ const MenubarContainer = styled.div`
   display: flex;
 `;
 
-const MenubarWrapper = styled.div`
+export const MenubarWrapper = styled.div`
   width: 28px;
   height: 28px;
   position: relative;
 `;
 
-const Menubar = styled.button`
+export const Menubar = styled.button`
   width: 21px;
   height: 14px;
   left: 3.5px;
@@ -223,62 +221,47 @@ const Menubar = styled.button`
   cursor: pointer;
 `;
 
-const Nav = () => {
-  const { isMobile, isTablet, isDesktop } = useMediaQueries();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
-  const handleToggle = () => {
-    setIsChecked(!isChecked);
-    // 언어 변경 로직 추가
-  };
-  return (
-    <>
-    {isDesktop && 
-      <Wrapper>
-      <Container>
-        <FlexContainer>
-          <StyledLink to={"/"}>
-            <LogoKr src={logo_kr} alt="Logo_kr" />
-          </StyledLink>
-          <StyledLink to={"/notification"}>공지</StyledLink>
-          <StyledLink to={"/promotion"}>동아리</StyledLink>
-          <StyledLink to={"/performance"}>공연일정</StyledLink>
-          <StyledLink to={"/location"}>장소</StyledLink>
-          <StyledLink to={"/review"}>후기</StyledLink>
-          <StyledLink to={"/FAQ"}>FAQ</StyledLink>
-          <StyledLink to={"/about"}>기획단</StyledLink>
-          <LangToggleWrapper>
-            <CheckBox type="checkbox" checked={isChecked} onChange={handleToggle} />
-            <LangSlider>
-              <ToggleCircle />
-            </LangSlider>
-          </LangToggleWrapper>
-      </FlexContainer>
-    </Container>
-    </Wrapper> }
-    {isTablet && 
-      <>테블릿
-    </>}
-    
-    {isMobile && 
-      <Wrapper>
-        <Container>
-          <FlexContainer>
-            <LogoKr src={logo_kr} alt="Logo_kr" />
-            <MenubarContainer>
-              <MenubarWrapper>
-                <Menubar menubar={menubar} />
-              </MenubarWrapper>
-            </MenubarContainer>
-          </FlexContainer>
-        </Container>
-    </Wrapper>}
+//modal = sidenav
+export const ModalContainer = styled.div`
+  position: fixed;
+  z-index: 1200;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(0 0 0 / 71%);
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
-    </>
+export const Modal = styled.div`
+  position:absolute;
+  top:0;
+  left:0;
+  width: 100vw;;
+  height: 100vh;
+  /* background: #000000; */
+  overflow: hidden;
+  /* border-radius: 8px; */
+  transition: all 400ms ease-in-out 2s;
+  animation: fadeIn 400ms;
+`
 
-    
+// export const
 
-  );
-};  
-
-export default Nav;
+export const ModalCloseBtn = styled.button`
+  z-index: 1000;
+  right: 25px;
+  top: 15px;
+  width: 21.91px;
+  height: 21.91px;
+  position: absolute;
+  background-image: url(${props => props.closeicon});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+`;
