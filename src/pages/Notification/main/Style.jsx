@@ -7,6 +7,7 @@ export const SearchWrapper = styled.div`
   display: flex;
   position: relative;
   margin-bottom: 50px;
+  width: 100%;
 `;
 
 export const SearchContainer = styled.div`
@@ -79,6 +80,7 @@ export const TitleContainer = styled.div`
 
 export const ContentWrapper = styled.div`
   margin-bottom: 100px;
+  width: 100%;
 `;
 
 export const ContentContainer = styled.div`
