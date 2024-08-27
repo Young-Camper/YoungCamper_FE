@@ -1,15 +1,21 @@
 import React from "react";
-import MainTitle from "../../components/ui/MainTitle";
 import { ContentWrapper } from "../../style/commonStyle";
-import Title from "./title";
-import Section from "./section";
+import HomeTitle from "./HomeTitle";
+import Video from "./Video";
+import ClubInfo from "./ClubInfo";
+import Notice from "./Notice";
+import Social from "./Social";
+import CTABanner from "./CTABanner";
 
 const index = () => {
   return (
     <ContentWrapper>
-      <MainTitle title="홈페이지" />
-      <Title />
-      <Section />
+      <HomeTitle />
+      <Video />
+      <ClubInfo />
+      <Notice />
+      <Social />
+      <CTABanner />
     </ContentWrapper>
 
   )  
