@@ -35,32 +35,40 @@ const ArtistModal = ({ artist, setModalOpen }) => {
         >
           <img src={CloseBtn} alt="X" />
         </S.ModalCloseBtn>
-        <S.ModalPosterImg
-          $isMobile={isMobile}
-          $isTablet={isTablet}
-          $isDesktop={isDesktop}
-        >
-          <img src={artist.artist_image} />
-        </S.ModalPosterImg>
         <S.ModalContent
           $isMobile={isMobile}
           $isTablet={isTablet}
           $isDesktop={isDesktop}
         >
-          <S.ArtistName>
-            <S.Line>{artist.name}</S.Line>
-          </S.ArtistName>
-          <S.DetailText
+          <S.ModalPosterImg
             $isMobile={isMobile}
             $isTablet={isTablet}
             $isDesktop={isDesktop}
           >
-            {artist.etc}
-          </S.DetailText>
-          <S.SubText>대표곡</S.SubText>
-          <S.ModalMusic>
-            {artist.music} <img src={YoutubeBtn} />
-          </S.ModalMusic>
+            <img src={artist.artist_image} />
+          </S.ModalPosterImg>
+          <S.ContentWrapper>
+            <S.ArtistName
+              $isMobile={isMobile}
+              $isTablet={isTablet}
+              $isDesktop={isDesktop}
+            >
+              <S.Line>{artist.name}</S.Line>
+            </S.ArtistName>
+            <S.DetailText
+              $isMobile={isMobile}
+              $isTablet={isTablet}
+              $isDesktop={isDesktop}
+            >
+              {artist.etc}
+            </S.DetailText>
+          </S.ContentWrapper>
+          <S.ContentWrapper>
+            <S.SubText>대표곡</S.SubText>
+            <S.ModalMusic>
+              {artist.music} <img src={YoutubeBtn} />
+            </S.ModalMusic>
+          </S.ContentWrapper>
         </S.ModalContent>
       </S.Modal>
     </S.ModalContainer>
