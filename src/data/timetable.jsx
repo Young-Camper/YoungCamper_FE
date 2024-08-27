@@ -1,16 +1,9 @@
-// 라인업 오픈 전 커버 이미지
-import timetable1700 from "../assets/images/timetable/timetable1700.png";
-import timetable1820 from "../assets/images/timetable/timetable1820.png";
-import timetable1930 from "../assets/images/timetable/timetable1930.png";
-import timetable2000 from "../assets/images/timetable/timetable2000.png";
-import timetable2030 from "../assets/images/timetable/timetable2030.png";
-
 // 라인업 오픈 후 커버 이미지
-import artist1700 from "../assets/images/timetable/timetable1700.png";
-import artist1820 from "../assets/images/timetable/timetable1820.png";
-import artist1930 from "../assets/images/timetable/timetable1930.png";
-import artist2000 from "../assets/images/timetable/timetable2000.png";
-import artist2030 from "../assets/images/timetable/timetable2030.png";
+import artist1700 from "../assets/images/timetable/test_cover.png";
+import artist1820 from "../assets/images/timetable/test_cover.png";
+import artist1930 from "../assets/images/timetable/test_cover.png";
+import artist2000 from "../assets/images/timetable/test_cover.png";
+import artist2030 from "../assets/images/timetable/test_cover.png";
 
 // 연예인 모달 이미지
 import MCsobi from "../assets/images/timetable/arti_MCsobi.jpg";
@@ -26,7 +19,6 @@ export const timetable = [
     time: "16:40",
     index: "",
     is_event: false,
-    temp_cover: "",
     cover_image: "",
   },
   {
@@ -35,7 +27,6 @@ export const timetable = [
     time: "17:00",
     index: "",
     is_event: true,
-    temp_cover: timetable1700,
     cover_image: artist1700,
   },
   {
@@ -44,7 +35,6 @@ export const timetable = [
     time: "18:00",
     index: "",
     is_event: false,
-    temp_cover: "",
     cover_image: "",
   },
   {
@@ -53,7 +43,6 @@ export const timetable = [
     time: "18:20",
     index: "1부",
     is_event: true,
-    temp_cover: timetable1820,
     cover_image: artist1820,
   },
   {
@@ -62,7 +51,6 @@ export const timetable = [
     time: "19:20",
     index: "",
     is_event: false,
-    temp_cover: "",
     cover_image: "",
   },
   {
@@ -71,7 +59,6 @@ export const timetable = [
     time: "19:30",
     index: "2부",
     is_event: true,
-    temp_cover: timetable1930,
     cover_image: artist1930,
   },
   {
@@ -80,7 +67,6 @@ export const timetable = [
     time: "20:00",
     index: "2부",
     is_event: true,
-    temp_cover: timetable2000,
     cover_image: artist2000,
   },
   {
@@ -89,7 +75,6 @@ export const timetable = [
     time: "20:30",
     index: "2부",
     is_event: true,
-    temp_cover: timetable2030,
     cover_image: artist2030,
   },
   {
@@ -98,7 +83,6 @@ export const timetable = [
     time: "21:00",
     index: "",
     is_event: false,
-    temp_cover: "",
     cover_image: "",
   },
 ];

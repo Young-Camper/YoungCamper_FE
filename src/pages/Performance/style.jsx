@@ -18,8 +18,6 @@ export const Section = styled.div`
   flex-direction: row;
   margin-left: ${(props) =>
     props.$isDesktop && props.$isRight % 2 == 1 ? "0" : "auto"};
-  height: ${(props) =>
-    props.$isEvent && (props.$isTablet || props.$isMobile) && "250px"};
 `;
 export const EventTime = styled.div`
   width: ${(props) => (props.$isDesktop ? "250px" : "90px")};
@@ -35,6 +33,15 @@ export const EventTime = styled.div`
       rgba(0, 0, 0, 0.2) 100%
     ),
     var(--new-main-primary, #0068ff);
+
+  ${(props) =>
+    props.$lineupOpen
+      ? `
+          background-image: url(${props.$imageURL});
+          background-size: cover;
+          background-position: center;
+        `
+      : ""}
 
   color: var(--new-main-white, #fafafa);
 
@@ -178,28 +185,31 @@ export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: rgba(0, 0, 0, 40%);
 `;
 
 export const Modal = styled.div`
   position: absolute;
-  overflow: scroll;
-  top: ${(props) => (props.$isDesktop ? "10%" : "10%")};
 
-  width: ${(props) => (props.$isDesktop ? "580px" : "340px")};
-  /* min-height: ${(props) => (props.$isDesktop ? "780px" : "")}; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: ${(props) => (props.$isMobile ? "340px" : "580px")};
 
   padding: ${(props) =>
-    props.$isDesktop ? "10px 40px 48px 40px" : "10px 20px 40px 20px"};
+    props.$isMobile ? "10px 20px 48px 20px" : "10px 40px 48px 40px"};
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: ${(props) => (props.$isDesktop ? "20px" : "")};
+  gap: ${(props) => (props.$isMobile ? "" : "20px")};
   border-radius: var(--sds-size-radius-200);
   background: #fff;
 
   /* shadow/modal_1 */
   box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.25);
+  gap: 10px;
 `;
 export const ModalCloseBtn = styled.div`
   cursor: pointer;
@@ -209,7 +219,6 @@ export const ModalCloseBtn = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: end;
-  gap: 10px;
   color: #111;
   img {
     height: 40px;
@@ -232,6 +241,12 @@ export const ModalContent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: ${(props) => (props.$isMobile ? "25px" : "30px")};
+`;
+export const ContentWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   justify-content: start;
 `;
 
@@ -240,16 +255,14 @@ export const ArtistName = styled.div`
 
   /* Primary/Desktop/H1 */
   font-family: Montserrat;
-  font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
+  font-size: ${(props) => (props.$isMobile ? "24px" : "32px")};
   font-style: normal;
   font-weight: 800;
   line-height: 36px; /* 112.5% */
   letter-spacing: -1.92px;
-
-  padding-top: ${(props) => (props.$isDesktop ? "" : "25px")};
 `;
 export const Line = styled.span`
-  border-bottom: 1px solid #0068ff;
+  border-bottom: 2px solid #0068ff;
 `;
 
 export const DetailText = styled.div`
@@ -257,13 +270,13 @@ export const DetailText = styled.div`
 
   /* Primary/Desktop/Body3 */
   font-family: Montserrat;
-  font-size: ${(props) => (props.$isDesktop ? "16px" : "12px")};
+  font-size: ${(props) => (props.$isMobile ? "12px" : "20px")};
   font-style: normal;
   font-weight: 400;
-  line-height: ${(props) => (props.$isDesktop ? "24px" : "normal")};
-  letter-spacing: ${(props) => (props.$isDesktop ? "-0.04px" : "-0.06px")};
+  line-height: ${(props) => (props.$isMobile ? "normal" : "24px")};
+  letter-spacing: ${(props) => (props.$isMobile ? "-0.06px" : "-0.1px")};
 
-  padding: ${(props) => (props.$isDesktop ? "15px 0 30px 0" : "15px 0 25px 0")};
+  padding-top: 15px;
 `;
 export const SubText = styled.div`
   padding-bottom: 10px;
