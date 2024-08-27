@@ -97,17 +97,18 @@ export const PagenationWrapper = styled.div`
 
     button {
       margin: 0 5px;
-      padding: 8px 12px;
+      padding: 10px 15px;
       background-color: #fff;
       cursor: pointer;
-      border-radius: 8px;
-      font-size: 16px;
+      border-radius: 10px;
       
-
+      &:hover {
+        background-color: #e7ebef;
+      }
+        
       &.active {
         background-color: #E7EBEF;
         color: #000;
-        font-weight: 600;
     }
   }
 `
