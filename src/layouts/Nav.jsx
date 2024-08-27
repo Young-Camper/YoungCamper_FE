@@ -37,9 +37,9 @@ const LangSlider = styled.span`
 
   &:before {
     position: absolute;
-    content: "KO";
+    content: "한국어";
     font-size: 12px;
-    left: 55px; 
+    left: 45px; 
     top: 50%;
     transform: translateY(-50%);
     color: #000;
@@ -48,9 +48,9 @@ const LangSlider = styled.span`
 
   &:after {
     position: absolute;
-    content: "EN";
+    content: "ENG";
     font-size: 12px;
-    right: 10px; 
+    right: 5px; 
     top: 50%;
     transform: translateY(-50%);
     color: transparent;
@@ -122,12 +122,12 @@ const Nav = () => {
         <LogoKr src={logo_kr} alt="Logo_kr" />
       </StyledLink>
       <StyledLink to={"/notification"}>공지</StyledLink>
-      <StyledLink to={"/promotion"}>홍보</StyledLink>
+      <StyledLink to={"/promotion"}>동아리</StyledLink>
       <StyledLink to={"/performance"}>공연일정</StyledLink>
       <StyledLink to={"/location"}>장소</StyledLink>
       <StyledLink to={"/review"}>후기</StyledLink>
       <StyledLink to={"/FAQ"}>FAQ</StyledLink>
-      <StyledLink to={"/about"}>영캠퍼</StyledLink>
+      <StyledLink to={"/about"}>기획단</StyledLink>
       <LangToggleWrapper>
       <CheckBox type="checkbox" checked={isChecked} onChange={handleToggle} />
       <LangSlider>
