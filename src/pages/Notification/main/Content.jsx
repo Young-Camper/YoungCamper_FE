@@ -88,6 +88,7 @@ const Content = ({ keyword }) => {
         $marginBottom="0"
         fontSize="16px"
         isDesktop={isDesktop}
+        isTablet={isTablet}
         gap="0px"
       />
       <S.ContentContainer>
@@ -99,6 +100,7 @@ const Content = ({ keyword }) => {
               date={item.date}
               fontSize={isDesktop ? "24px" : "18px"}
               isDesktop={isDesktop}
+              isTablet={isTablet}
             />
           </Link>
         ))}
@@ -111,6 +113,7 @@ const Content = ({ keyword }) => {
                 date={item.date}
                 fontSize={isDesktop ? "24px" : "18px"}
                 isDesktop={isDesktop}
+                isTablet={isTablet}
               />
             </Link>
           ))
