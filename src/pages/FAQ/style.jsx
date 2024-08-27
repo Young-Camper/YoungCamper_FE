@@ -10,17 +10,12 @@ export const FAQWrapper = styled.div`
     props.isMobile
       ? "52px 24px" /* 모바일 뷰 */
       : props.isTablet
-      ? "70px 20px"  /* 태블릿 뷰 */
+      ? "80px 48px"  /* 태블릿 뷰 */
       : "132px 0px"}; /* 데스크탑 뷰 */
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: ${(props) =>
-    props.isMobile
-      ? "30px"
-      : props.isTablet 
-      ? "40px" 
-      : "30px"};
+  gap: 30px;
 `
 
 export const FAQBox = styled.div`
@@ -55,36 +50,31 @@ export const FAQTextContainer = styled.div`
   gap: 6px;
 `;
 
-/* text의 경우 모바일 뷰에서만 달라짐 */
+/* text의 경우 데스크탑 뷰에서만 달라짐 */
 export const FAQText1 = styled.div`
   color: #0068FF;
-  font-family: ${(props) => (props.isMobile ? "Montserrat" : "Pretendard")};
-  font-size: ${(props) => (props.isMobile ? "18px" : "24px")};
-  font-weight: ${(props) => (props.isMobile ? "400" : "600")};
-  line-height: ${(props) => (props.isMobile ? "22px" : "28px")};
-  letter-spacing: ${(props) => (props.isMobile ? "-0.09px" : "0.48px")};
+  font-family: ${(props) => (props.isDesktop ? "PretendardRegular" : "MonRegular")};
+  font-size: ${(props) => (props.isDesktop ? "24px" : "18px")};
+  font-weight: ${(props) => (props.isDesktop ? "600" : "400")};
+  line-height: ${(props) => (props.isDesktop ? "28px" : "22px")};
+  letter-spacing: ${(props) => (props.isDesktop ? "0.48px" : "-0.09px")};
 `;
 
 export const FAQText2 = styled.div`
   color: #0A0B0A;
-  font-family: ${(props) => (props.isMobile ? "Montserrat" : "Pretendard")};
-  font-size: ${(props) => (props.isMobile ? "18px" : "24px")};
-  font-weight: ${(props) => (props.isMobile ? "400" : "600")};
-  line-height: ${(props) => (props.isMobile ? "22px" : "28px")};
-  letter-spacing: ${(props) => (props.isMobile ? "-0.09px" : "0.48px")};
+  font-family: ${(props) => (props.isDesktop ? "PretendardRegular" : "MonRegular")};
+  font-size: ${(props) => (props.isDesktop ? "24px" : "18px")};
+  font-weight: ${(props) => (props.isDesktop ? "600" : "400")};
+  line-height: ${(props) => (props.isDesktop ? "28px" : "22px")};
+  letter-spacing: ${(props) => (props.isDesktop ? "0.48px" : "-0.09px")};
 `;
 
 export const FAQButton = styled.div`
   display: flex;
-  width: ${(props) => (props.isMobile ? "28px" : "46px")};
-  height: ${(props) => (props.isMobile ? "28px" : "46px")};
+  width: ${(props) => (props.isDesktop ? "46px" : "28px")};
+  height: ${(props) => (props.isDesktop ? "46px" : "28px")};
   justify-content: center;
   align-items: center;
-`;
-
-export const FAQButtonImage = styled.img`
-  width: 100%;
-  height: 100%;
 `;
 
 export const AnswerBox = styled.div`
@@ -98,3 +88,26 @@ export const AnswerBox = styled.div`
   background: rgba(0, 104, 255, 0.12);
 `;
 
+export const PagenationWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 20px 0px;
+  justify-content: center;
+  gap: 20px;
+
+    button {
+      margin: 0 5px;
+      padding: 8px 12px;
+      background-color: #fff;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 16px;
+      
+
+      &.active {
+        background-color: #E7EBEF;
+        color: #000;
+        font-weight: 600;
+    }
+  }
+`
