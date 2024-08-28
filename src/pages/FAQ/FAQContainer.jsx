@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FAQBox from "./FAQBox";
 import * as S from "./style";
-import { ContentWrapper } from "../../style/commonStyle";
+
 import faqData from "../../data/faqData.json";
 import useMediaQueries from "../../hooks/useMediaQueries";
 
@@ -21,23 +21,11 @@ const FAQContainer = ({ currentPage, itemsPerPage }) => {
     const currentFaqs = faqs.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
-    <>
-      {isDesktop ? (
-        <ContentWrapper>
-          <S.FAQWrapper isMobile={isMobile} isTablet={isTablet} isDesktop={isDesktop}>
-            {faqs.map((faq, index) => (
-              <FAQBox key={index} question={faq.question} answer={faq.answer} />
-            ))}
-          </S.FAQWrapper>
-        </ContentWrapper>
-      ) : ( 
-        <S.FAQWrapper isMobile={isMobile} isTablet={isTablet} isDesktop={isDesktop}>
-          {currentFaqs.map((faq, index) => (
-            <FAQBox key={index} question={faq.question} answer={faq.answer} />
-          ))}
-        </S.FAQWrapper>
-      )}
-    </>
+    <S.FAQWrapper isMobile={isMobile} isTablet={isTablet} isDesktop={isDesktop}>
+      {currentFaqs.map((faq, index) => (
+        <FAQBox key={index} question={faq.question} answer={faq.answer} />
+      ))}
+    </S.FAQWrapper>
   );
 };
 

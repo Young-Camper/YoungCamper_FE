@@ -6,16 +6,18 @@ import useMediaQueries from "../../hooks/useMediaQueries";
 export const FAQWrapper = styled.div`
   display: flex;
   width: 100%;
+  max-width: 1500px;
   padding: ${(props) =>
     props.isMobile
       ? "52px 24px" /* 모바일 뷰 */
       : props.isTablet
       ? "80px 48px"  /* 태블릿 뷰 */
-      : "132px 0px"}; /* 데스크탑 뷰 */
+      : "132px 170px"}; /* 데스크탑 뷰 */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 30px;
+  margin: 0 auto;
 `
 
 export const FAQBox = styled.div`
@@ -32,6 +34,8 @@ export const FAQBox = styled.div`
   border-radius: 8px;
   border: solid 1px #CED7DE;
   background: #FFFFFF;
+
+  cursor: pointer;
 `;
 
 export const FAQContent = styled.div`
