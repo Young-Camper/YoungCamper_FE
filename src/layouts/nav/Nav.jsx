@@ -140,13 +140,19 @@ const Nav = () => {
               <S.SideNavEtc>
                 <S.SideNavLang>
                   <S.SideNavLangBtn>
+                    
+                    {/* 언어변경, isChecked 상태를 변경시키고 싶은데 어케해야할까요 */}
+                    
                     <S.SideNavLangText onClick={()=> isChecked(false)}>한국어</S.SideNavLangText>
                     <S.SideNavLangText onClick={()=> isChecked(true)}>ENG</S.SideNavLangText>
                   </S.SideNavLangBtn>
                 </S.SideNavLang>
                 <S.SideNavSNS>
                   <S.SideNavIconContainer>
-                    <S.SideNavSnsIcon icon = {Instagram} />
+
+                    {/* 링크 넣어줘야지함 */}
+                    
+                    <S.SideNavSnsIcon icon = {Instagram} />  
                     <S.SideNavSnsIcon icon = {Youtube} />
                   </S.SideNavIconContainer>
                 </S.SideNavSNS>
