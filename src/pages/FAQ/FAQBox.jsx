@@ -21,13 +21,13 @@ const FAQBox = ({ question, answer }) => {
 		: closeImageMobile; // 태블릿은 모바일 이미지와 동일함
   
 	return (
-		<S.FAQBox>
+		<S.FAQBox onClick={() => setIsOpen(!isOpen)}>
 		  <S.FAQContent>
 			<S.FAQTextContainer>
 				<S.FAQText1 isDesktop={isDesktop}>Q.</S.FAQText1>
 				<S.FAQText2 isDesktop={isDesktop}>{question}</S.FAQText2>
 			</S.FAQTextContainer>
-			<S.FAQButton isDesktop={isDesktop} onClick={() => setIsOpen(!isOpen)}>
+			<S.FAQButton isDesktop={isDesktop}>
 				<img
 				src={isOpen ? closeImage : openImage} 
 				alt={isOpen ? '닫기' : '보기'} 

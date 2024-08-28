@@ -32,6 +32,8 @@ export const FAQBox = styled.div`
   border-radius: 8px;
   border: solid 1px #CED7DE;
   background: #FFFFFF;
+
+  cursor: pointer;
 `;
 
 export const FAQContent = styled.div`
