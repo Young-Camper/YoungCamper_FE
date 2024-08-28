@@ -35,7 +35,7 @@ const FAQBox = ({ question, answer }) => {
 			</S.FAQButton>
 		  </S.FAQContent>
 		  {isOpen && (
-			<S.AnswerBox>
+			<S.AnswerBox isOpen={isOpen}>
 			<S.FAQTextContainer>
 			<S.FAQText1 isDesktop={isDesktop}>A.</S.FAQText1>
 			<S.FAQText2 isDesktop={isDesktop}>{answer}</S.FAQText2>
