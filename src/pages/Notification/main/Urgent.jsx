@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
 const UrgentWrapper = styled.div`
-  background-color: #0068ff;
+  border: 1px solid #0068ff;
+  opacity: var(--sds-size-stroke-border);
   border-radius: 100px;
   max-width: 80px;
   display: flex;
   padding: 8px 18px;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #0068ff;
   font-family: Montserrat;
   font-size: 1rem;
   font-style: normal;

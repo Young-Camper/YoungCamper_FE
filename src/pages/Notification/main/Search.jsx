@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import * as S from "./Style";
 import SearchIcon from "../../../assets/images/Notification/SearchIcon.png";
+import useMediaQueries from "../../../hooks/useMediaQueries";
 
 const Search = ({ onSearch }) => {
   const [keyword, setKeyword] = useState("");
+  const { isDesktop } = useMediaQueries();
 
   const keywordChangeHandler = (event) => {
     setKeyword(event.target.value);
@@ -15,7 +17,7 @@ const Search = ({ onSearch }) => {
   };
 
   return (
-    <S.SearchWrapper as="form" onSubmit={handleSubmit}>
+    <S.SearchWrapper $isDesktop={isDesktop} as="form" onSubmit={handleSubmit}>
       <S.SearchContainer>
         <S.SearchInput
           placeholder="검색어를 입력해주세요."
