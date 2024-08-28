@@ -1,11 +1,17 @@
 import React from 'react'
 import { styled } from "styled-components";
+import useMediaQueries from "../../hooks/useMediaQueries";
 
 
 export const FAQWrapper = styled.div`
   display: flex;
-  width: 1100px;
-  padding: 132px 0px;
+  width: 100%;
+  padding: ${(props) =>
+    props.isMobile
+      ? "52px 24px" /* 모바일 뷰 */
+      : props.isTablet
+      ? "80px 48px"  /* 태블릿 뷰 */
+      : "132px 0px"}; /* 데스크탑 뷰 */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -44,28 +50,30 @@ export const FAQTextContainer = styled.div`
   gap: 6px;
 `;
 
+/* text의 경우 데스크탑 뷰에서만 달라짐 */
 export const FAQText1 = styled.div`
   color: #0068FF;
-  font-family: Pretendard;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 28px; /* 116.667% */
-  letter-spacing: 0.48px;
+  font-family: ${(props) => (props.isDesktop ? "PretendardRegular" : "MonRegular")};
+  font-size: ${(props) => (props.isDesktop ? "24px" : "18px")};
+  font-weight: ${(props) => (props.isDesktop ? "600" : "400")};
+  line-height: ${(props) => (props.isDesktop ? "28px" : "22px")};
+  letter-spacing: ${(props) => (props.isDesktop ? "0.48px" : "-0.09px")};
 `;
 
 export const FAQText2 = styled.div`
   color: #0A0B0A;
-  font-family: Pretendard;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 28px;
-  letter-spacing: 0.48px;
+  font-family: ${(props) => (props.isDesktop ? "PretendardRegular" : "MonRegular")};
+  font-size: ${(props) => (props.isDesktop ? "24px" : "18px")};
+  font-weight: ${(props) => (props.isDesktop ? "600" : "400")};
+  line-height: ${(props) => (props.isDesktop ? "28px" : "22px")};
+  letter-spacing: ${(props) => (props.isDesktop ? "0.48px" : "-0.09px")};
 `;
 
 export const FAQButton = styled.div`
   display: flex;
-  width: 46px;
-  height: 46px;
+  width: ${(props) => (props.isDesktop ? "46px" : "28px")};
+  height: ${(props) => (props.isDesktop ? "46px" : "28px")};
+  justify-content: center;
   align-items: center;
 `;
 
@@ -76,6 +84,31 @@ export const AnswerBox = styled.div`
   padding: 12px 16px;
   align-items: center;
   border-radius: 0px 0px 8px 8px;
-  background: #E7EBEF;
+  border-top: solid 1px #CED7DE;
+  background: rgba(0, 104, 255, 0.12);
 `;
 
+export const PagenationWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 20px 0px;
+  justify-content: center;
+  gap: 20px;
+
+    button {
+      margin: 0 5px;
+      padding: 10px 15px;
+      background-color: #fff;
+      cursor: pointer;
+      border-radius: 10px;
+      
+      &:hover {
+        background-color: #e7ebef;
+      }
+        
+      &.active {
+        background-color: #E7EBEF;
+        color: #000;
+    }
+  }
+`
