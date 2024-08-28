@@ -3,95 +3,90 @@ import * as S from "./HomeStyle";
 import { Link } from "react-router-dom";
 
 const HomeTitle = () => {
-  const [isHoveringDate, setIsHoveringDate] = useState(false);
-  const [isHoveringPlace, setIsHoveringPlace] = useState(false);
-  const [isHoveringWith, setIsHoveringWith] = useState(false);
 
-  
+  const [titleHover, setTitleHover] = useState({
+    date: false,
+    place: false,
+    with: false,
+  });
 
-  const handleMouseOver1 = () => {
-    setIsHoveringDate(true);
+  const handleMouseOver = (key) => {
+    setTitleHover((prev) => ({ ...prev, [key]: true }));
   };
-  const handleMouseOut1 = () => {
-    setIsHoveringDate(false);
-  };
-  const handleMouseOver2 = () => {
-    setIsHoveringPlace(true);
-  };
-  const handleMouseOut2 = () => {
-    setIsHoveringPlace(false);
-  };
-  const handleMouseOver3 = () => {
-    setIsHoveringWith(true);
-  };
-  const handleMouseOut3 = () => {
-    setIsHoveringWith(false);
+
+  const handleMouseOut = (key) => {
+    setTitleHover((prev) => ({ ...prev, [key]: false }));
   };
 
   return(
-    <S.TitleBackground>
-        <S.TitleBox>
-            <S.Line></S.Line>
-            <S.TextBox1>
-              <S.TitleImg src=".\src\assets\images\Dawn.png" />
-              <S.TitleText1>YOUNGCAMP</S.TitleText1>
-              <S.TitleImg src=".\src\assets\images\Portal.png" />
-            </S.TextBox1>
-            <S.Line></S.Line>
-            <S.TextBox2>
-              <S.Rectangle></S.Rectangle>
-              <S.TextBox3>
-                <S.TitleText2>FESTIVAL</S.TitleText2>             
-                <S.TitleImg src=".\src\assets\images\Dawn.png" />
-              </S.TextBox3>
-            </S.TextBox2>
-            <S.Line></S.Line>
-        </S.TitleBox>
-        <S.TextBox2></S.TextBox2>
-        <S.Line></S.Line>
+    <S.TitleSection>
+        <S.TitleMainSet>
+            <S.TitleBox>
+              <S.TextBox>
+              <S.TitleImg src=".\src\assets\images\Home\Dawn.png" />
+              <S.TitleText>YOUNG</S.TitleText>
+              <S.TitleImg src=".\src\assets\images\Home\Portal.png" />
+              </S.TextBox>
+            </S.TitleBox>
+            <S.TitleBox>
+              <S.TextBox>
+                <S.Rectangle></S.Rectangle>
+                <S.TitleText>CAMP</S.TitleText>             
+                <S.TitleImg src=".\src\assets\images\Home\Dawn.png" />
+              </S.TextBox>
+            </S.TitleBox>
+            <S.TitleBox>
+              <S.TextBox>
+                <S.TitleText>FESTIVAL</S.TitleText>
+              </S.TextBox>
+            </S.TitleBox>
+        </S.TitleMainSet>
+        <S.TitleListSet>
+          <S.Line></S.Line>
           <S.TitleList
-          onMouseOver={handleMouseOver1}
-          onMouseOut={handleMouseOut1}>
+          onMouseOver={() =>handleMouseOver('date')}
+          onMouseOut={() =>handleMouseOut('date')}>
             <S.TitleFrameBox>
-              <S.TitleFrameImg ishoveringDate={isHoveringDate}></S.TitleFrameImg>
-              <S.TitleFrameText ishoveringDate={isHoveringDate}>2024.09.24</S.TitleFrameText>
+              <S.TitleFrameImg ishoveringDate={titleHover.date}></S.TitleFrameImg>
+              <S.TitleFrameText ishoveringDate={titleHover.date}>2024.09.24</S.TitleFrameText>
             </S.TitleFrameBox>
             <S.ArrowImgBox>
               <Link to={"/performance"}>
-                <S.ArrowImg ishoveringDate={isHoveringDate}></S.ArrowImg>
+                <S.ArrowImg ishoveringDate={titleHover.date}></S.ArrowImg>
               </Link>
             </S.ArrowImgBox>
-        </S.TitleList>
+          </S.TitleList>
         <S.Line></S.Line>
         <S.TitleList
-          onMouseOver={handleMouseOver2}
-          onMouseOut={handleMouseOut2}>
+          onMouseOver={() =>handleMouseOver('place')}
+          onMouseOut={() =>handleMouseOut('place')}>
           <S.TitleFrameBox>
-            <S.TitleFrameImg ishoveringPlace={isHoveringPlace}></S.TitleFrameImg>
-            <S.TitleFrameText ishoveringPlace={isHoveringPlace}>장충체육관</S.TitleFrameText>
+            <S.TitleFrameImg ishoveringPlace={titleHover.place}></S.TitleFrameImg>
+            <S.TitleFrameText ishoveringPlace={titleHover.place}>장충체육관</S.TitleFrameText>
           </S.TitleFrameBox>
           <S.ArrowImgBox>
             <Link to={"/location"}>
-              <S.ArrowImg ishoveringPlace={isHoveringPlace}></S.ArrowImg>
+              <S.ArrowImg ishoveringPlace={titleHover.place}></S.ArrowImg>
             </Link>
           </S.ArrowImgBox>
         </S.TitleList>
         <S.Line></S.Line>
         <S.TitleList
-        onMouseOver={handleMouseOver3}
-        onMouseOut={handleMouseOut3}>
+        onMouseOver={() =>handleMouseOver('with')}
+        onMouseOut={() =>handleMouseOut('with')}>
           <S.TitleFrameBox>
-            <S.TitleFrameImg ishoveringWith={isHoveringWith}></S.TitleFrameImg>
-            <S.TitleFrameText ishoveringWith={isHoveringWith}>YOUNGCAMP 함께하기</S.TitleFrameText>
+            <S.TitleFrameImg ishoveringWith={titleHover.with}></S.TitleFrameImg>
+            <S.TitleFrameText ishoveringWith={titleHover.with}>YOUNGCAMP 함께하기</S.TitleFrameText>
           </S.TitleFrameBox>
           <S.ArrowImgBox>
             <Link to={"./promotion"}>
-              <S.ArrowImg ishoveringWith={isHoveringWith}></S.ArrowImg>
+              <S.ArrowImg ishoveringWith={titleHover.with}></S.ArrowImg>
             </Link>
           </S.ArrowImgBox>
         </S.TitleList>
         <S.Line></S.Line>
-    </S.TitleBackground>
+        </S.TitleListSet>
+    </S.TitleSection>
   )
 }
 

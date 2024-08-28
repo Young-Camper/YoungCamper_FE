@@ -1,33 +1,65 @@
 import styled from "styled-components";
-import dawn from '../../assets/images/Dawn.png';
-import dawn_B from '../../assets/images/Dawn_B.png';
-import arrow from '../../assets/images/Arrow.png';
-import arrow_B from '../../assets/images/Arrow_B.png';
-import ellipse_B from '../../assets/images/Ellipse_B.png';
-import insta_shape from '../../assets/images/Insta Shape.png';
+import dawn from '../../assets/images/Home/Dawn.png';
+import dawn_B from '../../assets/images/Home/Dawn_B.png';
+import arrow from '../../assets/images/Home/Arrow.png';
+import arrow_B from '../../assets/images/Home/Arrow_B.png';
+import ellipse_B from '../../assets/images/Home/Ellipse_B.png';
+import instashape from '../../assets/images/Home/Instashape.png';
+import webicon from '../../assets/images/Home/Webicon.png';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-/*---------------Title-----------------*/
-
-export const TitleBackground = styled.div`
+//1.HomeTitle
+export const TitleSection = styled.div`
   width: 100%;
-  height: 817px;
-  padding: 50px var(--Spacing-0, 0px);
+  height: 941px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 0 0;
+  background: var(--gradient, linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%));
+`;
+
+export const TitleMainSet = styled.div`
+  width: 100%;
+  height: 480px;
+  display: flex;
+  padding: 36px var(--Spacing-0, 0px);
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  opacity: var(--sds-size-stroke-border);
-  background: var(--gradient, linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%));
+  align-items: center;
+  gap: -12px;
+`;
+
+export const TitleListSet = styled.div`
+  width: 100%;
+  height: 432px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const TitleBox = styled.div`
   width: 100%;
-  height: 244px;
+  height: 144px;
   display: flex;
-  flex-direction: column;
+  min-width: 680px;
+  padding: var(--Spacing-0, 0px) 256px;
+  justify-content: center;
   align-items: center;
+  gap: 36px;
+`;
+
+export const TextBox = styled.div`
+  width: 928px;
+  height: 144px;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  flex: 1 0 0;
 `;
 
 export const Line = styled.div`
@@ -36,35 +68,6 @@ export const Line = styled.div`
   border: 2px solid #FAFAFA;
 `;
 
-export const TextBox1 = styled.div`
-  width: 100%;
-  height: 122px;
-  display: flex;
-  padding: var(--Spacing-0, 0px) 168px;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  flex: 1 0 0;
-  align-self: stretch;
-`;
-
-export const TextBox2 = styled.div`
-  width: 100%;
-  height: 122px;
-  display: flex;
-  justify-content: center;
-  padding: var(--Spacing-0, 0px) 168px;
-`;
-
-export const TextBox3 = styled.div`
-  width: 720px;
-  height: 122px;
-  display: flex;
-  align-items: center;
-  padding: var(--Spacing-0, 0px) 36px;
-  justify-content: center;
-  gap: var(--Spacing-20, 20px);
-`;
 
 export const TitleImg = styled.img`
   width: 90px;
@@ -72,32 +75,17 @@ export const TitleImg = styled.img`
   stroke-width: 1px;
 `;
 
-export const TitleText1 = styled.div`
-  width: 766px;
-  height: 122px;
+export const TitleText = styled.div`
+  width: auto; max-width: 753px;
+  height: 171px;
   color: var(--new-main-white, #FAFAFA);
   text-align: center;
   font-family: "MonAExtraBold";
-  font-size: 100px;
+  font-size: 140px;
   font-style: normal;
   font-weight: 800;
   line-height: normal;
-  letter-spacing: 2px;
-`;
-
-export const TitleText2 = styled.div`
-  width: 538px;
-  height: 122px;
-  color: var(--new-main-white, #FAFAFA);
-  text-align: center;
-  font-family: "MonAExtraBold";
-  font-size: 100px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: normal;
-  letter-spacing: 2px;
-  display: center;
-  justify-flex: center;
+  letter-spacing: 2.8px;
 `;
 
 export const Rectangle = styled.div`
@@ -181,48 +169,40 @@ export const ArrowImg = styled.div`
   background-repeat: no-repeat;
 `;
 
-const StyledLink = styled.div`
-  position: absolute;
-  display: block;
-  text-decoration: none;
-  z-index: 1;
-`;
-
-/*----------------video---------------*/
+//2. Video
 export const VideoSection = styled.div`
   width: 100%;
-  height: 900px;
+  height: 1024px;
   display: flex;
-  padding: 50px var(--Spacing-0, 0px);
+  padding-top: 83px;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
   background: var(--Base-Real-White, #FFF);
 `;
 
 export const VideoSectionBox = styled.div`
   width: 100%;
-  height: 800px;
+  height: 941px;
   display: flex;
   padding: var(--Spacing-0, 0px) 144px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 50px;
   flex: 1 0 0;
-  display: flex;
 `;
 
 export const VideoBox =styled.div`
-  width: 1152px;
-  height: 490px;
-  padding: var(--sds-size-space-600) 36px;
+  width: 812px;
+  height: 459px;
   display: flex;
+  padding: var(--sds-size-space-600) 36px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   flex: 1 0 0;
+  gap: 17.998px;
   background: var(--new-main-black, #0A0B0A);
 `;
 
@@ -234,7 +214,7 @@ export const VideoIFrame = styled.video`
 `;
 
 export const VideoFrame = styled.div`
-  width: 1080px;
+  width: 740px;
   height: 45.6px;
   display: flex;
   justify-content: flex-end;
@@ -272,18 +252,18 @@ export const VideoFrameImg = styled.img`
 
 export const CardSecionBox = styled.div`
   width: 1152px;
-  height: 260px;
+  height: 482px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  padding: 48px;
+  gap: var(--sds-size-space-600);
 `;
 
 export const CardText1 = styled.div`
   width: 1152px;
   height: 98px;
-  align-self: stretch;
   color: #000;
   text-align: center;
   font-family: "MonAExtraBold";
@@ -292,64 +272,58 @@ export const CardText1 = styled.div`
   font-weight: 800;
   line-height: normal;
   letter-spacing: 1.6px;
-  text-transform: uppercase;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 `;
 
 export const CardDetailBox = styled.div`
   width: 1152px;
-  height: 138px;
+  height: 482px;
   display: flex;
-  padding: 24px var(--Spacing-l, 48px);
-  flex-direction: column;
-  align-self: stretch;
+  padding: 48px;
+  justify-content: center;  
 `;
 
 export const CardText2 = styled.div`
-  width: 440px;
-  height: 90px;
+  width: 566px;
+  height: 216px;
   align-self: center;
   color: var(--Secondary-Secondary1000, #323F49);
-  font-family: PretendardRegular;
-  font-size: 20px;
+  font-family: MonRegular;
+  font-size: 28px;
   font-style: normal;
   font-weight: 400;
-  line-height: 30px; /* 150% */
-  letter-spacing: -0.05px;
+  line-height: 30px;
+  letter-spacing: -1.68px;
+  white-space: pre-line;
+  text-align: center;
 `;
 
-
-/*----------------ClubInfo---------------*/
+//3.ClubInfo
 export const ClubInfoSection = styled.div`
   width: 100%;
-  height: 900px;
-  display: flex;
-  flex-direction: column;
+  height: 882px;
   align-items: center;
   background: var(--gradient_2, linear-gradient(104deg, 
   rgba(185, 255, 156, 0.20) 0%, rgba(0, 104, 255, 0.20) 100%));
   padding: var(--XXL, 100px) var(--Spacing-0, 0px);
   justify-content: center;
-  align-self: stretch;
-  border: 3px solid green;
   `;
 
 export const ClubInfoBox = styled.div`
   width: 100%;
-  height: 674px;
+  height: 682px;
   display: flex;
   padding: var(--Spacing-0, 0px) 144px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  align-self: stretch;
 `;
 
 export const ClubTitleBox = styled.div`
   width: 1100px;
-  height: 142px;
+  height: 144px;
   display: flex;
   padding: 48px;
   align-items: center;
@@ -378,7 +352,6 @@ export const GalleryBox = styled.div`
   align-items: center;
   align-content: center;
   gap: 0px var(--Spacing-0, 0px);
-  flex-wrap: wrap;
 `;
 
 export const Gallery = styled.div`
@@ -387,27 +360,11 @@ export const Gallery = styled.div`
   overflow: hidden;
 `;
 
-export const ClubCardImg = styled.div`    
-  display: flex;
-  width: 350px;
-  height: 276px;
-  padding: 36px;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  gap: 10px;
-  flex-shrink: 0;
-  border-radius: 40px;
-  background: linear-gradient(180deg, rgba(10, 11, 10, 0.00) 0%,
-  rgba(10, 11, 10, 0.48) 100%), url(${props => props.bgImage}) lightgray 50% / cover no-repeat;
-  object-fit: cover;
-`;
-
 export const ClubFrameBox = styled.div`
   width: 1152px;
-  height: 160px;
+  height: 166px;
   display: flex;
-  padding: var(--Spacing-l, 48px) 24px;
+  padding: 48px;
   justify-content: center;
   align-items: center;
   gap: 12px;
@@ -416,7 +373,7 @@ export const ClubFrameBox = styled.div`
 
 export const ClubBtnBox = styled.div`
   width: 1104px;
-  height: 64px;
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -426,13 +383,12 @@ export const ClubBtnBox = styled.div`
   border-radius: 100px;
   border: 1px solid #000;
   background: var(--Base-Real-White, #FFF);
+  border: ${(props)=> (props.ishoveringClub ? 'none' : '1px solid black')};
 
   &:hover {
     background: var(--gradient, linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%));
   }
 `
-
-
 export const ClubBtnText = styled.div`
   color: ${(props)=> (props.ishoveringClub ? "white" : "black")};
   text-align: center;
@@ -447,13 +403,11 @@ export const ClubBtnText = styled.div`
   transition: 0.3s ease;
 `;
 
-
-
-/*--------------notice--------------*/
+//4.Notice
 export const NoticeSection = styled.div`
   display: flex;
   width: 100%;
-  height: 936px;
+  height: 942px;
   padding: var(--XXL, 100px) 0px;
   flex-direction: column;
   justify-content: center;
@@ -463,20 +417,18 @@ export const NoticeSection = styled.div`
 
 export const NoticeContent = styled.div`
   width: 100%;
-  height: 736px;
+  height: 742px;
   display: flex;
   padding: 0px 144px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  align-self: stretch;
 `;
 
 export const NoticeTitleSet = styled.div`
   width: 1100px;
-  height: 160px;
+  height: 166px;
   display: flex;
-  width: 1100px;
   padding: var(--Spacing-l, 48px);
   justify-content: space-between;
   align-items: center;
@@ -484,17 +436,6 @@ export const NoticeTitleSet = styled.div`
   opacity: var(--sds-size-stroke-border);
   display: flex;
   flex-direction: row;
-`;
-
-export const NoticeTitleBox = styled.div`
-  width: auto; //456px;
-  height 160px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 24px;
-  align-self: stretch;
 `;
 
 export const NoticeTitleText = styled.div`
@@ -509,11 +450,12 @@ export const NoticeTitleText = styled.div`
   font-weight: 800;
   line-height: normal;
   letter-spacing: -1.52px;
+  gap: 24px;
 `;
 
 export const NoticeBtnBox = styled.div`
   width: 145px;
-  height: 64px;
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -528,13 +470,17 @@ export const NoticeBtn = styled.div`
   align-items: center;
   border-radius: var(--XXL, 100px);
   border: 1px solid #000;
-  background: var(--Base-Real-White, #FFF);
-
-  color: var(--new-main-black, #0A0B0A);
+  color: ${(props)=> (props.ishoveringNotice5 ? "white" : "black")};
+  border: ${(props)=> (props.ishoveringNotice5 ? 'none' : '1px solid black')};
   text-align: center;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    background: var(--gradient, linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%));
+  }
 
   /* Primary/Desktop/Body2_regular */
-  font-family: MonRegular;
+  font-family: MonRegular;  
   font-size: 18px; /*20px*/
   font-style: normal;
   font-weight: 400;
@@ -569,9 +515,12 @@ export const NoticeList = styled.div`
   align-items: center;
   align-self: stretch;
   border-bottom: 1px solid var(--new-main-grey, #637D92);
-  background: ${(props)=> (props.ishoveringNotice ? 
-     'linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%)'
-      : 'white')};
+  background: ${(props)=> 
+    props.ishoveringNotice1 ? 'linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%)' : 
+    props.ishoveringNotice2 ? 'linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%)' : 
+    props.ishoveringNotice3 ? 'linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%)' : 
+    props.ishoveringNotice4 ? 'linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%)' : 'white'};
+
 `;
 
 export const NoticeItemBox = styled.div`
@@ -593,9 +542,8 @@ export const NoticeTag =styled.div`
   justify-content: center;
   align-items: center;
   border-radius: var(--XXL, 100px);
-  border: 1px solid var(--new-main-primary, #0068FF);
+  border: 1px solid;
 
-  color: var(--new-main-primary, #0068FF);
   text-align: center;
   /* Primary/Desktop/Body3 */
   font-family: MonRegular;
@@ -605,12 +553,27 @@ export const NoticeTag =styled.div`
   line-height: 24px; /* 150% */
   letter-spacing: -0.04px;
   margin-right: 28px;
+
+  color: ${(props)=> 
+    props.ishoveringNotice1 ? "#FAFAFA" : 
+    props.ishoveringNotice2 ? "#FAFAFA" : 
+    props.ishoveringNotice3 ? "#FAFAFA" : 
+    props.ishoveringNotice4 ? "#FAFAFA" : "#0068FF"};
+  border-color: ${(props)=> 
+    props.ishoveringNotice1 ? "#FAFAFA" : 
+    props.ishoveringNotice2 ? "#FAFAFA" : 
+    props.ishoveringNotice3 ? "#FAFAFA" : 
+    props.ishoveringNotice4 ? "#FAFAFA" : "#0068FF"};
 `;
 
 export const NoticeText = styled.div`
   width: 787px;
   height: 35px;
-  color: ${(props)=> (props.ishoveringNotice ? "white" : "black")};
+  color: ${(props)=> 
+    props.ishoveringNotice1 ? "white" : 
+    props.ishoveringNotice2 ? "white" : 
+    props.ishoveringNotice3 ? "white" : 
+    props.ishoveringNotice4 ? "white" : "black"};
   /* Primary/Desktop/H2_regular */
   font-family: MonRegular;
   font-size: 25px; //28px
@@ -621,30 +584,45 @@ export const NoticeText = styled.div`
 
 `;
 
-export const ArrowImg2 = styled.img`
-  width: 34.453px;
+export const ArrowImg2 = styled.div`
+  width: 34.45px;
   height: 30px;
   display: flex;
-  justify-content: flex-end;
   text-align: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: ${(props)=>
+    props.ishoveringNotice1 ? `url(${arrow})` :
+    props.ishoveringNotice2 ? `url(${arrow})` :
+    props.ishoveringNotice3 ? `url(${arrow})` :
+    props.ishoveringNotice4 ? `url(${arrow})` : `url(${arrow_B})`};
 `;
 
-/*---------------social-------------*/
+export const ArrowImg2Box = styled.div`
+  width: 63px;
+  height: 49px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+`;
+
+//5.Social
 export const SocialSection = styled.div`
   width: 100%;
-  height: 818px;
+  height: 820px;
   display: flex;
   padding: var(--XXL, 100px) 0px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  border: 2px solid black;
 `;
 
 export const SocialContainer = styled.div`
   width: 100%;
-  height: 618px;
+  height: 620px;
   display: flex;
   padding: 0px 144px;
   flex-direction: column;
@@ -655,7 +633,7 @@ export const SocialContainer = styled.div`
 
 export const SocialTop = styled.div`
   width: 1100px;
-  height: 142px;
+  height: 144px;
   display: flex;
   padding: var(--Spacing-l, 48px);
   align-items: center;
@@ -694,6 +672,13 @@ export const SocialFrame = styled.div`
   opacity: var(--sds-size-stroke-border);
   background: var(--Base-Base-White, #FAFAFA);
   margin: 0px 10px;
+  position: relative;
+  box-sizing: border-box;
+
+  &:hover {
+    border: 2px solid var(--new-main-primary, #0068FF);
+    background: linear-gradient(102deg, rgba(0, 104, 255, 0.40) 23.99%, rgba(185, 255, 156, 0.40) 98.08%);
+  }
 `;
 
 export const SocialSliderBox = styled.div`
@@ -708,28 +693,45 @@ export const SocialSliderBox = styled.div`
   }
 `;
 
-
 export const FrameCard = styled.div`
   width: 431px;
-  height: 144px;
+  height: 148px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 12px;
   align-self: stretch;
+  position: absolute;
+  bottom: 24px;
+  box-sizing: border-box; /* 패딩을 포함한 전체 너비 조정 */
 `;
 
 export const InstaBg = styled.div`
   width: var(--size-medium, 40px);
   height: var(--size-medium, 40px);
   flex-shrink: 0;
-  background-image: url(${ellipse_B});
+  background: url(${ellipse_B});
+  display: flex;
+  justify-content: center;
+  align-items: center
+`;
+export const InstaIcon = styled.div`
+  width: 28px;
+  height: 26px;
+  opacity: var(--sds-size-stroke-border);
+  background: var(--Secondary-Secondary100, #E7EBEF);
+  mask-image: url(${instashape});
+  mask-repeat: no-repeat;
+  mask-size: 100%;
 `;
 
-export const InstaIcon = styled.div`
-  width: 25.2px;
+export const WebIcon = styled.div`
+  width: 28px;
   height: 26px;
-  background-image: url(${insta_shape});
+  opacity: var(--sds-size-stroke-border);
+  background: var(--Secondary-Secondary100, #E7EBEF);
+  mask-image: url(${webicon});
+  mask-repeat: no-repeat;
+  mask-size: 100%;
 `;
 
 export const FrameBox = styled.div`
@@ -737,8 +739,8 @@ export const FrameBox = styled.div`
   height: 92px;
   display: flex;
   justify-content: space-between;
+  padding-right: 24px;
   align-items: flex-end;
-  align-self: stretch;
 `;
 
 export const FrameText = styled.div`
@@ -754,16 +756,18 @@ export const FrameText = styled.div`
   letter-spacing: -1.9px;
 `;
 
-export const SocialArrowImg = styled.img`
+export const FrameImg = styled.div`
   width: 45.6px;
   height: 49px;
   display: flex;
-  justify-content: flex-end;
-  align-items: i;
+  height: 49px;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
 `;
 
-/*--------------------CTA Banner--------------*/
+
+//6.CTA 배너
 export const CTASection = styled.div`
   width: 100%;
   height: 521px;
@@ -771,23 +775,36 @@ export const CTASection = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
 `;
 
 export const SectionBanner = styled.div`
   width: 100%;
   height: 50px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  align-self: stretch;
   border: 1px solid #000;
   background: var(--new-main-white, #FAFAFA);
-  flex-wrap: wrap;
+  overflow: hidden;
+  padding-bottom: 16px;
 `;
 
-export const GridText1 = styled.div`
-  width: 4px;
+export const GridSliderBox= styled.div`
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  position: relative;
+
+  .slick-track {
+    display: flex;
+  }
+`;
+
+export const GridText = styled.div`
+  width: auto;
   height: 18px;
   color: var(--new-main-black, #0A0B0A);
   /* Primary/Mobile/Button2 */
@@ -797,20 +814,17 @@ export const GridText1 = styled.div`
   font-weight: 600;
   line-height: 18px; /* 128.571% */
   letter-spacing: 0.14px;
-  padding-right: 10px;
-`;
-
-export const GridText2 = styled.div`
-  width: 149px;
-  height: 18px;
-  color: var(--new-main-black, #0A0B0A);
-  /* Primary/Mobile/Button2 */
-  font-family: MonRegular;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 18px; /* 128.571% */
-  letter-spacing: 0.14px;
+  padding: 100%;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap; 
+  padding-right: 100%;
+  animation: scroll 20s linear infinite; /* 스크롤 애니메이션 적용 */
+  
+  @keyframes scroll {
+    from {transform: translateX(0);}
+    to {transform: translateX(-100%);}
+  }
 `;
 
 export const GridBox = styled.div`
@@ -831,10 +845,6 @@ export const GridTitle = styled.div`
   height: 98px;
   color: var(--new-main-white, #FAFAFA);
   text-align: center;
-
-  /* title/h1 */
-  -webkit-text-stroke-width: 1;
-  -webkit-text-stroke-color: #000;
   font-family: "MonAExtraBold";
   font-size: 80px;
   font-style: normal;
@@ -843,12 +853,8 @@ export const GridTitle = styled.div`
   letter-spacing: 1.6px;
   text-transform: uppercase;
   text-shadow: 
-        2px 2px 0 black, 
-        -2px -2px 0 black, 
-        2px -2px 0 black, 
-        0 2px 0 black, 
-        2px 0 0 black, 
-        -2px 0 0 black; /* 다중 그림자를 사용하여 테두리 효과 */
+        2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, 
+        0 2px 0 black, 2px 0 0 black, -2px 0 0 black; /* 다중 그림자를 사용하여 테두리 효과 */
 `;
 
 export const VectorImg = styled.img`
@@ -876,6 +882,11 @@ export const GridBtn = styled.div`
   border-radius: var(--XXL, 100px);
   border: 1px solid #000; /*var(--sds-size-stroke-border)*/
   background: var(--Base-Real-White, #FFF);
+
+  &:hover {
+    background: var(--gradient, linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%));
+    border: 1px solid white;
+  }
 `;
 
 export const GridBtnText = styled.div`
@@ -891,4 +902,8 @@ export const GridBtnText = styled.div`
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.11px;
+
+  color: ${(props)=> props.ishoveringCTA ? `white` : `black`};
+
 `;
+

@@ -24,11 +24,10 @@ const ClubInfo = () =>  {
         </S.GalleryBox>
         <S.ClubFrameBox>
           <Link to={"./promotion"}>
-            <S.ClubBtnBox
+            <S.ClubBtnBox  ishoveringClub={isHoveringClub}
               onMouseOver={handleMouseOver4}
               onMouseOut={handleMouseOut4} >
               <S.ClubBtnText ishoveringClub={isHoveringClub}>동아리 보러가기</S.ClubBtnText>
-              
             </S.ClubBtnBox>
             </Link>
         </S.ClubFrameBox>

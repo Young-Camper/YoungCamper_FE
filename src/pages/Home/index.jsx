@@ -1,5 +1,5 @@
 import React from "react";
-import { ContentWrapper } from "../../style/commonStyle";
+import useMediaQueries from "../../hooks/useMediaQueries";
 import HomeTitle from "./HomeTitle";
 import Video from "./Video";
 import ClubInfo from "./ClubInfo";
@@ -8,16 +8,18 @@ import Social from "./Social";
 import CTABanner from "./CTABanner";
 
 const index = () => {
-  return (
-    <ContentWrapper>
-      <HomeTitle />
-      <Video />
-      <ClubInfo />
-      <Notice />
-      <Social />
-      <CTABanner />
-    </ContentWrapper>
 
+  const { isMobile, isTablet, isDesktop } = useMediaQueries();
+
+  return (
+    <>
+    <HomeTitle />
+    <Video />
+    <ClubInfo />
+    <Notice />
+    <Social />
+    <CTABanner />
+</>
   )  
 } 
 

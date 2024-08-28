@@ -8,11 +8,12 @@ const settings = {
   dots: false,
   infinite: false,
   speed: 3000,
-  slidesToShow: 2.1,
+  slidesToShow: 2.2,
   slidesToScroll: 1,
 };
 
 const Social = () => {
+
   return (
     <S.SocialSection>
       <S.SocialContainer>
@@ -28,7 +29,7 @@ const Social = () => {
                   </S.InstaBg>
                   <S.FrameBox>
                     <S.FrameText>Youngcamp Instagram</S.FrameText>
-                    <S.SocialArrowImg src=".\src\assets\images\Arrow_B.png" />
+                    <S.FrameImg><S.ArrowImg2 src=".\src\assets\images\Home\Arrow_B.png" /></S.FrameImg>
                   </S.FrameBox>
                 </S.FrameCard>
             </S.SocialFrame>
@@ -39,18 +40,18 @@ const Social = () => {
                   </S.InstaBg>
                   <S.FrameBox>
                     <S.FrameText>Dongguk Univ Instagram</S.FrameText>
-                    <S.SocialArrowImg src=".\src\assets\images\Arrow_B.png" />
+                    <S.FrameImg><S.ArrowImg2 src=".\src\assets\images\Home\Arrow_B.png" /></S.FrameImg>
                   </S.FrameBox>
                 </S.FrameCard>
             </S.SocialFrame>
             <S.SocialFrame> {/*동국대 홈페이지*/}
                 <S.FrameCard>
                   <S.InstaBg>
-                    <S.InstaIcon></S.InstaIcon>
+                    <S.WebIcon></S.WebIcon>
                   </S.InstaBg>
                   <S.FrameBox>
                     <S.FrameText>Dongguk Univ Website</S.FrameText>
-                    <S.SocialArrowImg src=".\src\assets\images\Arrow_B.png" />
+                    <S.FrameImg><S.ArrowImg2 src=".\src\assets\images\Home\Arrow_B.png" /></S.FrameImg>
                   </S.FrameBox>
                 </S.FrameCard>
             </S.SocialFrame>
