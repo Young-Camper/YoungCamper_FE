@@ -40,11 +40,18 @@ export const Container = styled.div`
     display: inline-flex;
   }
   @media only screen and (max-width:768px) {
-    flex: 1 1 0;
+    /* flex: 1 1 0;
     align-self: stretch;
     justify-content: center;
     align-items: center;
-    display: flex;
+    display: flex; */
+    width: 100%;
+    height: 100%;
+    background: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
   }
   @media only screen and ((min-width: 769px) and (max-width: 1023px)){
     
@@ -81,12 +88,11 @@ export const SideNavWrapper = styled.div`
   @media only screen and (max-width:768px) {
     width: 100%;
     height: 100%;
-    padding-top: 36px;
-    /* padding-bottom: 36px; */
+    padding-top: 50px;
+    padding-bottom: 50px;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
     display: inline-flex;
     background-color: #0068FF;
   }
@@ -95,40 +101,22 @@ export const SideNavWrapper = styled.div`
   }
 `;
 
-export const SideNavSet = styled.div`
-  @media only screen and (min-width: 1024px){
-
-  }
-  @media only screen and (max-width:768px) {
-    width: 100%;
-    /* height: 100%; */
-    padding-top: 36px;
-    /* padding-bottom: 36px; */
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    display: inline-flex;
-    background-color: #0068FF;
-  }
-  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
-    
-  }
-`;
-
-
-export const SideNav = styled.div`
+export const SideNav1111 = styled.div`
   @media only screen and (min-width: 1024px){
     
   }
   @media only screen and (max-width:768px) {
     width: 100%;
     height: 50px;
-    padding-top: 6px;
-    flex-direction: column;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px #FAFAFA solid;
+    justify-content: center;
     align-items: center;
-    gap: 16px;
     display: inline-flex;
+
+    /* flex-direction: column; */
+    /* gap: 16px; */
   }
   @media only screen and ((min-width: 769px) and (max-width: 1023px)){
     
@@ -182,8 +170,15 @@ export const StyledLink = styled(Link)`
   gap: 4px;
   display:flex;
   @media only screen and (max-width: 1023px) {
-    color: white;
-    font-size: 28px;
+    felx: 1 1 0;
+    align-self: stretch;
+    text-align: center;
+    color: #FAFAFA;
+    font-size: 24px;
+    font-family: "MonRegular";
+    font-weight: 400;
+    line-height: 32px;
+    word-wrap: break-word;
   }
 `;
 
@@ -313,11 +308,10 @@ export const ModalContainer = styled.div`
   left: 0;
   height: 100vh;
   width: 100vw;
-  /* background-color: rgb(0 0 0 / 71%); */
-  background-color: white;
-  -webkit-tap-highlight-color: transparent;
-  display: flex;
+  background-color: #0068FF;
+  display: inline-flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 `
 
@@ -350,3 +344,129 @@ export const ModalCloseBtn = styled.button`
   border: none;
   cursor: pointer;
 `;
+
+//다시 짜기
+
+export const SideNav = styled.div`
+  position:absolute;
+  top:0;
+  left:0;
+  z-index: 1200;
+  width: 100vw;;
+  height: 100vh;
+  background-color: #0068FF;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  display: inline-flex;
+
+  overflow: hidden;
+  transition: all 400ms ease-in-out 2s;
+  animation: fadeIn 400ms;
+`;
+
+export const NavMobile = styled.div`
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+`;
+
+//container 는 위에 중복
+
+export const Header = styled.div`
+  width: 100%;
+  /* height: 100%; */
+  height: 52px;
+  background: white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+`;
+
+export const HeaderContent = styled.div`
+  width: 100%;
+  height: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: white;
+  justify-content: space-between;
+  align-items: center;
+  display: inline-flex;
+`;
+
+export const MenubarOpened = styled.button`
+  z-index: 1000;
+  transform: rotate(180deg);
+  transform-origin: 0 0;
+  width: 21px;
+  height: 14px;
+  left: 50px;
+  top: 35px;
+  position: absolute;
+
+  background-image: url(${props => props.menubar});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+`;
+
+export const LogoWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  display: inline-flex;
+`;
+
+//sideNav
+
+export const SideNavLinks = styled.div`
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+`;
+
+export const SideNavSet = styled.div`
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  display: inline-flex;
+`
+
+export const SideNavLink = styled.div`
+  width: 100%;
+  height: 100%;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #FAFAFA;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+`
+
+export const SideNavEtc = styled.div`
+  width: 100%;
+  height: 100%;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+`
