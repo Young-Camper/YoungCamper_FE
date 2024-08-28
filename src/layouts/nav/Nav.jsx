@@ -55,13 +55,41 @@ const Nav = () => {
               <S.ModalContainer>
                 <S.Modal>
                   <S.FlexContainer>
-                    <S.LogoKr src={logo_kr} alt="Logo_kr" />
+                  {isChecked ? (<S.LogoEn src={logo_en} alt="Logo_en" />) 
+                    : (<S.LogoKr src={logo_kr} alt="Logo_kr" />)} 
                     <S.ModalCloseBtn closeicon={closeicon} onClick={()=> setModalOpen(false)}/>
                   </S.FlexContainer>
+                  <S.SideNavWrapper>
+                    <S.SideNav>
+                      <S.StyledLink to={"/notification"} onClick={()=> setModalOpen(false)}>공지</S.StyledLink>     
+                      <S.SideLine/>
+                    </S.SideNav>
+                    <S.SideNav>
+                      <S.StyledLink to={"/promotion"} onClick={()=> setModalOpen(false)}>동아리</S.StyledLink>
+                      <S.SideLine/>
+                    </S.SideNav>
+                    <S.SideNav>
+                      <S.StyledLink to={"/location"} onClick={()=> setModalOpen(false)}>장소</S.StyledLink>
+                      <S.SideLine/>
+                    </S.SideNav>
+                    <S.SideNav>
+                      <S.StyledLink to={"/review"} onClick={()=> setModalOpen(false)}>후기</S.StyledLink>
+                    <S.SideLine/>
+                    </S.SideNav>
+                    <S.SideNav>
+                      <S.StyledLink to={"/FAQ"} onClick={()=> setModalOpen(false)}>FAQ</S.StyledLink>
+                      <S.SideLine/>
+                    </S.SideNav>
+                    <S.SideNav>
+                    <S.StyledLink to={"/about"} onClick={()=> setModalOpen(false)}>기획단</S.StyledLink>
+                      <S.SideLine/>
+                    </S.SideNav>
+                  </S.SideNavWrapper>
                 </S.Modal>
               </S.ModalContainer>
             )}
-            <S.LogoKr src={logo_kr} alt="Logo_kr" />
+            {isChecked ? (<S.LogoEn src={logo_en} alt="Logo_en" />) 
+              : (<S.LogoKr src={logo_kr} alt="Logo_kr" />)}
             <S.MenubarContainer>
               <S.MenubarWrapper>
                 <S.Menubar menubar={menubar} onClick={() => setModalOpen(true)} />

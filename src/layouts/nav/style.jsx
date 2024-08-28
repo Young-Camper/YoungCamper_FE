@@ -72,8 +72,74 @@ export const FlexContainer = styled.div`
   @media only screen and ((min-width: 769px) and (max-width: 1023px)){
     
   }
-
 `;
+
+export const SideNavWrapper = styled.div`
+  @media only screen and (min-width: 1024px){
+
+  }
+  @media only screen and (max-width:768px) {
+    width: 100%;
+    height: 100%;
+    padding-top: 36px;
+    /* padding-bottom: 36px; */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    background-color: #0068FF;
+  }
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
+    
+  }
+`;
+
+export const SideNavSet = styled.div`
+  @media only screen and (min-width: 1024px){
+
+  }
+  @media only screen and (max-width:768px) {
+    width: 100%;
+    /* height: 100%; */
+    padding-top: 36px;
+    /* padding-bottom: 36px; */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    background-color: #0068FF;
+  }
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
+    
+  }
+`;
+
+
+export const SideNav = styled.div`
+  @media only screen and (min-width: 1024px){
+    
+  }
+  @media only screen and (max-width:768px) {
+    width: 100%;
+    height: 50px;
+    padding-top: 6px;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    display: inline-flex;
+  }
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
+    
+  }
+`;
+
+export const SideLine = styled.div`
+  width: 100vw;
+  height: 0px;
+  border: 2px #FAFAFA solid;
+`
 
 export const LogoKr = styled.img`
   @media only screen and (min-width: 1024px){
@@ -94,7 +160,7 @@ export const LogoEn = styled.img`
     height: 76.13px;
   }
   @media only screen and (max-width: 768px) {
-    width: 72px;
+    /* width: 72px; */
     height: 26px; 
   }
   @media only screen and ((min-width: 769px) and (max-width: 1023px)){
@@ -105,7 +171,7 @@ export const LogoEn = styled.img`
 export const StyledLink = styled(Link)`
   color: #0A0B0A;
   font-size: 20px;
-  font-family: "Pretendard"; // 여기 도와주세요~
+  font-family: "PretendardSemibold";
   font-weight: 600;
   line-height: 24px;
   word-wrap: break-word;
@@ -115,6 +181,10 @@ export const StyledLink = styled(Link)`
   align-items: center;
   gap: 4px;
   display:flex;
+  @media only screen and (max-width: 1023px) {
+    color: white;
+    font-size: 28px;
+  }
 `;
 
 export const LangSlider = styled.span`
@@ -243,7 +313,8 @@ export const ModalContainer = styled.div`
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-color: rgb(0 0 0 / 71%);
+  /* background-color: rgb(0 0 0 / 71%); */
+  background-color: white;
   -webkit-tap-highlight-color: transparent;
   display: flex;
   flex-direction: column;
