@@ -179,6 +179,13 @@ export const StyledLink = styled(Link)`
     font-weight: 400;
     line-height: 32px;
     word-wrap: break-word;
+
+    background-image: url(${props => props.image});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
   }
 `;
 
@@ -193,6 +200,7 @@ export const LangSlider = styled.span`
   transition: 0.4s;
   border-radius: 24.44px;
   box-shadow: 0px 2.933px 3.911px 1.467px rgba(0, 0, 0, 0.10) inset;
+
 
   &:before {
     z-index: 0;
@@ -447,7 +455,7 @@ export const SideNavSet = styled.div`
   justify-content: flex-start;
   align-items: center;
   display: inline-flex;
-`
+`;
 
 export const SideNavLink = styled.div`
   width: 100%;
@@ -458,7 +466,10 @@ export const SideNavLink = styled.div`
   justify-content: center;
   align-items: center;
   display: inline-flex;
-`
+  gap: 12px;
+`;
+
+//언어 변경 및 SNS 링크들 
 
 export const SideNavEtc = styled.div`
   width: 100%;
@@ -469,4 +480,68 @@ export const SideNavEtc = styled.div`
   justify-content: center;
   align-items: center;
   display: inline-flex;
+`;
+
+export const SideNavLang = styled.div`
+  width: 100%;
+  height: 100%;
+  padding-left: 48px;
+  padding-right: 48px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  display: inline-flex;
+`;
+
+export const SideNavLangBtn = styled.div`
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: inline-flex;
+`;
+
+export const SideNavLangText = styled.button`
+  text-align: center;
+  color: #B9FF9C;
+  font-size: 18px;
+  font-family: 'MonRegular';
+  font-weight: 400;
+  line-height: 24px;
+  word-wrap: break-word;
+  border-bottom: 1px solid #B9FF9C;
+`;
+
+export const SideNavSNS = styled.div`
+  width: 100%;
+  height: 100%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  gap: 12px;
+  display: inline-flex;
+
+  justify-content: center;
+  align-items: center;
+`;
+
+export const SideNavIconContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const SideNavSnsIcon = styled.button`
+  width: 24px;
+  height: 24px;
+  background-image: url(${props => props.icon});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;  
 `

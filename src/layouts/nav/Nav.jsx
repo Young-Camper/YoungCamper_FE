@@ -4,6 +4,9 @@ import { useState } from 'react';
 import useMediaQueries from "../../hooks/useMediaQueries";
 import menubar from "../../assets/images/Nav/Menubar.png";
 import closeicon from "../../assets/images/Nav/CloseIcon.png";
+import Instagram from "../../assets/images/Nav/Instagram.png";
+import Youtube from "../../assets/images/Nav/Youtube.png";
+import SideNav from "../../assets/images/Nav/SideNav.png";
 import * as S from "./style";
 
 const Nav = () => {
@@ -78,8 +81,10 @@ const Nav = () => {
               </S.Modal>
             </S.ModalContainer>
           )}
-          {isChecked ? (<S.LogoEn src={logo_en} alt="Logo_en" />) 
-            : (<S.LogoKr src={logo_kr} alt="Logo_kr" />)}
+          <S.StyledLink to={"/"}>
+            {isChecked ? (<S.LogoEn src={logo_en} alt="Logo_en" />) 
+              : (<S.LogoKr src={logo_kr} alt="Logo_kr" />)}
+          </S.StyledLink>
           <S.MenubarContainer>
             <S.MenubarWrapper>
               <S.Menubar menubar={menubar} onClick={() => setModalOpen(true)} />
@@ -100,8 +105,10 @@ const Nav = () => {
                 <S.HeaderContent>
                   <S.MenubarOpened menubar={menubar} onClick={() => setModalOpen(false)} />
                   <S.LogoWrapper>
-                    {isChecked ? (<S.LogoEn src={logo_en} alt="Logo_en" />) 
-                      : (<S.LogoKr src={logo_kr} alt="Logo_kr" />)}
+                    <S.StyledLink to={"/"} onClick={() => setModalOpen(false)}>
+                      {isChecked ? (<S.LogoEn src={logo_en} alt="Logo_en" />) 
+                        : (<S.LogoKr src={logo_kr} alt="Logo_kr" />)}
+                    </S.StyledLink>
                   </S.LogoWrapper>
                   <S.ModalCloseBtn closeicon={closeicon} onClick={()=> setModalOpen(false)}/>
                 </S.HeaderContent>
@@ -112,7 +119,9 @@ const Nav = () => {
                     <S.StyledLink to={"/notification"} onClick={()=> setModalOpen(false)}>공지</S.StyledLink>     
                   </S.SideNavLink>
                   <S.SideNavLink>
+                    <S.StyledLink to={"/promotion"} image={SideNav} onClick={()=> setModalOpen(false)}>SideNav</S.StyledLink> 
                     <S.StyledLink to={"/promotion"} onClick={()=> setModalOpen(false)}>동아리</S.StyledLink>
+                    <S.StyledLink to={"/promotion"} image={SideNav} onClick={()=> setModalOpen(false)}>SideNav</S.StyledLink> 
                   </S.SideNavLink>
                   <S.SideNavLink>
                     <S.StyledLink to={"/location"} onClick={()=> setModalOpen(false)}>장소</S.StyledLink>
@@ -129,14 +138,27 @@ const Nav = () => {
                 </S.SideNavSet>
               </S.SideNavLinks>
               <S.SideNavEtc>
-                SNS 링크들
+                <S.SideNavLang>
+                  <S.SideNavLangBtn>
+                    <S.SideNavLangText onClick={()=> isChecked(false)}>한국어</S.SideNavLangText>
+                    <S.SideNavLangText onClick={()=> isChecked(true)}>ENG</S.SideNavLangText>
+                  </S.SideNavLangBtn>
+                </S.SideNavLang>
+                <S.SideNavSNS>
+                  <S.SideNavIconContainer>
+                    <S.SideNavSnsIcon icon = {Instagram} />
+                    <S.SideNavSnsIcon icon = {Youtube} />
+                  </S.SideNavIconContainer>
+                </S.SideNavSNS>
               </S.SideNavEtc>
 
             </S.NavMobile>
           </S.SideNav>
         )}
-        {isChecked ? (<S.LogoEn src={logo_en} alt="Logo_en" />) 
-            : (<S.LogoKr src={logo_kr} alt="Logo_kr" />)}
+        <S.StyledLink to={"/"}>
+          {isChecked ? (<S.LogoEn src={logo_en} alt="Logo_en" />) 
+          : (<S.LogoKr src={logo_kr} alt="Logo_kr" />)}
+        </S.StyledLink>
         <S.MenubarContainer>
           <S.MenubarWrapper>
             <S.Menubar menubar={menubar} onClick={() => setModalOpen(true)} />
