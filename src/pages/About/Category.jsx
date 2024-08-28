@@ -1,8 +1,11 @@
 import React from 'react';
 import * as S from "./style";
+import useMediaQueries from "../../hooks/useMediaQueries";
 
 const Category = ({ children }) => {
-  return <S.Category>{children}</S.Category>;
+  const { isDesktop } = useMediaQueries();
+
+  return <S.Category $isDesktop={isDesktop}>{children}</S.Category>;
 };
 
 export default Category;

@@ -1,25 +1,34 @@
 import React from 'react'
 import { styled } from "styled-components";
 
+export const ContentWrapper =styled.div`
+	padding: ${(props) => props.$isDesktop ? "0px 170px" : "0px 0px" };
+`
+
 export const TabBar = styled.div`
 	display: flex;
 	justify-content: center;
 	width: 100%;
 	max-width: 1440px;
-	padding: 83px 0px;
-	margin: 0 auto
+	padding: ${(props) => props.$isDesktop ? "83px 0px" : "0px 0px" };
+	margin: 0 auto;
+	margin-bottom: ${(props) => props.$isDesktop ? "100px" : "77px"};
 `;
 
 export const TabButton = styled.button`
 	width: 100%;
-	height: 83px;
-	font-size: 28px;
+	height: ${(props) => props.$isDesktop ? "83px" : "47px" };
+	font-family: "MonRegular";
+	font-size: ${(props) => props.$isDesktop ? "24px" : "14px" };
+	font-weight: 600;
+	line-height: 18px; /* 128.571% */
+	letter-spacing: 0.14px;
+
 	cursor: pointer;
 	border-top: 2px solid #0068FF;
 	border-bottom: 2px solid #0068FF;
 	background: ${(props) => (props.isActive ? '#0068FF' : '#fff')};
 	color: ${(props) => (props.isActive ? '#fff' : '#0068FF')};
-	font-family: "MonRegular";
 
 	transition: 
 		background 0.3s ease, 
@@ -39,29 +48,29 @@ export const SectionWrapper = styled.div`
 	display: flex;
 	width: 100%;
 	flex-direction: column;
-	padding: 48px 0px;
-	gap: 24px;
+	padding: ${(props) => props.$isMobile ? "39px 24px" : props.$isTablet ? "58px 24px" : "48px 0px" };
+	gap: ${(props) => props.$isDesktop ? "24px" : "12px" };
+	margin-bottom: ${(props) => props.$isDesktop ? "51px" : "12px"};
 `;
 
 export const Category = styled.div`
 	align-self: stretch;
 	color: #000;
 	font-family: "MonRegular";
-	font-size: 28px;
-	font-weight: 700;
-	line-height: 161.8%; /* 45.304px */
-
+	font-size: ${(props) => props.$isDesktop ? "28px" : "20px" };
+	font-weight: ${(props) => props.$isDesktop ? "700" : "600" };
+	line-height: ${(props) => props.$isDesktop ? "48px" : "24px" };
+	
 	align-items: center;
 `;
 
 export const Subtitle = styled.div`
   	color: #637D92;
 	font-family: "MonRegular";
-	font-size: 22px;
-	font-style: normal;
+	font-size: ${(props) => props.$isDesktop ? "22px" : "12px" };
 	font-weight: 400;
-	line-height: 30px; /* 136.364% */
-	letter-spacing: -0.11px;
+	line-height: ${(props) => props.$isDesktop ? "30px" : "18px" };
+	letter-spacing: ${(props) => props.$isDesktop ? "-0.11px" : "-0.06px" };
 `;
 
 export const ProfileListWrapper = styled.div`
@@ -69,6 +78,7 @@ export const ProfileListWrapper = styled.div`
 	width: 100%;
 	flex-wrap: wrap;
 	gap: 24px;
+	padding: ${(props) => props.$isDesktop ? "48px 0px" : "24px 24px" };
 
 	justify-content: center;
 	/* 피그마엔 명시되어 있지 않지만 임의로 설정해둠*/
@@ -76,7 +86,13 @@ export const ProfileListWrapper = styled.div`
 `;
 
 export const ProfileCard = styled.div`
-	width: 350px;
+	display: flex;
+	
+	min-width: 320px;
+	max-width: 450px;
+	flex-direction: column;
+	align-items: center;
+	flex: 1 0 0;
 	box-sizing: border-box;
 	border-radius: 8px;
 	

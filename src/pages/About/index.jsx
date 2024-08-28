@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import MainTitle from "../../components/ui/MainTitle";
-import { ContentWrapper } from "../../style/commonStyle";
 import Section from "./Section";
 import { studentCommitteeProfiles, youngCamperProfiles } from "../../data/profileData";
 import * as S from "./style";
@@ -8,7 +7,7 @@ import useMediaQueries from "../../hooks/useMediaQueries";
 
 const index = () => {
   const [activeTab, setActiveTab] = useState('students'); // 초기 활성 탭 설정
-  const { isMobile, isTablet, isDesktop } = useMediaQueries();
+  const { isDesktop } = useMediaQueries();
 
   // 탭에 따라 프로필 데이터를 선택
   const profilesToDisplay = activeTab === 'students' 
@@ -27,16 +26,15 @@ const index = () => {
         mainText="기획단"
         subText="영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다."
       />
-      {isDesktop ? (
-      <ContentWrapper>
-        <S.TabBar>
-          <S.TabButton 
+      <S.ContentWrapper $isDesktop={isDesktop}>
+        <S.TabBar $isDesktop={isDesktop}>
+          <S.TabButton $isDesktop={isDesktop}
             isActive={activeTab === 'students'} 
             onClick={() => setActiveTab('students')}
           >
             학생 기획 위원단
           </S.TabButton>
-          <S.TabButton 
+          <S.TabButton $isDesktop={isDesktop}
             isActive={activeTab === 'campers'} 
             onClick={() => setActiveTab('campers')}
           >
@@ -48,30 +46,7 @@ const index = () => {
           subtitle={subtitle}
           profiles={profilesToDisplay} 
         />
-      </ContentWrapper>
-      ) : (
-        <>
-          <S.TabBar>
-            <S.TabButton 
-              isActive={activeTab === 'students'} 
-              onClick={() => setActiveTab('students')}
-            >
-              학생 기획 위원단
-            </S.TabButton>
-            <S.TabButton 
-              isActive={activeTab === 'campers'} 
-              onClick={() => setActiveTab('campers')}
-            >
-              영캠퍼
-            </S.TabButton>
-          </S.TabBar>
-          <Section 
-            title={activeTab === 'students' ? "학생 기획 위원단" : "영캠퍼"}
-            subtitle={subtitle}
-            profiles={profilesToDisplay} 
-          />
-        </>
-      )}
+      </S.ContentWrapper>
     </>
   );
 };
