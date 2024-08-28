@@ -11,7 +11,7 @@ const index = () => {
     <Wrapper>
       <MainTitle
         mainText="공지사항"
-        subText="래 내용을 꼭 확인하시고, 모두가 즐거운 축제가 되도록 함께해 주세요!"
+        subText="아래 내용을 꼭 확인하시고, 모두가 즐거운 축제가 되도록 함께해 주세요!"
       />
       <ContentWrapper>
         <Content />
