@@ -4,17 +4,17 @@ import Subtitle from "./Subtitle";
 import data from "../../../data/notice.json";
 import Urgent from "./Urgent";
 import { Link } from "react-router-dom";
+import useMediaQueries from "../../../hooks/useMediaQueries";
 
 const Content = ({ keyword }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-  const maxPage = 5; // 최대 페이지 번호 수
+  const maxPage = 5;
+  const { isMobile, isTablet, isDesktop } = useMediaQueries();
 
-  // 필독 공지, 일반 공지 분리
   const urgentItems = data.filter((item) => item.urgent === "yes");
   const regularItems = data.filter((item) => item.urgent !== "yes");
 
-  // 검색어에 맞는 필독 공지 필터링
   const filteredUrgentItems = urgentItems.filter(
     (item) =>
       (item.title &&
@@ -23,7 +23,6 @@ const Content = ({ keyword }) => {
         item.content.toLowerCase().includes(keyword.toLowerCase()))
   );
 
-  // 검색어에 맞는 일반 공지 필터링
   const filteredRegularItems = regularItems.filter(
     (item) =>
       (item.title &&
@@ -32,34 +31,24 @@ const Content = ({ keyword }) => {
         item.content.toLowerCase().includes(keyword.toLowerCase()))
   );
 
-  // 검색된 필독 공지 + 검색된 일반 공지
   const filteredItems = [...filteredUrgentItems, ...filteredRegularItems];
 
-  // 현재 페이지에 맞는 데이터 계산
   const getCurrentPageItems = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
-
-    // 필독 공지사항 개수
     const urgentCount = urgentItems.length;
-
-    // 현재 페이지에서 표시할 일반 공지사항 (필독 제외)
     const regularItemsForCurrentPage = filteredRegularItems.slice(
       startIndex,
       startIndex + Math.max(itemsPerPage - urgentCount, 0)
     );
-
     return [...urgentItems, ...regularItemsForCurrentPage];
   };
 
-  // 전체 페이지 수 계산
   const totalPages = Math.ceil(
     (filteredRegularItems.length + urgentItems.length) / itemsPerPage
   );
 
-  // 현재 페이지에 맞는 데이터 계산
   const currentItems = getCurrentPageItems();
 
-  // 현재 보여줄 페이지 번호 범위 계산
   const startPage = Math.max(
     1,
     Math.min(currentPage - Math.floor(maxPage / 2), totalPages - maxPage + 1)
@@ -87,28 +76,45 @@ const Content = ({ keyword }) => {
   };
 
   return (
-    <S.ContentWrapper>
+    <S.ContentWrapper $isDesktop={isDesktop}>
       <Subtitle
         num="번호"
         title="제목"
-        date="날짜"
+        date={isDesktop ? "날짜" : null}
         $paddingBottom="0"
         color="black"
         $fontWeight="700"
         $marginTop="0"
         $marginBottom="0"
+        fontSize="16px"
+        isDesktop={isDesktop}
+        isTablet={isTablet}
+        gap="0px"
       />
       <S.ContentContainer>
-        {/* 필독 공지사항 표시 */}
-        {filteredUrgentItems.slice(0, itemsPerPage).map((item, index) => (
-          <Link to={`/notification/${item.num}`}>
-            <Subtitle num={<Urgent />} title={item.title} date={item.date} />
+        {filteredUrgentItems.slice(0, itemsPerPage).map((item) => (
+          <Link to={`/notification/${item.num}`} key={item.num}>
+            <Subtitle
+              num={<Urgent />}
+              title={item.title}
+              date={item.date}
+              fontSize={isDesktop ? "24px" : "18px"}
+              isDesktop={isDesktop}
+              isTablet={isTablet}
+            />
           </Link>
         ))}
         {filteredItems.length > 0 ? (
-          currentItems.slice(urgentItems.length).map((item, index) => (
-            <Link to={`/notification/${item.num}`}>
-              <Subtitle num={item.num} title={item.title} date={item.date} />
+          currentItems.slice(urgentItems.length).map((item) => (
+            <Link to={`/notification/${item.num}`} key={item.num}>
+              <Subtitle
+                num={item.num}
+                title={item.title}
+                date={item.date}
+                fontSize={isDesktop ? "24px" : "18px"}
+                isDesktop={isDesktop}
+                isTablet={isTablet}
+              />
             </Link>
           ))
         ) : (
