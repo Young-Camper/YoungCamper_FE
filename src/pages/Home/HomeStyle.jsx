@@ -854,7 +854,7 @@ export const GridTitle = styled.div`
   text-transform: uppercase;
   text-shadow: 
         2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, 
-        0 2px 0 black, 2px 0 0 black, -2px 0 0 black; /* 다중 그림자를 사용하여 테두리 효과 */
+        0 2px 0 black, 2px 0 0 black, -2px 0 0 black;
 `;
 
 export const VectorImg = styled.img`
