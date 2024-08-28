@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 //Search.jsx
 export const SearchWrapper = styled.div`
-  margin-top: 100px;
+  margin-top: ${(props) => (props.$isDesktop ? "50px" : "")};
   justify-content: flex-end;
   display: flex;
-  position: relative;
-  margin-bottom: 50px;
+  width: 100%;
+  margin-right: ${(props) => (props.$isDesktop ? "" : "20px")};
 `;
 
 export const SearchContainer = styled.div`
@@ -56,7 +56,8 @@ export const SubTitleWrapper = styled.div`
 
 export const NumContainer = styled.div`
   padding: 14px;
-  width: 15%;
+  width: ${(props) =>
+    props.$isDesktop ? "15%" : props.$isTablet ? "20%" : "45%"};
   font-weight: 700;
   display: flex;
   justify-content: center;
@@ -66,10 +67,31 @@ export const NumContainer = styled.div`
   align-items: center;
 `;
 
+export const DateContainer = styled.div`
+  padding: ${(props) => (props.$isDesktop ? "14px" : "")};
+  width: 15%;
+  font-weight: 700;
+  display: flex;
+  justify-content: ${(props) => (props.$isDesktop ? "center" : "")};
+  font-size: 14px;
+  color: ${(props) => props.color || "#92A5B5"};
+  display: flex;
+  align-items: center;
+`;
+
+export const TitleDateContainer = styled.div`
+  display: flex;
+  width: ${(props) => (props.$isDesktop ? "70%" : "100%")};
+  flex-direction: column;
+  padding: 15px 0px;
+  gap: ${(props) => props.gap || "7px"};
+  justify-content: center;
+`;
+
 export const TitleContainer = styled.div`
-  padding: 14px;
-  width: 75%;
-  font-size: 16px;
+  padding: ${(props) => (props.$isDesktop ? "14px" : "")};
+  width: 80%;
+  font-size: ${(props) => props.fontSize || "16px"};
   font-weight: ${(props) => props.fontWeight || 600};
   display: flex;
   align-items: center;
@@ -78,18 +100,18 @@ export const TitleContainer = styled.div`
 //Content.jsx
 
 export const ContentWrapper = styled.div`
-  margin-bottom: 100px;
+  width: ${(props) => (props.$isDesktop ? "100%" : "90%")};
 `;
 
 export const ContentContainer = styled.div`
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
   cursor: pointer;
 `;
 
 export const Pagination = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 50px;
 `;
 
 export const PageNumber = styled.div`

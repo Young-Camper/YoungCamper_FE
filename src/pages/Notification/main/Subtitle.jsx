@@ -1,3 +1,4 @@
+import React from "react";
 import * as S from "./Style";
 
 const Subtitle = ({
@@ -9,6 +10,10 @@ const Subtitle = ({
   fontWeight,
   marginTop,
   marginBottom,
+  fontSize,
+  isDesktop,
+  isTablet,
+  gap,
 }) => {
   return (
     <S.SubTitleWrapper
@@ -16,9 +21,33 @@ const Subtitle = ({
       marginTop={marginTop}
       marginBottom={marginBottom}
     >
-      <S.NumContainer color={color}>{num}</S.NumContainer>
-      <S.TitleContainer fontWeight={fontWeight}>{title}</S.TitleContainer>
-      <S.NumContainer color={color}>{date}</S.NumContainer>
+      <S.NumContainer color={color} $isDesktop={isDesktop} $isTablet={isTablet}>
+        {num}
+      </S.NumContainer>
+
+      {!isDesktop && (
+        <S.TitleDateContainer gap={gap}>
+          <S.TitleContainer fontWeight={fontWeight} fontSize={fontSize}>
+            {title}
+          </S.TitleContainer>
+          <S.DateContainer>{date}</S.DateContainer>
+        </S.TitleDateContainer>
+      )}
+
+      {isDesktop && (
+        <>
+          <S.TitleContainer fontWeight={fontWeight} fontSize={fontSize}>
+            {title}
+          </S.TitleContainer>
+          <S.NumContainer
+            color={color}
+            $isDesktop={isDesktop}
+            $isTablet={isTablet}
+          >
+            {date}
+          </S.NumContainer>
+        </>
+      )}
     </S.SubTitleWrapper>
   );
 };
