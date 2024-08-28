@@ -1,9 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { GlobalStyle } from "./style/globalStyle";
 import styled from "styled-components";
-import Header from "./layouts/Header";
-import Nav from "./layouts/Nav";
-import Footer from "./layouts/Footer";
+import Nav from "./layouts/nav/Nav";
+import Footer from "./layouts/footer/Footer";
 import "../src/style/font.css";
 
 const BackGroundColor = styled.div`
@@ -25,15 +24,10 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 const Layout = () => {
   return (
     <BackGroundColor>
-      <Header />
       <Nav />
       <Wrapper>
         <Outlet /> {/* pages의 페이지가 적용 */}
