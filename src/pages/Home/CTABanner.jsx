@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
+import useMediaQueries from "../../hooks/useMediaQueries";
 
 const settings = {
   dots: false,
@@ -25,27 +26,28 @@ const CTABanner = () => {
     setIsHoveringCTA(false);
   };
 
+  const { isMobile, isTablet, isDesktop } = useMediaQueries();
+
   return (
     <S.CTASection>
       <S.SectionBanner>
         <S.GridSliderBox>
           <Slider {...settings}>
-            <S.GridText>·  Youngcamp Festival ·  Youngcamp Festival  ·  Youngcamp Festival ·  Youngcamp Festival
+            <S.GridText $isDesktop={isDesktop}>·  Youngcamp Festival ·  Youngcamp Festival  ·  Youngcamp Festival ·  Youngcamp Festival
             ·  Youngcamp Festival ·  Youngcamp Festival  ·  Youngcamp Festival ·  Youngcamp Festival
             </S.GridText>
           </Slider>  
         </S.GridSliderBox>
       </S.SectionBanner>
-      
-      <S.GridBox>
+      <S.GridBox $isTablet={isTablet} $isDesktop={isDesktop}>
         <S.VectorImg src = ".\src\assets\images\Home\Vector.png" />
-        <S.GridTitle>JOIN WITH US !</S.GridTitle>
-        <S.GridBtnFrame>
+        <S.GridTitle $isTablet={isTablet} $isDesktop={isDesktop}>JOIN WITH US !</S.GridTitle>
+        <S.GridBtnFrame $isTablet={isTablet} $isDesktop={isDesktop}>
         <Link to={"/promotion"}>
-          <S.GridBtn ishoveringCTA={isHoveringCTA}
+          <S.GridBtn $isDesktop={isDesktop} ishoveringCTA={isHoveringCTA}
               onMouseOver={handleMouseOver10}
               onMouseOut={handleMouseOut10}>
-            <S.GridBtnText ishoveringCTA={isHoveringCTA}>영캠프 참가하기</S.GridBtnText>
+            <S.GridBtnText $isDesktop={isDesktop} ishoveringCTA={isHoveringCTA}>영캠프 참가하기</S.GridBtnText>
           </S.GridBtn>
         </Link>
         </S.GridBtnFrame>
