@@ -5,15 +5,15 @@ export const Container = styled.div`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: ${(props) => (props.isMobile ? "0px" : "100px")};
+  padding: ${(props) => (props.$isMobile ? "0px" : "100px")};
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  row-gap: ${(props) => (props.isMobile ? "20px" : "50px")};
+  row-gap: ${(props) => (props.$isMobile ? "20px" : "50px")};
 `;
 
-export const TitleSet = styled.div`
+export const TitleWrapper = styled.div`
   width: 100%;
   max-width: 1100px;
   display: flex;
@@ -21,29 +21,11 @@ export const TitleSet = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   padding: ${(props) =>
-    props.isMobile ? "40px 24px" : props.isTablet ? "30px" : "48px"};
+    props.$isMobile ? "40px 24px" : props.$isTablet ? "30px" : "48px"};
   box-sizing: border-box;
   row-gap: 24px;
-  font-family: "Montserrat";
-  margin-bottom: ${(props) => (props.isMobile ? "20px" : "50px")};
-`;
-
-export const Title = styled.div`
-  align-self: stretch;
-  position: relative;
-  letter-spacing: -0.08em;
-  font-weight: 800;
-  font-size: ${(props) =>
-    props.isMobile ? "24px" : props.isTablet ? "30px" : "38px"};
-  color: #0a0b0a;
-`;
-
-export const Subtitle = styled.div`
-  align-self: stretch;
-  position: relative;
-  font-size: ${(props) =>
-    props.isMobile ? "8px" : props.isTablet ? "14px" : "22px"};
-  color: #637d92;
+  font-family: "MonSemiBold";
+  margin-bottom: ${(props) => (props.$isMobile ? "20px" : "50px")};
 `;
 
 export const Textfiled = styled.div`
@@ -53,10 +35,9 @@ export const Textfiled = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: ${(props) => (props.isMobile ? "20px 0px" : "0px 20px")};
+  padding: ${(props) => (props.$isMobile ? "20px 0px" : "0px 20px")};
   box-sizing: border-box;
   text-align: left;
-  font-family: Pretendard;
 `;
 
 export const Textarea = styled.div`
@@ -66,7 +47,7 @@ export const Textarea = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: ${(props) => (props.isMobile ? "0px 24px" : "0px")};
+  padding: ${(props) => (props.$isMobile ? "0px 24px" : "0px")};
   box-sizing: border-box;
   text-align: left;
   row-gap: 20px;
@@ -84,18 +65,18 @@ export const Review = styled.div`
   padding: 20px;
   row-gap: 15px;
   font-size: ${(props) =>
-    props.isMobile ? "16px" : props.isTablet ? "18px" : "20px"};
+    props.$isMobile ? "16px" : props.$isTablet ? "18px" : "20px"};
   line-height: ${(props) =>
-    props.isMobile ? "24px" : props.isTablet ? "28px" : "30px"};
+    props.$isMobile ? "24px" : props.$isTablet ? "28px" : "30px"};
 `;
 
 export const ReviewInput = styled.textarea`
   width: 100%;
-  padding: 12px 16px; /* input 박스 내부 여백 설정 */
+  padding: 12px 16px; /* textarea 박스 내부 여백 설정 */
   color: #000;
   font-size: ${(props) =>
-    props.isMobile ? "12px" : props.isTablet ? "12px" : "20px"};
-  font-family: "Pretendard", sans-serif;
+    props.$isMobile ? "12px" : props.$isTablet ? "12px" : "20px"};
+  font-family: "PretendardRegular", sans-serif;
   font-weight: 400;
   line-height: 30px;
   word-wrap: break-word;
@@ -109,9 +90,9 @@ export const ReviewInput = styled.textarea`
     color: #ced7de;
   }
 
+  // 포커스시 아웃라인 제거 확인 필요.
   :focus {
     outline: none;
-    border-color: transparent;
   }
 `;
 
@@ -186,10 +167,10 @@ export const PhotoButton = styled.div`
   padding: 4px;
   color: #4a5e6d;
   font-size: ${(props) =>
-    props.isMobile ? "14px" : props.isTablet ? "14px" : "20px"};
-  font-family: "Pretendard";
+    props.$isMobile ? "14px" : props.$isTablet ? "14px" : "20px"};
+  font-family: "MonRegular";
   line-height: ${(props) =>
-    props.isMobile ? "18px" : props.isTablet ? "18px" : "24px"};
+    props.$isMobile ? "18px" : props.$isTablet ? "18px" : "24px"};
   font-weight: 600;
   letter-spacing: 0.4px;
   word-wrap: break-word;
@@ -215,7 +196,7 @@ export const PhotoButton = styled.div`
 export const InputButton = styled.button`
   color: #0068ff;
   font-size: 16px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "MonRegular", sans-serif;
   font-weight: 400;
   line-height: 24px;
   word-wrap: break-word;
@@ -227,7 +208,8 @@ export const InputButton = styled.button`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #e7ebef;
+    background-color: #0068ff;
+    color: #ffffff;
   }
 
   &:focus {
@@ -235,7 +217,7 @@ export const InputButton = styled.button`
   }
 `;
 
-//우측 정렬을 위한 wrapper
+// 우측 정렬을 위한 wrapper
 export const PasswordWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -246,24 +228,23 @@ export const PasswordContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px;
-  width: 290px;
+  margin-left: auto; /* 우측 정렬을 위해 추가 */
 `;
 
 export const PasswordLabel = styled.div`
   color: #757575;
   font-size: ${(props) =>
-    props.isMobile ? "12px" : props.isTablet ? "12px" : "16px"};
-  font-family: "Pretendard";
+    props.$isMobile ? "12px" : props.$isTablet ? "12px" : "16px"};
+ font-family: "MonRegular"
   font-weight: 400px;
   line-height: ${(props) =>
-    props.isMobile ? "18px" : props.isTablet ? "18px" : "24px"};
+    props.$isMobile ? "18px" : props.$isTablet ? "18px" : "24px"};
   word-wrap: break-word;
   flex-shrink: 0;
 `;
 
 export const PasswordInput = styled.input`
-  width: 100%;
+  width: 60;
   padding-left: 24px;
   padding-right: 24px;
   padding-top: 12px;
@@ -273,11 +254,11 @@ export const PasswordInput = styled.input`
   border: 1px solid #d9d9d9;
   color: #b3b3b3;
   font-size: ${(props) =>
-    props.isMobile ? "12px" : props.isTablet ? "12px" : "16px"};
-  font-family: "Pretendard";
+    props.$isMobile ? "12px" : props.$isTablet ? "12px" : "16px"};
+  font-family: "MonRegular";
   font-weight: 400px;
   line-height: ${(props) =>
-    props.isMobile ? "18px" : props.isTablet ? "18px" : "24px"};
+    props.$isMobile ? "18px" : props.$isTablet ? "18px" : "24px"};
   word-wrap: break-word;
   box-sizing: border-box;
 

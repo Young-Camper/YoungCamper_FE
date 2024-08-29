@@ -1,4 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+
+//components
+import DeleteModal from "./DeleteModal";
+
+//hooks
+import useMediaQueries from "../../../hooks/useMediaQueries";
+
+//styles
 import trash from "../assets/trash.svg";
 import {
   CommentBox,
@@ -13,28 +21,46 @@ import {
   DeleteText,
   CommentDivider,
   ImageWrapper,
-  // ImagePlaceholder,
 } from "../components/CommentStyle";
-import useMediaQueries from "../../../hooks/useMediaQueries";
 
 const Comment = ({ comment }) => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
 
+  // 삭제 모달 로직
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleDeleteClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleConfirmDelete = () => {
+    // 실제 삭제 로직 추가 예정
+    setIsModalOpen(false);
+  };
+
   return (
-    <CommentBox isMobile={isMobile} isTablet={isTablet} isDesktop={isDesktop}>
+    <CommentBox
+      $isMobile={isMobile}
+      $isTablet={isTablet}
+      $isDesktop={isDesktop}
+    >
       <CommentHeader>
         <CommentNumber
-          isMobile={isMobile}
-          isTablet={isTablet}
-          isDesktop={isDesktop}
+          $isMobile={isMobile}
+          $isTablet={isTablet}
+          $isDesktop={isDesktop}
         >
           {comment.id}
         </CommentNumber>
       </CommentHeader>
       <CommentText
-        isMobile={isMobile}
-        isTablet={isTablet}
-        isDesktop={isDesktop}
+        $isMobile={isMobile}
+        $isTablet={isTablet}
+        $isDesktop={isDesktop}
       >
         {comment.text}
       </CommentText>
@@ -43,9 +69,9 @@ const Comment = ({ comment }) => {
       {comment.image && (
         <CommentContent>
           <ImageWrapper
-            isMobile={isMobile}
-            isTablet={isTablet}
-            isDesktop={isDesktop}
+            $isMobile={isMobile}
+            $isTablet={isTablet}
+            $isDesktop={isDesktop}
             image={comment.image}
           >
             {/* <ImagePlaceholder>+</ImagePlaceholder> */}
@@ -55,26 +81,32 @@ const Comment = ({ comment }) => {
 
       <CommentFooter>
         <CommentDate
-          isMobile={isMobile}
-          isTablet={isTablet}
-          isDesktop={isDesktop}
+          $isMobile={isMobile}
+          $isTablet={isTablet}
+          $isDesktop={isDesktop}
         >
           {comment.date}
         </CommentDate>
         <CommentActions>
-          <DeleteIconContainer>
+          <DeleteIconContainer onClick={handleDeleteClick}>
             <img src={trash} alt="Delete Icon" width="17" height="17" />
           </DeleteIconContainer>
           <DeleteText
-            isMobile={isMobile}
-            isTablet={isTablet}
-            isDesktop={isDesktop}
+            $isMobile={isMobile}
+            $isTablet={isTablet}
+            $isDesktop={isDesktop}
           >
             삭제
           </DeleteText>
         </CommentActions>
       </CommentFooter>
       <CommentDivider />
+      {isModalOpen && (
+        <DeleteModal
+          onClose={handleCloseModal}
+          onConfirm={handleConfirmDelete}
+        />
+      )}
     </CommentBox>
   );
 };

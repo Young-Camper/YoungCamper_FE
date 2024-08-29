@@ -16,14 +16,14 @@ export const CommentsContainer = styled.div`
 export const CommentBox = styled.div`
   width: 100%;
   max-width: 1020px;
-  padding: ${(props) => (props.isMobile ? "12px" : "10px")};
+  padding: ${(props) => (props.$isMobile ? "12px" : "10px")};
   background: white;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: ${(props) => (props.isMobile ? "20px" : "24px")};
+  gap: ${(props) => (props.$isMobile ? "20px" : "24px")};
 `;
 
 export const CommentHeader = styled.div`
@@ -34,21 +34,21 @@ export const CommentHeader = styled.div`
 
 export const CommentNumber = styled.div`
   color: #4a5e6d;
-  font-size: ${(props) => (props.isMobile ? "14px" : "20px")};
-  font-family: "Montserrat";
+  font-size: ${(props) => (props.$isMobile ? "14px" : "20px")};
+  font-family: "MonSemiBold"
   font-weight: 400;
   line-height: 30px;
-  font-size: ${(props) => (props.isMobile ? "14px" : "20px")};
+  font-size: ${(props) => (props.$isMobile ? "14px" : "20px")};
   word-wrap: break-word;
 `;
 
 export const CommentText = styled.div`
   align-self: stretch;
   color: #4a5e6d;
-  font-size: ${(props) => (props.isMobile ? "12px" : "22px")};
-  font-family: "Pretendard";
+  font-size: ${(props) => (props.$isMobile ? "12px" : "22px")};
+  font-family: "PretendardRegular";
   font-weight: 400;
-  line-height: ${(props) => (props.isMobile ? "20px" : "30px")};
+  line-height: ${(props) => (props.$isMobile ? "20px" : "30px")};
   word-wrap: break-word;
 `;
 
@@ -66,10 +66,10 @@ export const CommentDate = styled.div`
   align-items: center;
   display: flex;
   color: #92a5b5;
-  font-size: ${(props) => (props.isMobile ? "12px" : "16px")};
-  font-family: "Montserrat", sans-serif;
+  font-size: ${(props) => (props.$isMobile ? "12px" : "16px")};
+  font-family: "MonRegular", sans-serif;
   font-weight: 400;
-  line-height: ${(props) => (props.isMobile ? "18px" : "24px")};
+  line-height: ${(props) => (props.$isMobile ? "18px" : "24px")};
 
   word-wrap: break-word;
 `;
@@ -94,10 +94,10 @@ export const DeleteIconContainer = styled.div`
 
 export const DeleteText = styled.div`
   color: #4a5e6d;
-  font-size: ${(props) => (props.isMobile ? "12px" : "16px")};
-  font-family: "Montserrat", sans-serif;
+  font-size: ${(props) => (props.$isMobile ? "12px" : "16px")};
+  font-family: "MonRegular", sans-serif;
   font-weight: 400;
-  line-height: ${(props) => (props.isMobile ? "18px" : "24px")};
+  line-height: ${(props) => (props.$isMobile ? "18px" : "24px")};
   word-wrap: break-word;
 `;
 
@@ -108,8 +108,8 @@ export const CommentDivider = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
-  width: ${(props) => (props.isMobile ? "75px" : "107px")};
-  height: ${(props) => (props.isMobile ? "75px" : "107px")};
+  width: ${(props) => (props.$isMobile ? "75px" : "107px")};
+  height: ${(props) => (props.$isMobile ? "75px" : "107px")};
   border-radius: 8px;
   border: 1px solid #ced7de;
   background-size: cover;
