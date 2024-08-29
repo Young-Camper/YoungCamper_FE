@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import MainTitle from "../../components/ui/MainTitle";
 import Section from "./Section";
+import Pagenation from "../FAQ/Pagenation";
 import { studentCommitteeProfiles, youngCamperProfiles } from "../../data/profileData";
 import * as S from "./style";
 import useMediaQueries from "../../hooks/useMediaQueries";
 
 const index = () => {
   const [activeTab, setActiveTab] = useState('students'); // 초기 활성 탭 설정
-  const { isDesktop } = useMediaQueries();
+  const [currentPage, setCurrentPage] = useState(1);
+  const { isDesktop, isTablet, isMobile } = useMediaQueries();
 
   // 탭에 따라 프로필 데이터를 선택
   const profilesToDisplay = activeTab === 'students' 
@@ -19,6 +21,13 @@ const index = () => {
   ? "영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다." 
   : "영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다.";
 
+  const itemsPerPage = 9; // 페이지당 항목 수
+  const indexOfLastProfile = currentPage * itemsPerPage;
+  const indexOfFirstProfile = indexOfLastProfile - itemsPerPage;
+  const currentProfiles = profilesToDisplay.slice(indexOfFirstProfile, indexOfLastProfile);
+  const totalProfiles = profilesToDisplay.length;
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -44,8 +53,17 @@ const index = () => {
         <Section 
           title={activeTab === 'students' ? "학생 기획 위원단" : "영캠퍼"}
           subtitle={subtitle}
-          profiles={profilesToDisplay} 
+          profiles={isDesktop ? profilesToDisplay : currentProfiles}
         />
+
+        {(isTablet || isMobile) && (
+          <Pagenation
+            itemsPerPage={itemsPerPage}
+            currentPage={currentPage}
+            totalItems={totalProfiles}
+            paginate={paginate}
+          />
+        )}
       </S.ContentWrapper>
     </>
   );
