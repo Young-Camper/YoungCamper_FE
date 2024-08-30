@@ -27,7 +27,10 @@ const index = () => {
   const currentProfiles = profilesToDisplay.slice(indexOfFirstProfile, indexOfLastProfile);
   const totalProfiles = profilesToDisplay.length;
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 328, behavior: "smooth" });
+  }
 
   return (
     <>
