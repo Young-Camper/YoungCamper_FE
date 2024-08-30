@@ -1,19 +1,32 @@
-import React from "react";
-import MainTitle from "../../../components/ui/MainTitle";
+import React, { useState } from "react";
 import { ContentWrapper } from "../../../style/commonStyle";
-import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Search from "./Search";
+import Content from "./Content";
+import MainTitle from "../../../components/ui/MainTitle";
+
+const Wrapper = styled.div`
+  width: 100%;
+`;
 
 const index = () => {
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  const handleSearch = (keyword) => {
+    setSearchKeyword(keyword);
+  };
+
   return (
-    <ContentWrapper>
-      <MainTitle title="공지" />
-      <Link to={"/notification/1"}>1번 디테일 페이지</Link>
-      <br />
-      <Link to={"/notification/2"}>2번 디테일 페이지</Link>
-      <br />
-      <Link to={"/notification/3"}>3번 디테일 페이지</Link>
-      <br />
-    </ContentWrapper>
+    <Wrapper>
+      <MainTitle
+        mainText="공지사항"
+        subText="아래 내용을 꼭 확인하시고, 모두가 즐거운 축제가 되도록 함께해 주세요!"
+      />
+      <ContentWrapper>
+        <Search onSearch={handleSearch} />
+        <Content keyword={searchKeyword} />
+      </ContentWrapper>
+    </Wrapper>
   );
 };
 
