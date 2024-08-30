@@ -6,10 +6,14 @@ import ClubInfo from "./ClubInfo";
 import Notice from "./Notice";
 import Social from "./Social";
 import CTABanner from "./CTABanner";
+import * as S from "./HomeStyle";
+import styled from "styled-components";
+
 
 const index = () => {
 
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
+  
 
   return (
     <>
@@ -19,7 +23,7 @@ const index = () => {
     <Notice />
     <Social />
     <CTABanner />
-</>
+    </>
   )  
 } 
 

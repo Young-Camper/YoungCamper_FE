@@ -5,6 +5,9 @@ import useMediaQueries from "../../hooks/useMediaQueries";
 
 const HomeTitle = () => {
   const [titleHover, setTitleHover] = useState({
+    young: false,
+    camp: false,
+    festival: false,
     date: false,
     place: false,
     with: false,
@@ -22,62 +25,100 @@ const HomeTitle = () => {
 
   return (
     <S.TitleSection $isTablet={isTablet} $isDesktop={isDesktop}>
-     
-        <S.TitleSpaceSet $isTablet={isTablet}> 
-          <S.SpaceBoxTop $isTablet={isTablet}>
-            <S.SpaceImgBox>
-              <S.SpacePortal $isTablet={isTablet} $isMobile={isMobile} src=".\src\assets\images\Home\Portal.png" />
-            </S.SpaceImgBox>
-          </S.SpaceBoxTop>
+      <S.TitleSpaceSet $isTablet={isTablet} $isMobile={isMobile}>
+        <S.SpaceBoxTop $isTablet={isTablet}>
+          <S.SpaceImgBox>
+            <S.SpacePortal
+              $isTablet={isTablet}
+              $isMobile={isMobile}
+              src=".\src\assets\images\Home\Portal.png"
+            />
+          </S.SpaceImgBox>
+        </S.SpaceBoxTop>
+        {/* <S.TitlePoster $isDesktop={isDesktop}></S.TitlePoster> 주인공포스터 반영 예정 */}
+        <S.TitleMainSet $isTablet={isTablet} $isDesktop={isDesktop}>
+          <S.TitleBox
+            $isTablet={isTablet}
+            $isDesktop={isDesktop}
+            onMouseOver={() => handleMouseOver("young")}
+            onMouseOut={() => handleMouseOut("young")}
+            ishoveringYoung={titleHover.young}
+          >
+            <S.TextBox
+              $isTablet={isTablet}
+              $isMobile={isMobile}
+              $isDesktop={isDesktop}
+            >
+              {/* <S.TitleImg $isDesktop={isDesktop} src=".\src\assets\images\Home\Dawn.png" /> */}
+              <S.TitleText
+                ishoveringYoung={titleHover.young}
+                $isTablet={isTablet}
+                $isDesktop={isDesktop}
+              >
+                YOUNG
+              </S.TitleText>
+              {isDesktop && (
+                <S.TitleImg
+                  $isDesktop={isDesktop}
+                  ishoveringYoung={titleHover.young}
+                  src=".\src\assets\images\Home\Portal.png"
+                />
+              )}
+            </S.TextBox>
+          </S.TitleBox>
+          <S.TitleBox
+            $isTablet={isTablet}
+            $isDesktop={isDesktop}
+            onMouseOver={() => handleMouseOver("camp")}
+            onMouseOut={() => handleMouseOut("camp")}
+            ishoveringCamp={titleHover.camp}
+          >
+            <S.TextBox2
+              $isTablet={isTablet}
+              $isMobile={isMobile}
+              $isDesktop={isDesktop}
+            >
+              {/* <S.Rectangle></S.Rectangle> */}
+              <S.TitleText
+                ishoveringCamp={titleHover.camp}
+                $isTablet={isTablet}
+                $isDesktop={isDesktop}
+              >
+                CAMP
+              </S.TitleText>
+              {/* {isDesktop && (
+                <S.TitleImg
+                  $isDesktop={isDesktop}
+                  src=".\src\assets\images\Home\Dawn.png"
+                />
+              )} */}
+            </S.TextBox2>
+          </S.TitleBox>
+          <S.TitleBox
+            $isTablet={isTablet}
+            $isDesktop={isDesktop}
+            onMouseOver={() => handleMouseOver("festival")}
+            onMouseOut={() => handleMouseOut("festival")}
+            ishoveringFestival={titleHover.festival}
+          >
+            <S.TextBox
+              $isTablet={isTablet}
+              $isMobile={isMobile}
+              $isDesktop={isDesktop}
+            >
+              <S.TitleText
+                ishoveringFestival={titleHover.festival}
+                $isTablet={isTablet}
+                $isDesktop={isDesktop}
+              >
+                FESTIVAL
+              </S.TitleText>
+            </S.TextBox>
+          </S.TitleBox>
+          {(isTablet || isMobile) && <S.SpaceBoxBottom $isTablet={isTablet} />}
+        </S.TitleMainSet>
+      </S.TitleSpaceSet>
 
-          <S.TitleMainSet $isTablet={isTablet} $isDesktop={isDesktop}>
-            <S.TitleBox $isTablet={isTablet} $isDesktop={isDesktop}>
-              <S.TextBox
-                $isTablet={isTablet}
-                $isMobile={isMobile}
-                $isDesktop={isDesktop}
-              >
-                {/* <S.TitleImg $isDesktop={isDesktop} src=".\src\assets\images\Home\Dawn.png" /> */}
-                <S.TitleText $isTablet={isTablet} $isDesktop={isDesktop}>
-                  YOUNG
-                </S.TitleText>
-                {isDesktop && (
-                  <S.TitleImg $isDesktop={isDesktop} src=".\src\assets\images\Home\Portal.png" />
-                )}
-              </S.TextBox>
-            </S.TitleBox>
-            <S.TitleBox $isTablet={isTablet} $isDesktop={isDesktop}>
-              <S.TextBox
-                $isTablet={isTablet}
-                $isMobile={isMobile}
-                $isDesktop={isDesktop}
-              >
-                {/* <S.Rectangle></S.Rectangle> */}
-                <S.TitleText $isTablet={isTablet} $isDesktop={isDesktop}>
-                  CAMP
-                </S.TitleText>
-                {isDesktop && (
-                  <S.TitleImg $isDesktop={isDesktop} src=".\src\assets\images\Home\Dawn.png" />
-                )}
-              </S.TextBox>
-            </S.TitleBox>
-            <S.TitleBox $isTablet={isTablet} $isDesktop={isDesktop}>
-              <S.TextBox
-                $isTablet={isTablet}
-                $isMobile={isMobile}
-                $isDesktop={isDesktop}
-              >
-                <S.TitleText $isTablet={isTablet} $isDesktop={isDesktop}>
-                  FESTIVAL
-                </S.TitleText>
-              </S.TextBox>
-            </S.TitleBox>
-            {(isTablet || isMobile) && (
-              <S.SpaceBoxBottom $isTablet={isTablet} />
-            )}
-          </S.TitleMainSet>
-        </S.TitleSpaceSet>
-      
       <S.TitleListSet $isTablet={isTablet} $isDesktop={isDesktop}>
         <S.TitleList
           $isTablet={isTablet}
@@ -162,7 +203,8 @@ const HomeTitle = () => {
               ></S.ArrowImg>
             </Link>
           </S.ArrowImgBox>
-        </S.TitleList> <S.TitleLine></S.TitleLine>
+        </S.TitleList>{" "}
+        <S.TitleLine></S.TitleLine>
       </S.TitleListSet>
     </S.TitleSection>
   );
