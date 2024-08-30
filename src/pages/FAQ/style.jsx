@@ -60,7 +60,7 @@ export const FAQText1 = styled.div`
   font-family: ${(props) => (props.isDesktop ? "PretendardRegular" : "MonRegular")};
   font-size: ${(props) => (props.isDesktop ? "24px" : "18px")};
   font-weight: ${(props) => (props.isDesktop ? "600" : "400")};
-  line-height: ${(props) => (props.isDesktop ? "28px" : "22px")};
+  line-height: ${(props) => (props.isDesktop ? "32px" : "22px")};
   letter-spacing: ${(props) => (props.isDesktop ? "0.48px" : "-0.09px")};
 `;
 
@@ -69,7 +69,7 @@ export const FAQText2 = styled.div`
   font-family: ${(props) => (props.isDesktop ? "PretendardRegular" : "MonRegular")};
   font-size: ${(props) => (props.isDesktop ? "24px" : "18px")};
   font-weight: ${(props) => (props.isDesktop ? "600" : "400")};
-  line-height: ${(props) => (props.isDesktop ? "28px" : "22px")};
+  line-height: ${(props) => (props.isDesktop ? "32px" : "24px")};
   letter-spacing: ${(props) => (props.isDesktop ? "0.48px" : "-0.09px")};
 `;
 
@@ -97,10 +97,9 @@ export const PagenationWrapper = styled.div`
   width: 100%;
   padding: 20px 0px;
   justify-content: center;
-  gap: 20px;
+  gap: 8px;
 
     button {
-      margin: 0 5px;
       padding: 10px 15px;
       background-color: #fff;
       cursor: pointer;
