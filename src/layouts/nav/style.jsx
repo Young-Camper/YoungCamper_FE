@@ -6,9 +6,7 @@ export const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     padding: 19px 20px;
-    border-radius: 5px;
     overflow: hidden;
-    border: 1px #9747FF dotted;
     display: inline-flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -148,7 +146,7 @@ export const LogoEn = styled.img`
     height: 76.13px;
   }
   @media only screen and (max-width: 768px) {
-    /* width: 72px; */
+    width: 72px;
     height: 26px; 
   }
   @media only screen and ((min-width: 769px) and (max-width: 1023px)){
@@ -164,7 +162,6 @@ export const StyledLink = styled(Link)`
   line-height: 24px;
   word-wrap: break-word;
   text-align: center;
-
   justify-content: center;
   align-items: center;
   gap: 4px;
@@ -179,13 +176,7 @@ export const StyledLink = styled(Link)`
     font-weight: 400;
     line-height: 32px;
     word-wrap: break-word;
-
-    background-image: url(${props => props.image});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: none;
-    cursor: pointer;
+    gap: 12px;
   }
 `;
 
@@ -535,7 +526,7 @@ export const SideNavIconContainer = styled.div`
   align-items: center;
 `;
 
-export const SideNavSnsIcon = styled.button`
+export const SideNavSnsIcon = styled.div`
   width: 24px;
   height: 24px;
   background-image: url(${props => props.icon});

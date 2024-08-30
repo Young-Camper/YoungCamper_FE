@@ -48,7 +48,7 @@ const Nav = () => {
     </S.Wrapper> }
     {isTablet && 
       <S.Wrapper>
-      <S.Container>
+      {/* <S.Container>
         <S.FlexContainer>
           {modalOpen && (
             <S.ModalContainer>
@@ -91,8 +91,9 @@ const Nav = () => {
             </S.MenubarWrapper>
           </S.MenubarContainer>
         </S.FlexContainer>
-      </S.Container>
-  </S.Wrapper>}
+      </S.Container> */}
+  </S.Wrapper>
+  }
     
     {isMobile && 
     <S.Wrapper>
@@ -119,9 +120,11 @@ const Nav = () => {
                     <S.StyledLink to={"/notification"} onClick={()=> setModalOpen(false)}>공지</S.StyledLink>     
                   </S.SideNavLink>
                   <S.SideNavLink>
-                    <S.StyledLink to={"/promotion"} image={SideNav} onClick={()=> setModalOpen(false)}>SideNav</S.StyledLink> 
-                    <S.StyledLink to={"/promotion"} onClick={()=> setModalOpen(false)}>동아리</S.StyledLink>
-                    <S.StyledLink to={"/promotion"} image={SideNav} onClick={()=> setModalOpen(false)}>SideNav</S.StyledLink> 
+                    <S.StyledLink to={"/promotion"} onClick={()=> setModalOpen(false)}>
+                      <img src={SideNav} width={'44px'} height={'44px'}/>
+                      동아리
+                      <img src={SideNav} width={'44px'} height={'44px'}/>
+                    </S.StyledLink>
                   </S.SideNavLink>
                   <S.SideNavLink>
                     <S.StyledLink to={"/location"} onClick={()=> setModalOpen(false)}>장소</S.StyledLink>
