@@ -152,11 +152,14 @@ const Nav = () => {
                 </S.SideNavLang>
                 <S.SideNavSNS>
                   <S.SideNavIconContainer>
-
-                    {/* 링크 넣어줘야지함 */}
-                    
-                    <S.SideNavSnsIcon icon = {Instagram} />  
-                    <S.SideNavSnsIcon icon = {Youtube} />
+                    {/* 인스타 */}
+                    <a href="https://www.instagram.com/youngcamp_dgu" target="_blank" rel="noopener noreferrer">  
+                      <S.SideNavSnsIcon icon = {Instagram} />  
+                    </a>  
+                    {/* 유튜브 */}
+                    <a href="https://www.youtube.com/@youngcamp_dgu" target="_blank" rel="noopener noreferrer">  
+                      <S.SideNavSnsIcon icon = {Youtube} />  
+                    </a>      
                   </S.SideNavIconContainer>
                 </S.SideNavSNS>
               </S.SideNavEtc>
