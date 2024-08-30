@@ -17,6 +17,9 @@ export const SearchContainer = styled.div`
   background-color: #fafafa;
   padding: 16px;
   border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const SearchInput = styled.input`
