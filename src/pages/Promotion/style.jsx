@@ -35,7 +35,7 @@ export const CardContainer = styled.div`
     overflow: hidden;
     text-align: left;
     height: 279px;
-    font-family: Montserrat;
+    font-family: "MonRegular";
     font-size: 28px;
     font-style: normal;
     font-weight: 400;
@@ -105,11 +105,10 @@ export const SchoolBadge = styled.div`
     position: absolute;
     bottom: 72px;
     left: 36px;
-    font-family: Montserrat;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
     letter-spacing: -0.04px;
 `;
 
@@ -194,6 +193,7 @@ export const BackText = styled.span`
         ? "22px"
         : "14px"};
     font-weight: 400;
+    font-family: "MonRegular";
     color: #000; 
 `;
 
@@ -221,10 +221,11 @@ export const SchoolBadgeDetail = styled.div`
     border-radius: 100px;
     border: 1px solid #000;
     display: inline-block;
+    font-family: "MonRegular";
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 150% */
+    line-height: 24px; 
     letter-spacing: -0.04px;
     margin-bottom: 36px;
     color: #0A0B0A; 
@@ -237,6 +238,7 @@ export const TextAndButton = styled.div`
 `;
 
 export const SchoolText = styled.div`
+    font-family: "MonExtraBold";
     font-size: 38px;
     font-style: normal;
     font-weight: 800;
@@ -250,6 +252,7 @@ export const CTAButton = styled.a`
     display: flex;
     flex-direction: row;
     align-items: center;
+    font-family: "MonRegular";
     font-size: ${(props) => (props.$isDesktop ? '20px' : '8.87px')};
     font-style: normal;
     font-weight: 400;
@@ -287,11 +290,13 @@ export const TextGroup = styled.div`
 `;
 
 export const Title = styled.h2`
+    font-family: "MonSemiBold";
     font-size: ${(props) => (props.$isDesktop ? "24px" : "20px")};
     margin-bottom: ${(props) => (props.$isDesktop ? "28px" : "12px")};
 `;
 
 export const Content = styled.p`
+    font-family: "MonRegular";
     font-size: ${(props) => (props.$isDesktop ? "16px" : "14px")};
     line-height: 1.5;
 `;
@@ -316,6 +321,7 @@ export const ApplyButton = styled.div `
     border-radius: 100px;
     border: 1px solid #000;
     background: var(--Base-Real-White, #FFF);
+    font-family: "MonRegular";
     font-style: normal;
     font-weight: 400;
     font-size: ${(props)=> props.$isDesktop? "22px":"12px"};
