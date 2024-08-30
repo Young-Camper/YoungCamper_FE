@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as S from "../style";
+import * as S from "../style";
 import useMediaQueries from '../../../hooks/useMediaQueries';
 import clubData from "../../../data/clubData.json";
 import ClubCard from './ClubCard';
@@ -33,7 +33,7 @@ const Club = () => {
 
     return (
         <>
-            <S.gridContainer isMobile={isMobile} isTablet={isTablet}>
+            <S.gridContainer $isMobile={isMobile} $isTablet={isTablet}>
                 {currentItems.map((club) => (
                     <ClubCard key={club.id} club={club} />
                 ))}
