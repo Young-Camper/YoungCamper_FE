@@ -12,42 +12,34 @@ const Content = ({ keyword }) => {
   const maxPage = 5;
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
 
-  const urgentItems = data.filter((item) => item.urgent === "yes");
-  const regularItems = data.filter((item) => item.urgent !== "yes");
-
-  const filteredUrgentItems = urgentItems.filter(
+  // 공지사항 필터링 (긴급 및 일반 공지)
+  const filteredUrgentItems = data.filter(
     (item) =>
-      (item.title &&
-        item.title.toLowerCase().includes(keyword.toLowerCase())) ||
-      (item.content &&
+      item.urgent === "yes" &&
+      (item.title.toLowerCase().includes(keyword.toLowerCase()) ||
         item.content.toLowerCase().includes(keyword.toLowerCase()))
   );
 
-  const filteredRegularItems = regularItems.filter(
+  const filteredRegularItems = data.filter(
     (item) =>
-      (item.title &&
-        item.title.toLowerCase().includes(keyword.toLowerCase())) ||
-      (item.content &&
+      item.urgent !== "yes" &&
+      (item.title.toLowerCase().includes(keyword.toLowerCase()) ||
         item.content.toLowerCase().includes(keyword.toLowerCase()))
   );
 
+  // 필터링된 공지사항을 합침 (긴급 공지사항이 상단에 고정되도록)
   const filteredItems = [...filteredUrgentItems, ...filteredRegularItems];
 
   const getCurrentPageItems = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
-    const urgentCount = urgentItems.length;
-    const regularItemsForCurrentPage = filteredRegularItems.slice(
-      startIndex,
-      startIndex + Math.max(itemsPerPage - urgentCount, 0)
-    );
-    return [...urgentItems, ...regularItemsForCurrentPage];
+    const endIndex = startIndex + itemsPerPage;
+
+    return filteredItems.slice(startIndex, endIndex);
   };
 
-  const totalPages = Math.ceil(
-    (filteredRegularItems.length + urgentItems.length) / itemsPerPage
-  );
-
   const currentItems = getCurrentPageItems();
+
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
 
   const startPage = Math.max(
     1,
@@ -92,23 +84,11 @@ const Content = ({ keyword }) => {
         gap="0px"
       />
       <S.ContentContainer>
-        {filteredUrgentItems.slice(0, itemsPerPage).map((item) => (
-          <Link to={`/notification/${item.num}`} key={item.num}>
-            <Subtitle
-              num={<Urgent />}
-              title={item.title}
-              date={item.date}
-              fontSize={isDesktop ? "24px" : "18px"}
-              isDesktop={isDesktop}
-              isTablet={isTablet}
-            />
-          </Link>
-        ))}
-        {filteredItems.length > 0 ? (
-          currentItems.slice(urgentItems.length).map((item) => (
-            <Link to={`/notification/${item.num}`} key={item.num}>
+        {currentItems.length > 0 ? (
+          currentItems.map((item, index) => (
+            <Link to={`/notification/${item.num}`} key={`${item.num}-${index}`}>
               <Subtitle
-                num={item.num}
+                num={item.urgent === "yes" ? <Urgent /> : item.num}
                 title={item.title}
                 date={item.date}
                 fontSize={isDesktop ? "24px" : "18px"}
