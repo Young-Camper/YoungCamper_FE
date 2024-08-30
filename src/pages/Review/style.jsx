@@ -216,6 +216,27 @@ export const InputButton = styled.button`
     outline: none;
   }
 `;
+export const ImagePreviewContainer = styled.div`
+  display: ${(props) => (props.$isMobile ? "grid" : "flex")};
+  grid-template-columns: ${(props) =>
+    props.$isMobile ? "repeat(3, 1fr)" : "none"};
+  gap: 10px;
+  margin-top: 10px;
+`;
+
+export const ImagePreviewBox = styled.div`
+  width: ${(props) => (props.$isMobile ? "75px" : "107px")};
+  height: ${(props) => (props.$isMobile ? "75px" : "107px")};
+  border-radius: 8px;
+  border: 1px solid #ced7de;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-image: ${({ image }) => (image ? `url(${image})` : "none")};
+`;
 
 // 우측 정렬을 위한 wrapper
 export const PasswordWrapper = styled.div`
