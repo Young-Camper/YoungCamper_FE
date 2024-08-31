@@ -13,7 +13,6 @@ import styled from "styled-components";
 const index = () => {
 
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
-  
 
   return (
     <>
@@ -23,8 +22,18 @@ const index = () => {
     <Notice />
     <Social />
     <CTABanner />
+
     </>
   )  
 } 
 
 export default index;
+
+
+
+
+<div class="animated-title">
+  <div class="track">
+    <div class="content">&nbsp;moho design template glad&nbsp;moho design template glad&nbsp;moho design template glad&nbsp;moho design template glad&nbsp;moho design template glad&nbsp;moho design template glad</div>
+  </div>
+</div>

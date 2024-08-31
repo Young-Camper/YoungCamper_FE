@@ -18,7 +18,7 @@ const ClubInfo = () =>  {
 
   return (
     <S.ClubInfoSection $isTablet={isTablet} $isDesktop={isDesktop}>
-      <S.ClubInfoBox $isDesktop={isDesktop} >
+      
         <S.ClubTitleBox $isTablet={isTablet} $isDesktop={isDesktop}>
           <S.ClubTitle $isDesktop={isDesktop}>영캠프 동아리와 함께해보세요</S.ClubTitle>
         </S.ClubTitleBox>
@@ -30,11 +30,11 @@ const ClubInfo = () =>  {
             <S.ClubBtnBox $isTablet={isTablet} $isDesktop={isDesktop} ishoveringClub={isHoveringClub}
               onMouseOver={handleMouseOver4}
               onMouseOut={handleMouseOut4} >
-              <S.ClubBtnText $isDesktop={isDesktop} $isTablet={isTablet} ishoveringClub={isHoveringClub}>동아리 보러가기</S.ClubBtnText>
+              <S.ClubBtnText $isDesktop={isDesktop} ishoveringClub={isHoveringClub}>동아리 보러가기</S.ClubBtnText>
             </S.ClubBtnBox>
             </Link>
         </S.ClubFrameBox>
-      </S.ClubInfoBox>
+      
     </S.ClubInfoSection>
   )
 }

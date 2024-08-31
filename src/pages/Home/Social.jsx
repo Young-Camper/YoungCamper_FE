@@ -4,10 +4,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import useMediaQueries from "../../hooks/useMediaQueries";
+import social from "../../data/social";
+
+const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
 const Social = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
-
   const settings = {
     dots: false,
     infinite: false,
@@ -27,60 +29,29 @@ const Social = () => {
         <S.SocialBottom $isTablet={isTablet} $isDesktop={isDesktop}>
           <S.SocialSliderBox $isDesktop={isDesktop}>
             <Slider {...settings}>
-              <S.SocialFrame $isTablet={isTablet} $isDesktop={isDesktop}>{/*영캠프 인스타그램*/}
-                <S.FrameCard $isDesktop={isDesktop}>
-                  <S.InstaBg $isDesktop={isDesktop}>
-                    <S.InstaIcon $isDesktop={isDesktop}></S.InstaIcon>
-                  </S.InstaBg>
-                  <S.FrameBox $isDesktop={isDesktop}>
-                    <S.FrameText $isDesktop={isDesktop}>
-                      Youngcamp Instagram
-                    </S.FrameText>
-                    <S.FrameImg $isDesktop={isDesktop}>
-                      <S.ArrowImg2
+             {social.map((social, index) => (
+                <S.SocialFrame $isTablet={isTablet} $isDesktop={isDesktop}>
+                  <S.FrameCard $isDesktop={isDesktop}>
+                    <S.InstaBg $isDesktop={isDesktop} >
+                      <S.InstaIcon
+                        maskImage={social.image}
+                      >  </S.InstaIcon> {/*이미지파일*/}
+                    </S.InstaBg>
+                    <S.FrameBox $isDesktop={isDesktop}>
+                      <S.FrameText $isDesktop={isDesktop}>{social.name}</S.FrameText>
+                      <S.FrameImg 
                         $isDesktop={isDesktop}
-                        src=".\src\assets\images\Home\Arrow_B.png"
-                      />
-                    </S.FrameImg>
-                  </S.FrameBox>
-                </S.FrameCard>
-              </S.SocialFrame>
-              <S.SocialFrame $isTablet={isTablet} $isDesktop={isDesktop}>{/*동국대 인스타그램*/}
-                <S.FrameCard $isDesktop={isDesktop}>
-                  <S.InstaBg $isDesktop={isDesktop}>
-                    <S.InstaIcon $isDesktop={isDesktop}></S.InstaIcon>
-                  </S.InstaBg>
-                  <S.FrameBox $isDesktop={isDesktop}>
-                    <S.FrameText $isDesktop={isDesktop}>
-                      Dongguk Univ Instagram
-                    </S.FrameText>
-                    <S.FrameImg $isDesktop={isDesktop}>
-                      <S.ArrowImg2
-                        $isDesktop={isDesktop}
-                        src=".\src\assets\images\Home\Arrow_B.png"
-                      />
-                    </S.FrameImg>
-                  </S.FrameBox>
-                </S.FrameCard>
-              </S.SocialFrame>
-              <S.SocialFrame $isTablet={isTablet} $isDesktop={isDesktop}>{/*동국대 홈페이지*/}
-                <S.FrameCard $isDesktop={isDesktop}>
-                  <S.InstaBg $isDesktop={isDesktop}>
-                    <S.WebIcon $isDesktop={isDesktop}></S.WebIcon>
-                  </S.InstaBg>
-                  <S.FrameBox $isDesktop={isDesktop}>
-                    <S.FrameText $isDesktop={isDesktop}>
-                      Dongguk Univ Website
-                    </S.FrameText>
-                    <S.FrameImg $isDesktop={isDesktop}>
-                      <S.ArrowImg2
-                        $isDesktop={isDesktop}
-                        src=".\src\assets\images\Home\Arrow_B.png"
-                      />
-                    </S.FrameImg>
-                  </S.FrameBox>
-                </S.FrameCard>
-              </S.SocialFrame>
+                        href={social.link} target="_blank" rel="noopener noreferrer">
+                          <S.ArrowImg2
+                          $isDesktop={isDesktop}
+                          src={`${mediaUrl}Home/Arrow_B.png`} />
+                          
+                      </S.FrameImg>
+                    </S.FrameBox>
+                  </S.FrameCard>
+                </S.SocialFrame>
+              ))}
+
             </Slider>
           </S.SocialSliderBox>
         </S.SocialBottom>

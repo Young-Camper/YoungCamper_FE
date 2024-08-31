@@ -20,28 +20,22 @@ const Notice = () => {
 
   return (
     <S.NoticeSection $isTablet={isTablet} $isDesktop={isDesktop}>
-      <S.NoticeContent $isDesktop={isDesktop}>
         <S.NoticeTitleSet $isTablet={isTablet} $isDesktop={isDesktop}>
           <S.NoticeTitleText $isTablet={isTablet} $isDesktop={isDesktop}>
             주요 공지사항을 확인해보세요
           </S.NoticeTitleText>
           <Link to={"/notification"}>
-            <S.NoticeBtnBox
-              $isTablet={isTablet}
-              $isDesktop={isDesktop}
-              ishovering={hoveredIndex === "button"}
-              onMouseOver={() => handleMouseOver("button")}
-              onMouseOut={handleMouseOut}
-            >
               {isDesktop && (
                 <S.NoticeBtn
+                  $isTablet={isTablet}
                   $isDesktop={isDesktop}
                   ishovering={hoveredIndex === "button"}
+                  onMouseOver={() => handleMouseOver("button")}
+                  onMouseOut={handleMouseOut}
                 >
                   더 알아보기
                 </S.NoticeBtn>
               )}
-            </S.NoticeBtnBox>
           </Link>
         </S.NoticeTitleSet>
         <S.NoticeListSet $isDesktop={isDesktop}>
@@ -84,22 +78,25 @@ const Notice = () => {
               </Link>
             </S.NoticeListFrame>
           ))}
-          <Link to={"/notification"}>
+         
+        </S.NoticeListSet>
+        
             {(isTablet || isMobile) && (
-              <S.NoticeBtnBox $isTablet={isTablet} $isDesktop={isDesktop}>
-                <S.NoticeBtn
+              <S.NoticeBtnBox><S.NoticeBtn
                   $isDesktop={isDesktop}
+                  $isTablet={isTablet}
                   ishovering={hoveredIndex === "button"}
                 >
                   더 알아보기
-                </S.NoticeBtn>
-              </S.NoticeBtnBox>
+                </S.NoticeBtn></S.NoticeBtnBox>
+                 
             )}
-          </Link>
-        </S.NoticeListSet>
-      </S.NoticeContent>
+          
     </S.NoticeSection>
   );
 };
 
 export default Notice;
+
+{/* <Link to={"/notification"}>
+</Link> */}

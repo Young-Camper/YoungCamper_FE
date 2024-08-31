@@ -3,6 +3,8 @@ import * as S from "./HomeStyle";
 import { Link } from "react-router-dom";
 import useMediaQueries from "../../hooks/useMediaQueries";
 
+const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+
 const HomeTitle = () => {
   const [titleHover, setTitleHover] = useState({
     young: false,
@@ -31,12 +33,15 @@ const HomeTitle = () => {
             <S.SpacePortal
               $isTablet={isTablet}
               $isMobile={isMobile}
-              src=".\src\assets\images\Home\Portal.png"
+              src={`${mediaUrl}Home/Portal.png`}
             />
           </S.SpaceImgBox>
         </S.SpaceBoxTop>
-        {/* <S.TitlePoster $isDesktop={isDesktop}></S.TitlePoster> 주인공포스터 반영 예정 */}
         <S.TitleMainSet $isTablet={isTablet} $isDesktop={isDesktop}>
+          <S.TitleMiniText1>who’s our 주인공</S.TitleMiniText1>
+          <S.TitleMiniText2>youngcamp</S.TitleMiniText2>
+          <S.TitleMiniText3>youngcamp</S.TitleMiniText3>
+          <S.TitleMiniText4>dongguk university</S.TitleMiniText4>
           <S.TitleBox
             $isTablet={isTablet}
             $isDesktop={isDesktop}
@@ -49,7 +54,6 @@ const HomeTitle = () => {
               $isMobile={isMobile}
               $isDesktop={isDesktop}
             >
-              {/* <S.TitleImg $isDesktop={isDesktop} src=".\src\assets\images\Home\Dawn.png" /> */}
               <S.TitleText
                 ishoveringYoung={titleHover.young}
                 $isTablet={isTablet}
@@ -58,10 +62,9 @@ const HomeTitle = () => {
                 YOUNG
               </S.TitleText>
               {isDesktop && (
-                <S.TitleImg
+                <S.TitlePortal
                   $isDesktop={isDesktop}
                   ishoveringYoung={titleHover.young}
-                  src=".\src\assets\images\Home\Portal.png"
                 />
               )}
             </S.TextBox>
@@ -78,7 +81,6 @@ const HomeTitle = () => {
               $isMobile={isMobile}
               $isDesktop={isDesktop}
             >
-              {/* <S.Rectangle></S.Rectangle> */}
               <S.TitleText
                 ishoveringCamp={titleHover.camp}
                 $isTablet={isTablet}
@@ -86,12 +88,7 @@ const HomeTitle = () => {
               >
                 CAMP
               </S.TitleText>
-              {/* {isDesktop && (
-                <S.TitleImg
-                  $isDesktop={isDesktop}
-                  src=".\src\assets\images\Home\Dawn.png"
-                />
-              )} */}
+              {isDesktop && (<S.TitleDawn ishoveringCamp={titleHover.camp}></S.TitleDawn>)}
             </S.TextBox2>
           </S.TitleBox>
           <S.TitleBox
@@ -113,6 +110,12 @@ const HomeTitle = () => {
               >
                 FESTIVAL
               </S.TitleText>
+              {isDesktop && (
+                <S.TitlePortal
+                  $isDesktop={isDesktop}
+                  ishoveringFestival={titleHover.festival}
+                />
+              )}
             </S.TextBox>
           </S.TitleBox>
           {(isTablet || isMobile) && <S.SpaceBoxBottom $isTablet={isTablet} />}

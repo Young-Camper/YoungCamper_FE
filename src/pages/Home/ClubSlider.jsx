@@ -15,16 +15,16 @@ function ClubSlider() {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
-        slidesToShow: isDesktop ? 3.1 : isTablet ? 4.1 : 2,
+        slidesToShow: isDesktop ? 3.1 : isTablet ? 3 : 2,
     };
 
     return (
         <S.SliderContainer $isDesktop={isDesktop}>
             <Slider {...settings}>
                 {S.ClubImages.map((image) => (
-                    <S.ClubCardImg $isDesktop={isDesktop} key={image.id} bgImage = {image.imageurl} >
-                        <S.CardNameTag $isDesktop={isDesktop}>{image.tag}</S.CardNameTag>
-                        <S.CardName $isDesktop={isDesktop}>{image.name}</S.CardName>
+                    <S.ClubCardImg $isDesktop={isDesktop} $isTablet={isTablet} key={image.id} bgImage = {image.imageurl} >
+                        <S.CardNameTag $isDesktop={isDesktop} $isTablet={isTablet}>{image.tag}</S.CardNameTag>
+                        <S.CardName $isDesktop={isDesktop} $isTablet={isTablet}>{image.name}</S.CardName>
                     </S.ClubCardImg>
 
                 ))}
