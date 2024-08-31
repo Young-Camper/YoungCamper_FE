@@ -4,10 +4,10 @@ import useMediaQueries from "../../hooks/useMediaQueries";
 
 const Wrapper = styled.div`
   display: flex;
-  /* width: ${(props) => props.$isDesktop && "1100px"}; */
+  width: ${(props) => (props.$isDesktop ? "1100px" : "100%")};
   /* 반응형 */
-  width: ${(props) =>
-    props.$isDesktop ? "1100px" : props.$isTablet ? "672px" : "360px"};
+  /* width: ${(props) =>
+    props.$isDesktop ? "1100px" : props.$isTablet ? "672px" : "360px"}; */
 
   padding: ${(props) =>
     props.$isBanner

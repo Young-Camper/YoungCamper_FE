@@ -18,8 +18,8 @@ const Wrapper = styled.div`
 `;
 const BannerWrapper = styled.div`
   /* 가운데 정렬 */
-  margin: 0 auto;
-  /* margin: ${(props) => (props.$isDesktop ? " 0 auto" : "")}; */
+  /* margin: 0 auto; */
+  margin: ${(props) => (props.$isDesktop ? " 0 auto" : "")};
   padding: ${(props) =>
     (props.$isTablet || props.$isMobile) &&
     "0 4px"}; /* TitleSet.jsx padding: 20px => 합 24px*/

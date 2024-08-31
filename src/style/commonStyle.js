@@ -10,10 +10,11 @@ export const ContentWrapper = styled.div`
   margin: 0 auto;
 
   /* 반응형 */
-  max-width: ${(props)=> 
+  max-width: 1100px;
+  /* max-width: ${(props)=> 
   props.$isDesktop ? "1100px"
   : props.$isTablet ? "768px"
-  : "360px"};
+  : "360px"}; */
 
   padding: ${(props)=> 
   props.$isDesktop ? "100px 0px"
