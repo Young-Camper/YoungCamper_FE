@@ -1,16 +1,24 @@
 import styled from "styled-components";
 
-// 메인 컨텐츠의 좌,우 170px / 상,하 100px 패딩을 정의합니다.
+// PC 1100px | Tablet 672px | Mobile 360px 초과시, 좌우 마진(중앙 정렬)
 export const ContentWrapper = styled.div`
-  /* padding: 100px 170px; */
   display: flex;
-  max-width: 1100px;
-  padding: var(--XXL, 100px) var(--Spacing-0, 0px);
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 50px;
-
-  /* 가운데 정렬 */
+  
+  /* max-width 초과시, 가운데 정렬 */
   margin: 0 auto;
+
+  /* 반응형 */
+  max-width: ${(props)=> 
+  props.$isDesktop ? "1100px"
+  : props.$isTablet ? "768px"
+  : "360px"};
+
+  padding: ${(props)=> 
+  props.$isDesktop ? "100px 0px"
+  : props.$isTablet ? "48px"
+  : "50px 0"};
+
+  gap: ${(props)=> props.$isDesktop ? "100px": "50px"};
 `;
