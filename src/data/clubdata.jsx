@@ -68,10 +68,10 @@ export const CardName = styled.div`
     position: absolute;
     bottom: ${(props)=> (props.$isDesktop ? "20px" : "16.84px")};
     left: ${(props)=> (props.$isDesktop ? "36px" : "16.84px")};
-    font-size: ${(props)=> (props.$isDesktop ? "28px" : props.$isTablet ? "17.774px" : "17.774px")};
+    font-size: ${(props)=> (props.$isDesktop ? "28px" : props.$isTablet ? "17.774px" : "15px")};
     width: 100%; height: auto;
-    line-height: ${(props)=> (props.$isDesktop ? "36px" : props.$isTablet ? "22.452px" : "22.452px")}; 
-    letter-spacing: ${(props)=> (props.$isDesktop ? "-1.4px" : props.$isTablet ? "-0.889px" : "-0.889px")};
+    line-height: ${(props)=> (props.$isDesktop ? "36px" : props.$isTablet ? "22.452px" : "20px")}; 
+    letter-spacing: ${(props)=> (props.$isDesktop ? "-1.4px" : props.$isTablet ? "-0.889px" : "-0.7px")};
   `;
 
 export const ClubImages = [

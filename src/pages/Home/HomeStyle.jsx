@@ -9,7 +9,7 @@ export const TitleSection = styled.div`
   height: ${(props) =>
     props.$isDesktop ? "100%" : props.$isTablet ? "972px" : "812px"};
   padding: ${(props) =>
-    props.$isDesktop ? "0px" : props.$isTablet ? "96px" : "64px"};
+    props.$isDesktop ? "0px" : props.$isTablet ? "96px 0px" : "64px 0px"};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -34,19 +34,9 @@ export const TitleSection = styled.div`
   }
 `;
 
-export const TitleSpaceSet = styled.div`
-  width: ${(props) =>
-    props.$isTablet ? "768px" : props.$isMobile ? "360px" : "100%"};
-  height: ${(props) =>
-    props.$isTablet ? "501px" : props.$isMobile ? "391px" : "100%"};
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
 export const SpaceBoxTop = styled.div`
   @media only screen and (max-width: 1023px) {
-    width: ${(props) => (props.$isTablet ? "768px" : "360px")};
+    width: 100vw;
     height: ${(props) => (props.$isTablet ? "105px" : "83px")};
     padding: ${(props) => (props.$isTablet ? "16px 96px" : "0px 24px")};
     border-bottom: ${(props) =>
@@ -108,7 +98,7 @@ export const TitleMiniText1 = styled.div`
   color: var(--Base-Real-White, #FFF);
   text-align: center;
   font-family: MonRegular;
-  font-size: 26px; /*28*/
+  font-size: 26px;
   font-style: normal;
   font-weight: 400;
   line-height: 36px; 
@@ -157,6 +147,7 @@ export const TitleBox = styled.div`
   text-align: left;
   display: flex;
   margin-bottom: -12px;
+  @media (min-width: 1024px) {
   border-top: ${(props) =>
     props.ishoveringYoung
       ? `2px solid #0A0B0A`
@@ -165,7 +156,7 @@ export const TitleBox = styled.div`
       : props.ishoveringFestival
       ? `2px solid #0A0B0A`
       : ""};
-  };
+  }
 `;
 
 export const TextBox = styled.div`
@@ -173,9 +164,9 @@ export const TextBox = styled.div`
     props.$isDesktop ? "100%" : props.$isTablet ? "576px" : "360px"};
   height: ${(props) =>
     props.$isDesktop ? "100%" : props.$isTablet ? "105px" : "83px"};
-  padding: ${(props) => (props.$isMobile ? "0px 12px" : "0px")};
+  padding: ${(props) => (props.$isMobile ? "0px 0px 0px 12px" : "0px")};
   gap: ${(props) => (props.$isDesktop ? "36px" : "20px")};
-  display: flex;
+  display: ${(props) => (props.$isMobile ? "" : "flex")};
   align-items: center;
   justify-content: flex-start;
   text-align: left;
@@ -184,7 +175,7 @@ export const TextBox = styled.div`
 `;
 
 export const TextBox2 = styled(TextBox)`
-  justify-content: center;
+  justify-content: ${(props) => (props.$isTablet ? "" : "center")};
 `;
 
 export const TitlePortal = styled.div`
@@ -208,10 +199,14 @@ export const TitlePortal = styled.div`
 export const TitleDawn = styled.div`
   width: 90px; height: 90px;
   background-image: url(${mediaUrl}Home/Dawn_B.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   position: absolute;
   opacity: ${(props) => props.ishoveringCamp ? "1" : "0" };
   margin-left: ${(props) => props.ishoveringCamp ? "507px" : "0" }; /*597-90*/
   transition: all 0.3s ease-out;
+  
 `;
 
 export const TitleText = styled.div`
@@ -231,9 +226,15 @@ export const TitleText = styled.div`
   line-height: normal;
   display: flex;
   justifty-content: flex-start;
-  padding-left: ${(props) => 
-    (props.ishoveringYoung ? "126px" :  "")}; /*36+90*/
-  margin-left: ${(props) => (props.ishoveringFestival ? "126px" : props.ishoveringCamp ? "-126px" :"0")}; 
+  
+  @media (min-width: 1024px) {
+    padding-left: ${(props) => 
+      (props.ishoveringYoung ? "126px" :  "")}; /*36+90*/ 
+    margin-left: ${(props) =>
+      props.ishoveringFestival ? "126px" :
+      props.ishoveringCamp ? "-126px" :
+      "0"};
+  
   color: ${(props) =>
     props.ishoveringYoung
       ? `#0A0B0A`
@@ -242,6 +243,7 @@ export const TitleText = styled.div`
       : props.ishoveringFestival
       ? `#0A0B0A`
       : `#FAFAFA)`};
+  }
   transition: all 0.3s ease-out;
   
 `;
@@ -269,7 +271,7 @@ export const TitleListSet = styled.div`
 export const TitleList = styled.div`
   width: 100%;
   height: ${(props) =>
-    props.$isDesktop ? "144px" : props.$isTablet ? "105px" : "59px"};
+    props.$isDesktop ? "144px" : props.$isTablet ? "80px" : "80px"};
   padding: ${(props) =>
     props.$isDesktop
       ? "12px 256px"
@@ -281,10 +283,23 @@ export const TitleList = styled.div`
   align-items: center;
   align-self: stretch;
   position: relative;
-  border-top: 2px solid var(--new-main-white, #fafafa);
+  transition: background 0.3s ease-out;
+  background: ${(props) => {
+    if (props.ishoveringPlace) return "#FAFAFA";
+    if (props.ishoveringDate) return "#FAFAFA";
+    return "";
+  }};
+  border-bottom: ${(props) => {
+    if (props.ishoveringPlace) return "none";
+    if (props.ishoveringDate) return "none";
+    if (props.ishoveringWith) return "none";
+    return "2px solid #FAFAFA";
+  }};
+`;
 
-  &:hover {
-    background: #fafafa;
+export const TitleList2 = styled(TitleList)`
+  background: ${(props) =>
+    props.ishoveringWith ? "#0A0B0A" : "#FAFAFA"
   }
 `;
 
@@ -297,14 +312,22 @@ export const TitleFrameImg = styled.div`
   height: ${(props) => (props.$isDesktop ? "90px" : "45px")};
   background-image: ${(props) =>
     props.ishoveringPlace
-      ? `url(${mediaUrl}Home/Dawn_B.png)`
+      ? `url(${mediaUrl}Home/Dawn_Blue.png)`
       : props.ishoveringDate
-      ? `url(${mediaUrl}Home/Dawn_B.png)`
-      : props.ishoveringWith
-      ? `url(${mediaUrl}Home/Dawn_B.png)`
+      ? `url(${mediaUrl}Home/Dawn_Blue.png)`
       : `url(${mediaUrl}Home/Dawn.png)`
     };
   background-size: cover;
+  transition: background-image 0.3s ease-out;
+`;
+
+export const TitleFrameImg2 = styled.div`
+  width: ${(props) => (props.$isDesktop ? "90px" : "45px")};
+  height: ${(props) => (props.$isDesktop ? "90px" : "45px")};
+  background-image: url(${mediaUrl}Home/Dawn_Blue.png);
+  background-size: cover;
+  transition: background-image 0.3s ease-out;
+  
 `;
 
 export const TitleFrameText = styled.div`
@@ -312,30 +335,36 @@ export const TitleFrameText = styled.div`
   height: auto;
   color: ${(props) =>
     props.ishoveringPlace
-      ? "black"
+      ? "#0068FF"
       : props.ishoveringDate
-      ? "black"
-      : props.ishoveringWith
-      ? "black"
+      ? "#0068FF"
       : "white"};
+  transition: color 0.3s ease-out;
   text-align: center;
   font-family: MonRegular;
   font-style: normal;
   font-weight: 400;
   font-size: ${(props) =>
     props.$isDesktop
-      ? "48px"
+      ? "38px"
       : props.$isTablet
       ? "32px"
-      : "20px"}; /*mobile 24px*/
+      : "21px"};
   line-height: ${(props) =>
-    props.$isDesktop ? "normal" : props.$isTablet ? "38px" : "32px"};
+    props.$isDesktop ? "48px" : props.$isTablet ? "38px" : "32px"};
   letter-spacing: ${(props) =>
-    props.$isDesktop ? "-2.4px" : props.$isTablet ? "-1.6px" : "-1.2px"};
+    props.$isDesktop ? "-1.9px" : props.$isTablet ? "-1.6px" : "-1.2px"};
+`;
+
+export const TitleFrameText2 = styled(TitleFrameText)`
+  color: ${(props) =>
+      props.ishoveringWith
+      ? "white"
+      : "#0068FF"};
 `;
 
 export const TitleFrameBox = styled.div`
-  width: auto; //max-width: 616px;
+  width: auto; 
   height: auto;
   max-height: 90px;
   display: flex;
@@ -360,16 +389,20 @@ export const ArrowImg = styled.div`
   flex-shrink: 0;
   background-image: ${(props) =>
     props.ishoveringPlace
-      ? `url(${mediaUrl}Home/Arrow_B.png)`
+      ? `url(${mediaUrl}Home/Arrow_Blue.png)`
       : props.ishoveringDate
-      ? `url(${mediaUrl}Home/Arrow_B.png)`
-      : props.ishoveringWith
-      ? `url(${mediaUrl}Home/Arrow_B.png)`
+      ? `url(${mediaUrl}Home/Arrow_Blue.png)`
       : `url(${mediaUrl}Home/Arrow.png)`};
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  transition: background-image 0.3s ease-out;
 `;
+
+export const ArrowImg2 = styled(ArrowImg)`
+  background-image: url(${mediaUrl}Home/Arrow_Blue.png);
+`;
+
 
 //2. Video
 export const VideoSection = styled.div`
@@ -400,7 +433,7 @@ export const VideoBox = styled.div`
   height: ${(props) =>
     props.$isDesktop ? "100%" : props.$isTablet ? "422px" : "314px"};
   gap: ${(props) => (props.$isDesktop ? "17.998px" : props.$isTablet ? "0px" : "10px")};
-  padding: ${(props) => (props.$isDesktop ? "48px" : "48px 0px")};
+  padding: ${(props) => (props.$isDesktop ? "48px" : props.$isTablet ? "48px 0px" : "24px 0px")};
   justify-content: flex-end;
   align-items: center;
   display: flex;
@@ -481,7 +514,7 @@ export const CardText2 = styled.div`
       ? "20px"
       : props.$isTablet
       ? "16px"
-      : "16px"}; /*mobile: 14px*/
+      : "12px"};
   line-height: ${(props) => (props.$isDesktop ? "30px" : "24px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.16px")};
   align-self: center;
@@ -577,7 +610,7 @@ export const ClubTitle = styled.div`
   font-family: ${(props) =>
     props.$isDesktop ? "MonExtraBold" : "MonSemiBold"};
   font-size: ${(props) =>
-    props.$isDesktop ? "38px" : "20px"};
+    props.$isDesktop ? "38px" : props.$isTablet ? "20px" : "18px"};
   font-weight: ${(props) => (props.$isDesktop ? "800" : "600")};
   line-height: ${(props) => (props.$isDesktop ? "48px" : "28px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-1.9px" : "-0.2px")};
@@ -662,16 +695,15 @@ padding: ${(props) =>
   `;
 
 export const NoticeTitleSet = styled.div`
-  width: ${(props) => props.$isDesktop ? "1100px" : "100%"};
+  width: 100%;
   height: auto;
   padding: ${(props) => (props.$isDesktop ? "48px" : "24px")};
   display: flex;
   align-items: left;
   border-top: 1px solid var(--new-main-grey, #637d92);
-  opacity: var(--sds-size-stroke-border);
-  display: flex;
   flex-direction: ${(props) => (props.$isDesktop ? "row" : "column")};
   justify-content: ${(props) => (props.$isDesktop ? "space-between" : "")};
+  b
 `;
 
 export const NoticeTitleText = styled.div`
@@ -696,6 +728,8 @@ export const NoticeTitleText = styled.div`
   line-height: ${(props) => (props.$isDesktop ? "48px" : "28px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-1.9px" : "-0.2px")};
   align-self: left;
+  white-space: nowrap;
+
 `;
 
 export const NoticeBtnBox = styled.div`
@@ -731,8 +765,8 @@ export const NoticeBtn = styled.div`
 `;
 
 export const NoticeListSet = styled.div`
-  width: ${(props) => (props.$isDesktop ? "1100px" : "100%")};
-  height: ${(props) => (props.$isDesktop ? "auto" : "100%")};
+  width: 100%;
+  height: 100%;
   padding: ${(props) => (props.$isDesktop ? "48px" : "0px ")};
   display: flex;
   justify-content: space-between;
@@ -749,14 +783,14 @@ export const NoticeListFrame = styled.div`
 `;
 
 export const NoticeList = styled.div`
-  max-width: ${(props) => (props.$isDesktop ? "1004px" : props.$isTablet ? "720px" : "336px")};
+  width: 100%;
   height: ${(props) =>
     props.$isDesktop ? "120px" : "90px "};
   display: flex;
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  border-bottom: 1px solid var(--new-main-grey, #637d92);
+  border-bottom: 1px solid var(--new-main-primary, #0068FF);
   background: ${(props) =>
     props.ishovering
       ? "linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%)"
@@ -818,7 +852,7 @@ export const NoticeText = styled.div`
   transition: all 0.2s ease-out;
 `;
 
-export const ArrowImg2 = styled.div`
+export const ArrowImg3 = styled.div`
   width: ${(props) => (props.$isDesktop ? "34.45px" : "25.156px")};
   height: ${(props) => (props.$isDesktop ? "30px" : "21.905px")};
   display: flex;
@@ -827,7 +861,7 @@ export const ArrowImg2 = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-image: ${(props) =>
-    props.ishovering ? `url(${mediaUrl}Home/Arrow.png)` : `url(${mediaUrl}Home/Arrow_B.png)`};
+    props.ishovering ? `url(${mediaUrl}Home/Arrow.png)` : `url(${mediaUrl}Home/Arrow_Blue.png)`};
   transition: all 0.2s ease-out;
   
 `;
@@ -867,8 +901,7 @@ export const SocialContainer = styled.div`
 `;
 
 export const SocialTop = styled.div`
-  width: ${(props) =>
-    props.$isDesktop ? "1100px" : props.$isTablet ? "744px" : "336px"};
+  width: 100%;
   height: ${(props) => (props.$isDesktop ? "144px" : "72px")};
   padding: ${(props) => (props.$isDesktop ? "48px" : "24px")};
   display: flex;
@@ -879,13 +912,11 @@ export const SocialTop = styled.div`
 export const SocialTitle = styled.div`
   align-self: stretch;
   color: var(--new-main-black, #0a0b0a);
-  /* Primary/Desktop/Hero2 */
-  font-family: MonRegular;
+  font-family: MonSemiBold;
   font-style: normal;
-  width: ${(props) =>
-    props.$isDesktop ? "auto" : "auto"}; /*desktop 422px tablet 238px*/
+  width: auto;
   height: ${(props) => (props.$isDesktop ? "46px" : "24px")};
-  font-size: ${(props) => (props.$isDesktop ? "38px" : "20px")};
+  font-size: ${(props) => (props.$isDesktop ? "38px" : props.$isTablet ? "20px" : "18px")};
   font-weight: ${(props) => (props.$isDesktop ? "800" : "600")};
   line-height: ${(props) => (props.$isDesktop ? "normal" : "24px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-1.52px" : "0.4px")};
@@ -894,23 +925,27 @@ export const SocialTitle = styled.div`
 export const SocialBottom = styled.div`
   display: flex;
   align-items: flex-start;
-  width: ${(props) =>
-    props.$isDesktop ? "1152px" : props.$isTablet ? "744px" : "336px"};
+  width: 100%;
   height: ${(props) => (props.$isDesktop ? "476px" : "228px")};
   padding: ${(props) => (props.$isDesktop ? "48px" : "24px 0px")};
 `;
 
 export const SocialFrame = styled.div`
-  width: ${(props) => (props.$isDesktop ? "479px" : "226.895px")};
+  width: ${(props) => (props.$isDesktop ? "479px" : "225px")};
   height: ${(props) => (props.$isDesktop ? "380px" : "180px")};
-  margin: ${(props) => (props.$isDesktop ? "0px 10px" : "0px 4.737px")};
-  padding: ${(props) => (props.$isDesktop ? "24px" : "11.37px")};
+  margin: ${(props) => (props.$isDesktop ? "0px 10px" : "0px 5px")};
+  padding: ${(props) => (props.$isDesktop ? "24px" : "12px")};
   display: flex;
   flex-shrink: 0;
   border-radius: 40px;
   background: var(--Base-Base-White, #fafafa);
   position: relative;
-  box-sizing: border-box;
+  /* background: url(${mediaUrl}Home/Club/club3.png)}); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+
 
   &:hover {
     border: 2px solid var(--new-main-primary, #0068ff);
@@ -919,6 +954,10 @@ export const SocialFrame = styled.div`
       rgba(0, 104, 255, 0.4) 23.99%,
       rgba(185, 255, 156, 0.4) 98.08%
     );
+    /* background: url(${mediaUrl}Home/Club/club3.png)});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; */
   }
 `;
 
@@ -935,16 +974,15 @@ export const SocialSliderBox = styled.div`
 `;
 
 export const FrameCard = styled.div`
-  width: ${(props) => (props.$isDesktop ? "431px" : "226.895px")};
-  height: ${(props) => (props.$isDesktop ? "148px" : "70.6px")};
+  width: 100%;
+  height: auto;
   gap: ${(props) => (props.$isDesktop ? "12px" : "5.684px")};
   bottom: ${(props) => (props.$isDesktop ? "24px" : "11.37px")};
+  padding-top: ${(props) => (props.$isDesktop ? "232px" : "107px")};
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-self: stretch;
-  position: absolute;
-  box-sizing: border-box; /* 패딩을 포함한 전체 너비 조정 */
-  padding-right: 0;
 `;
 
 export const IconImg = styled.div`
@@ -953,11 +991,13 @@ export const IconImg = styled.div`
   background-image: url(${props => props.IconImage});
   background-size: contain;
   background-repeat: no-repeat;
+  position: absolute;
+  margin-bottom: ${(props) => (props.$isDesktop ? "96px" : "48px")};
 `;
 
 export const FrameBox = styled.div`
-  width: ${(props) => (props.$isDesktop ? "431px" : "204px")};
-  height: ${(props) => (props.$isDesktop ? "96px" : "70px")};
+  width: 100%;
+  height: auto;
   padding-right: ${(props) => (props.$isDesktop ? "24px" : "0px")}; /*11.37px*/
   display: flex;
   justify-content: space-between;
@@ -983,6 +1023,15 @@ export const FrameImg = styled.a`
   justify-content: center;
   align-items: center;
 `;
+
+export const ArrowImg4 = styled.div`
+  width: ${(props) => (props.$isDesktop ? "40px" : "20px")};
+  height: ${(props) => (props.$isDesktop ? "40px" : "20px")};
+  background-image: url(${mediaUrl}Home/Arrow_B.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`
 
 //6.CTA 배너
 export const CTASection = styled.div`
@@ -1120,7 +1169,7 @@ export const GridBtn = styled.div`
       --gradient,
       linear-gradient(102deg, #0068ff 23.99%, #b9ff9c 98.08%)
     );
-    border: 1px solid white;
+    border: 1px solid black;
   }
 `;
 
