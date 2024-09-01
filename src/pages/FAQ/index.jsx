@@ -13,6 +13,7 @@ const index = () => {
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
+    window.scrollTo({ top: 202, behavior: "smooth" });
   } // 페이지 번호를 클릭했을 떄, 페이지 번호 상태 업데이트
 
   return (
