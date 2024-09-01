@@ -1,6 +1,5 @@
 import React from 'react'
 import { styled } from "styled-components";
-import useMediaQueries from "../../hooks/useMediaQueries";
 
 
 export const FAQWrapper = styled.div`
@@ -8,9 +7,9 @@ export const FAQWrapper = styled.div`
   width: 100%;
   max-width: 1500px;
   padding: ${(props) =>
-    props.isMobile
+    props.$isMobile
       ? "52px 24px" /* 모바일 뷰 */
-      : props.isTablet
+      : props.$isTablet
       ? "80px 48px"  /* 태블릿 뷰 */
       : "132px 170px"}; /* 데스크탑 뷰 */
   flex-direction: column;
@@ -56,20 +55,20 @@ export const FAQTextContainer = styled.div`
 
 export const FAQText1 = styled.div`
   color: #0068FF;
-  font-family: "MonRegular";
-  font-size: ${(props) => (props.isMobile ? "18px" : "22px")};
-  font-weight: ${(props) => (props.isMobile ? "400" : "600")};
-  line-height: ${(props) => (props.isMobile ? "22px" : "30px")};
-  letter-spacing: ${(props) => (props.isMobile ? "-0.09px" : "-0.22px")};
+  font-family: ${(props) => (props.$isMobile ? "MonRegular" : "MonSemiBold")};
+  font-size: ${(props) => (props.$isMobile ? "18px" : "22px")};
+  font-weight: ${(props) => (props.$isMobile ? "400" : "600")};
+  line-height: ${(props) => (props.$isMobile ? "24px" : "30px")};
+  letter-spacing: ${(props) => (props.$isMobile ? "-0.09px" : "-0.22px")};
 `;
 
 export const FAQText2 = styled.div`
   color: #0A0B0A;
-  font-family: "MonRegular";
-  font-size: ${(props) => (props.isMobile ? "18px" : "22px")};
-  font-weight: ${(props) => (props.isMobile ? "400" : "600")};
-  line-height: ${(props) => (props.isMobile ? "22px" : "30px")};
-  letter-spacing: ${(props) => (props.isMobile ? "-0.09px" : "-0.22px")};
+  font-family: ${(props) => (props.$isMobile ? "MonRegular" : "MonSemiBold")};
+  font-size: ${(props) => (props.$sMobile ? "18px" : "22px")};
+  font-weight: ${(props) => (props.$isMobile ? "400" : "600")};
+  line-height: ${(props) => (props.$isMobile ? "24px" : "30px")};
+  letter-spacing: ${(props) => (props.$isMobile ? "-0.09px" : "-0.22px")};
   
   a {
     color: #0068FF;
@@ -83,17 +82,17 @@ export const FAQText2 = styled.div`
 
 export const FAQText3 = styled.div`
   color: #15B097;
-  font-family: "MonRegular";
-  font-size: ${(props) => (props.isMobile ? "18px" : "22px")};
-  font-weight: ${(props) => (props.isMobile ? "400" : "600")};
-  line-height: ${(props) => (props.isMobile ? "22px" : "30px")};
-  letter-spacing: ${(props) => (props.isMobile ? "-0.09px" : "-0.22px")};
+  font-family: ${(props) => (props.$isMobile ? "MonRegular" : "MonSemiBold")};
+  font-size: ${(props) => (props.$isMobile ? "18px" : "22px")};
+  font-weight: ${(props) => (props.$isMobile ? "400" : "600")};
+  line-height: ${(props) => (props.$isMobile ? "24px" : "30px")};
+  letter-spacing: ${(props) => (props.$isMobile ? "-0.09px" : "-0.22px")};
 `
 
 export const FAQButton = styled.div`
   display: flex;
-  width: ${(props) => (props.isMobile ? "28px" : "46px")};
-  height: ${(props) => (props.isMobile ? "28px" : "46px")};
+  width: ${(props) => (props.$isMobile ? "28px" : "46px")};
+  height: ${(props) => (props.$isMobile ? "28px" : "46px")};
   justify-content: center;
   align-items: center;
 `;
