@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import useMediaQueries from "../../hooks/useMediaQueries";
-import social from "../../data/social";
+import socialData from "../../data/social.jsx";
 
 const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
@@ -17,7 +17,7 @@ const Social = () => {
     slidesToShow: isDesktop ? 2.2 : isTablet ? 3 : 1.2,
     slidesToScroll: 1,
   };
-
+  console.log(mediaUrl);
   return (
     <S.SocialSection $isTablet={isTablet} $isDesktop={isDesktop}>
       <S.SocialContainer $isDesktop={isDesktop}>
@@ -29,29 +29,36 @@ const Social = () => {
         <S.SocialBottom $isTablet={isTablet} $isDesktop={isDesktop}>
           <S.SocialSliderBox $isDesktop={isDesktop}>
             <Slider {...settings}>
-             {social.map((social, index) => (
-                <S.SocialFrame $isTablet={isTablet} $isDesktop={isDesktop}>
+              {socialData.map((social, index) => (
+                <S.SocialFrame
+                  key={social.id}
+                  $isTablet={isTablet}
+                  $isDesktop={isDesktop}
+                >
                   <S.FrameCard $isDesktop={isDesktop}>
-                    <S.InstaBg $isDesktop={isDesktop} >
-                      <S.InstaIcon
-                        maskImage={social.image}
-                      >  </S.InstaIcon> {/*이미지파일*/}
-                    </S.InstaBg>
+                    <S.IconImg
+                      $isDesktop={isDesktop}
+                      IconImage={social.image}
+                    />
                     <S.FrameBox $isDesktop={isDesktop}>
-                      <S.FrameText $isDesktop={isDesktop}>{social.name}</S.FrameText>
-                      <S.FrameImg 
+                      <S.FrameText $isDesktop={isDesktop}>
+                        {social.name}
+                      </S.FrameText>
+                      <S.FrameImg
                         $isDesktop={isDesktop}
-                        href={social.link} target="_blank" rel="noopener noreferrer">
-                          <S.ArrowImg2
+                        href={social.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <S.ArrowImg2
                           $isDesktop={isDesktop}
-                          src={`${mediaUrl}Home/Arrow_B.png`} />
-                          
+                          src={`${mediaUrl}Home/Arrow_B.png`}
+                        />
                       </S.FrameImg>
                     </S.FrameBox>
                   </S.FrameCard>
                 </S.SocialFrame>
               ))}
-
             </Slider>
           </S.SocialSliderBox>
         </S.SocialBottom>

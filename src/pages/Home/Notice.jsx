@@ -97,6 +97,3 @@ const Notice = () => {
 };
 
 export default Notice;
-
-{/* <Link to={"/notification"}>
-</Link> */}

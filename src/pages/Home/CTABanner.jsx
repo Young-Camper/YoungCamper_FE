@@ -23,8 +23,8 @@ const CTABanner = () => {
 
   return (
     <S.CTASection>
-      <S.SectionBanner>
-      <S.GridTextWrapper>
+      <S.SectionBanner $isDesktop={isDesktop}>
+      <S.GridTextWrapper $isDesktop={isDesktop}>
         <S.GridText $isDesktop={isDesktop}>·   Youngcamp Festival    ·   Youngcamp Festival
         ·   Youngcamp Festival    ·  Youngcamp Festival    ·  Youngcamp Festival
         ·   Youngcamp Festival    ·  Youngcamp Festival    ·  Youngcamp Festival

@@ -947,36 +947,12 @@ export const FrameCard = styled.div`
   padding-right: 0;
 `;
 
-export const InstaBg = styled.div`
-  width: ${(props) => (props.$isDesktop ? "40px" : "18.947px")};
-  height: ${(props) => (props.$isDesktop ? "40px" : "18.947px")};
-  flex-shrink: 0;
-  background: url(${mediaUrl}Home/Ellipse_B.png);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-size: cover;
-`;
-export const InstaIcon = styled.img`
-  width: ${(props) => (props.$isDesktop ? "28px" : "13.263px")};
-  height: ${(props) => (props.$isDesktop ? "26px" : "12.316px")};
-  opacity: var(--sds-size-stroke-border);
-  background: var(--Secondary-Secondary100, #e7ebef);
-  mask-image: ${(props) => `url(${props.maskImage})`};
-  mask-repeat: no-repeat;
-  mask-size: 100%;
-  mask-position: center;
-  position: absolute;
-`;
-
-export const WebIcon = styled.div`
-  width: ${(props) => (props.$isDesktop ? "28px" : "10.421px")};
-  height: ${(props) => (props.$isDesktop ? "26px" : "10.421px")};
-  opacity: var(--sds-size-stroke-border);
-  background: var(--Secondary-Secondary100, #e7ebef);
-  mask-image: url(${mediaUrl}Home/Webicon.png));
-  mask-repeat: no-repeat;
-  mask-size: 100%;
+export const IconImg = styled.div`
+  width: ${(props) => (props.$isDesktop ? "40px" : "20px")};
+  height: ${(props) => (props.$isDesktop ? "40px" : "20px")};
+  background-image: url(${props => props.IconImage});
+  background-size: contain;
+  background-repeat: no-repeat;
 `;
 
 export const FrameBox = styled.div`
@@ -1024,23 +1000,23 @@ export const SectionBanner = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #000;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
   background: var(--new-main-white, #fafafa);
   overflow: hidden;
-  padding-bottom: 16px;
+  padding-bottom: ${(props) => (props.$isDesktop ? "10px" : "0px")};
 `;
 
 export const GridTextWrapper = styled.div`
   width: 100%;
   height: auto;
-  padding-top: 10px;
+  padding: ${(props) => (props.$isDesktop ? "10px 0px" : "8px 0px")};
 `;
 
 export const GridText = styled.div`
   width: 100%;
   height: auto;
   color: var(--new-main-black, #0a0b0a);
-  /* Primary/Mobile/Button2 */
   font-family: MonRegular;
   font-style: normal;
   font-weight: 400;

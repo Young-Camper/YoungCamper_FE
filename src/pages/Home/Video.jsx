@@ -77,6 +77,3 @@ const Video = () => {
 };
 
 export default Video;
-
-{/* <Link to={"/about"}>
-</Link> */}
