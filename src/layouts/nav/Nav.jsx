@@ -15,7 +15,6 @@ const Nav = () => {
   const handleToggle = () => {
     setIsChecked(!isChecked);
     // 언어 변경 로직 추가
-    
   };
   
   const [modalOpen, setModalOpen] = useState(false);
