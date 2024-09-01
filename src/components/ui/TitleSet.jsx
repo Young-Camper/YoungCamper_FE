@@ -36,7 +36,10 @@ const MainText = styled.div`
   font-style: normal;
   font-weight: 800;
   line-height: normal;
-  letter-spacing: -3.04px;
+  letter-spacing: ${(props) =>
+    props.$isDesktop
+      ? "1.9px"
+      : "0.2px"}; /* 데스크탑 38px, 모바일+태블릿 20px */
 `;
 const SubText = styled.div`
   color: var(--text-grey800, #637d92);
@@ -48,7 +51,10 @@ const SubText = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  letter-spacing: -0.11px;
+  letter-spacing: ${(props) =>
+    props.$isDesktop
+      ? "0.4px"
+      : "0.06px"}; /* 데스크탑 38px, 모바일+태블릿 20px */
 `;
 
 const TitleSet = ({ mainText, subText, isBanner }) => {
