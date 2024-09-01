@@ -9,15 +9,15 @@
 	},
 	{
 	  "question": "불교동아리 가입 방법",
-	  "answer": "동아리 페이지의 소속 단과대학 페이지 참조 (동아리 페이지 링크) 하여 가입 링크를 따라 가입하실 수 있습니다."
+	  "answer": "<a href='https://youngcamp.co.kr/promotion'>동아리 페이지</a>의 소속 단과대학 페이지 참조하여 가입 링크를 따라 가입하실 수 있습니다."
 	},
 	{
 		"question": "공연은 어디서 볼 수 있나요?",
-		"answer": "9월 24일, 장충체육관에서 진행됩니다 (장소페이지-장충체육관 위치안내 링크)"
+		"answer": "9월 24일, <a href='https://youngcamp.co.kr/location'>장충체육관</a>에서 진행됩니다."
 	},
 	{
 		"question": "공연 일정이 궁금해요!",
-		"answer": "(공연일정페이지-공연 타임라인 관련 링크) 24일, 화요일 17시부터 장충체육관에서 진행될 예정입니다."
+		"answer": "9월 24일 화요일 17시부터 장충체육관에서 진행될 예정입니다. 자세한 내용은 <a href='https://youngcamp.co.kr/performance'>일정 안내</a>를 참고해 주세요!"
 	},
 	{
 		"question": "관련 방역 수칙",
@@ -25,7 +25,7 @@
 	},
 	{
 		"question": "관련 SNS가 있나요?",
-		"answer": "영캠프 인스타그램 @youngcamp_dgu에서 자세한 소식을 만나보실 수 있습니다!"
+		"answer": "영캠프 인스타그램 <a href='https://www.instagram.com/youngcamp_dgu'>@youngcamp_dgu</a>에서 자세한 소식을 만나보실 수 있습니다!"
 	},
 	{
 		"question": "물품 보관이 가능한가요?",
@@ -37,11 +37,11 @@
 	},
 	{
 		"question": "화장실 위치 안내",
-		"answer": "(현장배치도 링크) 2층의 0쪽, 1층의 0쪽에 위치해 있습니다."
+		"answer": "2층의 0쪽, 1층의 0쪽에 위치해 있습니다. 자세한 위치는 <a href='https://youngcamp.co.kr/location'>현장 배치도</a>를 확인해 주세요!"
 	},
 	{
 		"question": "식음료 반입이 가능한가요?",
-		"answer": "답체육관 지침으로 인해 내부 식음료 출입이 불가합니다."
+		"answer": "체육관 지침으로 인해 내부 식음료 반입이 불가합니다."
 	},
 	{
 		"question": "사진 및 영상 촬영이 가능한가요?",
