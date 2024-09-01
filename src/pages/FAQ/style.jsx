@@ -5,7 +5,7 @@ import { styled } from "styled-components";
 export const FAQWrapper = styled.div`
   display: flex;
   width: 100%;
-  max-width: 1500px;
+  max-width: 1440px;
   padding: ${(props) =>
     props.$isMobile
       ? "52px 24px" /* 모바일 뷰 */
