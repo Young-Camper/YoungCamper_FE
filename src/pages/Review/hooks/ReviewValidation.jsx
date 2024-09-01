@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const useReviewValidation = () => {
+export const ReviewValidation = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
 

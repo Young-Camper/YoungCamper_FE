@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import warningIcon from "../assets/warning.svg";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 
 const InputModal = ({ message, onClose }) => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
+  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
   return (
     <ModalWrapper>
@@ -13,7 +13,11 @@ const InputModal = ({ message, onClose }) => {
         $isTablet={isTablet}
         $isDesktop={isDesktop}
       >
-        <WarningImage src={warningIcon} alt="warning" $isMobile={isMobile} />
+        <WarningImage
+          src={`${mediaUrl}Review/warning.png`}
+          alt="warning"
+          $isMobile={isMobile}
+        />
         <MessageContainer
           $isMobile={isMobile}
           $isTablet={isTablet}
