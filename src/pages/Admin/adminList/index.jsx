@@ -5,8 +5,12 @@ import * as S from "../../Notification/main/Style";
 import Subtitle from "../../Notification/main/Subtitle";
 import { Link, useNavigate } from "react-router-dom";
 import { DeleteBtn } from "../style";
+import axios from "axios";
+import useMediaQueries from "../../../hooks/useMediaQueries";
+import { ContentWrapper } from "../../../style/commonStyle";
 
 const index = () => {
+  const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const navigate = useNavigate();
   const [data, setData] = useState([
     {
@@ -49,9 +53,9 @@ const index = () => {
   useEffect(() => {
     const getAdminData = async () => {
       try {
-        const response = await axios.get("/api/admin"); // API 엔드포인트를 실제로 사용하고자 하는 URL로 대체하세요
+        const response = await axios.get("/api/admin"); // API 엔드포인트
         setData(response.data);
-        console.log("성공!", response.data);
+        console.log("Successed!", response.data);
       } catch (error) {
         console.error("Failed to fetch admin data:", error);
       }
@@ -61,29 +65,47 @@ const index = () => {
   }, []);
 
   return (
-    <>
-      <TitleSet mainText="관리자 페이지" />
-      <DeleteBtn onClick={() => navigate("/admin42794/write")}>작성</DeleteBtn>
-      <S.ContentWrapper>
-        <Subtitle
-          num="번호"
-          title="제목"
-          date="날짜"
-          $paddingBottom="0"
-          color="black"
-          $fontWeight="700"
-          $marginTop="0"
-          $marginBottom="0"
-        />
-        <S.ContentContainer>
-          {data.map((item, index) => (
-            <Link to={`/admin42794/list/${item.id}`} key={index}>
-              <Subtitle num={item.num} title={item.title} date={item.date} />
-            </Link>
-          ))}
-        </S.ContentContainer>
-      </S.ContentWrapper>
-    </>
+    <div style={{ width: "100%" }}>
+      <ContentWrapper>
+        <TitleSet mainText="관리자 페이지" />
+        <DeleteBtn
+          $isDesktop={isDesktop}
+          onClick={() => navigate("/admin42794/write")}
+        >
+          작성
+        </DeleteBtn>
+        <S.ContentWrapper $isDesktop={isDesktop}>
+          <Subtitle
+            num="번호"
+            title="제목"
+            date={isDesktop ? "날짜" : null}
+            $paddingBottom="0"
+            color="black"
+            $fontWeight="700"
+            $marginTop="0"
+            $marginBottom="0"
+            fontSize="16px"
+            isDesktop={isDesktop}
+            isTablet={isTablet}
+            gap="0px"
+          />
+          <S.ContentContainer>
+            {data.map((item, index) => (
+              <Link to={`/admin42794/list/${item.id}`} key={index}>
+                <Subtitle
+                  num={item.id}
+                  title={item.title}
+                  date={item.date}
+                  fontSize={isDesktop ? "24px" : "18px"}
+                  isDesktop={isDesktop}
+                  isTablet={isTablet}
+                />
+              </Link>
+            ))}
+          </S.ContentContainer>
+        </S.ContentWrapper>
+      </ContentWrapper>
+    </div>
   );
 };
 

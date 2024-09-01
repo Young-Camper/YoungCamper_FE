@@ -6,8 +6,10 @@ import TitleSet from "../../../components/ui/TitleSet";
 import { deleteAdmin } from "../../../lib/apis/api/deleteAdmin";
 import { getAdmin } from "../../../lib/apis/api/getAdmin";
 import { DeleteBtn } from "../style";
+import useMediaQueries from "../../../hooks/useMediaQueries";
 
 const index = () => {
+  const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const { id } = useParams();
   const [data, setData] = useState({
     id: id,
@@ -50,27 +52,31 @@ const index = () => {
 
   return (
     <div>
-      <TitleSet mainText="상세 페이지" />
-      <ContentWrapper>
-        <DeleteBtn onClick={handleAdminDelete}>삭제</DeleteBtn>
-        <S.TitleWrapper>
-          <S.Title>{data.title}</S.Title>
-          <S.InfoContainer>
+      <ContentWrapper $isDesktop={isDesktop}>
+        <TitleSet mainText="상세 페이지" />
+        <DeleteBtn $isDesktop={isDesktop} onClick={handleAdminDelete}>
+          삭제
+        </DeleteBtn>
+        <S.TitleWrapper $isDesktop={isDesktop}>
+          <S.Title $isDesktop={isDesktop}>{data.title}</S.Title>
+          <S.InfoContainer $isDesktop={isDesktop}>
             <S.Info>작성인: 관리자</S.Info>
             <S.Info>등록일: {data.date}</S.Info>
           </S.InfoContainer>
           <S.Line />
-          <S.ContentWrapper>
+          <S.ContentWrapper $isDesktop={isDesktop}>
             {data.image != "" && (
               <S.ContentImgContainer>
                 <S.ContentImg src={data.image} alt="이미지" />
               </S.ContentImgContainer>
             )}
-            <S.ContentText>{data.content}</S.ContentText>
+            <S.ContentText $isDesktop={isDesktop}>{data.content}</S.ContentText>
           </S.ContentWrapper>
           <S.ShowListWrapper>
             <Link to="/admin42794/list">
-              <S.ShowListContainer>목록보기</S.ShowListContainer>
+              <S.ShowListContainer $isDesktop={isDesktop}>
+                목록보기
+              </S.ShowListContainer>
             </Link>
           </S.ShowListWrapper>
         </S.TitleWrapper>

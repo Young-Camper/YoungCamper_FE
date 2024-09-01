@@ -47,8 +47,8 @@ export const DeleteBtn = styled.div`
   text-align: center;
 
   /* Primary/Desktop/Button2 */
-  font-family: Montserrat;
-  font-size: 16px;
+  font-family: MonRegular;
+  font-size: ${(props) => (props.$isDesktop ? "22px" : "16px")};
   font-style: normal;
   font-weight: 600;
   line-height: 24px; /* 150% */
@@ -88,7 +88,7 @@ export const TextCotainer = styled.div`
   text-align: center;
 
   /* Primary/Desktop/Body1_regular */
-  font-family: Montserrat;
+  font-family: MonRegular;
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
@@ -101,7 +101,7 @@ export const InputArea = styled.input`
   width: 747px;
   height: 50px;
   flex-shrink: 0;
-  font-family: Montserrat;
+  font-family: MonRegular;
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
@@ -127,7 +127,7 @@ export const InputContent = styled.textarea`
   resize: none;
 
   /* Primary/Desktop/Body2_regular */
-  font-family: Montserrat;
+  font-family: MonRegular;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;

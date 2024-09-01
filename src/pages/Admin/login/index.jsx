@@ -4,6 +4,7 @@ import { ContentWrapper } from "../../../style/commonStyle";
 import TitleSet from "../../../components/ui/TitleSet";
 import { adminLogin } from "../../../lib/apis/api/adminLogin";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const index = () => {
   const navigate = useNavigate();
@@ -17,25 +18,29 @@ const index = () => {
     setPw(e.target.value);
   };
 
-  const handleLoginSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // 로직
-    // 1. 클라이언트가 서버에 접속 시 세션 ID를 발급 받는다.
-    // 2. 클라이언트는 세션 ID에 대해 쿠키를 사용해 브라우저에 저장한다.
+    try {
+      const response = await axios.post("/api/admin/login", {
+        username: id, // username을 입력된 값으로 설정
+        password: pw, // password를 입력된 값으로 설정
+      });
 
-    // test code
-    // const response = await adminLogin(id, pw);
-    // console.log("login page: ", response);
-
-    // state 확인
-    alert("id: " + id + " | pw: " + pw);
-
-    // 실패했을 때
-    setId("");
-    setPw("");
-
-    // 성공했을 때
-    navigate("/admin42794/list");
+      // 로그인 성공 시 응답 처리
+      console.log("Login response:", response);
+      if (response.data.success) {
+        alert("로그인 성공!");
+        navigate("/admin42794/list");
+      } else {
+        setId("");
+        setPw("");
+        alert("로그인 실패: " + response.data.message);
+      }
+    } catch (error) {
+      // 로그인 실패 시 오류 처리
+      console.error("Login error:", error);
+      alert("로그인에 실패했습니다. 다시 시도해주세요.");
+    }
   };
 
   return (
@@ -44,7 +49,7 @@ const index = () => {
         <TitleSet mainText="관리자 로그인" subText="ID와 PW를 입력해주세요.">
           로그인
         </TitleSet>
-        <S.FormWrapper onSubmit={handleLoginSubmit}>
+        <S.FormWrapper onSubmit={handleLogin}>
           <div>
             <div>ID: </div>
             <S.InputText
