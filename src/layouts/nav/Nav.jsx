@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import useMediaQueries from "../../hooks/useMediaQueries";
 import * as S from "./style";
@@ -9,7 +10,7 @@ const Nav = () => {
     setIsChecked(!isChecked);
     // 언어 변경 로직 추가
   };
-  
+
   const [modalOpen, setModalOpen] = useState(false);
 
   //이미지
@@ -130,8 +131,9 @@ const Nav = () => {
     </S.Container>
     </S.Wrapper>
       }
+
     </>
   );
-};  
+};
 
 export default Nav;

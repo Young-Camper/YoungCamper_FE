@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import TitleSet from "../../components/ui/TitleSet";
 import { timetable, lineup } from "../../data/timetable";
-import Arrow from "../../assets/images/timetable/arrow_icon.png";
 import useMediaQueries from "../../hooks/useMediaQueries";
 
 const TimeTable = ({ onArtistClick }) => {
+  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+
   // 라인업 공개 여부 설정(true: 라인업 공개, false: 미공개)
   const lineupOpen = true;
 
@@ -103,7 +104,7 @@ const TimeTable = ({ onArtistClick }) => {
                 >
                   {currentArtists[0]?.name}
                   <S.Arrow
-                    src={Arrow}
+                    src={`${mediaUrl}Performance/arrow_icon.png`}
                     onClick={() => {
                       onArtistClick(currentArtists[0]);
                     }}
@@ -119,7 +120,7 @@ const TimeTable = ({ onArtistClick }) => {
                 >
                   {currentArtists[1]?.name}
                   <S.Arrow
-                    src={Arrow}
+                    src={`${mediaUrl}Performance/arrow_icon.png`}
                     onClick={() => {
                       onArtistClick(currentArtists[1]);
                     }}
@@ -137,7 +138,7 @@ const TimeTable = ({ onArtistClick }) => {
               >
                 {currentArtists[0]?.name}
                 <S.Arrow
-                  src={Arrow}
+                  src={`${mediaUrl}Performance/arrow_icon.png`}
                   onClick={() => {
                     onArtistClick(currentArtists[0]);
                   }}
