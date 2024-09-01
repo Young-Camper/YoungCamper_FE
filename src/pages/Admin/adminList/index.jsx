@@ -36,11 +36,27 @@ const index = () => {
     },
   ]);
 
+  // ============== FE TEST CODE ==============
+  // useEffect(() => {
+  //   const getAdminData = async () => {
+  //     const response = await getAdmin();
+  //     setData(response.data);
+  //   };
+  //   getAdminData();
+  // }, []);
+
+  // ============== BE TEST CODE - get 요청 ==============
   useEffect(() => {
     const getAdminData = async () => {
-      const response = await getAdmin();
-      setData(response.data);
+      try {
+        const response = await axios.get("/api/admin"); // API 엔드포인트를 실제로 사용하고자 하는 URL로 대체하세요
+        setData(response.data);
+        console.log("성공!", response.data);
+      } catch (error) {
+        console.error("Failed to fetch admin data:", error);
+      }
     };
+
     getAdminData();
   }, []);
 
