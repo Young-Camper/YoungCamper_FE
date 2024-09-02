@@ -64,13 +64,15 @@ export const FAQText1 = styled.div`
 export const FAQText2 = styled.div`
   color: #0A0B0A;
   font-family: "MonRegular";
-  font-size: ${(props) => (props.$isMobile ? "18px" : "22px")};
+  font-size: ${(props) => (props.$isMobile ? "18px" : "20px")};
   font-weight: 400;
   line-height: ${(props) => (props.$isMobile ? "24px" : "30px")};
   letter-spacing: ${(props) => (props.$isMobile ? "-0.09px" : "-0.22px")};
   
   span.a-text {
     color: #0068FF;
+    font-family: "MonSemiBold";
+    font-size: ${(props) => (props.$isMobile ? "18px" : "22px")};
   }
 
   a {
