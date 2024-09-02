@@ -26,19 +26,3 @@
   font-family: "MonRegular";
   src: url("../assets/fonts/Montserrat-Regular.woff");
 }
-
-/* primary font */
-@font-face {
-  font-family: "PretendardExtrabold";
-  src: url("../assets/fonts/Pretendard-ExtraBold.woff");
-}
-
-@font-face {
-  font-family: "PretendardSemiBold";
-  src: url("../assets/fonts/Pretendard-SemiBold.woff");
-}
-
-@font-face {
-  font-family: "PretendardRegular";
-  src: url("../assets/fonts/Pretendard-Regular.woff");
-}
