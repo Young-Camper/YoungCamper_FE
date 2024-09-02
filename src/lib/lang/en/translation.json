@@ -1,0 +1,11 @@
+{
+  "nav": {
+    "notification": "News",
+    "club": "Club",
+    "performance": "Schedule",
+    "location": "Location",
+    "review": "Reviews",
+    "faq": "FAQ",
+    "about": "Team"
+  }
+}

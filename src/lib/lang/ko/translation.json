@@ -1,0 +1,11 @@
+{
+  "nav": {
+    "notification": "공지",
+    "club": "동아리",
+    "performance": "공연일정",
+    "location": "장소",
+    "review": "후기",
+    "faq": "FAQ",
+    "about": "기획단"
+  }
+}
