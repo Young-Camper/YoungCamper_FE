@@ -1,6 +1,4 @@
-import { useState } from "react";
-import logo_kr from "../../assets/images/Nav/Logo_kr.png";
-import logo_en from "../../assets/images/Nav/Logo_en.png";
+import { useState, useEffect } from "react";
 import useMediaQueries from "../../hooks/useMediaQueries";
 import * as S from "./style";
 import { useTranslation } from "react-i18next";
@@ -16,14 +14,14 @@ const Nav = () => {
   const { t } = useTranslation();
   const [modalOpen, setModalOpen] = useState(false);
 
+  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+
   const handleToggle = () => {
     const newLang = isChecked ? "ko" : "en"; // 토글 상태에 따라 언어 결정
     setLang(newLang); // Recoil 상태 업데이트
     i18n.changeLanguage(newLang);
+    localStorage.setItem("language", newLang);
   };
-
-  //이미지
-  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
   return (
     <>
@@ -34,9 +32,9 @@ const Nav = () => {
               {/* 로고 */}
               <S.StyledLink to={"/"}>
                 {isChecked ? (
-                  <S.LogoEn src={logo_en} alt="Logo_en" />
+                  <S.LogoEn src={`${mediaUrl}Nav/Logo_en.png`} alt="Logo_en" />
                 ) : (
-                  <S.LogoKr src={logo_kr} alt="Logo_kr" />
+                  <S.LogoKr src={`${mediaUrl}Nav/Logo_kr.png`} alt="Logo_kr" />
                 )}
               </S.StyledLink>
 
@@ -92,7 +90,7 @@ const Nav = () => {
                     <S.Header>
                       <S.HeaderContent>
                         <S.MenubarOpened
-                          menubar={menubar}
+                          menubar={`${mediaUrl}Nav/Menubar.png`}
                           onClick={() => setModalOpen(false)}
                         />
                         <S.LogoWrapper>
@@ -101,14 +99,20 @@ const Nav = () => {
                             onClick={() => setModalOpen(false)}
                           >
                             {isChecked ? (
-                              <S.LogoEn src={logo_en} alt="Logo_en" />
+                              <S.LogoEn
+                                src={`${mediaUrl}Nav/Logo_en.png`}
+                                alt="Logo_en"
+                              />
                             ) : (
-                              <S.LogoKr src={logo_kr} alt="Logo_kr" />
+                              <S.LogoKr
+                                src={`${mediaUrl}Nav/Logo_kr.png`}
+                                alt="Logo_kr"
+                              />
                             )}
                           </S.StyledLink>
                         </S.LogoWrapper>
                         <S.ModalCloseBtn
-                          closeicon={closeicon}
+                          closeicon={`${mediaUrl}Nav/CloseIcon.png`}
                           onClick={() => setModalOpen(false)}
                         />
                       </S.HeaderContent>
@@ -128,7 +132,11 @@ const Nav = () => {
                             to={"/promotion"}
                             onClick={() => setModalOpen(false)}
                           >
-                            <img src={SideNav} width={"44px"} height={"44px"} />
+                            <img
+                              src={`${mediaUrl}Nav/SideNav.png`}
+                              width={"44px"}
+                              height={"44px"}
+                            />
                             {t("nav.club")}
                           </S.StyledLink>
                         </S.SideNavLink>
@@ -186,14 +194,18 @@ const Nav = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <S.SideNavSnsIcon icon={Instagram} />
+                            <S.SideNavSnsIcon
+                              icon={`${mediaUrl}Nav/Instagram.png`}
+                            />
                           </a>
                           <a
                             href="https://www.youtube.com/@youngcamp_dgu"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <S.SideNavSnsIcon icon={Youtube} />
+                            <S.SideNavSnsIcon
+                              icon={`${mediaUrl}Nav/Youtube.png`}
+                            />
                           </a>
                         </S.SideNavIconContainer>
                       </S.SideNavSNS>
@@ -203,15 +215,15 @@ const Nav = () => {
               )}
               <S.StyledLink to={"/"}>
                 {isChecked ? (
-                  <S.LogoEn src={logo_en} alt="Logo_en" />
+                  <S.LogoEn src={`${mediaUrl}Nav/Logo_en.png`} alt="Logo_en" />
                 ) : (
-                  <S.LogoKr src={logo_kr} alt="Logo_kr" />
+                  <S.LogoKr src={`${mediaUrl}Nav/Logo_kr.png`} alt="Logo_kr" />
                 )}
               </S.StyledLink>
               <S.MenubarContainer>
                 <S.MenubarWrapper>
                   <S.Menubar
-                    menubar={menubar}
+                    menubar={`${mediaUrl}Nav/Menubar.png`}
                     onClick={() => setModalOpen(true)}
                   />
                 </S.MenubarWrapper>
