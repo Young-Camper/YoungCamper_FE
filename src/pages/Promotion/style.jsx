@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Arrow from '../../assets/images/Promotion/arrow.png';
 
+const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
 // Club
 export const gridContainer = styled.div`
@@ -25,7 +25,7 @@ export const CardWrapper = styled.div`
 
 // ClubCard
 export const CardContainer = styled.div`
-    background-image: ${props => props.hasImage ? `url(${props.src})` : 'linear-gradient(to bottom, #00000000, rgba(10, 11, 10, 0.48))'};
+    background-image: ${props => props.$hasclubimage ? `url(${props.src})` : 'linear-gradient(to bottom, #00000000, rgba(10, 11, 10, 0.48))'};
     background-size: cover;
     background-position: center;
     padding: 24px 36px;
@@ -61,7 +61,7 @@ export const CardContainer = styled.div`
     }
 
     &:hover {
-        outline: 2px solid #0068FF;
+        outline: 4px solid #0068FF;
 
         &::before {
             content: '';
@@ -88,7 +88,7 @@ export const CardContainer = styled.div`
             height: 40px;
             background-color: #FAFAFA; 
             border-radius: 25px; 
-            background-image: url(${Arrow});
+            background-image: url(${`${mediaUrl}Promotion/arrow.png`});
             background-size: 26px 22px;
             background-repeat: no-repeat;
             background-position: center;
@@ -132,6 +132,7 @@ export const PageNumber = styled.span`
     cursor: pointer;
     padding: 10px 15px;
     border: 1px solid #ddd;
+    font-family: "MonRegular";
     font-size: 16px;
     font-weight: 400;
     background-color: ${(props) => (props.$isActive ? "#e7ebef" : "white")};
@@ -201,10 +202,10 @@ export const ClubImage = styled.div`
     height: ${(props) => (props.$isDesktop ? '619px' : '450px')};
     width: 100%;
     background-image: ${props =>
-        props.hasImage 
+        props.$hasimage 
             ? `url(${props.src})` 
             : 'linear-gradient(to bottom, #00000000, rgba(10, 11, 10, 0.48))'};
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -213,7 +214,13 @@ export const ClubImage = styled.div`
 
 //SubTitle
 export const Wrapper = styled.div`
-    padding: 48px 0; 
+    padding: ${(props) =>
+        props.$isMobile
+        ? "48px 24px 24px 24px"
+        : props.$isTablet
+        ? "48px 72px 24px 72px"
+        : "96px 0px 48px 0px"};
+    
 `;
 
 export const SchoolBadgeDetail = styled.div`
@@ -301,16 +308,20 @@ export const Content = styled.p`
     line-height: 1.5;
 `;
 
-export const ImageBox = styled.div`
-    margin-top: ${(props) => (props.$isDesktop ? "0px" : "24px")};
-    height: ${(props) => (props.hasImage ? (props.$isDesktop ? '478px' : '207px') : '0px')};
-    background-image: ${(props) => (props.hasImage ? `url(${props.src})` : 'none')};
-    background-position: center;
-    border-radius: 12px;
-    background-size: contain;
-    background-repeat: no-repeat;
+export const ImageGallery = styled.div`
+    display: flex;
+    flex-direction: ${(props) => (props.$isMobile ? 'column' : 'row')};
+    justify-content: center;
+    align-items: center;
+    gap: 12px; 
 `;
 
+export const ImageBox = styled.img`
+    height: auto;
+    max-width: ${(props) => (props.$isMobile ? '100%' : '40%')};
+    object-fit: contain;
+    border-radius: 12px;
+`;
 
 export const ApplyButton = styled.div `
     height: ${(props) => (props.$isDesktop ? '70px' : '45px')};
@@ -351,7 +362,9 @@ export const ModalContainer = styled.div`
 `;
 
 export const Modal = styled.div`
-    width: 530px;
+    width: 600px;
+    max-width: 800px;
+    min-width: 340px;
     background: #fff;
     border-radius: 20px;
     position: relative;
@@ -363,7 +376,7 @@ export const Modal = styled.div`
 
 export const ModalCloseBtn = styled.div`
     position: absolute;
-    top: 30px;
+    top: 28px;
     right: 28px;
     cursor: pointer;
     img {
@@ -380,6 +393,8 @@ export const ModalText = styled.p`
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-family: "MonExtraBold";
+    font-weight: 600;
 `;
 
 export const Separator = styled.div`
@@ -391,18 +406,21 @@ export const Separator = styled.div`
 
 export const ModalFooter = styled.div`
     text-align: center;
-    margin: 0px 48px;
+    padding: 0px 48px;
+    
 `;
 
 export const QaApply = styled.p`
+    font-family: "MonRegular";
     margin-bottom: 36px;
-    font-size: 22px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     color: #637D92;
 `;
 
 export const ApplyLinkSize = styled.p`
+        font-family: "MonRegular";
         color: #0068FF;
         margin-bottom: 60px;
         font-size: 18px;
