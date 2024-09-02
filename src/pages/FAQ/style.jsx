@@ -27,7 +27,6 @@ export const FAQBox = styled.div`
 
   justify-content: center;
   align-items: center;
-  align-self: stretch;
   flex-direction: column;
 
   border-radius: 8px;
@@ -45,12 +44,6 @@ export const FAQContent = styled.div`
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
-`;
-
-export const FAQTextContainer = styled.div`
-  display: flex;
-  width: 100%;
-  gap: 3px;
 `;
 
 export const FAQText1 = styled.div`
@@ -77,7 +70,7 @@ export const FAQText2 = styled.div`
   letter-spacing: ${(props) => (props.$isMobile ? "-0.09px" : "-0.22px")};
   
   span.a-text {
-    color: #15B097;
+    color: #0068FF;
   }
 
   a {

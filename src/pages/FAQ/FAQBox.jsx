@@ -24,11 +24,9 @@ const FAQBox = ({ question, answer, isOpen, onClick }) => {
 	return (
 		<S.FAQBox onClick={onClick}>
 		  <S.FAQContent>
-			<S.FAQTextContainer>
 				<S.FAQText1 $isMobile={isMobile} >
 					<span className="a-text">Q. </span>{question}
 				</S.FAQText1>
-			</S.FAQTextContainer>
 			<S.FAQButton $isMobile={isMobile}>
 				<img
 				src={isOpen ? closeImage : openImage} 
@@ -38,12 +36,10 @@ const FAQBox = ({ question, answer, isOpen, onClick }) => {
 		  </S.FAQContent>
 		  {isOpen && (
 			<S.AnswerBox isOpen={isOpen}>
-			<S.FAQTextContainer>
 			<S.FAQText2 $isMobile={isMobile} >
 				<span className="a-text">A. </span>
 				<span dangerouslySetInnerHTML={{ __html: answer }} />
 			</S.FAQText2>
-			</S.FAQTextContainer>
 			</S.AnswerBox>
 		  )}
 		</S.FAQBox>
