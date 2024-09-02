@@ -257,7 +257,7 @@ export const TextAndButton = styled.div`
 
 export const SchoolText = styled.div`
     font-family: "MonExtraBold";
-    font-size: 38px;
+    font-size:  ${(props) => (props.$isDesktop ? '38px' : '22px')};
     font-style: normal;
     font-weight: 800;
     color: #0A0B0A;
