@@ -167,9 +167,8 @@ export const ContentWrapper = styled.div`
 export const BackContainer = styled.div`
     height: ${(props) =>
         props.$isDesktop
-        ? "78px"
+        ? "80px"
         : "45px"};
-    background-color: #E7EBEF;
     padding: 24px 12px;
     display: flex;
 `;
@@ -186,6 +185,8 @@ export const ArrowIcon = styled.img`
         ? "44px"
         : "20px"};
     height: auto;
+    fill: var(--gradient, linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%));
+
 `;
 
 export const BackText = styled.span`
@@ -195,7 +196,12 @@ export const BackText = styled.span`
         : "14px"};
     font-weight: 400;
     font-family: "MonRegular";
-    color: #000; 
+    opacity: var(--sds-size-stroke-border);
+
+    background: var(--gradient, linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 `;
 
 export const ClubImage = styled.div`
@@ -219,7 +225,7 @@ export const Wrapper = styled.div`
         ? "48px 24px 24px 24px"
         : props.$isTablet
         ? "48px 72px 24px 72px"
-        : "96px 0px 48px 0px"};
+        : "36px 0px 48px 0px"};
     
 `;
 
