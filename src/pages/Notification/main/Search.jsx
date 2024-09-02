@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import * as S from "./Style";
-import SearchIcon from "../../../assets/images/Notification/SearchIcon.png";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 
 const Search = ({ onSearch }) => {
   const [keyword, setKeyword] = useState("");
   const [results, setResults] = useState(null);
   const { isDesktop } = useMediaQueries();
+  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
   const keywordChangeHandler = (event) => {
     setKeyword(event.target.value);
@@ -27,7 +27,10 @@ const Search = ({ onSearch }) => {
           value={keyword}
           onChange={keywordChangeHandler}
         />
-        <S.SearchIcon src={SearchIcon} onClick={handleSubmit} />
+        <S.SearchIcon
+          src={`${mediaUrl}Notification/SearchIcon.png`}
+          onClick={handleSubmit}
+        />
       </S.SearchContainer>
 
       {results && results.length === 0 && (
