@@ -16,7 +16,7 @@ import { languageState } from "../../context/recoil/languageState";
 const Nav = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const [lang, setLang] = useRecoilState(languageState);
-  const isChecked = lang === "en"; // 영어일 때 체크 상태를 true로 설정
+  const isChecked = lang === "en";
 
   const { t } = useTranslation();
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,8 +24,7 @@ const Nav = () => {
   const handleToggle = () => {
     const newLang = isChecked ? "ko" : "en"; // 토글 상태에 따라 언어 결정
     setLang(newLang); // Recoil 상태 업데이트
-    i18n.changeLanguage(newLang); // i18n 언어 변경
-    localStorage.setItem("language", newLang); // localStorage에 언어 상태 저장
+    i18n.changeLanguage(newLang);
   };
 
   return (
@@ -34,6 +33,7 @@ const Nav = () => {
         <S.Wrapper>
           <S.Container>
             <S.FlexContainer>
+              {/* 로고 */}
               <S.StyledLink to={"/"}>
                 {isChecked ? (
                   <S.LogoEn src={logo_en} alt="Logo_en" />
@@ -41,16 +41,33 @@ const Nav = () => {
                   <S.LogoKr src={logo_kr} alt="Logo_kr" />
                 )}
               </S.StyledLink>
+
+              {/* 영캠프 소개 */}
+              <S.StyledLink to={"/Intro"}>{t(`nav.intro`)}</S.StyledLink>
+
+              {/* 공지 */}
               <S.StyledLink to={"/notification"}>
                 {t(`nav.notification`)}
               </S.StyledLink>
+
+              {/* 동아리 */}
               <S.StyledLink to={"/promotion"}>{t(`nav.club`)}</S.StyledLink>
+
+              {/* 공연 일정 */}
               <S.StyledLink to={"/performance"}>
                 {t(`nav.performance`)}
               </S.StyledLink>
+
+              {/* 장소 */}
               <S.StyledLink to={"/location"}>{t(`nav.location`)}</S.StyledLink>
+
+              {/* 후기 */}
               <S.StyledLink to={"/review"}>{t(`nav.review`)}</S.StyledLink>
+
+              {/* FAQ */}
               <S.StyledLink to={"/FAQ"}>{t(`nav.faq`)}</S.StyledLink>
+
+              {/* 기획단 */}
               <S.StyledLink to={"/about"}>{t(`nav.about`)}</S.StyledLink>
               <S.LangToggleWrapper>
                 <S.CheckBox

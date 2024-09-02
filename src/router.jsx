@@ -11,6 +11,7 @@ import FAQ from "./pages/FAQ/index";
 import Review from "./pages/Review/index";
 import About from "./pages/About/index";
 import NotFound from "./NotFound";
+import Intro from "./pages/Intro/index";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,9 @@ const router = createBrowserRouter([
     children: [
       // 홈 페이지
       { path: "/", element: <Home /> },
+
+      // 홈 페이지
+      { path: "/intro", element: <Intro /> },
 
       // 장소 안내 페이지
       { path: "/location", element: <Location /> },

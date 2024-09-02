@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 //Content.jsx
-
+export const UrgentWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 0px 48px;
+`;
 export const TitleWrapper = styled.div`
   margin-top: ${(props) => (props.$isDesktop ? "48px" : "")};
   gap: 24px;
