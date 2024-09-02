@@ -10,7 +10,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: ${(props) => (props.$isDesktop ? "" : "0 auto")};
-  /* margin: ${(props) => (props.$isTablet || props.$isMobile) && "0 auto"}; */
 `;
 export const Section = styled.div`
   display: flex;
@@ -19,6 +18,7 @@ export const Section = styled.div`
     props.$isDesktop && props.$isRight % 2 == 1 ? "0" : "auto"};
 `;
 export const EventTime = styled.div`
+  position: relative;
   width: ${(props) => (props.$isDesktop ? "250px" : "90px")};
   height: ${(props) => (props.$isDesktop || props.$isEvent ? "250px" : "90px")};
 
@@ -26,22 +26,30 @@ export const EventTime = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.2) 0%,
-      rgba(0, 0, 0, 0.2) 100%
-    ),
-    var(--new-main-primary, #0068ff);
 
-  ${(props) =>
-    props.$lineupOpen
-      ? `
-          background-image: url(${props.$imageURL});
-          background-size: cover;
-          background-position: center;
-        `
-      : ""}
+  opacity: var(--sds-size-stroke-border);
 
+  /* 수계식 투명도 적용 */
+  background-color: var(--new-main-primary, #0068ff);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: -1;
+  }
+
+  /* 연예인 커버 이미지 설정 */
+  background-image: url(${(props) => props.$imageURL});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+
+  /* == 텍스트 스타일 == */
   color: var(--new-main-white, #fafafa);
 
   /* btn/pressed/a */
@@ -57,6 +65,37 @@ export const EventTime = styled.div`
   line-height: 22px; /* 122.222% */
   letter-spacing: -0.09px;
 `;
+export const TimeText = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 5;
+
+  /* 글자 투명도 적용 안되게 설정 */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: ${(props) => props.$isEvent && "0.5"};
+    background: ${(props) => props.$isEvent && "#7992b4"};
+    z-index: -1;
+  }
+`;
+
+export const EventImg = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-81, #9ec6ff);
+  object-fit: cover;
+`;
+
 export const EventName = styled.div`
   display: flex;
   width: ${(props) => (props.$isDesktop ? "500px" : "60vw")};

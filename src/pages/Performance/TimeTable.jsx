@@ -60,10 +60,9 @@ const TimeTable = ({ onArtistClick }) => {
           $isDesktop={isDesktop}
           $isEvent={true}
           $imageURL={event.cover_image}
-          // $imageURL={`${mediaUrl}${event.cover_image}`}
           $lineupOpen={lineupOpen}
         >
-          {event.time}
+          <S.TimeText $isEvent={true}>{event.time}</S.TimeText>
         </S.EventTime>
         <S.ArtistWrapper>
           <S.EventName $isDesktop={isDesktop} $isEvent={true}>
