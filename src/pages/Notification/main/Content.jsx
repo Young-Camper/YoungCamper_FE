@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import * as S from "./Style";
 import Subtitle from "./Subtitle";
 import data from "../../../data/notice.json";
@@ -10,7 +10,8 @@ const Content = ({ keyword }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const maxPage = 5;
-  const { isMobile, isTablet, isDesktop } = useMediaQueries();
+  const { isTablet, isDesktop } = useMediaQueries();
+  const contentWrapperRef = useRef(null);
 
   // 공지사항 필터링 (긴급 및 일반 공지)
   const filteredUrgentItems = data.filter(
@@ -52,23 +53,34 @@ const Content = ({ keyword }) => {
     pageNumbers.push(i);
   }
 
+  const scrollToContentWrapper = () => {
+    if (contentWrapperRef.current) {
+      const topPosition =
+        contentWrapperRef.current.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: topPosition - 30, behavior: "smooth" });
+    }
+  };
+
   const handleClick = (pageNumber) => {
     setCurrentPage(pageNumber);
     window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToContentWrapper();
   };
 
   const handlePrevClick = () => {
     setCurrentPage((prev) => Math.max(prev - 1, 1));
     window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToContentWrapper();
   };
 
   const handleNextClick = () => {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
     window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToContentWrapper();
   };
 
   return (
-    <S.ContentWrapper $isDesktop={isDesktop}>
+    <S.ContentWrapper $isDesktop={isDesktop} ref={contentWrapperRef}>
       <Subtitle
         num="번호"
         title="제목"
