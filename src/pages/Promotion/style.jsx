@@ -230,12 +230,12 @@ export const Wrapper = styled.div`
 `;
 
 export const SchoolBadgeDetail = styled.div`
-    padding: 8px 18px;
+    padding: 8px 12px;
     border-radius: 100px;
     border: 1px solid #000;
     display: inline-block;
     font-family: "MonRegular";
-    font-size: 16px;
+    font-size:  ${(props) => (props.$isDesktop ? '16px' : '12px')};
     font-style: normal;
     font-weight: 400;
     line-height: 24px; 
