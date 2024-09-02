@@ -87,7 +87,8 @@ const Content = ({ keyword }) => {
         date={isDesktop ? "날짜" : null}
         $paddingBottom="0"
         color="black"
-        $fontWeight="700"
+        fontFamily="MonSemiBold"
+        fontWeight="600"
         $marginTop="0"
         $marginBottom="0"
         fontSize="16px"
@@ -103,7 +104,7 @@ const Content = ({ keyword }) => {
                 num={item.urgent === "yes" ? <Urgent /> : item.num}
                 title={item.title}
                 date={item.date}
-                fontSize={isDesktop ? "24px" : "18px"}
+                fontSize={isDesktop ? "22px" : "18px"}
                 isDesktop={isDesktop}
                 isTablet={isTablet}
               />

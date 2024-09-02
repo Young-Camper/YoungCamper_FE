@@ -5,7 +5,7 @@ import useMediaQueries from "../../../hooks/useMediaQueries";
 const Search = ({ onSearch }) => {
   const [keyword, setKeyword] = useState("");
   const [results, setResults] = useState(null);
-  const { isDesktop } = useMediaQueries();
+  const { isDesktop, isMobile } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
   const keywordChangeHandler = (event) => {
@@ -20,7 +20,7 @@ const Search = ({ onSearch }) => {
 
   return (
     <S.SearchWrapper $isDesktop={isDesktop} as="form" onSubmit={handleSubmit}>
-      <S.SearchContainer>
+      <S.SearchContainer $isMobile={isMobile}>
         <S.SearchInput
           placeholder="검색어를 입력해주세요."
           type="text"
