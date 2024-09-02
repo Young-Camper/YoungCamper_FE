@@ -23,10 +23,10 @@ const FAQBox = ({ question, answer, isOpen, onClick }) => {
 		<S.FAQBox onClick={onClick}>
 		  <S.FAQContent>
 			<S.FAQTextContainer>
-				<S.FAQText1 isMobile={isMobile}>Q.</S.FAQText1>
-				<S.FAQText2 isMobile={isMobile}>{question}</S.FAQText2>
+				<S.FAQText1 $isMobile={isMobile}>Q.</S.FAQText1>
+				<S.FAQText2 $isMobile={isMobile}>{question}</S.FAQText2>
 			</S.FAQTextContainer>
-			<S.FAQButton isMobile={isMobile}>
+			<S.FAQButton $isMobile={isMobile}>
 				<img
 				src={isOpen ? closeImage : openImage} 
 				alt={isOpen ? '닫기' : '보기'} 
@@ -36,8 +36,8 @@ const FAQBox = ({ question, answer, isOpen, onClick }) => {
 		  {isOpen && (
 			<S.AnswerBox isOpen={isOpen}>
 			<S.FAQTextContainer>
-			<S.FAQText3 isMobile={isMobile}>A.</S.FAQText3>
-			<S.FAQText2 isMobile={isMobile} dangerouslySetInnerHTML={{ __html: answer }} /> 
+			<S.FAQText3 $isMobile={isMobile}>A.</S.FAQText3>
+			<S.FAQText2 $isMobile={isMobile} dangerouslySetInnerHTML={{ __html: answer }} /> 
 			</S.FAQTextContainer>
 			</S.AnswerBox>
 		  )}
