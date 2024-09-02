@@ -9,12 +9,7 @@ const Wrapper = styled.div`
   /* width: ${(props) =>
     props.$isDesktop ? "1100px" : props.$isTablet ? "672px" : "360px"}; */
 
-  padding: ${(props) =>
-    props.$isBanner
-      ? "0 48px"
-      : props.$isDesktop
-      ? "48px 0"
-      : "30px 20px"}; /* 데스크탑 48px, 모바일|태블릿 0 36px */
+  padding: ${(props) => (props.$isDesktop ? "48px 0" : "30px 20px")};
 
   flex-direction: column;
   align-items: flex-start;
@@ -22,8 +17,7 @@ const Wrapper = styled.div`
 
   /* 768px ~ 1150px 사이의 별도 padding 값 적용 (기존 1110일 때 좌우 padding 0) */
   @media (min-width: 768px) and (max-width: 1150px) {
-    padding: ${(props) =>
-      props.$isBanner ? "0 68px" : props.$isDesktop ? "48px 20px" : ""};
+    padding: ${(props) => props.$isDesktop && "48px 20px"};
   }
 `;
 const MainText = styled.div`
@@ -34,44 +28,29 @@ const MainText = styled.div`
   font-size: ${(props) =>
     props.$isDesktop ? "38px" : "20px"}; /* 데스크탑 38px, 모바일+태블릿 20px */
   font-style: normal;
-  font-weight: 800;
-  line-height: normal;
-  letter-spacing: ${(props) =>
-    props.$isDesktop
-      ? "1.9px"
-      : "0.2px"}; /* 데스크탑 38px, 모바일+태블릿 20px */
+  font-weight: ${(props) => (props.$isDesktop ? "800" : "600")};
+  line-height: ${(props) => (props.$isDesktop ? "48px" : "24px")};
+  letter-spacing: ${(props) => (props.$isDesktop ? "-1.9px" : "0.4px")};
 `;
 const SubText = styled.div`
   color: var(--text-grey800, #637d92);
 
   /* Primary/Desktop/Body1_regular */
   font-family: MonARegular;
-  font-size: ${(props) =>
-    props.$isDesktop ? "22px" : "12px"}; /* 데스크탑 22px, 모바일+태블릿 12px */
+  font-size: ${(props) => (props.$isDesktop ? "20px" : "12px")};
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
-  letter-spacing: ${(props) =>
-    props.$isDesktop
-      ? "0.4px"
-      : "0.06px"}; /* 데스크탑 38px, 모바일+태블릿 20px */
+  line-height: ${(props) => (props.$isDesktop ? "30px" : "18px")};
+  letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.06px")};
 `;
 
 const TitleSet = ({ mainText, subText, isBanner }) => {
-  const { isMobile, isTablet, isDesktop } = useMediaQueries();
+  const { isDesktop } = useMediaQueries();
 
   return (
-    <Wrapper $isDesktop={isDesktop} $isTablet={isTablet} $isBanner={isBanner}>
-      <MainText
-        $isMobile={isMobile}
-        $isTablet={isTablet}
-        $isDesktop={isDesktop}
-      >
-        {mainText}
-      </MainText>
-      <SubText $isMobile={isMobile} $isTablet={isTablet} $isDesktop={isDesktop}>
-        {subText}
-      </SubText>
+    <Wrapper $isDesktop={isDesktop} $isBanner={isBanner}>
+      <MainText $isDesktop={isDesktop}>{mainText}</MainText>
+      <SubText $isDesktop={isDesktop}>{subText}</SubText>
     </Wrapper>
   );
 };

@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   width: 100vw;
   height: ${(props) => (props.$isDesktop ? "280px" : "150px")};
-  padding: ${(props) => (props.$isDesktop ? "0 168px" : "0 24px")};
+  padding: ${(props) => (props.$isDesktop ? "0 20px" : "0 24px")};
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
@@ -20,7 +20,8 @@ export const Wrapper = styled.div`
   );
 `;
 export const BannerWrapper = styled.div`
-  width: 100%;
+  width: 1110px;
+  margin: 0 auto;
 
   display: flex;
   justify-content: space-between;
@@ -61,8 +62,9 @@ export const SubText = styled.div`
 `;
 
 export const BannerImg = styled.div`
-  width: ${(props) => (props.$isDesktop ? "230px" : "100%")};
+  width: ${(props) => (props.$isDesktop ? "230px" : "124px")};
   height: ${(props) => (props.$isDesktop ? "186px" : "100px")};
+  object-fit: contain;
   mix-blend-mode: soft-light;
   background: url(${(props) => props.imageUrl}) lightgray 50% / cover no-repeat;
 `;
