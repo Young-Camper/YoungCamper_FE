@@ -229,7 +229,7 @@ export const Wrapper = styled.div`
         props.$isMobile
         ? "48px 24px 24px 24px"
         : props.$isTablet
-        ? "48px 72px 24px 72px"
+        ? "48px 24px 24px 24px"
         : "36px 0px 48px 0px"};
     
 `;
