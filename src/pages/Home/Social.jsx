@@ -35,7 +35,7 @@ const Social = () => {
                   $isTablet={isTablet}
                   $isDesktop={isDesktop}
                 >
-                  <S.FrameCard $isDesktop={isDesktop}>
+                  <S.FrameCard $isDesktop={isDesktop} BgImage={social.bgimage}>
                     <S.FrameBox $isDesktop={isDesktop}>
                       <S.IconImg
                         $isDesktop={isDesktop}

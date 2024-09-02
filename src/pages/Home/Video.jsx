@@ -35,9 +35,11 @@ const Video = () => {
           loop
           muted
         >
+          <Link to={`https://www.dongguk.edu/main#none`} style={{ width: "100%" }}>
           <S.VideoBtn $isTablet={isTablet} $isDesktop={isDesktop}>
             영상 보러가기
           </S.VideoBtn>
+          </Link>
         </S.VideoBox>
       </S.VideoSectionBox>
       <S.CardSecionBox $isTablet={isTablet} $isDesktop={isDesktop}>

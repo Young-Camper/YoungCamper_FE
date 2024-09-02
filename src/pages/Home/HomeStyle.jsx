@@ -103,6 +103,9 @@ export const TitleMiniText1 = styled.div`
   font-weight: 400;
   line-height: 36px; 
   letter-spacing: -1.4px;
+  @media only screen and (min-width: 1024px) and (max-width: 1400px) {
+    left: 50px;
+  }
 `;
 
 export const TitleMiniText2 = styled(TitleMiniText1)`
@@ -110,6 +113,9 @@ export const TitleMiniText2 = styled(TitleMiniText1)`
   max-height: 36px;
   left: 235px;
   top: 246px;
+  @media only screen and (min-width: 1024px) and (max-width: 1400px) {
+    margin-left: -140px;
+  }
 `;
 
 export const TitleMiniText3 = styled.div`
@@ -121,11 +127,14 @@ export const TitleMiniText3 = styled.div`
   color: var(--Base-Real-White, #FFF);
   text-align: center;
   font-family: MonRegular;
-  font-size: 26px; /*28*/
+  font-size: 26px;
   font-style: normal;
   font-weight: 400;
   line-height: 36px; 
   letter-spacing: -1.4px;
+  @media only screen and (min-width: 1024px) and (max-width: 1400px) {
+    right: 80px;
+  }
 `;
 
 export const TitleMiniText4 = styled(TitleMiniText3)`
@@ -133,6 +142,9 @@ export const TitleMiniText4 = styled(TitleMiniText3)`
   max-height: 36px;
   right: 178px;
   bottom: 189px;
+  @media only screen and (min-width: 1024px) and (max-width: 1400px) {
+    margin-right: -160px;
+  }
 `;
 
 export const TitleBox = styled.div`
@@ -354,6 +366,10 @@ export const TitleFrameText = styled.div`
     props.$isDesktop ? "48px" : props.$isTablet ? "38px" : "32px"};
   letter-spacing: ${(props) =>
     props.$isDesktop ? "-1.9px" : props.$isTablet ? "-1.6px" : "-1.2px"};
+
+  @media only screen and (min-width: 1024px) and (max-width: 1100px) {
+    font-size: 31px;
+  }
 `;
 
 export const TitleFrameText2 = styled(TitleFrameText)`
@@ -940,12 +956,6 @@ export const SocialFrame = styled.div`
   border-radius: 40px;
   background: var(--Base-Base-White, #fafafa);
   position: relative;
-  /* background: url(${mediaUrl}Home/Club/club3.png)}); */
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  overflow: hidden;
-
 
   &:hover {
     border: 2px solid var(--new-main-primary, #0068ff);
@@ -954,10 +964,6 @@ export const SocialFrame = styled.div`
       rgba(0, 104, 255, 0.4) 23.99%,
       rgba(185, 255, 156, 0.4) 98.08%
     );
-    /* background: url(${mediaUrl}Home/Club/club3.png)});
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover; */
   }
 `;
 
@@ -982,7 +988,10 @@ export const FrameCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-self: stretch;
+  align-self: stretch; /*${mediaUrl}Home/Club/clubEmpty.png*/
+  background-image: url(${props => props.BgImage});
+  background-repeat: no-repeat;
+  background-size: contain;
 `;
 
 export const IconImg = styled.div`
