@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import * as S from "./style";
-import CloseBtn from "../../assets/images/timetable/closeBtn.png";
-import YoutubeBtn from "../../assets/images/timetable/Social.png";
 import useMediaQueries from "../../hooks/useMediaQueries";
 
 const ArtistModal = ({ artist, setModalOpen }) => {
+  const mediaUrl = import.meta.VITE_MEDIA_URL;
+
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const modal = useRef();
 
@@ -33,7 +33,7 @@ const ArtistModal = ({ artist, setModalOpen }) => {
           $isTablet={isTablet}
           $isDesktop={isDesktop}
         >
-          <img src={CloseBtn} alt="X" />
+          <img src={`${mediaUrl}Performance/closeBtn.png`} alt="X" />
         </S.ModalCloseBtn>
         <S.ModalContent
           $isMobile={isMobile}
@@ -66,7 +66,7 @@ const ArtistModal = ({ artist, setModalOpen }) => {
           <S.ContentWrapper>
             <S.SubText>대표곡</S.SubText>
             <S.ModalMusic>
-              {artist.music} <img src={YoutubeBtn} />
+              {artist.music} <img src={`${mediaUrl}Performance/Social.png`} />
             </S.ModalMusic>
           </S.ContentWrapper>
         </S.ModalContent>
