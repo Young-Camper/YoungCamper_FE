@@ -1,0 +1,68 @@
+import styled from "styled-components";
+
+export const Wrapper = styled.div`
+  display: flex;
+  width: 100vw;
+  height: ${(props) => (props.$isDesktop ? "280px" : "150px")};
+  padding: ${(props) => (props.$isDesktop ? "0 168px" : "0 24px")};
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+
+  opacity: var(--sds-size-stroke-border);
+  background: var(
+    --gradient_2,
+    linear-gradient(
+      104deg,
+      rgba(185, 255, 156, 0.2) 0%,
+      rgba(0, 104, 255, 0.2) 100%
+    )
+  );
+`;
+export const BannerWrapper = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  align-self: stretch;
+`;
+
+export const BannerTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+`;
+
+export const MainText = styled.div`
+  color: var(--new-main-black, #0a0b0a);
+
+  /* desktop/display2_eb */
+  font-family: MonAExtraBold;
+  font-size: ${(props) => (props.$isDesktop ? "38px" : "20px")};
+  font-style: normal;
+  font-weight: var(--fontWeight-extrabold, 800);
+  line-height: ${(props) => (props.$isDesktop ? "48px" : "28px")};
+  letter-spacing: ${(props) => (props.$isDesktop ? "-1.9px" : "-1px")};
+`;
+
+export const SubText = styled.div`
+  color: var(--new-grey-grey800, #637d92);
+
+  /* desktop/Body2_reg */
+  font-family: MonRegular;
+  font-size: ${(props) => (props.$isDesktop ? "20px" : "12px")};
+  font-style: normal;
+  font-weight: var(--fontWeight-regular, 400);
+  line-height: ${(props) => (props.$isDesktop ? "30px" : "18px")}; /* 150% */
+  letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.06px")};
+`;
+
+export const BannerImg = styled.div`
+  width: ${(props) => (props.$isDesktop ? "230px" : "100%")};
+  height: ${(props) => (props.$isDesktop ? "186px" : "100px")};
+  mix-blend-mode: soft-light;
+  background: url(${(props) => props.imageUrl}) lightgray 50% / cover no-repeat;
+`;
