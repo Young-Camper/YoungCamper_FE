@@ -6,14 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 import useMediaQueries from "../../hooks/useMediaQueries";
 
-const settings = {
-  dots: false,
-  infinite: true,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000,
-};
+const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
 const CTABanner = () => {
 
@@ -30,17 +23,19 @@ const CTABanner = () => {
 
   return (
     <S.CTASection>
-      <S.SectionBanner>
-        <S.GridSliderBox>
-          <Slider {...settings}>
-            <S.GridText $isDesktop={isDesktop}>·  Youngcamp Festival ·  Youngcamp Festival  ·  Youngcamp Festival ·  Youngcamp Festival
-            ·  Youngcamp Festival ·  Youngcamp Festival  ·  Youngcamp Festival ·  Youngcamp Festival
-            </S.GridText>
-          </Slider>  
-        </S.GridSliderBox>
+      <S.SectionBanner $isDesktop={isDesktop}>
+      <S.GridTextWrapper $isDesktop={isDesktop}>
+        <S.GridText $isDesktop={isDesktop}>·   Youngcamp Festival    ·   Youngcamp Festival
+        ·   Youngcamp Festival    ·  Youngcamp Festival    ·  Youngcamp Festival
+        ·   Youngcamp Festival    ·  Youngcamp Festival    ·  Youngcamp Festival
+        ·   Youngcamp Festival    ·  Youngcamp Festival    ·  Youngcamp Festival
+        ·   Youngcamp Festival    ·  Youngcamp Festival    ·  Youngcamp Festival
+        </S.GridText>
+        </S.GridTextWrapper>
+        
       </S.SectionBanner>
       <S.GridBox $isTablet={isTablet} $isDesktop={isDesktop}>
-        <S.VectorImg src = ".\src\assets\images\Home\Vector.png" />
+        <S.VectorImg src = {`${mediaUrl}Home/Vector.png`} />
         <S.GridTitle $isTablet={isTablet} $isDesktop={isDesktop}>JOIN WITH US !</S.GridTitle>
         <S.GridBtnFrame $isTablet={isTablet} $isDesktop={isDesktop}>
         <Link to={"/promotion"}>
