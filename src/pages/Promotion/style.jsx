@@ -169,8 +169,13 @@ export const BackContainer = styled.div`
         props.$isDesktop
         ? "80px"
         : "45px"};
-    padding: 24px 12px;
+    padding: 29px 36px;
+    padding: ${(props) =>
+        props.$isDesktop
+        ? "29px 36px"
+        : "14.5px 24px"};
     display: flex;
+    background: var(--gradient_2, linear-gradient(104deg, rgba(185, 255, 156, 0.20) 0%, rgba(0, 104, 255, 0.20) 100%));
 `;
 
 export const BackButton = styled.div`
@@ -182,7 +187,7 @@ export const BackButton = styled.div`
 export const ArrowIcon = styled.img`
     width: ${(props) =>
         props.$isDesktop
-        ? "44px"
+        ? "28px"
         : "20px"};
     height: auto;
     fill: var(--gradient, linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%));

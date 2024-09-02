@@ -16,7 +16,6 @@ const BackPage = () => {
                             src={`${mediaUrl}Promotion/arrowback.png`}
                             alt="Back Arrow" 
                         />
-                        <S.BackText $isDesktop={isDesktop}>뒤로가기</S.BackText>
                     </S.BackButton>
                 </S.BackContainer>
             </Link>
