@@ -3,10 +3,12 @@ import * as S from "./style";
 import PropTypes from 'prop-types';
 import useMediaQueries from "../../hooks/useMediaQueries";
 
-import openImageDesktop from '../../assets/images/FAQ/FAQ_1.png';
-import closeImageDesktop from '../../assets/images/FAQ/FAQ_2.png';
-import openImageMobile from '../../assets/images/FAQ/FAQ_3.png';
-import closeImageMobile from '../../assets/images/FAQ/FAQ_4.png';
+const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+
+const openImageDesktop = `${mediaUrl}FAQ/FAQ_1.png`;
+const closeImageDesktop = `${mediaUrl}FAQ/FAQ_2.png`;
+const openImageMobile = `${mediaUrl}FAQ/FAQ_3.png`;
+const closeImageMobile = `${mediaUrl}FAQ/FAQ_4.png`;
 
 const FAQBox = ({ question, answer, isOpen, onClick }) => {
 	const { isMobile, isTablet, isDesktop } = useMediaQueries();
@@ -23,8 +25,9 @@ const FAQBox = ({ question, answer, isOpen, onClick }) => {
 		<S.FAQBox onClick={onClick}>
 		  <S.FAQContent>
 			<S.FAQTextContainer>
-				<S.FAQText1 $isMobile={isMobile}>Q.</S.FAQText1>
-				<S.FAQText2 $isMobile={isMobile}>{question}</S.FAQText2>
+				<S.FAQText1 $isMobile={isMobile} >
+					<span className="a-text">Q. </span>{question}
+				</S.FAQText1>
 			</S.FAQTextContainer>
 			<S.FAQButton $isMobile={isMobile}>
 				<img
@@ -36,8 +39,10 @@ const FAQBox = ({ question, answer, isOpen, onClick }) => {
 		  {isOpen && (
 			<S.AnswerBox isOpen={isOpen}>
 			<S.FAQTextContainer>
-			<S.FAQText3 $isMobile={isMobile}>A.</S.FAQText3>
-			<S.FAQText2 $isMobile={isMobile} dangerouslySetInnerHTML={{ __html: answer }} /> 
+			<S.FAQText2 $isMobile={isMobile} >
+				<span className="a-text">A. </span>
+				<span dangerouslySetInnerHTML={{ __html: answer }} />
+			</S.FAQText2>
 			</S.FAQTextContainer>
 			</S.AnswerBox>
 		  )}
