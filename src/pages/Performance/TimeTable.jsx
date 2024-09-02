@@ -5,7 +5,7 @@ import { timetable, lineup } from "../../data/timetable";
 import useMediaQueries from "../../hooks/useMediaQueries";
 
 const TimeTable = ({ onArtistClick }) => {
-  const mediaUrl = import.meta.VITE_MEDIA_URL;
+  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
   // 라인업 공개 여부 설정(true: 라인업 공개, false: 미공개)
   const lineupOpen = true;
@@ -60,6 +60,7 @@ const TimeTable = ({ onArtistClick }) => {
           $isDesktop={isDesktop}
           $isEvent={true}
           $imageURL={event.cover_image}
+          // $imageURL={`${mediaUrl}${event.cover_image}`}
           $lineupOpen={lineupOpen}
         >
           {event.time}

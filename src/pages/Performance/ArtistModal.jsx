@@ -3,7 +3,7 @@ import * as S from "./style";
 import useMediaQueries from "../../hooks/useMediaQueries";
 
 const ArtistModal = ({ artist, setModalOpen }) => {
-  const mediaUrl = import.meta.VITE_MEDIA_URL;
+  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
   const { isMobile } = useMediaQueries();
   const modal = useRef();

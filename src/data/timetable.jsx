@@ -1,4 +1,4 @@
-const mediaUrl = import.meta.VITE_MEDIA_URL;
+const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
 export const timetable = [
   {
