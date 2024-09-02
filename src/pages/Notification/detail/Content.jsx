@@ -9,7 +9,6 @@ import useMediaQueries from "../../../hooks/useMediaQueries";
 const Content = () => {
   const { num } = useParams();
   const [notice, setNotice] = useState(null);
-  const [imagePath, setImagePath] = useState(null);
   const { isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
@@ -39,10 +38,14 @@ const Content = () => {
       <S.Line />
       <S.ContentWrapper $isDesktop={isDesktop}>
         <S.ContentImgContainer>
-          <S.ContentImg
-            src={`${mediaUrl}Notification/${notice.image}`}
-            alt="공지 이미지"
-          />
+          {notice.image && (
+            <S.ContentImgContainer>
+              <S.ContentImg
+                src={`${mediaUrl}Notification/${notice.image}`}
+                alt="공지 이미지"
+              />
+            </S.ContentImgContainer>
+          )}
         </S.ContentImgContainer>
 
         <S.ContentText $isDesktop={isDesktop}>{notice.content}</S.ContentText>
