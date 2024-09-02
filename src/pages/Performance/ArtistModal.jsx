@@ -5,7 +5,7 @@ import useMediaQueries from "../../hooks/useMediaQueries";
 const ArtistModal = ({ artist, setModalOpen }) => {
   const mediaUrl = import.meta.VITE_MEDIA_URL;
 
-  const { isMobile, isTablet, isDesktop } = useMediaQueries();
+  const { isMobile } = useMediaQueries();
   const modal = useRef();
 
   const handleCloseModal = (event) => {
@@ -15,53 +15,20 @@ const ArtistModal = ({ artist, setModalOpen }) => {
   };
 
   return (
-    <S.ModalContainer
-      onClick={handleCloseModal}
-      $isMobile={isMobile}
-      $isTablet={isTablet}
-      $isDesktop={isDesktop}
-    >
-      <S.Modal
-        ref={modal}
-        $isMobile={isMobile}
-        $isTablet={isTablet}
-        $isDesktop={isDesktop}
-      >
-        <S.ModalCloseBtn
-          onClick={() => setModalOpen(false)}
-          $isMobile={isMobile}
-          $isTablet={isTablet}
-          $isDesktop={isDesktop}
-        >
+    <S.ModalContainer onClick={handleCloseModal}>
+      <S.Modal ref={modal} $isMobile={isMobile}>
+        <S.ModalCloseBtn onClick={() => setModalOpen(false)}>
           <img src={`${mediaUrl}Performance/closeBtn.png`} alt="X" />
         </S.ModalCloseBtn>
-        <S.ModalContent
-          $isMobile={isMobile}
-          $isTablet={isTablet}
-          $isDesktop={isDesktop}
-        >
-          <S.ModalPosterImg
-            $isMobile={isMobile}
-            $isTablet={isTablet}
-            $isDesktop={isDesktop}
-          >
+        <S.ModalContent $isMobile={isMobile}>
+          <S.ModalPosterImg $isMobile={isMobile}>
             <img src={artist.artist_image} />
           </S.ModalPosterImg>
           <S.ContentWrapper>
-            <S.ArtistName
-              $isMobile={isMobile}
-              $isTablet={isTablet}
-              $isDesktop={isDesktop}
-            >
+            <S.ArtistName $isMobile={isMobile}>
               <S.Line>{artist.name}</S.Line>
             </S.ArtistName>
-            <S.DetailText
-              $isMobile={isMobile}
-              $isTablet={isTablet}
-              $isDesktop={isDesktop}
-            >
-              {artist.etc}
-            </S.DetailText>
+            <S.DetailText $isMobile={isMobile}>{artist.etc}</S.DetailText>
           </S.ContentWrapper>
           <S.ContentWrapper>
             <S.SubText>대표곡</S.SubText>
