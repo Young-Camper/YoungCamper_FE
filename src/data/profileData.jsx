@@ -1,4 +1,5 @@
-import sampleImage from '../assets/images/About/about_sample.jpg'
+const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+const sampleImage = `${mediaUrl}About/about_sample.jpg`;
 
 export const studentCommitteeProfiles = [
 	{ id: 1, name: "김OO", role: "PM", image: sampleImage, description: "상세 설명" },

@@ -1,16 +1,15 @@
 import React from 'react'
 import { styled } from "styled-components";
-import useMediaQueries from "../../hooks/useMediaQueries";
 
 
 export const FAQWrapper = styled.div`
   display: flex;
   width: 100%;
-  max-width: 1500px;
+  max-width: 1440px;
   padding: ${(props) =>
-    props.isMobile
+    props.$isMobile
       ? "52px 24px" /* 모바일 뷰 */
-      : props.isTablet
+      : props.$isTablet
       ? "80px 48px"  /* 태블릿 뷰 */
       : "132px 170px"}; /* 데스크탑 뷰 */
   flex-direction: column;
@@ -28,7 +27,6 @@ export const FAQBox = styled.div`
 
   justify-content: center;
   align-items: center;
-  align-self: stretch;
   flex-direction: column;
 
   border-radius: 8px;
@@ -48,35 +46,49 @@ export const FAQContent = styled.div`
   align-self: stretch;
 `;
 
-export const FAQTextContainer = styled.div`
-  display: flex;
-  width: 100%;
-  gap: 6px;
-`;
-
-/* text의 경우 데스크탑 뷰에서만 달라짐 */
 export const FAQText1 = styled.div`
-  color: #0068FF;
-  font-family: ${(props) => (props.isDesktop ? "PretendardRegular" : "MonRegular")};
-  font-size: ${(props) => (props.isDesktop ? "24px" : "18px")};
-  font-weight: ${(props) => (props.isDesktop ? "600" : "400")};
-  line-height: ${(props) => (props.isDesktop ? "32px" : "22px")};
-  letter-spacing: ${(props) => (props.isDesktop ? "0.48px" : "-0.09px")};
-`;
+  color: #0A0B0A;
+  
+  font-family: ${(props) => (props.$isMobile ? "MonRegular" : "MonSemiBold")};
+  font-size: ${(props) => (props.$isMobile ? "18px" : "22px")};
+  font-weight: ${(props) => (props.$isMobile ? "400" : "600")};
+  line-height: ${(props) => (props.$isMobile ? "24px" : "30px")};
+  letter-spacing: ${(props) => (props.$isMobile ? "-0.09px" : "-0.22px")};
+
+  span.a-text {
+    color: #0068FF;
+  }
+    
+  `;
 
 export const FAQText2 = styled.div`
   color: #0A0B0A;
-  font-family: ${(props) => (props.isDesktop ? "PretendardRegular" : "MonRegular")};
-  font-size: ${(props) => (props.isDesktop ? "24px" : "18px")};
-  font-weight: ${(props) => (props.isDesktop ? "600" : "400")};
-  line-height: ${(props) => (props.isDesktop ? "32px" : "24px")};
-  letter-spacing: ${(props) => (props.isDesktop ? "0.48px" : "-0.09px")};
+  font-family: "MonRegular";
+  font-size: ${(props) => (props.$isMobile ? "18px" : "20px")};
+  font-weight: 400;
+  line-height: ${(props) => (props.$isMobile ? "24px" : "30px")};
+  letter-spacing: ${(props) => (props.$isMobile ? "-0.09px" : "-0.22px")};
+  
+  span.a-text {
+    color: #0068FF;
+    font-family: "MonSemiBold";
+    font-size: ${(props) => (props.$isMobile ? "18px" : "22px")};
+  }
+
+  a {
+    color: #0068FF;
+    text-decoration: underline; /* 하이퍼링크 부분에 속성 추가*/
+    
+    &:hover {
+      color: #004aad; /* hover 시 폰트 색상 변경 */ 
+    }
+  }
 `;
 
 export const FAQButton = styled.div`
   display: flex;
-  width: ${(props) => (props.isDesktop ? "46px" : "28px")};
-  height: ${(props) => (props.isDesktop ? "46px" : "28px")};
+  width: ${(props) => (props.$isMobile ? "28px" : "46px")};
+  height: ${(props) => (props.$isMobile ? "28px" : "46px")};
   justify-content: center;
   align-items: center;
 `;
@@ -89,7 +101,7 @@ export const AnswerBox = styled.div`
   align-items: center;
   border-radius: 0px 0px 8px 8px;
   border-top: solid 1px #CED7DE;
-  background: rgba(0, 104, 255, 0.12);
+  background: linear-gradient(104deg, rgba(185, 255, 156, 0.20) 0%, rgba(0, 104, 255, 0.20) 100%);
 `;
 
 export const PagenationWrapper = styled.div`

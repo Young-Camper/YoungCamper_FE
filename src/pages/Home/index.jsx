@@ -7,6 +7,7 @@ import Notice from "./Notice";
 import Social from "./Social";
 import CTABanner from "./CTABanner";
 
+
 const index = () => {
 
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
@@ -19,7 +20,7 @@ const index = () => {
     <Notice />
     <Social />
     <CTABanner />
-</>
+    </>
   )  
 } 
 

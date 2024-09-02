@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import TitleSet from "../../components/ui/TitleSet";
 import { timetable, lineup } from "../../data/timetable";
-import Arrow from "../../assets/images/timetable/arrow_icon.png";
 import useMediaQueries from "../../hooks/useMediaQueries";
 
 const TimeTable = ({ onArtistClick }) => {
+  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+
   // 라인업 공개 여부 설정(true: 라인업 공개, false: 미공개)
   const lineupOpen = true;
 
   // -------------------------- hooks --------------------------
-  const { isMobile, isTablet, isDesktop } = useMediaQueries();
+  const { isDesktop } = useMediaQueries();
 
   const [artists, setArtists] = useState([]);
 
@@ -37,112 +38,68 @@ const TimeTable = ({ onArtistClick }) => {
     return event.id === 2 /* 수계식 레이아웃 예외처리 */ ? (
       <S.Section
         key={event.id}
-        $isMobile={isMobile}
-        $isTablet={isTablet}
         $isDesktop={isDesktop}
         $isRight={event.id}
         $isEvent={false}
       >
-        <S.EventTime
-          $isMobile={isMobile}
-          $isTablet={isTablet}
-          $isDesktop={isDesktop}
-          $isEvent={false}
-        >
+        <S.EventTime $isDesktop={isDesktop} $isEvent={false}>
           {event.time}
         </S.EventTime>
-        <S.EventName
-          $isMobile={isMobile}
-          $isTablet={isTablet}
-          $isDesktop={isDesktop}
-          $isEvent={false}
-        >
+        <S.EventName $isDesktop={isDesktop} $isEvent={false}>
           {event.name}
         </S.EventName>
       </S.Section>
     ) : (
       <S.Section
         key={event.id}
-        $isMobile={isMobile}
-        $isTablet={isTablet}
         $isDesktop={isDesktop}
         $isRight={event.id}
         $isEvent={true}
       >
         <S.EventTime
-          $isMobile={isMobile}
-          $isTablet={isTablet}
           $isDesktop={isDesktop}
           $isEvent={true}
           $imageURL={event.cover_image}
+          // $imageURL={`${mediaUrl}${event.cover_image}`}
           $lineupOpen={lineupOpen}
         >
           {event.time}
         </S.EventTime>
         <S.ArtistWrapper>
-          <S.EventName
-            $isMobile={isMobile}
-            $isTablet={isTablet}
-            $isDesktop={isDesktop}
-            $isEvent={true}
-          >
-            <S.SmallText
-              $isMobile={isMobile}
-              $isTablet={isTablet}
-              $isDesktop={isDesktop}
-            >
-              {event.index}
-            </S.SmallText>
+          <S.EventName $isDesktop={isDesktop} $isEvent={true}>
+            <S.SmallText $isDesktop={isDesktop}>{event.index}</S.SmallText>
             {/* 라인업이 2인일 경우 레이아웃 처리 */}
             {currentArtists.length > 1 ? (
               <>
-                <S.EventText
-                  $isMobile={isMobile}
-                  $isTablet={isTablet}
-                  $isDesktop={isDesktop}
-                >
+                <S.EventText $isDesktop={isDesktop}>
                   {currentArtists[0]?.name}
                   <S.Arrow
-                    src={Arrow}
+                    src={`${mediaUrl}Performance/arrow_icon.png`}
                     onClick={() => {
                       onArtistClick(currentArtists[0]);
                     }}
-                    $isMobile={isMobile}
-                    $isTablet={isTablet}
                     $isDesktop={isDesktop}
                   />
                 </S.EventText>
-                <S.EventTextRight
-                  $isMobile={isMobile}
-                  $isTablet={isTablet}
-                  $isDesktop={isDesktop}
-                >
+                <S.EventTextRight $isDesktop={isDesktop}>
                   {currentArtists[1]?.name}
                   <S.Arrow
-                    src={Arrow}
+                    src={`${mediaUrl}Performance/arrow_icon.png`}
                     onClick={() => {
                       onArtistClick(currentArtists[1]);
                     }}
-                    $isMobile={isMobile}
-                    $isTablet={isTablet}
                     $isDesktop={isDesktop}
                   />
                 </S.EventTextRight>
               </>
             ) : (
-              <S.EventText
-                $isMobile={isMobile}
-                $isTablet={isTablet}
-                $isDesktop={isDesktop}
-              >
+              <S.EventText $isDesktop={isDesktop}>
                 {currentArtists[0]?.name}
                 <S.Arrow
-                  src={Arrow}
+                  src={`${mediaUrl}Performance/arrow_icon.png`}
                   onClick={() => {
                     onArtistClick(currentArtists[0]);
                   }}
-                  $isMobile={isMobile}
-                  $isTablet={isTablet}
                   $isDesktop={isDesktop}
                 />
               </S.EventText>
@@ -155,27 +112,9 @@ const TimeTable = ({ onArtistClick }) => {
 
   const GuideTable = (event) => {
     return (
-      <S.Section
-        key={event.id}
-        $isRight={event.id}
-        $isMobile={isMobile}
-        $isTablet={isTablet}
-        $isDesktop={isDesktop}
-      >
-        <S.GuideTime
-          $isMobile={isMobile}
-          $isTablet={isTablet}
-          $isDesktop={isDesktop}
-        >
-          {event.time}
-        </S.GuideTime>
-        <S.GuideName
-          $isMobile={isMobile}
-          $isTablet={isTablet}
-          $isDesktop={isDesktop}
-        >
-          {event.name}
-        </S.GuideName>
+      <S.Section key={event.id} $isRight={event.id} $isDesktop={isDesktop}>
+        <S.GuideTime $isDesktop={isDesktop}>{event.time}</S.GuideTime>
+        <S.GuideName $isDesktop={isDesktop}>{event.name}</S.GuideName>
       </S.Section>
     );
   };
@@ -188,11 +127,7 @@ const TimeTable = ({ onArtistClick }) => {
         mainText="타임테이블"
         subText="영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다."
       />
-      <S.Container
-        $isMobile={isMobile}
-        $isTablet={isTablet}
-        $isDesktop={isDesktop}
-      >
+      <S.Container $isDesktop={isDesktop}>
         {timetable &&
           timetable.map((event) =>
             event.is_event ? PerformanceTable(event) : GuideTable(event)

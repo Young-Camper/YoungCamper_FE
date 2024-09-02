@@ -1,12 +1,7 @@
+import { useState } from "react";
 import logo_kr from "../../assets/images/Nav/Logo_kr.png";
 import logo_en from "../../assets/images/Nav/Logo_en.png";
-import { useState } from "react";
 import useMediaQueries from "../../hooks/useMediaQueries";
-import menubar from "../../assets/images/Nav/Menubar.png";
-import closeicon from "../../assets/images/Nav/CloseIcon.png";
-import Instagram from "../../assets/images/Nav/Instagram.png";
-import Youtube from "../../assets/images/Nav/Youtube.png";
-import SideNav from "../../assets/images/Nav/SideNav.png";
 import * as S from "./style";
 import { useTranslation } from "react-i18next";
 import i18n from "../../lib/lang/i18n";
@@ -26,6 +21,9 @@ const Nav = () => {
     setLang(newLang); // Recoil 상태 업데이트
     i18n.changeLanguage(newLang);
   };
+
+  //이미지
+  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
   return (
     <>
