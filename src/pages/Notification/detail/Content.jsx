@@ -9,19 +9,13 @@ import useMediaQueries from "../../../hooks/useMediaQueries";
 const Content = () => {
   const { num } = useParams();
   const [notice, setNotice] = useState(null);
-  const [imagePath, setImagePath] = useState(null);
   const { isDesktop } = useMediaQueries();
+  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
   useEffect(() => {
     // 공지사항 데이터 찾기
     const foundNotice = data.find((item) => item.num === parseInt(num, 10));
     setNotice(foundNotice);
-
-    if (foundNotice) {
-      import(`../../../assets/images/Notification/${foundNotice.image}`)
-        .then((module) => setImagePath(module.default))
-        .catch(() => setImagePath(null));
-    }
   }, [num]);
 
   if (!notice) {
@@ -43,11 +37,17 @@ const Content = () => {
       </S.InfoContainer>
       <S.Line />
       <S.ContentWrapper $isDesktop={isDesktop}>
-        {imagePath && (
-          <S.ContentImgContainer>
-            <S.ContentImg src={imagePath} alt="공지 이미지" />
-          </S.ContentImgContainer>
-        )}
+        <S.ContentImgContainer>
+          {notice.image && (
+            <S.ContentImgContainer>
+              <S.ContentImg
+                src={`${mediaUrl}Notification/${notice.image}`}
+                alt="공지 이미지"
+              />
+            </S.ContentImgContainer>
+          )}
+        </S.ContentImgContainer>
+
         <S.ContentText $isDesktop={isDesktop}>{notice.content}</S.ContentText>
       </S.ContentWrapper>
       <ShowList />

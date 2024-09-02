@@ -7,10 +7,11 @@ const Subtitle = ({
   date,
   paddingBottom,
   color,
-  fontWeight,
   marginTop,
   marginBottom,
   fontSize,
+  fontFamily,
+  fontWeight,
   isDesktop,
   isTablet,
   gap,
@@ -27,25 +28,30 @@ const Subtitle = ({
 
       {!isDesktop && (
         <S.TitleDateContainer gap={gap}>
-          <S.TitleContainer fontWeight={fontWeight} fontSize={fontSize}>
-            {title}
-          </S.TitleContainer>
-          <S.DateContainer>{date}</S.DateContainer>
+          <S.TitleContainer fontSize={fontSize}>{title}</S.TitleContainer>
+          <S.DateContainer
+            fontFamily={fontFamily}
+            fontWeight={fontWeight}
+            $isDesktop={isDesktop}
+          >
+            {date}
+          </S.DateContainer>
         </S.TitleDateContainer>
       )}
 
       {isDesktop && (
         <>
-          <S.TitleContainer fontWeight={fontWeight} fontSize={fontSize}>
-            {title}
-          </S.TitleContainer>
-          <S.NumContainer
+          <S.TitleContainer fontSize={fontSize}>{title}</S.TitleContainer>
+          <S.DateContainer
             color={color}
+            $fontSize={fontSize}
             $isDesktop={isDesktop}
             $isTablet={isTablet}
+            fontFamily={fontFamily}
+            fontWeight={fontWeight}
           >
             {date}
-          </S.NumContainer>
+          </S.DateContainer>
         </>
       )}
     </S.SubTitleWrapper>

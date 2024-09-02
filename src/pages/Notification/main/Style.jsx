@@ -6,17 +6,20 @@ export const SearchWrapper = styled.div`
   justify-content: flex-end;
   display: flex;
   width: 100%;
-  margin-right: ${(props) => (props.$isDesktop ? "" : "20px")};
+  margin-right: ${(props) => (props.$isDesktop ? "48px" : "20px")};
 `;
 
 export const SearchContainer = styled.div`
   position: relative;
-  width: 287px;
+  width: ${(props) => (props.$isDesktop ? "287px" : "215.89584px")};
   height: 48px;
   border: 1px solid #92a5b5;
   background-color: #fafafa;
-  padding: 16px;
+  padding: ${(props) => (props.$isDesktop ? "0px 16px" : "0px 14px")};
   border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const SearchInput = styled.input`
@@ -58,25 +61,29 @@ export const NumContainer = styled.div`
   padding: 14px;
   width: ${(props) =>
     props.$isDesktop ? "15%" : props.$isTablet ? "20%" : "45%"};
-  font-weight: 700;
+  font-weight: 600;
   display: flex;
   justify-content: center;
   font-size: 16px;
   color: ${(props) => props.color || "#92A5B5"};
   display: flex;
   align-items: center;
+  font-family: "MonSemiBold";
 `;
 
 export const DateContainer = styled.div`
   padding: ${(props) => (props.$isDesktop ? "14px" : "")};
   width: 15%;
-  font-weight: 700;
   display: flex;
+  font-weight: ${(props) => props.fontWeight || "400"};
   justify-content: ${(props) => (props.$isDesktop ? "center" : "")};
-  font-size: 14px;
+  font-size: ${(props) => (props.$isDesktop ? "16px" : "14px")};
+  line-height: ${(props) => (props.$isDesktop ? "24px" : "22px")};
+  letter-spacing: -0.16px;
   color: ${(props) => props.color || "#92A5B5"};
   display: flex;
   align-items: center;
+  font-family: ${(props) => props.fontFamily || "MonRegular"};
 `;
 
 export const TitleDateContainer = styled.div`
@@ -84,17 +91,19 @@ export const TitleDateContainer = styled.div`
   width: ${(props) => (props.$isDesktop ? "70%" : "100%")};
   flex-direction: column;
   padding: 15px 0px;
-  gap: ${(props) => props.gap || "7px"};
+  gap: ${(props) => props.gap || "5px"};
   justify-content: center;
 `;
 
 export const TitleContainer = styled.div`
   padding: ${(props) => (props.$isDesktop ? "14px" : "")};
-  width: 80%;
+  width: 100%;
   font-size: ${(props) => props.fontSize || "16px"};
-  font-weight: ${(props) => props.fontWeight || 600};
+  font-weight: 600;
+  line-height: ${(props) => (props.$isDesktop ? "30px" : "22px")};
   display: flex;
   align-items: center;
+  font-family: "MonSemiBold";
 `;
 
 //Content.jsx
@@ -115,12 +124,13 @@ export const Pagination = styled.div`
 `;
 
 export const PageNumber = styled.div`
-  margin: 0 5px;
-  padding: 10px 15px;
+  padding: 8px 12px;
   cursor: pointer;
+  font-family: "MonRegular";
+  font-weight: 400;
   background-color: ${(props) => (props.$isActive ? "#e7ebef" : "white")};
   color: black;
-  border-radius: 10px;
+  border-radius: 8px;
 
   &:hover {
     background-color: #e7ebef;
@@ -128,13 +138,12 @@ export const PageNumber = styled.div`
 `;
 
 export const PageArrow = styled.div`
-  margin: 0 5px;
-  padding: 10px 15px;
+  padding: 8px 12px;
   cursor: pointer;
   border: 1px solid #e7ebef;
   background-color: white;
   color: #92a5b5;
-  border-radius: 4px;
+  border-radius: 8px;
 
   &:hover {
     background-color: #e7ebef;
@@ -148,4 +157,5 @@ export const NoResults = styled.div`
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #e7ebef;
+  font-family: "MonSemiBold";
 `;
