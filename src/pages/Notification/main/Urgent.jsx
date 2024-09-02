@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 const UrgentWrapper = styled.div`
   border: 1px solid #0068ff;
   opacity: var(--sds-size-stroke-border);
   border-radius: 100px;
-  max-width: 70px;
+
   display: flex;
   padding: 8px 18px;
   justify-content: center;
@@ -19,7 +20,9 @@ const UrgentWrapper = styled.div`
 `;
 
 const Urgent = () => {
-  return <UrgentWrapper>필독</UrgentWrapper>;
+  const { t } = useTranslation();
+
+  return <UrgentWrapper>{t(`notice.urgent`)}</UrgentWrapper>;
 };
 
 export default Urgent;

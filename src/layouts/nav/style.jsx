@@ -13,8 +13,8 @@ export const Wrapper = styled.div`
     align-items: flex-start;
     gap: 18px;
   }
-  
-  @media only screen and (max-width:768px) {
+
+  @media only screen and (max-width: 768px) {
     width: 100%;
     height: 100%;
     justify-content: flex-start;
@@ -22,13 +22,12 @@ export const Wrapper = styled.div`
     display: inline-flex;
   }
 
-  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
-    
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
   }
 `;
 
 export const Container = styled.div`
-  @media only screen and (min-width: 1024px){
+  @media only screen and (min-width: 1024px) {
     align-self: stretch;
     padding: 5px 5%;
     background: white;
@@ -37,7 +36,7 @@ export const Container = styled.div`
     align-items: center;
     display: inline-flex;
   }
-  @media only screen and (max-width:768px) {
+  @media only screen and (max-width: 768px) {
     /* flex: 1 1 0;
     align-self: stretch;
     justify-content: center;
@@ -51,20 +50,19 @@ export const Container = styled.div`
     align-items: center;
     display: inline-flex;
   }
-  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
-    
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
   }
 `;
 
 export const FlexContainer = styled.div`
-  @media only screen and (min-width: 1024px){
+  @media only screen and (min-width: 1024px) {
     flex: 1 1 0;
     height: 73px;
     justify-content: space-between;
     align-items: center;
     display: flex;
   }
-  @media only screen and (max-width:768px) {
+  @media only screen and (max-width: 768px) {
     /* width: 360px; */
     width: 100vw;
     align-self: stretch;
@@ -74,16 +72,14 @@ export const FlexContainer = styled.div`
     display: flex;
     background-color: white;
   }
-  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
-    
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
   }
 `;
 
 export const SideNavWrapper = styled.div`
-  @media only screen and (min-width: 1024px){
-
+  @media only screen and (min-width: 1024px) {
   }
-  @media only screen and (max-width:768px) {
+  @media only screen and (max-width: 768px) {
     width: 100%;
     height: 100%;
     padding-top: 50px;
@@ -92,23 +88,21 @@ export const SideNavWrapper = styled.div`
     justify-content: center;
     align-items: center;
     display: inline-flex;
-    background-color: #0068FF;
+    background-color: #0068ff;
   }
-  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
-    
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
   }
 `;
 
 export const SideNav1111 = styled.div`
-  @media only screen and (min-width: 1024px){
-    
+  @media only screen and (min-width: 1024px) {
   }
-  @media only screen and (max-width:768px) {
+  @media only screen and (max-width: 768px) {
     width: 100%;
     height: 50px;
     padding-top: 16px;
     padding-bottom: 16px;
-    border-bottom: 2px #FAFAFA solid;
+    border-bottom: 2px #fafafa solid;
     justify-content: center;
     align-items: center;
     display: inline-flex;
@@ -116,46 +110,43 @@ export const SideNav1111 = styled.div`
     /* flex-direction: column; */
     /* gap: 16px; */
   }
-  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
-    
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
   }
 `;
 
 export const SideLine = styled.div`
   width: 100vw;
   height: 0px;
-  border: 2px #FAFAFA solid;
-`
+  border: 2px #fafafa solid;
+`;
 
 export const LogoKr = styled.img`
-  @media only screen and (min-width: 1024px){
+  @media only screen and (min-width: 1024px) {
     width: 123px;
     height: 45px;
   }
   @media only screen and (max-width: 768px) {
     width: 72px;
-    height: 26px; 
+    height: 26px;
   }
-  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
-
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
   }
 `;
 export const LogoEn = styled.img`
-  @media only screen and (min-width: 1024px){
+  @media only screen and (min-width: 1024px) {
     width: 123px;
     height: 76.13px;
   }
   @media only screen and (max-width: 768px) {
     width: 72px;
-    height: 26px; 
+    height: 26px;
   }
-  @media only screen and ((min-width: 769px) and (max-width: 1023px)){
-
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
   }
 `;
 
 export const StyledLink = styled(Link)`
-  color: #0A0B0A;
+  color: #0a0b0a;
   font-size: 20px;
   font-family: "PretendardSemibold";
   font-weight: 600;
@@ -165,12 +156,12 @@ export const StyledLink = styled(Link)`
   justify-content: center;
   align-items: center;
   gap: 4px;
-  display:flex;
+  display: flex;
   @media only screen and (max-width: 1023px) {
     felx: 1 1 0;
     align-self: stretch;
     text-align: center;
-    color: #FAFAFA;
+    color: #fafafa;
     font-size: 24px;
     font-family: "MonRegular";
     font-weight: 400;
@@ -187,18 +178,17 @@ export const LangSlider = styled.span`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #E8EAEA;
+  background-color: #e8eaea;
   transition: 0.4s;
   border-radius: 24.44px;
-  box-shadow: 0px 2.933px 3.911px 1.467px rgba(0, 0, 0, 0.10) inset;
-
+  box-shadow: 0px 2.933px 3.911px 1.467px rgba(0, 0, 0, 0.1) inset;
 
   &:before {
     z-index: 0;
     position: absolute;
     content: "한국어";
     font-size: 12px;
-    left: 45px; 
+    left: 45px;
     top: 50%;
     transform: translateY(-50%);
     color: #000;
@@ -210,14 +200,15 @@ export const LangSlider = styled.span`
     position: absolute;
     content: "ENG";
     font-size: 12px;
-    right: 5px; 
+    right: 5px;
     top: 50%;
     transform: translateY(-50%);
     color: transparent;
     transition: 0.4s;
   }
 
-  &:before, &:after {
+  &:before,
+  &:after {
     pointer-events: none;
   }
 `;
@@ -227,21 +218,21 @@ export const CheckBox = styled.input`
   width: 0;
   height: 0;
   &:checked + ${LangSlider} {
-    background-color: #B9FF9C;
+    background-color: #b9ff9c;
   }
 
   &:focus + ${LangSlider} {
-    box-shadow: 0 0 1px #0068FF;
+    box-shadow: 0 0 1px #0068ff;
   }
 
   &:checked + ${LangSlider}:before {
-    transform: translateY(-50%) translateX(-45px); 
-    color: transparent; 
+    transform: translateY(-50%) translateX(-45px);
+    color: transparent;
   }
 
   &:checked + ${LangSlider}:after {
-    transform: translateY(-50%) translateX(-45px); 
-    color: #000; 
+    transform: translateY(-50%) translateX(-45px);
+    color: #000;
   }
 `;
 
@@ -252,13 +243,13 @@ export const ToggleCircle = styled.span`
   width: 34.22px;
   left: 4.89px;
   bottom: 4.89px;
-  background: linear-gradient(180deg, white 0%, #E8EAEA 100%);
+  background: linear-gradient(180deg, white 0%, #e8eaea 100%);
   box-shadow: 0.978px 0.489px 2.933px rgba(0, 0, 0, 0.25);
   transition: 0.4s;
   border-radius: 50%;
   z-index: 900;
   ${CheckBox}:checked + ${LangSlider} & {
-    transform: translateX(45px); 
+    transform: translateX(45px);
   }
 `;
 
@@ -291,7 +282,7 @@ export const Menubar = styled.button`
   left: 3.5px;
   top: 7px;
   position: absolute;
-  background-image: url(${props => props.menubar});
+  background-image: url(${(props) => props.menubar});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -307,25 +298,25 @@ export const ModalContainer = styled.div`
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-color: #0068FF;
+  background-color: #0068ff;
   display: inline-flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-`
+`;
 
 export const Modal = styled.div`
-  position:absolute;
-  top:0;
-  left:0;
-  width: 100vw;;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 100vh;
   /* background: #000000; */
   overflow: hidden;
   /* border-radius: 8px; */
   transition: all 400ms ease-in-out 2s;
   animation: fadeIn 400ms;
-`
+`;
 
 // export const
 
@@ -336,7 +327,7 @@ export const ModalCloseBtn = styled.button`
   width: 21.91px;
   height: 21.91px;
   position: absolute;
-  background-image: url(${props => props.closeicon});
+  background-image: url(${(props) => props.closeicon});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -347,13 +338,13 @@ export const ModalCloseBtn = styled.button`
 //다시 짜기
 
 export const SideNav = styled.div`
-  position:absolute;
-  top:0;
-  left:0;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 1200;
-  width: 100vw;;
+  width: 100vw;
   height: 100vh;
-  background-color: #0068FF;
+  background-color: #0068ff;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -409,7 +400,7 @@ export const MenubarOpened = styled.button`
   top: 35px;
   position: absolute;
 
-  background-image: url(${props => props.menubar});
+  background-image: url(${(props) => props.menubar});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -453,14 +444,14 @@ export const SideNavLink = styled.div`
   height: 100%;
   padding-top: 16px;
   padding-bottom: 16px;
-  border-bottom: 2px solid #FAFAFA;
+  border-bottom: 2px solid #fafafa;
   justify-content: center;
   align-items: center;
   display: inline-flex;
   gap: 12px;
 `;
 
-//언어 변경 및 SNS 링크들 
+//언어 변경 및 SNS 링크들
 
 export const SideNavEtc = styled.div`
   width: 100%;
@@ -497,13 +488,13 @@ export const SideNavLangBtn = styled.div`
 
 export const SideNavLangText = styled.button`
   text-align: center;
-  color: #B9FF9C;
+  color: #b9ff9c;
   font-size: 18px;
-  font-family: 'MonRegular';
+  font-family: "MonRegular";
   font-weight: 400;
   line-height: 24px;
   word-wrap: break-word;
-  border-bottom: 1px solid #B9FF9C;
+  border-bottom: 1px solid #b9ff9c;
 `;
 
 export const SideNavSNS = styled.div`
@@ -529,10 +520,10 @@ export const SideNavIconContainer = styled.div`
 export const SideNavSnsIcon = styled.div`
   width: 24px;
   height: 24px;
-  background-image: url(${props => props.icon});
+  background-image: url(${(props) => props.icon});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   border: none;
-  cursor: pointer;  
-`
+  cursor: pointer;
+`;

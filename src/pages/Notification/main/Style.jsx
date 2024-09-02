@@ -11,7 +11,7 @@ export const SearchWrapper = styled.div`
 
 export const SearchContainer = styled.div`
   position: relative;
-  width: ${(props) => (props.$isDesktop ? "287px" : "215.89584px")};
+  width: ${(props) => (props.$isMobile ? "200px" : "287px")};
   height: 48px;
   border: 1px solid #92a5b5;
   background-color: #fafafa;
@@ -60,7 +60,7 @@ export const SubTitleWrapper = styled.div`
 export const NumContainer = styled.div`
   padding: 14px;
   width: ${(props) =>
-    props.$isDesktop ? "15%" : props.$isTablet ? "20%" : "45%"};
+    props.$isDesktop ? "15%" : props.$isTablet ? "20%" : "50%"};
   font-weight: 600;
   display: flex;
   justify-content: center;
@@ -109,7 +109,8 @@ export const TitleContainer = styled.div`
 //Content.jsx
 
 export const ContentWrapper = styled.div`
-  width: ${(props) => (props.$isDesktop ? "100%" : "90%")};
+  width: 100%;
+  padding: ${(props) => (props.$isMobile ? "20px" : "48px")};
 `;
 
 export const ContentContainer = styled.div`

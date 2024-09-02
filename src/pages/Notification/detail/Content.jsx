@@ -28,30 +28,36 @@ const Content = () => {
   }
 
   return (
-    <S.TitleWrapper $isDesktop={isDesktop}>
-      {notice.urgent === "yes" && <Urgent />}
-      <S.Title $isDesktop={isDesktop}>{notice.title}</S.Title>
-      <S.InfoContainer $isDesktop={isDesktop}>
-        <S.Info>작성인: 관리자</S.Info>
-        <S.Info>등록일: {notice.date}</S.Info>
-      </S.InfoContainer>
-      <S.Line />
-      <S.ContentWrapper $isDesktop={isDesktop}>
-        <S.ContentImgContainer>
-          {notice.image && (
-            <S.ContentImgContainer>
-              <S.ContentImg
-                src={`${mediaUrl}Notification/${notice.image}`}
-                alt="공지 이미지"
-              />
-            </S.ContentImgContainer>
-          )}
-        </S.ContentImgContainer>
+    <>
+      <S.TitleWrapper $isDesktop={isDesktop}>
+        {notice.urgent === "yes" && (
+          <S.UrgentWrapper>
+            <Urgent />
+          </S.UrgentWrapper>
+        )}
+        <S.Title $isDesktop={isDesktop}>{notice.title}</S.Title>
+        <S.InfoContainer $isDesktop={isDesktop}>
+          <S.Info>작성인: 관리자</S.Info>
+          <S.Info>등록일: {notice.date}</S.Info>
+        </S.InfoContainer>
+        <S.Line />
+        <S.ContentWrapper $isDesktop={isDesktop}>
+          <S.ContentImgContainer>
+            {notice.image && (
+              <S.ContentImgContainer>
+                <S.ContentImg
+                  src={`${mediaUrl}Notification/${notice.image}`}
+                  alt="공지 이미지"
+                />
+              </S.ContentImgContainer>
+            )}
+          </S.ContentImgContainer>
 
-        <S.ContentText $isDesktop={isDesktop}>{notice.content}</S.ContentText>
-      </S.ContentWrapper>
-      <ShowList />
-    </S.TitleWrapper>
+          <S.ContentText $isDesktop={isDesktop}>{notice.content}</S.ContentText>
+        </S.ContentWrapper>
+        <ShowList />
+      </S.TitleWrapper>
+    </>
   );
 };
 

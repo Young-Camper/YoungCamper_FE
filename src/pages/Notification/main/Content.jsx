@@ -10,7 +10,7 @@ const Content = ({ keyword }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const maxPage = 5;
-  const { isTablet, isDesktop } = useMediaQueries();
+  const { isTablet, isDesktop, isMobile } = useMediaQueries();
   const contentWrapperRef = useRef(null);
 
   // 공지사항 필터링 (긴급 및 일반 공지)
@@ -80,7 +80,11 @@ const Content = ({ keyword }) => {
   };
 
   return (
-    <S.ContentWrapper $isDesktop={isDesktop} ref={contentWrapperRef}>
+    <S.ContentWrapper
+      $isDesktop={isDesktop}
+      $isMobile={isMobile}
+      ref={contentWrapperRef}
+    >
       <Subtitle
         num="번호"
         title="제목"
