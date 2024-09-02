@@ -7,11 +7,10 @@ export const ArtistWrapper = styled.div`
 `;
 export const Container = styled.div`
   width: ${(props) => (props.$isDesktop ? "1000px" : "")};
-  /* width: ${(props) =>
-    props.$isDesktop ? "1000px" : props.$isTablet ? "727px" : "320px"}; */
   display: flex;
   flex-direction: column;
-  margin: ${(props) => (props.$isTablet || props.$isMobile) && "0 auto"};
+  margin: ${(props) => (props.$isDesktop ? "" : "0 auto")};
+  /* margin: ${(props) => (props.$isTablet || props.$isMobile) && "0 auto"}; */
 `;
 export const Section = styled.div`
   display: flex;
@@ -61,8 +60,6 @@ export const EventTime = styled.div`
 export const EventName = styled.div`
   display: flex;
   width: ${(props) => (props.$isDesktop ? "500px" : "60vw")};
-  /* width: ${(props) =>
-    props.$isDesktop ? "500px" : props.$isTablet ? "637px" : "230px"}; */
   height: ${(props) => (props.$isDesktop || props.$isEvent ? "250px" : "90px")};
   padding: 30px;
   flex-direction: column;
@@ -151,8 +148,6 @@ export const GuideName = styled.div`
   display: flex;
 
   width: ${(props) => (props.$isDesktop ? "500px" : "60vw")};
-  /* width: ${(props) =>
-    props.$isDesktop ? "500px" : props.$isTablet ? "637px" : "230px"}; */
   height: ${(props) => (props.$isDesktop ? "100px" : "90px")};
 
   padding: 0 30px;
