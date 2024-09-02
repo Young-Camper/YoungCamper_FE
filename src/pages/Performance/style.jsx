@@ -6,9 +6,9 @@ export const ArtistWrapper = styled.div`
   flex-direction: column;
 `;
 export const Container = styled.div`
-  width: ${(props) =>
-    props.$isDesktop ? "1000px" : props.$isTablet ? "727px" : ""};
-  /* props.$isDesktop ? "1000px" : props.$isTablet ? "727px" : "320px"}; */
+  width: ${(props) => (props.$isDesktop ? "1000px" : "")};
+  /* width: ${(props) =>
+    props.$isDesktop ? "1000px" : props.$isTablet ? "727px" : "320px"}; */
   display: flex;
   flex-direction: column;
   margin: ${(props) => (props.$isTablet || props.$isMobile) && "0 auto"};
@@ -51,7 +51,7 @@ export const EventTime = styled.div`
     0px 3px 7px rgba(0, 0, 0, 0.12);
 
   /* Primary/Mobile/Body1 */
-  font-family: Montserrat;
+  font-family: MonARegular;
   font-size: ${(props) => (props.$isDesktop ? "32px" : "18px")};
   font-style: normal;
   font-weight: 400;
@@ -60,9 +60,9 @@ export const EventTime = styled.div`
 `;
 export const EventName = styled.div`
   display: flex;
-  width: ${(props) =>
-    props.$isDesktop ? "500px" : props.$isTablet ? "637px" : "60vw"};
-  /* props.$isDesktop ? "500px" : props.$isTablet ? "637px" : "230px"}; */
+  width: ${(props) => (props.$isDesktop ? "500px" : "60vw")};
+  /* width: ${(props) =>
+    props.$isDesktop ? "500px" : props.$isTablet ? "637px" : "230px"}; */
   height: ${(props) => (props.$isDesktop || props.$isEvent ? "250px" : "90px")};
   padding: 30px;
   flex-direction: column;
@@ -71,7 +71,7 @@ export const EventName = styled.div`
   color: var(--Base-Real-White, #fff);
 
   /* Primary/Desktop/H1_regular */
-  font-family: Montserrat;
+  font-family: MonARegular;
   font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
   font-style: normal;
   font-weight: 400;
@@ -85,7 +85,7 @@ export const SmallText = styled.div`
   color: var(--new-main-white, #fafafa);
 
   /* Primary/Desktop/H1_regular */
-  font-family: Montserrat;
+  font-family: MonARegular;
   font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
   font-style: normal;
   font-weight: ${(props) => (props.$isDesktop ? "400" : "800")};
@@ -99,7 +99,7 @@ export const EventText = styled.div`
   color: var(--new-main-white, #fafafa);
 
   /* Primary/Desktop/Hero1_regular */
-  font-family: Montserrat;
+  font-family: MonARegular;
   font-size: ${(props) => (props.$isDesktop ? "48px" : "28px")};
   font-style: normal;
   font-weight: 400;
@@ -140,7 +140,7 @@ export const GuideTime = styled.div`
     0px 3px 7px rgba(0, 0, 0, 0.12);
 
   /* Primary/Desktop/H1_regular */
-  font-family: Montserrat;
+  font-family: MonARegular;
   font-size: ${(props) => (props.$isDesktop ? "32px" : "18px")};
   font-style: normal;
   font-weight: 400;
@@ -150,9 +150,9 @@ export const GuideTime = styled.div`
 export const GuideName = styled.div`
   display: flex;
 
-  width: ${(props) =>
-    props.$isDesktop ? "500px" : props.$isTablet ? "637px" : "60vw"};
-  /* props.$isDesktop ? "500px" : props.$isTablet ? "637px" : "230px"}; */
+  width: ${(props) => (props.$isDesktop ? "500px" : "60vw")};
+  /* width: ${(props) =>
+    props.$isDesktop ? "500px" : props.$isTablet ? "637px" : "230px"}; */
   height: ${(props) => (props.$isDesktop ? "100px" : "90px")};
 
   padding: 0 30px;
@@ -165,7 +165,7 @@ export const GuideName = styled.div`
   color: var(--Base-Real-White, #fff);
 
   /* Primary/Desktop/H1_regular */
-  font-family: Montserrat;
+  font-family: MonARegular;
   font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
   font-style: normal;
   font-weight: 400;
@@ -254,7 +254,7 @@ export const ArtistName = styled.div`
   color: var(--new-main-black, #0a0b0a);
 
   /* Primary/Desktop/H1 */
-  font-family: Montserrat;
+  font-family: MonARegular;
   font-size: ${(props) => (props.$isMobile ? "24px" : "32px")};
   font-style: normal;
   font-weight: 800;
@@ -269,7 +269,7 @@ export const DetailText = styled.div`
   color: var(--new-grey-grey900, #4a5e6d);
 
   /* Primary/Desktop/Body3 */
-  font-family: Montserrat;
+  font-family: MonARegular;
   font-size: ${(props) => (props.$isMobile ? "12px" : "20px")};
   font-style: normal;
   font-weight: 400;
@@ -292,7 +292,7 @@ export const ModalMusic = styled.div`
   color: var(--Secondary-Secondary900, #4a5e6d);
 
   /* Primary/Desktop/Body3 */
-  font-family: Montserrat;
+  font-family: MonARegular;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
