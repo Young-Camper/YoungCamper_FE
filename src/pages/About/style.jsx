@@ -155,13 +155,13 @@ export const ProfileCard = styled.div`
 		display: none; /* 기본적으로 숨김 */
 		position: absolute; /* 오버레이 효과를 위해 */
 		font-family: "MonRegular";
-		color: #fff; /* 텍스트 색상 조정 */
-		font-size: 24px;
+		color: #4A5E6D; /* 텍스트 색상 조정 */
+		text-align: right;
+		font-size: 20px;
 		padding: 28px 32px;
 		bottom: 105px;
 		right: 0;
 		z-index: 2;
-		border-radius: 10px;
 	}
 
 	&:hover {
