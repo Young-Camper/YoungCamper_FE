@@ -114,6 +114,6 @@ export const lineup = [
     time: "20:30",
     etc: "흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다",
     music: "뭘까..",
-    artist_image: `${mediaUrl}Performance/arti_dynamicDuo.jpg`,
+    artist_image: `${mediaUrl}Performance/arti_dynamicduo.jpg`,
   },
 ];
