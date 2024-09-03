@@ -149,8 +149,8 @@ export const StyledLink = styled(Link)`
   color: #0a0b0a;
   font-size: 20px;
   font-family: "MonRegular";
-  font-weight: 600;
-  line-height: 24px;
+  font-weight: 400;
+  line-height: 30px;
   word-wrap: break-word;
   text-align: center;
   justify-content: center;
