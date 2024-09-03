@@ -1,0 +1,18 @@
+{
+  "nav": {
+    "Intro": "About",
+    "notification": "News",
+    "promotion": "Club",
+    "performance": "Schedule",
+    "location": "Location",
+    "review": "Reviews",
+    "FAQ": "FAQ",
+    "about": "Team"
+  },
+  "notice": {
+    "title": "Announcement",
+    "subTitle": "Be sure to check the information below and join us to make this a fun festival for everyone!",
+    "search": "Search",
+    "urgent": "Must read"
+  }
+}

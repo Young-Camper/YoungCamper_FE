@@ -10,7 +10,12 @@ import PromotionDetail from "./pages/Promotion/detail/index";
 import FAQ from "./pages/FAQ/index";
 import Review from "./pages/Review/index";
 import About from "./pages/About/index";
+import Admin from "./pages/Admin/login/index";
+import AdminList from "./pages/Admin/adminList/index";
+import AdminDetail from "./pages/Admin/adminDetail/index";
+import AdminWrite from "./pages/Admin/adminWrite/index";
 import NotFound from "./NotFound";
+import Intro from "./pages/Intro/index";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +24,9 @@ const router = createBrowserRouter([
     children: [
       // 홈 페이지
       { path: "/", element: <Home /> },
+
+      // 홈 페이지
+      { path: "/intro", element: <Intro /> },
 
       // 장소 안내 페이지
       { path: "/location", element: <Location /> },
@@ -42,6 +50,12 @@ const router = createBrowserRouter([
 
       // 영캠퍼 소개 페이지
       { path: "/about", element: <About /> },
+
+      // 관리자 페이지
+      { path: "/admin42794", element: <Admin /> },
+      { path: "/admin42794/list", element: <AdminList /> },
+      { path: "/admin42794/list/:num", element: <AdminDetail /> },
+      { path: "/admin42794/write", element: <AdminWrite /> },
     ],
     errorElement: <NotFound />,
   },

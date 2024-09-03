@@ -6,7 +6,7 @@ import ClubImage from "./ClubImage";
 import SubTitle from "./SubTitle";
 import ClubContent from "./ClubContent";
 import ClubApply from "./ClubApply";
-import { Link } from 'react-router-dom';
+import BackPage from "./BackPage";
 
 const index = () => {
   const { id } = useParams();
@@ -15,9 +15,10 @@ const index = () => {
   return (
     <>
       <S.ClubDetail $isDesktop={isDesktop}>
+        <BackPage></BackPage>
+        <SubTitle id={id}></SubTitle>
         <ClubImage id={id}></ClubImage>
         <S.ContentWrapper $isMobile={isMobile} $isTablet={isTablet}>
-          <SubTitle id={id}></SubTitle>
           <ClubContent id={id}></ClubContent>
           <ClubApply id={id}></ClubApply>
         </S.ContentWrapper>
