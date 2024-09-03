@@ -1,27 +1,28 @@
 import { useState } from "react";
+// Nav.js
 import useMediaQueries from "../../hooks/useMediaQueries";
-import * as S from "./style";
-import { useTranslation } from "react-i18next";
-import i18n from "../../lib/lang/i18n";
 import { useRecoilState } from "recoil";
 import { languageState } from "../../context/recoil/languageState";
+import i18n from "../../lib/lang/i18n";
+import DesktopNav from "./DesktopNav";
+import MobileNav from "./MobileNav";
 
 const Nav = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const [lang, setLang] = useRecoilState(languageState);
-  const isChecked = lang === "en";
+  const isEnglish = lang === "en";
 
-  const { t } = useTranslation();
   const [modalOpen, setModalOpen] = useState(false);
+  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
   const handleToggle = () => {
-    const newLang = isChecked ? "ko" : "en"; // 토글 상태에 따라 언어 결정
-    setLang(newLang); // Recoil 상태 업데이트
+    const newLang = isEnglish ? "ko" : "en";
+    setLang(newLang);
     i18n.changeLanguage(newLang);
+    localStorage.setItem("language", newLang);
   };
 
-  //이미지
-  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+  const logoSrc = `${mediaUrl}Nav/Logo_${isEnglish ? "en" : "kr"}.png`;
 
   return (
     <>
@@ -236,6 +237,20 @@ const Nav = () => {
             </S.FlexContainer>
           </S.Container>
         </S.Wrapper>
+        <DesktopNav
+          logoSrc={logoSrc}
+          isEnglish={isEnglish}
+          handleToggle={handleToggle}
+        />
+      )}
+      {(isTablet || isMobile) && (
+        <MobileNav
+          logoSrc={logoSrc}
+          isEnglish={isEnglish}
+          handleToggle={handleToggle}
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+        />
       )}
     </>
   );

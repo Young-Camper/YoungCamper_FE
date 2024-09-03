@@ -1,12 +1,12 @@
 {
   "nav": {
-    "intro": "About",
+    "Intro": "About",
     "notification": "News",
-    "club": "Club",
+    "promotion": "Club",
     "performance": "Schedule",
     "location": "Location",
     "review": "Reviews",
-    "faq": "FAQ",
+    "FAQ": "FAQ",
     "about": "Team"
   },
   "notice": {

@@ -10,6 +10,7 @@ import "./lib/lang/i18n";
 import { RecoilRoot, useRecoilState } from "recoil";
 import { languageState } from "./context/recoil/languageState";
 import { useTranslation } from "react-i18next";
+import useMediaQueries from "./hooks/useMediaQueries";
 
 const BackGroundColor = styled.div`
   width: 100vw;
@@ -29,11 +30,13 @@ const Wrapper = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  margin-top: ${(props) => (props.$isDesktop ? "73px" : "52px")};
 `;
 
 const Layout = () => {
   const [language, setLanguage] = useRecoilState(languageState);
   const { i18n } = useTranslation();
+  const { isDesktop } = useMediaQueries();
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem("language");
@@ -46,7 +49,7 @@ const Layout = () => {
   return (
     <BackGroundColor>
       <Nav />
-      <Wrapper>
+      <Wrapper $isDesktop={isDesktop}>
         <Outlet /> {/* pages의 페이지가 적용 */}
       </Wrapper>
       <Footer />

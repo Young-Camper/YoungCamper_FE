@@ -2,27 +2,39 @@
 
 @font-face {
   font-family: "MonAExtraBold";
-  src: url("../assets/fonts/MontserratAlternates-ExtraBold.woff");
+  src: url("../assets/fonts/MontserratAlternates-ExtraBold.woff")
+      format("woff2"),
+    url("../assets/fonts/MontserratAlternates-ExtraBold.woff") format("woff2"),
+    url("../assets/fonts/MontserratAlternates-ExtraBold.woff")
+      format("truetype");
 }
 
 @font-face {
   font-family: "MonARegular";
-  src: url("../assets/fonts/MontserratAlternates-Regular.woff");
+  src: url("../assets/fonts/MontserratAlternates-Regular.woff") format("woff2"),
+    url("../assets/fonts/MontserratAlternates-Regular.woff") format("woff"),
+    url("../assets/fonts/MontserratAlternates-Regular.woff") format("truetype");
 }
 
 /* secondary font */
 
 @font-face {
   font-family: "MonExtraBold";
-  src: url("../assets/fonts/Montserrat-ExtraBold.woff");
+  src: url("../assets/fonts/Pretendard-ExtraBold.woff") format("woff2"),
+    url("../assets/fonts/Pretendard-ExtraBold.woff") format("woff"),
+    url("../assets/fonts/Montserrat-ExtraBold.woff") format("truetype");
 }
 
 @font-face {
   font-family: "MonSemiBold";
-  src: url("../assets/fonts/Montserrat-SemiBold.woff");
+  src: url("../assets/fonts/Pretendard-SemiBold.woff") format("woff2"),
+    url("../assets/fonts/Pretendard-SemiBold.woff") format("woff"),
+    url("../assets/fonts/Pretendard-SemiBold.woff") format("truetype");
 }
 
 @font-face {
   font-family: "MonRegular";
-  src: url("../assets/fonts/Montserrat-Regular.woff");
+  src: url("../assets/fonts/Pretendard-Regular.woff") format("woff2"),
+    url("../assets/fonts/Pretendard-Regular.woff") format("woff"),
+    url("../assets/fonts/Pretendard-Regular.woff") format("truetype");
 }

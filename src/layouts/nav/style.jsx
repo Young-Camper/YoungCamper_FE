@@ -21,9 +21,22 @@ export const Wrapper = styled.div`
     align-items: flex-start;
     display: inline-flex;
   }
+  
+  padding: ${(props) => (props.$isDesktop ? "5px 168px;" : "12px 20px")};
+  display: flex;
+  gap: 18px;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  height: ${(props) => (props.$isDesktop ? "73px" : "52px")};
+>>>>>>> develop
 
-  @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
-  }
+  //상단 고정
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 99;
 `;
 
 export const Container = styled.div`
@@ -112,14 +125,27 @@ export const SideNav1111 = styled.div`
   }
   @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
   }
+=======
+  flex-direction: ${(props) => (props.$isDesktop ? "row" : "")};
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  max-width: 1440px;
+>>>>>>> develop
 `;
 
-export const SideLine = styled.div`
-  width: 100vw;
-  height: 0px;
-  border: 2px #fafafa solid;
+export const Logo = styled.img`
+  width: ${(props) => (props.$isDesktop ? "123px" : "72px")};
+  height: ${(props) =>
+    props.$isDesktop
+      ? props.$isEnglish
+        ? "60px"
+        : "45px"
+      : props.$isEnglish
+      ? ""
+      : "26px"};
 `;
-
 export const LogoKr = styled.img`
   @media only screen and (min-width: 1024px) {
     width: 123px;
@@ -152,23 +178,22 @@ export const StyledLink = styled(Link)`
   font-weight: 400;
   line-height: 30px;
   word-wrap: break-word;
+export const LogoLink = styled(Link)``;
+
+export const StyledLink = styled(Link)`
+  color: ${(props) => (props.$isDesktop ? "#0a0b0a;" : "white")};
+  font-size: ${(props) => (props.$isTablet ? "24px" : "20px")};
+  font-family: "MonRegular";
+  font-weight: 400;
+  font-style: normal;
+  line-height: ${(props) => (props.$isDesktop ? "30px" : "32px")};
+
   text-align: center;
   justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   display: flex;
-  @media only screen and (max-width: 1023px) {
-    felx: 1 1 0;
-    align-self: stretch;
-    text-align: center;
-    color: #fafafa;
-    font-size: 24px;
-    font-family: "MonRegular";
-    font-weight: 400;
-    line-height: 32px;
-    word-wrap: break-word;
-    gap: 12px;
-  }
+  /* letter-spacing: -1.2px; */
 `;
 
 export const LangSlider = styled.span`
@@ -264,270 +289,166 @@ export const LangToggleWrapper = styled.label`
   height: 44px;
 `;
 
-//mobile & tablet
-export const MenubarContainer = styled.div`
-  width: 28px;
-  align-self: stretch;
-  justify-content: center;
+//MobileNav.jsx
+
+export const NavBar = styled.div`
+  width: 100%;
   align-items: center;
-  gap: 20px;
   display: flex;
+  flex-direction: column;
 `;
 
-export const MenubarWrapper = styled.div`
+export const Menubar = styled.img`
   width: 28px;
   height: 28px;
-  position: relative;
-`;
-
-export const Menubar = styled.button`
-  width: 21px;
-  height: 14px;
-  left: 3.5px;
-  top: 7px;
-  position: absolute;
-  background-image: url(${(props) => props.menubar});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  border: none;
   cursor: pointer;
 `;
 
-//modal = sidenav
-export const ModalContainer = styled.div`
-  position: fixed;
-  z-index: 1200;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  background-color: #0068ff;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-`;
+export const LogoWrapper = styled.div``;
 
-export const Modal = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  /* background: #000000; */
-  overflow: hidden;
-  /* border-radius: 8px; */
-  transition: all 400ms ease-in-out 2s;
-  animation: fadeIn 400ms;
-`;
-
-// export const
-
-export const ModalCloseBtn = styled.button`
-  z-index: 1000;
-  right: 25px;
-  top: 15px;
-  width: 21.91px;
-  height: 21.91px;
-  position: absolute;
-  background-image: url(${(props) => props.closeicon});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  border: none;
-  cursor: pointer;
-`;
-
-//다시 짜기
-
+// 전체 화면을 가리는 사이드 네비게이션 스타일
 export const SideNav = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1200;
   width: 100vw;
   height: 100vh;
-  background-color: #0068ff;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  display: inline-flex;
-
-  overflow: hidden;
-  transition: all 400ms ease-in-out 2s;
-  animation: fadeIn 400ms;
+  justify-content: flex-start;
+  transition: opacity 0.3s ease;
 `;
 
+// 사이드 네비게이션 내부 스타일
 export const NavMobile = styled.div`
   width: 100%;
-  height: 100%;
+  background: #0068ff;
+  color: white;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  display: inline-flex;
 `;
 
-//container 는 위에 중복
-
-export const Header = styled.div`
-  width: 100%;
-  /* height: 100%; */
-  height: 52px;
-  background: white;
-  flex-direction: column;
-  justify-content: center;
+// 상단 네비게이션 스타일
+export const TopNav = styled.div`
+  display: flex;
   align-items: center;
-  display: inline-flex;
-`;
-
-export const HeaderContent = styled.div`
-  width: 100%;
-  height: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  background: white;
   justify-content: space-between;
-  align-items: center;
-  display: inline-flex;
+  width: 100%;
 `;
 
-export const MenubarOpened = styled.button`
-  z-index: 1000;
-  transform: rotate(180deg);
-  transform-origin: 0 0;
-  width: 21px;
-  height: 14px;
-  left: 50px;
-  top: 35px;
-  position: absolute;
+// 헤더 스타일
+export const Header = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+`;
 
-  background-image: url(${(props) => props.menubar});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  border: none;
+// 헤더 내용 스타일
+export const HeaderContent = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: ${(props) => (props.$isMobile ? "52px" : "56px")};
+  justify-content: space-between;
+  padding: 12px 20px;
+`;
+
+// 메뉴바 열기 버튼 스타일
+export const MenubarOpened = styled.img`
   cursor: pointer;
+  width: 28px;
+  height: 28px;
 `;
 
-export const LogoWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  display: inline-flex;
-`;
-
-//sideNav
-
+// 사이드 네비게이션 링크 스타일
 export const SideNavLinks = styled.div`
-  width: 100%;
-  height: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  flex-grow: 1;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  display: inline-flex;
+  color: white;
+  /* margin-top: 50px; */
 `;
 
+// 사이드 네비게이션 링크 셋 스타일
 export const SideNavSet = styled.div`
   width: 100%;
-  height: 100%;
+  display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  display: inline-flex;
+  color: white;
 `;
 
+// 사이드 네비게이션 링크 스타일
 export const SideNavLink = styled.div`
   width: 100%;
-  height: 100%;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  border-bottom: 2px solid #fafafa;
-  justify-content: center;
-  align-items: center;
-  display: inline-flex;
-  gap: 12px;
-`;
-
-//언어 변경 및 SNS 링크들
-
-export const SideNavEtc = styled.div`
-  width: 100%;
-  height: 100%;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  display: inline-flex;
-`;
-
-export const SideNavLang = styled.div`
-  width: 100%;
-  height: 100%;
-  padding-left: 48px;
-  padding-right: 48px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  display: inline-flex;
-`;
-
-export const SideNavLangBtn = styled.div`
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  display: inline-flex;
-`;
-
-export const SideNavLangText = styled.button`
-  text-align: center;
-  color: #b9ff9c;
-  font-size: 18px;
+  padding: 8px 0px;
+  border-bottom: 2px solid white;
   font-family: "MonRegular";
   font-weight: 400;
-  line-height: 24px;
-  word-wrap: break-word;
+`;
+
+// 사이드 네비게이션 기타 스타일
+export const SideNavEtc = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 0px;
+`;
+
+// 사이드 네비게이션 언어 설정 스타일
+export const SideNavLang = styled.div`
+  /* margin-bottom: 20px; */
+`;
+
+// 사이드 네비게이션 언어 버튼 스타일
+export const SideNavLangBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 12px 48px;
+`;
+
+// 사이드 네비게이션 언어 텍스트 스타일
+export const SideNavLangText = styled.span`
+  margin: 0 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #b9ff9c;
   border-bottom: 1px solid #b9ff9c;
 `;
 
+// 사이드 네비게이션 SNS 스타일
 export const SideNavSNS = styled.div`
-  width: 100%;
-  height: 100%;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  gap: 12px;
-  display: inline-flex;
-
-  justify-content: center;
-  align-items: center;
-`;
-
-export const SideNavIconContainer = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 `;
 
-export const SideNavSnsIcon = styled.div`
+// 사이드 네비게이션 SNS 아이콘 컨테이너 스타일
+export const SideNavIconContainer = styled.div`
+  display: flex;
+  gap: 12px;
+`;
+
+// 사이드 네비게이션 SNS 아이콘 스타일
+export const SideNavSnsIcon = styled.img`
   width: 24px;
   height: 24px;
-  background-image: url(${(props) => props.icon});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  border: none;
   cursor: pointer;
+`;
+
+// 사이드 네비게이션 닫기 버튼 스타일
+export const ModalCloseBtn = styled.img`
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+`;
+
+export const NavIcon = styled.img`
+  width: 24px;
+  height: 24px;
 `;
