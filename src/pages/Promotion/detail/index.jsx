@@ -6,7 +6,7 @@ import ClubImage from "./ClubImage";
 import SubTitle from "./SubTitle";
 import ClubContent from "./ClubContent";
 import ClubApply from "./ClubApply";
-import BackPage from "./backPage";
+import BackPage from "./BackPage";
 
 const index = () => {
   const { id } = useParams();
