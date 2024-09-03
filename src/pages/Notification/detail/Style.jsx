@@ -25,7 +25,7 @@ export const Title = styled.div`
   font-family: "MonSemiBold";
   font-size: ${(props) => (props.$isDesktop ? "28px" : "22px")};
   font-style: normal;
-  font-weight: 600;
+  /* font-weight: 600; */
   line-height: normal;
 
   @media (max-width: 365px) {
@@ -49,7 +49,7 @@ export const Info = styled.div`
   color: var(--text-grey600, #92a5b5);
   font-family: "MonRegular";
   font-style: normal;
-  font-weight: 400;
+  /* font-weight: 400; */
 `;
 
 export const Line = styled.div`
@@ -89,7 +89,7 @@ export const ContentText = styled.div`
   font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "20px" : "12px")};
   font-style: normal;
-  font-weight: 400;
+  /* font-weight: 400; */
   line-height: ${(props) => (props.$isDesktop ? "30px" : "18px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.02px" : "-0.06px")};
 `;
@@ -122,7 +122,7 @@ export const ShowListContainer = styled.div`
   font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "16px" : "12px")};
   font-style: normal;
-  font-weight: 400;
+  /* font-weight: 400; */
   cursor: pointer;
 `;
 
