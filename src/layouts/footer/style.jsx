@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
+  padding: ${(props) => (props.$isDesktop ? "5px 168px;" : "12px 20px")};
   width: 100%;
   height: 100%;
   display: inline-flex;

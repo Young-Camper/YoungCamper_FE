@@ -7,7 +7,7 @@ import useMediaQueries from "../../hooks/useMediaQueries";
 const Footer = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   return (
-    <S.MainContainer>
+    <S.MainContainer $isDesktop={isDesktop}>
       <S.Divider/>
       {isDesktop &&
       <S.Container>
