@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import * as S from "./style";
 import styled from "styled-components";
-import PropTypes from "prop-types";=
+import PropTypes from "prop-types";
 import useMediaQueries from '../../hooks/useMediaQueries.jsx';
 
 const TransportBox = ({
