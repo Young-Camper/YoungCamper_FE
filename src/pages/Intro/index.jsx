@@ -1,12 +1,11 @@
 import React from "react";
-import { ContentWrapper } from "../../style/commonStyle";
+import { ContentWrapper } from "./style";
 import useMediaQueries from "../../hooks/useMediaQueries";
 import IntroBanner from "./IntroBanner";
 import IntroContent from "./IntroContent";
 
 const index = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
-  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
   return (
     <>
