@@ -20,7 +20,7 @@ const Index = () => {
     <>
       <MainTitle
         mainText="공연안내"
-        subText="영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다."
+        subText="이번 영캠프에서는 특별한 무대들이 준비되어 있어요!"
       />
       <ContentWrapper
         $isMobile={isMobile}

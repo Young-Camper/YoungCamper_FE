@@ -31,7 +31,7 @@ export const timetable = [
     time: "18:20",
     index: "1부",
     is_event: true,
-    cover_image: `${mediaUrl}Performance/test_cover.png`,
+    cover_image: `${mediaUrl}Performance/arti_newjeansnim.jpg`,
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ export const timetable = [
     time: "19:30",
     index: "2부",
     is_event: true,
-    cover_image: `${mediaUrl}Performance/test_cover.png`,
+    cover_image: `${mediaUrl}Performance/arti_tripleS.jpg`,
   },
   {
     id: 7,
@@ -55,7 +55,7 @@ export const timetable = [
     time: "20:00",
     index: "2부",
     is_event: true,
-    cover_image: `${mediaUrl}Performance/test_cover.png`,
+    cover_image: `${mediaUrl}Performance/arti_kwill.jpg`,
   },
   {
     id: 8,
@@ -63,7 +63,7 @@ export const timetable = [
     time: "20:30",
     index: "2부",
     is_event: true,
-    cover_image: `${mediaUrl}Performance/test_cover.png`,
+    cover_image: `${mediaUrl}Performance/arti_dynamicduo.jpg`,
   },
   {
     id: 9,
