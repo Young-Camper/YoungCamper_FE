@@ -15,6 +15,7 @@ import AdminList from "./pages/Admin/adminList/index";
 import AdminDetail from "./pages/Admin/adminDetail/index";
 import AdminWrite from "./pages/Admin/adminWrite/index";
 import NotFound from "./NotFound";
+import Intro from "./pages/Intro/index";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,9 @@ const router = createBrowserRouter([
     children: [
       // 홈 페이지
       { path: "/", element: <Home /> },
+
+      // 홈 페이지
+      { path: "/intro", element: <Intro /> },
 
       // 장소 안내 페이지
       { path: "/location", element: <Location /> },

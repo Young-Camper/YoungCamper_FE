@@ -2,9 +2,11 @@ import React, { useState, useRef } from "react";
 import InputModal from "./InputModal";
 import * as S from "./ReviewInputSectionStyle";
 
+//lib(비속어 필터링)
+import Filter from "badwords-ko";
+
 import { ReviewValidation } from "../hooks/ReviewValidation";
 import useMediaQueries from "../../../hooks/useMediaQueries";
-import useAddReview from "../hooks/AddReview";
 
 const ReviewInputSection = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
@@ -14,28 +16,11 @@ const ReviewInputSection = () => {
   const [password, setPassword] = useState("");
   const [imagePreviews, setImagePreviews] = useState([]);
 
-  // //리뷰 추가 관련 로직 모음(수정예정)
-  // const { comments, loading, error, fetchComments, addReview } = useAddReview();
-
-  // useEffect(() => {
-  //   fetchComments(); // 컴포넌트 마운트 시 기존 리뷰 데이터 가져오기
-  // }, []);
-
-  // // 입력 버튼 클릭 시 리뷰 추가
-  // const handleAddReview = () => {
-  //   addReview(review, password, imagePreviews);
-
-  //   // 입력 완료 후 초기화
-  //   setReview("");
-  //   setPassword("");
-  //   setImagePreviews([]);
-  // };
-  // 아래 <S.InputButton onClick={handleAddReview}> 으로 수정
-
   // 모달 로직
   const { showModal, setShowModal, modalMessage, handleInputButtonClick } =
     ReviewValidation();
 
+  // 사진 로직
   const inputRef = useRef(null);
 
   const handleButtonClick = () => {
@@ -44,7 +29,6 @@ const ReviewInputSection = () => {
     }
   };
 
-  // 사진 로직
   const handleFileChange = (event) => {
     const files = Array.from(event.target.files);
     if (files.length + imagePreviews.length > 5) {
@@ -65,6 +49,11 @@ const ReviewInputSection = () => {
     Promise.all(newPreviews).then((loadedImages) => {
       setImagePreviews((prevImages) => [...prevImages, ...loadedImages]);
     });
+  };
+
+  // 이미지 삭제 함수
+  const handleRemoveImage = (index) => {
+    setImagePreviews((prevImages) => prevImages.filter((_, i) => i !== index));
   };
 
   // 비밀번호 로직
@@ -96,6 +85,9 @@ const ReviewInputSection = () => {
                   borderRadius: "8px",
                 }}
               />
+              <S.ImageCanel onClick={() => handleRemoveImage(index)}>
+                X
+              </S.ImageCanel>
             </S.ImagePreviewBox>
           ))}
         </S.ImagePreviewContainer>
