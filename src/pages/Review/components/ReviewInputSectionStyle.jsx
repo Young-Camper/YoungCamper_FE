@@ -256,3 +256,15 @@ export const PasswordInput = styled.input`
     border-color: #92a5b5;
   }
 `;
+
+export const ImageCanel = styled.div`
+  position: absolute;
+  font-family: "MonSemiBold";
+  font-size: 13px;
+  top: 0px;
+  right: 4px;
+  color: white;
+  padding: 4px;
+  cursor: pointer;
+  z-index: 10;
+`;
