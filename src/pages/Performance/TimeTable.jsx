@@ -124,7 +124,13 @@ const TimeTable = ({ onArtistClick }) => {
     <>
       <TitleSet
         mainText="타임테이블"
-        subText="영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다."
+        subText={
+          <>
+            신나는 음악, 감동적인 퍼포먼스, 그리고 깜짝 이벤트까지!
+            <br />
+            공연을 즐기며 여러분만의 특별한 추억을 만들어보세요!
+          </>
+        }
       />
       <S.Container $isDesktop={isDesktop}>
         {timetable &&
