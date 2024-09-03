@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useEffect} from "react";
 import styled from "styled-components";
 import MainTitle from "../../../components/ui/MainTitle";
 import Club from "./Club";
@@ -15,6 +15,11 @@ const Index = () => {
   const highlightedNumber = "16";
   const subText = "동아리의 각 불교 동아리를 살펴볼까요?";
 
+  useEffect(() => {
+    // 페이지가 마운트될 때 최상단으로 스크롤
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <>
       <MainTitle

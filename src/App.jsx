@@ -11,6 +11,7 @@ import { RecoilRoot, useRecoilState } from "recoil";
 import { languageState } from "./context/recoil/languageState";
 import { useTranslation } from "react-i18next";
 import useMediaQueries from "./hooks/useMediaQueries";
+import ScrollToTop from "./style/ScrollToTop";
 
 const BackGroundColor = styled.div`
   width: 100vw;
@@ -62,6 +63,7 @@ function App() {
     <>
       <RecoilRoot>
         <GlobalStyle />
+        <ScrollToTop />
         <Layout />
       </RecoilRoot>
     </>
