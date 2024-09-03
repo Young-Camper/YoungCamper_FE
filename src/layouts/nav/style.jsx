@@ -39,8 +39,6 @@ export const Logo = styled.img`
       : "26px"};
 `;
 
-export const LogoLink = styled(Link)``;
-
 export const StyledLink = styled(Link)`
   color: ${(props) => (props.$isDesktop ? "#0a0b0a;" : "white")};
   font-size: ${(props) => (props.$isTablet ? "24px" : "20px")};
