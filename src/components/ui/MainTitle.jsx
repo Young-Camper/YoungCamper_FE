@@ -15,7 +15,7 @@ const MainTitle = ({ mainText, subText }) => {
         </S.BannerTitle>
         <S.BannerImg
           $isDesktop={isDesktop}
-          imageUrl={`${mediaUrl}Banner/banner_img.png`}
+          src={`${mediaUrl}Banner/banner_img.png`}
         />
       </S.BannerWrapper>
     </S.Wrapper>

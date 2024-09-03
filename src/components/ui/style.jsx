@@ -61,10 +61,8 @@ export const SubText = styled.div`
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.06px")};
 `;
 
-export const BannerImg = styled.div`
+export const BannerImg = styled.img`
   width: ${(props) => (props.$isDesktop ? "230px" : "124px")};
   height: ${(props) => (props.$isDesktop ? "186px" : "100px")};
   object-fit: contain;
-  mix-blend-mode: soft-light;
-  background: url(${(props) => props.imageUrl}) lightgray 50% / cover no-repeat;
 `;
