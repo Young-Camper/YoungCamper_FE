@@ -18,9 +18,8 @@ export const TabBar = styled.div`
 export const TabButton = styled.button`
 	width: 100%;
 	height: ${(props) => props.$isDesktop ? "83px" : "47px" };
-	font-family: "MonRegular";
+	font-family: "MonSemibold";
 	font-size: ${(props) => props.$isDesktop ? "24px" : "14px" };
-	font-weight: 600;
 	line-height: 18px; /* 128.571% */
 	letter-spacing: 0.14px;
 
@@ -56,9 +55,8 @@ export const SectionWrapper = styled.div`
 export const Category = styled.div`
 	align-self: stretch;
 	color: #000;
-	font-family: "MonRegular";
+	font-family: ${(props) => props.$isDesktop ? "MonExtrabold" : "MonSemibold" };
 	font-size: ${(props) => props.$isDesktop ? "28px" : "20px" };
-	font-weight: ${(props) => props.$isDesktop ? "700" : "600" };
 	line-height: ${(props) => props.$isDesktop ? "48px" : "24px" };
 	
 	align-items: center;
@@ -68,7 +66,6 @@ export const Subtitle = styled.div`
   	color: #637D92;
 	font-family: "MonRegular";
 	font-size: ${(props) => props.$isDesktop ? "22px" : "12px" };
-	font-weight: 400;
 	line-height: ${(props) => props.$isDesktop ? "30px" : "18px" };
 	letter-spacing: ${(props) => props.$isDesktop ? "-0.11px" : "-0.06px" };
 `;
@@ -117,21 +114,18 @@ export const ProfileCard = styled.div`
 		padding: 28px 12px;
 		justify-content: space-between;
 		align-items: center;
-
-		font-family: "MonRegular";
 	}
 
 	name {
 		display: flex;
 		align-items: center;
+		font-family: "MonSemibold";
 		height: 40px;
 		color: var(--Color-text-primary, #333);
 		font-size: 32px;
 		font-style: normal;
-		font-weight: 700;
-
-		line-height: 22px;
-    	margin: 0;
+		line-height: 22px;  
+         	margin: 0;
 	}
 
 	.roleBox {
@@ -146,8 +140,8 @@ export const ProfileCard = styled.div`
 	}
 
 	role {
+		font-family: "MonRegular";
 		font-size: 16px;
-		font-weight: 400;
 		color: #0A0B0A;
 	}
 
@@ -155,13 +149,13 @@ export const ProfileCard = styled.div`
 		display: none; /* 기본적으로 숨김 */
 		position: absolute; /* 오버레이 효과를 위해 */
 		font-family: "MonRegular";
-		color: #fff; /* 텍스트 색상 조정 */
-		font-size: 24px;
+		color: #4A5E6D; /* 텍스트 색상 조정 */
+		text-align: right;
+		font-size: 20px;
 		padding: 28px 32px;
 		bottom: 105px;
 		right: 0;
 		z-index: 2;
-		border-radius: 10px;
 	}
 
 	&:hover {

@@ -1,16 +1,4 @@
-// 라인업 오픈 후 커버 이미지
-import artist1700 from "../assets/images/timetable/test_cover.png";
-import artist1820 from "../assets/images/timetable/test_cover.png";
-import artist1930 from "../assets/images/timetable/test_cover.png";
-import artist2000 from "../assets/images/timetable/test_cover.png";
-import artist2030 from "../assets/images/timetable/test_cover.png";
-
-// 연예인 모달 이미지
-import MCsobi from "../assets/images/timetable/arti_MCsobi.jpg";
-import newjeansnim from "../assets/images/timetable/arti_newjeansnim.jpg";
-import tripleS from "../assets/images/timetable/arti_tripleS.jpg";
-import kwill from "../assets/images/timetable/arti_kwill.jpg";
-import dynamicDuo from "../assets/images/timetable/arti_dynamicduo.jpg";
+const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
 export const timetable = [
   {
@@ -27,7 +15,7 @@ export const timetable = [
     time: "17:00",
     index: "",
     is_event: true,
-    cover_image: artist1700,
+    cover_image: `${mediaUrl}Performance/test_cover.png`,
   },
   {
     id: 3,
@@ -43,7 +31,7 @@ export const timetable = [
     time: "18:20",
     index: "1부",
     is_event: true,
-    cover_image: artist1820,
+    cover_image: `${mediaUrl}Performance/arti_newjeansnim.jpg`,
   },
   {
     id: 5,
@@ -59,7 +47,7 @@ export const timetable = [
     time: "19:30",
     index: "2부",
     is_event: true,
-    cover_image: artist1930,
+    cover_image: `${mediaUrl}Performance/arti_tripleS.jpg`,
   },
   {
     id: 7,
@@ -67,7 +55,7 @@ export const timetable = [
     time: "20:00",
     index: "2부",
     is_event: true,
-    cover_image: artist2000,
+    cover_image: `${mediaUrl}Performance/arti_kwill.jpg`,
   },
   {
     id: 8,
@@ -75,7 +63,7 @@ export const timetable = [
     time: "20:30",
     index: "2부",
     is_event: true,
-    cover_image: artist2030,
+    cover_image: `${mediaUrl}Performance/arti_dynamicduo.jpg`,
   },
   {
     id: 9,
@@ -94,7 +82,7 @@ export const lineup = [
     time: "18:20",
     etc: "흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다",
     music: "뭘까..",
-    artist_image: MCsobi,
+    artist_image: `${mediaUrl}Performance/arti_MCsobi.jpg`,
   },
   {
     id: 2,
@@ -102,7 +90,7 @@ export const lineup = [
     time: "18:20",
     etc: "흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다",
     music: "뭘까..",
-    artist_image: newjeansnim,
+    artist_image: `${mediaUrl}Performance/arti_newjeansnim.jpg`,
   },
   {
     id: 3,
@@ -110,7 +98,7 @@ export const lineup = [
     time: "19:30",
     etc: "흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다",
     music: "뭘까..",
-    artist_image: tripleS,
+    artist_image: `${mediaUrl}Performance/arti_tripleS.jpg`,
   },
   {
     id: 4,
@@ -118,7 +106,7 @@ export const lineup = [
     time: "20:00",
     etc: "흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다",
     music: "뭘까..",
-    artist_image: kwill,
+    artist_image: `${mediaUrl}Performance/arti_kwill.jpg`,
   },
   {
     id: 5,
@@ -126,6 +114,6 @@ export const lineup = [
     time: "20:30",
     etc: "흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다흥을 잃은 중생들이여 내가 왔도다",
     music: "뭘까..",
-    artist_image: dynamicDuo,
+    artist_image: `${mediaUrl}Performance/arti_dynamicduo.jpg`,
   },
 ];

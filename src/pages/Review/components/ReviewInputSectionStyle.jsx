@@ -217,7 +217,7 @@ export const PasswordLabel = styled.div`
   color: #757575;
   font-size: ${(props) =>
     props.$isMobile ? "12px" : props.$isTablet ? "12px" : "16px"};
- font-family: "MonRegular"
+  font-family: "MonRegular";
   font-weight: 400px;
   line-height: ${(props) =>
     props.$isMobile ? "18px" : props.$isTablet ? "18px" : "24px"};
@@ -255,4 +255,16 @@ export const PasswordInput = styled.input`
     outline: none;
     border-color: #92a5b5;
   }
+`;
+
+export const ImageCanel = styled.div`
+  position: absolute;
+  font-family: "MonSemiBold";
+  font-size: 13px;
+  top: 0px;
+  right: 4px;
+  color: white;
+  padding: 4px;
+  cursor: pointer;
+  z-index: 10;
 `;
