@@ -78,6 +78,7 @@ export const LangSlider = styled.span`
     transform: translateY(-50%);
     color: #000;
     transition: 0.4s;
+    font-family: "MonRegular";
   }
 
   &:after {
@@ -90,6 +91,7 @@ export const LangSlider = styled.span`
     transform: translateY(-50%);
     color: transparent;
     transition: 0.4s;
+    font-family: "MonRegular";
   }
 
   &:before,
@@ -117,7 +119,7 @@ export const CheckBox = styled.input`
 
   &:checked + ${LangSlider}:after {
     transform: translateY(-50%) translateX(-45px);
-    color: #000;
+    color: #FFFFFF;
   }
 `;
 
