@@ -8,8 +8,11 @@ import { DeleteBtn } from "../style";
 import axios from "axios";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import { ContentWrapper } from "../../../style/commonStyle";
+import Loading from "../../../components/ui/Loading";
 
 const index = () => {
+  const [loading, setLoading] = useState(true);
+
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const navigate = useNavigate();
   const [data, setData] = useState([
@@ -64,7 +67,9 @@ const index = () => {
     getAdminData();
   }, []);
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <div style={{ width: "100%" }}>
       <ContentWrapper>
         <TitleSet mainText="관리자 페이지" />

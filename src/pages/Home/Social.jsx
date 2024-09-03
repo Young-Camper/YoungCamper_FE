@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useEffect, useState} from "react";
 import * as S from "./HomeStyle";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -10,15 +10,38 @@ const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
 const Social = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
+
+  const getSlidesToShow = () => {
+    if (window.matchMedia("(min-width: 0) and (max-width: 399px)").matches) {
+      return 1.2; 
+    } else if (window.matchMedia("(min-width: 400px) and (max-width: 1000px)").matches) {
+      return 3; 
+    } else (window.matchMedia("(min-width: 1001px)").matches) 
+      return 2.2; 
+
+  };
+  
+  const slidesToShow = getSlidesToShow();
+  const slidesToScroll = slidesToShow; 
+
+
   const settings = {
-    dots: false,
+    dots: true,
     infinite: false,
     speed: 3000,
-    slidesToShow: isDesktop ? 2.2 : isTablet ? 3 : 1.2,
-    slidesToScroll: 1,
+    slidesToShow: slidesToScroll,
+    
+    arrows: true,
+    prevArrow: <S.PrevArrow $isDesktop={isDesktop}><S.SocialBtn/></S.PrevArrow>,
+    nextArrow: <S.NextArrow $isDesktop={isDesktop}><S.SocialBtn/></S.NextArrow>,
   };
 
+
+
+  /* const result = selectedNode.style.removeProperty(width); */
+
   return (
+    
     <S.SocialSection $isTablet={isTablet} $isDesktop={isDesktop}>
       <S.SocialContainer $isDesktop={isDesktop}>
         <S.SocialTop $isTablet={isTablet} $isDesktop={isDesktop}>
@@ -34,8 +57,9 @@ const Social = () => {
                   key={social.id}
                   $isTablet={isTablet}
                   $isDesktop={isDesktop}
+                  BgImage={social.bgimage}
                 >
-                  <S.FrameCard $isDesktop={isDesktop} BgImage={social.bgimage}>
+                  <S.FrameCard $isDesktop={isDesktop}>
                     <S.FrameBox $isDesktop={isDesktop}>
                       <S.IconImg
                         $isDesktop={isDesktop}

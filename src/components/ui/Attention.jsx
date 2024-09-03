@@ -23,19 +23,17 @@ const Container = styled.div`
 `;
 const MainText = styled.div`
   color: var(--Neutrals-Neutrals600, #726c6c);
-  font-family: Pretendard;
+  font-family: "MonSemiBold";
   font-size: 20px;
   font-style: normal;
-  font-weight: 600;
   line-height: 24px; /* 120% */
   letter-spacing: 0.4px;
 `;
 const SubText = styled.div`
   color: var(--Neutrals-Neutrals600, #726c6c);
-  font-family: "Apple SD Gothic Neo";
+  font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "18px" : "16px")};
   font-style: normal;
-  font-weight: 400;
   line-height: 30px; /* 166.667% */
   letter-spacing: -0.45px;
 `;

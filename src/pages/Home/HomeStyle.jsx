@@ -3,6 +3,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
+const SliderObject = styled.div`
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+`;
+
 //1.HomeTitle
 export const TitleSection = styled.div`
   width: 100%;
@@ -954,22 +960,30 @@ export const SocialFrame = styled.div`
   display: flex;
   flex-shrink: 0;
   border-radius: 40px;
-  background: var(--Base-Base-White, #fafafa);
-  position: relative;
-
+  background-color: #FAFAFA;
+  background-image: url(${props => props.BgImage});
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  z-index: 1;
+  
   &:hover {
     border: 2px solid var(--new-main-primary, #0068ff);
-    background: linear-gradient(
-      102deg,
-      rgba(0, 104, 255, 0.4) 23.99%,
-      rgba(185, 255, 156, 0.4) 98.08%
-    );
+    background-color: transparent; /* 배경 제거 */
+    background-image: linear-gradient(
+    102deg,
+    rgba(0, 104, 255, 0.4) 23.99%,
+    rgba(185, 255, 156, 0.4) 98.08%),
+    url(${props => props.BgImage}) ;
   }
+  transition: all 0.3s ease-out;
+
 `;
 
 export const SocialSliderBox = styled.div`
   width: 100%;
   height: 100%;
+
   .slick-slide {
     margin: ${(props) => (props.$isDesktop ? "0px 10px" : "0px 4.737px")};
   }
@@ -977,6 +991,43 @@ export const SocialSliderBox = styled.div`
     display: flex;
     align-items: flex-start;
   }
+  .slick-prev:before, .slick-next:before {
+    opacity: 0;
+  }
+    
+`;
+
+
+
+export const SocialBtn = styled.button`
+  width: auto; height: auto;
+  opacity: 1;
+  &:hover, &:focus, &:active {
+    opacity: 1; /* 호버 및 클릭 상태에서도 불투명도 유지 */
+    outline: none;
+  }
+`;
+
+export const NextArrow = styled.div`
+  background: 
+    url(${mediaUrl}Home/SocialArrow.png), /* 다음 화살표 이미지 경로 */
+    var(--gradient_2, linear-gradient(104deg, rgba(185, 255, 156, 0.20) 0%, rgba(0, 104, 255, 0.20) 100%));
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: ${(props) => (props.$isDesktop ? "32px" : "16px")};
+  height: ${(props) => (props.$isDesktop ? "26px" : "13px")};
+  right: -25px; 
+  position: absolute;
+  z-index: 1;
+  border-radius: 50px;
+  opacity: var(--sds-size-stroke-border);
+  opacity: 1;
+`;
+
+export const PrevArrow = styled(NextArrow)`
+  transform: translateY(-50%) rotate(180deg);
+  left: -10px;
 `;
 
 export const FrameCard = styled.div`
@@ -988,10 +1039,8 @@ export const FrameCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-self: stretch; /*${mediaUrl}Home/Club/clubEmpty.png*/
-  background-image: url(${props => props.BgImage});
-  background-repeat: no-repeat;
-  background-size: contain;
+  align-self: stretch;
+  
 `;
 
 export const IconImg = styled.div`
@@ -1016,13 +1065,14 @@ export const FrameBox = styled.div`
 export const FrameText = styled.div`
   width: ${(props) => (props.$isDesktop ? "auto" : "122px")}; /*desktop 260px*/
   height: ${(props) => (props.$isDesktop ? "96px" : "46px")};
-  font-size: ${(props) => (props.$isDesktop ? "38px" : "18px")};
+  font-size: ${(props) => (props.$isDesktop ? "39px" : "17px")};
   line-height: ${(props) => (props.$isDesktop ? "48px" : "22.737px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-1.9px" : "-0.9px")};
   color: var(--Base-Base-Black, #0a0b0a);
   font-family: MonRegular;
   font-style: normal;
   font-weight: 400;
+  flex-direction: column;
 `;
 
 export const FrameImg = styled.a`
