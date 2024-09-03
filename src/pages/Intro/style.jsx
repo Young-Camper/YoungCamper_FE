@@ -90,7 +90,8 @@ export const ContentTitle = styled.div`
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.24px" : "-0.16px")};
 `;
 export const ContentText = styled.div`
-  width: 548px;
+  width: ${(props) =>
+    props.$isDesktop ? "548px" : props.$isTablet ? "334px" : "314px"};
   color: var(--new-grey-grey800, #637d92);
   text-align: center;
 
