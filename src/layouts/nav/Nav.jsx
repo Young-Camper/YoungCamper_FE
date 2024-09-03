@@ -1,5 +1,5 @@
 // Nav.js
-import React, { useState } from "react";
+import { useState } from "react";
 import useMediaQueries from "../../hooks/useMediaQueries";
 import { useRecoilState } from "recoil";
 import { languageState } from "../../context/recoil/languageState";
