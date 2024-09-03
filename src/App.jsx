@@ -30,7 +30,7 @@ const Wrapper = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  margin-top: ${(props) => (props.$isDesktop ? "73px" : "")};
+  margin-top: ${(props) => (props.$isDesktop ? "73px" : "52px")};
 `;
 
 const Layout = () => {
