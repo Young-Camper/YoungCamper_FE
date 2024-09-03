@@ -27,7 +27,7 @@ export const SearchInput = styled.input`
   box-sizing: border-box;
   font-size: 14px;
   font-style: normal;
-  font-weight: 400;
+  /* font-weight: 400; */
   padding-right: 20px;
   cursor: pointer;
 
@@ -61,7 +61,7 @@ export const NumContainer = styled.div`
   padding: 14px;
   width: ${(props) =>
     props.$isDesktop ? "15%" : props.$isTablet ? "20%" : "50%"};
-  font-weight: 600;
+  /* font-weight: 600; */
   display: flex;
   justify-content: center;
   font-size: 16px;
@@ -75,7 +75,7 @@ export const DateContainer = styled.div`
   padding: ${(props) => (props.$isDesktop ? "14px" : "")};
   width: 15%;
   display: flex;
-  font-weight: ${(props) => props.fontWeight || "400"};
+  /* font-weight: ${(props) => props.fontWeight || "400"}; */
   justify-content: ${(props) => (props.$isDesktop ? "center" : "")};
   font-size: ${(props) => (props.$isDesktop ? "16px" : "14px")};
   line-height: ${(props) => (props.$isDesktop ? "24px" : "22px")};
@@ -99,7 +99,7 @@ export const TitleContainer = styled.div`
   padding: ${(props) => (props.$isDesktop ? "14px" : "")};
   width: 100%;
   font-size: ${(props) => props.fontSize || "16px"};
-  font-weight: 600;
+  /* font-weight: 600; */
   line-height: ${(props) => (props.$isDesktop ? "30px" : "22px")};
   display: flex;
   align-items: center;
@@ -128,7 +128,7 @@ export const PageNumber = styled.div`
   padding: 8px 12px;
   cursor: pointer;
   font-family: "MonRegular";
-  font-weight: 400;
+  /* font-weight: 400; */
   background-color: ${(props) => (props.$isActive ? "#e7ebef" : "white")};
   color: black;
   border-radius: 8px;
