@@ -34,12 +34,17 @@ const ArtistModal = ({ artist, setModalOpen }) => {
             {artist.music.length > 1 && <S.SubText>대표곡</S.SubText>}
             <S.MusicWrapper>
               {artist.music.map((music, index) => (
-                <Link to={music.youtubeURL} key={index}>
+                <a
+                  href={music.youtubeURL}
+                  key={index}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <S.ModalMusic>
                     {music.title}
                     <img src={`${mediaUrl}Performance/Social.png`} />
                   </S.ModalMusic>
-                </Link>
+                </a>
               ))}
             </S.MusicWrapper>
           </S.ContentWrapper>
