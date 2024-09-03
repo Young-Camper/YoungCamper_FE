@@ -8,7 +8,8 @@ const Footer = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   return (
     <S.MainContainer>
-      {isDesktop && 
+      <S.Divider/>
+      {isDesktop &&
       <S.Container>
         <S.Main>
           <S.Navigation>

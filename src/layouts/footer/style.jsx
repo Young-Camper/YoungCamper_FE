@@ -211,3 +211,10 @@ export const Icon = styled.img`
   top: ${(props) => props.top || '3px'};
   position: absolute;
 `;
+
+
+export const Divider = styled.div`
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #CED7DE;
+`;
