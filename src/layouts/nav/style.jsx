@@ -105,7 +105,7 @@ export const CheckBox = styled.input`
   width: 0;
   height: 0;
   &:checked + ${LangSlider} {
-    background-color: #b9ff9c;
+    background-color: #0068ff;
   }
 
   &:focus + ${LangSlider} {
