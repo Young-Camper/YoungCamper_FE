@@ -40,10 +40,9 @@ export const MainText = styled.div`
   color: var(--new-main-black, #0a0b0a);
 
   /* desktop/display2_eb */
-  font-family: MonExtraBold;
+  font-family: "MonExtraBold";
   font-size: ${(props) => (props.$isDesktop ? "38px" : "20px")};
   font-style: normal;
-  font-weight: var(--fontWeight-extrabold, 800);
   line-height: ${(props) => (props.$isDesktop ? "48px" : "28px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-1.9px" : "-1px")};
 `;
@@ -52,10 +51,9 @@ export const SubText = styled.div`
   color: var(--new-grey-grey800, #637d92);
 
   /* desktop/Body2_reg */
-  font-family: MonRegular;
+  font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "20px" : "12px")};
   font-style: normal;
-  font-weight: var(--fontWeight-regular, 400);
   line-height: ${(props) => (props.$isDesktop ? "30px" : "18px")}; /* 150% */
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.06px")};
 `;

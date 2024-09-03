@@ -28,7 +28,6 @@ const MainText = styled.div`
   font-size: ${(props) =>
     props.$isDesktop ? "38px" : "20px"}; /* 데스크탑 38px, 모바일+태블릿 20px */
   font-style: normal;
-  font-weight: ${(props) => (props.$isDesktop ? "800" : "600")};
   line-height: ${(props) => (props.$isDesktop ? "48px" : "24px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-1.9px" : "0.4px")};
 `;
@@ -39,7 +38,6 @@ const SubText = styled.div`
   font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "20px" : "12px")};
   font-style: normal;
-  font-weight: 400;
   line-height: ${(props) => (props.$isDesktop ? "30px" : "18px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.06px")};
 `;

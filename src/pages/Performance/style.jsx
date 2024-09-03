@@ -61,7 +61,6 @@ export const EventTime = styled.div`
   font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "32px" : "18px")};
   font-style: normal;
-  font-weight: 400;
   line-height: 22px; /* 122.222% */
   letter-spacing: -0.09px;
 `;
@@ -110,7 +109,6 @@ export const EventName = styled.div`
   font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
   font-style: normal;
-  font-weight: 400;
   line-height: 36px; /* 112.5% */
   letter-spacing: -1.6px;
 `;
@@ -124,7 +122,6 @@ export const SmallText = styled.div`
   font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
   font-style: normal;
-  font-weight: ${(props) => (props.$isDesktop ? "400" : "800")};
   line-height: 36px; /* 112.5% */
   letter-spacing: -1.6px;
 `;
@@ -138,7 +135,6 @@ export const EventText = styled.div`
   font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "48px" : "28px")};
   font-style: normal;
-  font-weight: 400;
   line-height: normal;
   letter-spacing: -2.4px;
 
@@ -179,7 +175,6 @@ export const GuideTime = styled.div`
   font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "32px" : "18px")};
   font-style: normal;
-  font-weight: 400;
   line-height: 36px; /* 112.5% */
   letter-spacing: -1.6px;
 `;
@@ -202,7 +197,6 @@ export const GuideName = styled.div`
   font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
   font-style: normal;
-  font-weight: 400;
   line-height: 36px; /* 112.5% */
   letter-spacing: -1.6px;
 `;
@@ -291,7 +285,6 @@ export const ArtistName = styled.div`
   font-family: "MonExtraBold";
   font-size: ${(props) => (props.$isMobile ? "24px" : "32px")};
   font-style: normal;
-  font-weight: 800;
   line-height: 36px; /* 112.5% */
   letter-spacing: -1.92px;
 `;
@@ -306,7 +299,6 @@ export const DetailText = styled.div`
   font-family: "MonRegular";
   font-size: ${(props) => (props.$isMobile ? "12px" : "20px")};
   font-style: normal;
-  font-weight: 400;
   line-height: ${(props) => (props.$isMobile ? "normal" : "24px")};
   letter-spacing: ${(props) => (props.$isMobile ? "-0.06px" : "-0.1px")};
 
@@ -320,7 +312,6 @@ export const SubText = styled.div`
   font-family: "MonSemiBold";
   font-size: 20px;
   font-style: normal;
-  font-weight: 600;
   line-height: 24px; /* 120% */
   letter-spacing: 0.4px;
 `;
@@ -331,7 +322,6 @@ export const ModalMusic = styled.div`
   font-family: "MonRegular";
   font-size: 16px;
   font-style: normal;
-  font-weight: 400;
   line-height: 24px; /* 150% */
   letter-spacing: -0.04px;
 
