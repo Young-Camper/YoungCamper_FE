@@ -39,8 +39,6 @@ export const Logo = styled.img`
       : "26px"};
 `;
 
-export const LogoLink = styled(Link)``;
-
 export const StyledLink = styled(Link)`
   color: ${(props) => (props.$isDesktop ? "#0a0b0a;" : "white")};
   font-size: ${(props) => (props.$isTablet ? "24px" : "20px")};
@@ -78,6 +76,7 @@ export const LangSlider = styled.span`
     transform: translateY(-50%);
     color: #000;
     transition: 0.4s;
+    font-family: "MonRegular";
   }
 
   &:after {
@@ -90,6 +89,7 @@ export const LangSlider = styled.span`
     transform: translateY(-50%);
     color: transparent;
     transition: 0.4s;
+    font-family: "MonRegular";
   }
 
   &:before,
@@ -103,7 +103,7 @@ export const CheckBox = styled.input`
   width: 0;
   height: 0;
   &:checked + ${LangSlider} {
-    background-color: #b9ff9c;
+    background-color: #0068ff;
   }
 
   &:focus + ${LangSlider} {
@@ -117,7 +117,7 @@ export const CheckBox = styled.input`
 
   &:checked + ${LangSlider}:after {
     transform: translateY(-50%) translateX(-45px);
-    color: #000;
+    color: #FFFFFF;
   }
 `;
 

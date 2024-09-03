@@ -1,6 +1,8 @@
+import {Link} from "react-router-dom"
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
+  padding: ${(props) => (props.$isDesktop ? "5px 168px;" : "12px 20px")};
   width: 100%;
   height: 100%;
   display: inline-flex;
@@ -47,6 +49,21 @@ export const Navigation = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 20px;
+`;
+
+export const StyledLink = styled(Link)`
+  color: ${(props) => (props.$isDesktop ? "#0a0b0a;" : "white")};
+  font-size: ${(props) => (props.$isTablet ? "24px" : "20px")};
+  font-family: "MonRegular";
+  font-weight: 400;
+  font-style: normal;
+  line-height: ${(props) => (props.$isDesktop ? "30px" : "32px")};
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  display: flex;
+  /* letter-spacing: -1.2px; */
 `;
 
 // 로고 이미지
@@ -203,11 +220,13 @@ export const IconContainer = styled.div`
   position: relative;
 `;
 
-//피그마 대로 width, height 값 넣으면, 유튜브 아이콘이 이상함...
 export const Icon = styled.img`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  left: ${(props) => props.left || '3px'};
-  top: ${(props) => props.top || '3px'};
-  position: absolute;
+  
+`;
+
+
+export const Divider = styled.div`
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #CED7DE;
 `;
