@@ -55,7 +55,7 @@ export const SectionWrapper = styled.div`
 export const Category = styled.div`
 	align-self: stretch;
 	color: #000;
-	font-family: "MonExtrabold";
+	font-family: ${(props) => props.$isDesktop ? "MonExtrabold" : "MonSemibold" };
 	font-size: ${(props) => props.$isDesktop ? "28px" : "20px" };
 	line-height: ${(props) => props.$isDesktop ? "48px" : "24px" };
 	
