@@ -414,7 +414,7 @@ export const ArrowImg2 = styled(ArrowImg)`
 `;
 
 
-//2. Video
+//2.  Video
 export const VideoSection = styled.div`
   width: 100%;
   height: ${(props) => (props.$isMobile ? "812px" : "1024px")};
