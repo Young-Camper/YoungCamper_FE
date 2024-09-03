@@ -1,0 +1,18 @@
+{
+  "nav": {
+    "intro": "소개",
+    "notification": "공지",
+    "club": "동아리",
+    "performance": "공연일정",
+    "location": "장소",
+    "review": "후기",
+    "faq": "FAQ",
+    "about": "기획단"
+  },
+  "notice": {
+    "title": "공지사항",
+    "subTitle": "아래 내용을 꼭 확인하시고, 모두가 즐거운 축제가 되도록 함께해 주세요!",
+    "search": "검색어를 입력해주세요.",
+    "urgent": "필독"
+  }
+}

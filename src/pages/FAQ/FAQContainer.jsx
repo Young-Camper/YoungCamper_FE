@@ -29,7 +29,7 @@ const FAQContainer = ({ currentPage, itemsPerPage }) => {
   const currentFaqs = faqs.slice(indexOfFirstItem, indexOfLastItem);
   
     return (
-    <S.FAQWrapper isMobile={isMobile} isTablet={isTablet} isDesktop={isDesktop}>
+    <S.FAQWrapper $isMobile={isMobile} $isTablet={isTablet} $isDesktop={isDesktop}>
       {currentFaqs.map((faq, index) => {
         const key = `${currentPage}-${index}`; // 페이지 번호와 인덱스를 결합한 고유 키 생성
         return (

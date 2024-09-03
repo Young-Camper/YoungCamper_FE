@@ -5,12 +5,15 @@ import Search from "./Search";
 import Content from "./Content";
 import MainTitle from "../../../components/ui/MainTitle";
 
+import { useTranslation } from "react-i18next";
+
 const Wrapper = styled.div`
   width: 100%;
 `;
 
 const index = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
+  const { t } = useTranslation();
 
   const handleSearch = (keyword) => {
     setSearchKeyword(keyword);
@@ -18,10 +21,7 @@ const index = () => {
 
   return (
     <Wrapper>
-      <MainTitle
-        mainText="공지사항"
-        subText="아래 내용을 꼭 확인하시고, 모두가 즐거운 축제가 되도록 함께해 주세요!"
-      />
+      <MainTitle mainText={t(`notice.title`)} subText={t(`notice.subTitle`)} />
       <ContentWrapper>
         <Search onSearch={handleSearch} />
         <Content keyword={searchKeyword} />

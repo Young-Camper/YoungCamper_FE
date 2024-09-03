@@ -15,17 +15,14 @@ const Wrapper = styled.div`
 
   opacity: var(--sds-size-stroke-border);
   background: var(--Base-Base-White, #fafafa);
-  font-size: ${(props) =>
-    props.isMobile
-      ? "20px" /* 모바일 미반영 */
-      : props.isTablet
-      ? "30px" /* 테블릿 미반영 */
-      : "40px"}; /* 데스크탑 40px */
 `;
 const BannerWrapper = styled.div`
-  /* padding: 0px 180px; */
   /* 가운데 정렬 */
-  ${(props) => (props.$isDesktop ? "margin: 0 auto;" : "padding: 0 12px;")}
+  /* margin: 0 auto; */
+  margin: ${(props) => (props.$isDesktop ? " 0 auto" : "")};
+  padding: ${(props) =>
+    (props.$isTablet || props.$isMobile) &&
+    "0 4px"}; /* TitleSet.jsx padding: 20px => 합 24px*/
 
   display: flex;
   flex-direction: column;
@@ -40,8 +37,12 @@ const MainTitle = ({ mainText, subText }) => {
 
   return (
     <Wrapper $isMobile={isMobile} $isTablet={isTablet} $isDesktop={isDesktop}>
-      <BannerWrapper>
-        <TitleSet mainText={mainText} subText={subText} />
+      <BannerWrapper
+        $isMobile={isMobile}
+        $isTablet={isTablet}
+        $isDesktop={isDesktop}
+      >
+        <TitleSet mainText={mainText} subText={subText} isBanner={isDesktop} />
       </BannerWrapper>
     </Wrapper>
   );
