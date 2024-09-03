@@ -167,17 +167,18 @@ export const FloorButton = styled.div`
 const LocMap = () => {
   const [floor,setFloor] = useState(1);
   const isMobile = useMediaQueries("max-width", 768);
+  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
   const floorData = {
     1: {
       title: "1층 현장 배치도",
       description: "영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다.",
-      image: "../../assets/images/Location/1_floor_img.png",
+      image: "{`${mediaUrl}Location/1_floor_img.png`}",
     },
     2: {
       title: "2층 현장 배치도",
       description: "영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다.",
-      image: "../../assets/images/Location/2_floor_img.png",
+      image: "{`${mediaUrl}Location/1_floor_img.png`}",
     },
   };
   return (

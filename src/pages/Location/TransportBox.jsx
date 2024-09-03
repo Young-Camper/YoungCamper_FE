@@ -3,7 +3,7 @@ import * as S from "./style";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-import buttonImage from "../../assets/images/Location/button.png";
+
 import openImage from "../../assets/images/Location/button_open.png";
 import useMediaQueries from '../../hooks/useMediaQueries.jsx';
 
@@ -19,6 +19,8 @@ const TransportBox = ({
     setIsHovered(false);
   };
 
+  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+
   const { isDesktop } = useMediaQueries();
 
   return (
@@ -28,7 +30,7 @@ const TransportBox = ({
           <S.Title isOpen = {isOpen} >{title}</S.Title>
           <S.IconContainer>
             <S.Icon>
-              <img src = {isOpen || isHovered? openImage : buttonImage}/>
+              <img src = {isOpen || isHovered? `${mediaUrl}Location/button_open.png` : `${mediaUrl}Location/button.png` }/>
             </S.Icon>
           </S.IconContainer>
         </S.HeaderContent>
