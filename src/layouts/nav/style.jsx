@@ -139,7 +139,7 @@ export const LogoEn = styled.img`
   }
   @media only screen and (max-width: 768px) {
     width: 72px;
-    height: 26px;
+    /* height: 26px; */
   }
   @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
   }
@@ -148,7 +148,7 @@ export const LogoEn = styled.img`
 export const StyledLink = styled(Link)`
   color: #0a0b0a;
   font-size: 20px;
-  font-family: "PretendardSemibold";
+  font-family: "MonRegular";
   font-weight: 600;
   line-height: 24px;
   word-wrap: break-word;
@@ -193,6 +193,7 @@ export const LangSlider = styled.span`
     transform: translateY(-50%);
     color: #000;
     transition: 0.4s;
+    font-family: "MonSemiBold";
   }
 
   &:after {
@@ -205,9 +206,12 @@ export const LangSlider = styled.span`
     transform: translateY(-50%);
     color: transparent;
     transition: 0.4s;
+    font-family: "MonSemiBold";
   }
 
-  &:before,
+  &:before {
+    /* color: #e8eaea; */
+  }
   &:after {
     pointer-events: none;
   }
@@ -218,7 +222,7 @@ export const CheckBox = styled.input`
   width: 0;
   height: 0;
   &:checked + ${LangSlider} {
-    background-color: #b9ff9c;
+    background-color: #0068FF;
   }
 
   &:focus + ${LangSlider} {
@@ -232,7 +236,7 @@ export const CheckBox = styled.input`
 
   &:checked + ${LangSlider}:after {
     transform: translateY(-50%) translateX(-45px);
-    color: #000;
+    color: #ffffff;
   }
 `;
 

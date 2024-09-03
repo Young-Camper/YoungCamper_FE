@@ -1,6 +1,4 @@
 import { useState } from "react";
-import logo_kr from "../../assets/images/Nav/Logo_kr.png";
-import logo_en from "../../assets/images/Nav/Logo_en.png";
 import useMediaQueries from "../../hooks/useMediaQueries";
 import * as S from "./style";
 import { useTranslation } from "react-i18next";
@@ -34,14 +32,15 @@ const Nav = () => {
               {/* 로고 */}
               <S.StyledLink to={"/"}>
                 {isChecked ? (
-                  <S.LogoEn src={logo_en} alt="Logo_en" />
+                  <S.LogoEn src={`${mediaUrl}Nav/Logo_en.png`} alt="Logo_en" />
                 ) : (
-                  <S.LogoKr src={logo_kr} alt="Logo_kr" />
+                  <S.LogoKr src={`${mediaUrl}Nav/Logo_kr.png`} alt="Logo_kr" />
                 )}
               </S.StyledLink>
 
               {/* 영캠프 소개 */}
-              <S.StyledLink to={"/Intro"}>{t(`nav.intro`)}</S.StyledLink>
+              <S.StyledLink to={"/Intro"}>
+                {t(`nav.intro`)}</S.StyledLink>
 
               {/* 공지 */}
               <S.StyledLink to={"/notification"}>
@@ -92,7 +91,7 @@ const Nav = () => {
                     <S.Header>
                       <S.HeaderContent>
                         <S.MenubarOpened
-                          menubar={menubar}
+                          menubar={`${mediaUrl}Nav/re_sideNav.png`}
                           onClick={() => setModalOpen(false)}
                         />
                         <S.LogoWrapper>
@@ -101,20 +100,28 @@ const Nav = () => {
                             onClick={() => setModalOpen(false)}
                           >
                             {isChecked ? (
-                              <S.LogoEn src={logo_en} alt="Logo_en" />
+                              <S.LogoEn src={`${mediaUrl}Nav/Logo_en.png`} alt="Logo_en" />
                             ) : (
-                              <S.LogoKr src={logo_kr} alt="Logo_kr" />
+                              <S.LogoKr src={`${mediaUrl}Nav/Logo_kr.png`} alt="Logo_kr" />
                             )}
                           </S.StyledLink>
                         </S.LogoWrapper>
                         <S.ModalCloseBtn
-                          closeicon={closeicon}
+                          closeicon={`${mediaUrl}Nav/exit.png`}
                           onClick={() => setModalOpen(false)}
                         />
                       </S.HeaderContent>
                     </S.Header>
                     <S.SideNavLinks>
                       <S.SideNavSet>
+                        <S.SideNavLink>
+                          <S.StyledLink
+                            to={"/Intro"}
+                            onClick={() => setModalOpen(false)}
+                          >
+                            {t("nav.intro")}
+                          </S.StyledLink>
+                        </S.SideNavLink>
                         <S.SideNavLink>
                           <S.StyledLink
                             to={"/notification"}
@@ -128,8 +135,17 @@ const Nav = () => {
                             to={"/promotion"}
                             onClick={() => setModalOpen(false)}
                           >
-                            <img src={SideNav} width={"44px"} height={"44px"} />
+                            <img src={`${mediaUrl}Nav/clubIcon.png`} width={"44px"} height={"44px"} />
                             {t("nav.club")}
+                            <img src={`${mediaUrl}Nav/clubIcon.png`} width={"44px"} height={"44px"} />
+                          </S.StyledLink>
+                        </S.SideNavLink>
+                        <S.SideNavLink>
+                          <S.StyledLink
+                            to={"/performance"}
+                            onClick={() => setModalOpen(false)}
+                          >
+                            {t("nav.performance")}
                           </S.StyledLink>
                         </S.SideNavLink>
                         <S.SideNavLink>
@@ -186,14 +202,14 @@ const Nav = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <S.SideNavSnsIcon icon={Instagram} />
+                            <S.SideNavSnsIcon icon={`${mediaUrl}Nav/Instagram.png`} />
                           </a>
                           <a
                             href="https://www.youtube.com/@youngcamp_dgu"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <S.SideNavSnsIcon icon={Youtube} />
+                            <S.SideNavSnsIcon icon={`${mediaUrl}Nav/Youtube.png`} />
                           </a>
                         </S.SideNavIconContainer>
                       </S.SideNavSNS>
@@ -203,15 +219,15 @@ const Nav = () => {
               )}
               <S.StyledLink to={"/"}>
                 {isChecked ? (
-                  <S.LogoEn src={logo_en} alt="Logo_en" />
+                  <S.LogoEn src={`${mediaUrl}Nav/Logo_en.png`} alt="Logo_en" />
                 ) : (
-                  <S.LogoKr src={logo_kr} alt="Logo_kr" />
+                  <S.LogoKr src={`${mediaUrl}Nav/Logo_kr.png`} alt="Logo_kr" />
                 )}
               </S.StyledLink>
               <S.MenubarContainer>
                 <S.MenubarWrapper>
                   <S.Menubar
-                    menubar={menubar}
+                    menubar={`${mediaUrl}Nav/sideNav.png`}
                     onClick={() => setModalOpen(true)}
                   />
                 </S.MenubarWrapper>
