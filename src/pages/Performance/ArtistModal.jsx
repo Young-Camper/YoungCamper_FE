@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import * as S from "./style";
 import useMediaQueries from "../../hooks/useMediaQueries";
+import { Link } from "react-router-dom";
 
 const ArtistModal = ({ artist, setModalOpen }) => {
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
@@ -28,13 +29,19 @@ const ArtistModal = ({ artist, setModalOpen }) => {
             <S.ArtistName $isMobile={isMobile}>
               <S.Line>{artist.name}</S.Line>
             </S.ArtistName>
-            <S.DetailText $isMobile={isMobile}>{artist.etc}</S.DetailText>
           </S.ContentWrapper>
           <S.ContentWrapper>
-            <S.SubText>대표곡</S.SubText>
-            <S.ModalMusic>
-              {artist.music} <img src={`${mediaUrl}Performance/Social.png`} />
-            </S.ModalMusic>
+            {artist.music.length > 1 && <S.SubText>대표곡</S.SubText>}
+            <S.MusicWrapper>
+              {artist.music.map((music, index) => (
+                <Link to={music.youtubeURL} key={index}>
+                  <S.ModalMusic>
+                    {music.title}
+                    <img src={`${mediaUrl}Performance/Social.png`} />
+                  </S.ModalMusic>
+                </Link>
+              ))}
+            </S.MusicWrapper>
           </S.ContentWrapper>
         </S.ModalContent>
       </S.Modal>

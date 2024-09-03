@@ -7,23 +7,12 @@ import useMediaQueries from "../../hooks/useMediaQueries";
 const TimeTable = ({ onArtistClick }) => {
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
-  // 라인업 공개 여부 설정(true: 라인업 공개, false: 미공개)
-  const lineupOpen = true;
-
   // -------------------------- hooks --------------------------
   const { isDesktop } = useMediaQueries();
-
   const [artists, setArtists] = useState([]);
 
   useEffect(() => {
-    // 라인업 오픈 전 아티스트명 마크 처리
-    const updatedLineup = !lineupOpen
-      ? lineup.map((artist) => ({
-          ...artist,
-          name: "추후 공개",
-        }))
-      : lineup;
-    setArtists(updatedLineup);
+    setArtists(lineup);
   }, []);
 
   // -------------------------- functions --------------------------
@@ -35,74 +24,32 @@ const TimeTable = ({ onArtistClick }) => {
   // -------------------------- components --------------------------
   const PerformanceTable = (event) => {
     const currentArtists = getArtistsByTime(event.time);
-    return event.id === 2 /* 수계식 레이아웃 예외처리 */ ? (
+    return (
       <S.Section
         key={event.id}
         $isDesktop={isDesktop}
-        $isRight={event.id}
-        $isEvent={false}
-      >
-        <S.EventTime $isDesktop={isDesktop} $isEvent={false}>
-          {event.time}
-        </S.EventTime>
-        <S.EventName $isDesktop={isDesktop} $isEvent={false}>
-          {event.name}
-        </S.EventName>
-      </S.Section>
-    ) : (
-      <S.Section
-        key={event.id}
-        $isDesktop={isDesktop}
-        $isRight={event.id}
-        $isEvent={true}
+        $isRight={event.id % 2 == 0}
       >
         <S.EventTime
           $isDesktop={isDesktop}
-          $isEvent={true}
+          $isEvent={event.is_event}
           $imageURL={event.cover_image}
-          $lineupOpen={lineupOpen}
         >
-          <S.TimeText $isEvent={true}>{event.time}</S.TimeText>
+          <S.TimeText $isEvent={event.is_event}>{event.time}</S.TimeText>
         </S.EventTime>
         <S.ArtistWrapper>
-          <S.EventName $isDesktop={isDesktop} $isEvent={true}>
+          <S.EventName $isDesktop={isDesktop}>
             <S.SmallText $isDesktop={isDesktop}>{event.index}</S.SmallText>
-            {/* 라인업이 2인일 경우 레이아웃 처리 */}
-            {currentArtists.length > 1 ? (
-              <>
-                <S.EventText $isDesktop={isDesktop}>
-                  {currentArtists[0]?.name}
-                  <S.Arrow
-                    src={`${mediaUrl}Performance/arrow_icon.png`}
-                    onClick={() => {
-                      onArtistClick(currentArtists[0]);
-                    }}
-                    $isDesktop={isDesktop}
-                  />
-                </S.EventText>
-                <S.EventTextRight $isDesktop={isDesktop}>
-                  {currentArtists[1]?.name}
-                  <S.Arrow
-                    src={`${mediaUrl}Performance/arrow_icon.png`}
-                    onClick={() => {
-                      onArtistClick(currentArtists[1]);
-                    }}
-                    $isDesktop={isDesktop}
-                  />
-                </S.EventTextRight>
-              </>
-            ) : (
-              <S.EventText $isDesktop={isDesktop}>
-                {currentArtists[0]?.name}
-                <S.Arrow
-                  src={`${mediaUrl}Performance/arrow_icon.png`}
-                  onClick={() => {
-                    onArtistClick(currentArtists[0]);
-                  }}
-                  $isDesktop={isDesktop}
-                />
-              </S.EventText>
-            )}
+            <S.EventText $isDesktop={isDesktop} $isRight={event.id % 2 == 0}>
+              {currentArtists[0]?.name}
+              <S.Arrow
+                src={`${mediaUrl}Performance/arrow_icon.png`}
+                onClick={() => {
+                  onArtistClick(currentArtists[0]);
+                }}
+                $isDesktop={isDesktop}
+              />
+            </S.EventText>
           </S.EventName>
         </S.ArtistWrapper>
       </S.Section>
@@ -111,7 +58,11 @@ const TimeTable = ({ onArtistClick }) => {
 
   const GuideTable = (event) => {
     return (
-      <S.Section key={event.id} $isRight={event.id} $isDesktop={isDesktop}>
+      <S.Section
+        key={event.id}
+        $isRight={event.id % 2 == 0}
+        $isDesktop={isDesktop}
+      >
         <S.GuideTime $isDesktop={isDesktop}>{event.time}</S.GuideTime>
         <S.GuideName $isDesktop={isDesktop}>{event.name}</S.GuideName>
       </S.Section>
