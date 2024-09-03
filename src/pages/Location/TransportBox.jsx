@@ -1,10 +1,7 @@
 import React, { useState} from 'react';
 import * as S from "./style";
 import styled from "styled-components";
-import PropTypes from "prop-types";
-
-
-import openImage from "../../assets/images/Location/button_open.png";
+import PropTypes from "prop-types";=
 import useMediaQueries from '../../hooks/useMediaQueries.jsx';
 
 const TransportBox = ({
