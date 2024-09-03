@@ -16,7 +16,7 @@ export const TitleSection = styled.div`
   align-items: center;
   flex: 1 0 0;
   background: linear-gradient(black, black);
-  
+
   animation-name: titleAct;
   animation-delay: 500ms;
   animation-duration: 3000ms;
@@ -24,13 +24,14 @@ export const TitleSection = styled.div`
   animation-fill-mode: forwards;
 
   @keyframes titleAct {
-  from { 
-    background: black; 
-    background-blend-mode: normal;
-  }
-  to { 
-    background: linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%);
-    background-blend-mode: color-burn;
+    from {
+      background: black;
+      background-blend-mode: normal;
+    }
+    to {
+      background: linear-gradient(102deg, #0068ff 23.99%, #b9ff9c 98.08%);
+      background-blend-mode: color-burn;
+    }
   }
 `;
 
@@ -90,18 +91,20 @@ export const TitleMainSet = styled.div`
 `;
 
 export const TitleMiniText1 = styled.div`
-  width: 100%; max-width: 203px;
-  height: 100%; max-height: 36px;
+  width: 100%;
+  max-width: 203px;
+  height: 100%;
+  max-height: 36px;
   position: absolute;
   left: 191px;
   top: 210px;
-  color: var(--Base-Real-White, #FFF);
+  color: var(--Base-Real-White, #fff);
   text-align: center;
   font-family: MonRegular;
   font-size: 26px;
   font-style: normal;
   font-weight: 400;
-  line-height: 36px; 
+  line-height: 36px;
   letter-spacing: -1.4px;
   @media only screen and (min-width: 1024px) and (max-width: 1400px) {
     left: 50px;
@@ -119,18 +122,20 @@ export const TitleMiniText2 = styled(TitleMiniText1)`
 `;
 
 export const TitleMiniText3 = styled.div`
-  width: 100%; max-width: 159px;
-  height: 100%; max-height: 36px;
+  width: 100%;
+  max-width: 159px;
+  height: 100%;
+  max-height: 36px;
   position: absolute;
   right: 269px;
   bottom: 219px;
-  color: var(--Base-Real-White, #FFF);
+  color: var(--Base-Real-White, #fff);
   text-align: center;
   font-family: MonRegular;
   font-size: 26px;
   font-style: normal;
   font-weight: 400;
-  line-height: 36px; 
+  line-height: 36px;
   letter-spacing: -1.4px;
   @media only screen and (min-width: 1024px) and (max-width: 1400px) {
     right: 80px;
@@ -160,14 +165,14 @@ export const TitleBox = styled.div`
   display: flex;
   margin-bottom: -12px;
   @media (min-width: 1024px) {
-  border-top: ${(props) =>
-    props.ishoveringYoung
-      ? `2px solid #0A0B0A`
-      : props.ishoveringCamp
-      ? `2px solid #0A0B0A`
-      : props.ishoveringFestival
-      ? `2px solid #0A0B0A`
-      : ""};
+    border-top: ${(props) =>
+      props.ishoveringYoung
+        ? `2px solid #0A0B0A`
+        : props.ishoveringCamp
+        ? `2px solid #0A0B0A`
+        : props.ishoveringFestival
+        ? `2px solid #0A0B0A`
+        : ""};
   }
 `;
 
@@ -193,32 +198,33 @@ export const TextBox2 = styled(TextBox)`
 export const TitlePortal = styled.div`
   width: ${(props) => (props.$isDesktop ? "90px" : "45px")};
   height: ${(props) => (props.$isDesktop ? "90px" : "45px")};
-  background-image: ${(props) => 
-    props.ishoveringYoung 
-    ? `url(${mediaUrl}Home/Portal_B.png)` 
-    : props.ishoveringFestival 
-    ? `url(${mediaUrl}Home/Portal_B.png)` 
-    : `url(${mediaUrl}Home/Portal.png)`
-  }; 
-  margin-left: ${(props) => 
-    props.ishoveringYoung ? "-738px" : /*90+36+570+36*/
-    props.ishoveringFestival ? "-915px" : /*90+36+753+36*/
-    "0" }; 
+  background-image: ${(props) =>
+    props.ishoveringYoung
+      ? `url(${mediaUrl}Home/Portal_B.png)`
+      : props.ishoveringFestival
+      ? `url(${mediaUrl}Home/Portal_B.png)`
+      : `url(${mediaUrl}Home/Portal.png)`};
+  margin-left: ${(props) =>
+    props.ishoveringYoung
+      ? "-738px" /*90+36+570+36*/
+      : props.ishoveringFestival
+      ? "-915px" /*90+36+753+36*/
+      : "0"};
   background-size: cover;
   transition: all 0.3s ease-out;
 `;
 
 export const TitleDawn = styled.div`
-  width: 90px; height: 90px;
+  width: 90px;
+  height: 90px;
   background-image: url(${mediaUrl}Home/Dawn_B.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   position: absolute;
-  opacity: ${(props) => props.ishoveringCamp ? "1" : "0" };
-  margin-left: ${(props) => props.ishoveringCamp ? "507px" : "0" }; /*597-90*/
+  opacity: ${(props) => (props.ishoveringCamp ? "1" : "0")};
+  margin-left: ${(props) => (props.ishoveringCamp ? "507px" : "0")}; /*597-90*/
   transition: all 0.3s ease-out;
-  
 `;
 
 export const TitleText = styled.div`
@@ -227,7 +233,11 @@ export const TitleText = styled.div`
   height: ${(props) =>
     props.$isDesktop ? "171px" : props.$isTablet ? "110px" : "85px"};
   font-size: ${(props) =>
-    props.$isDesktop ? "140px" : props.$isTablet ? "90px" : "60px"}; /*mobile 70px*/
+    props.$isDesktop
+      ? "140px"
+      : props.$isTablet
+      ? "90px"
+      : "60px"}; /*mobile 70px*/
   letter-spacing: ${(props) =>
     props.$isDesktop ? "2.8px" : props.$isTablet ? "1.8px" : "1.4px"};
   color: var(--new-main-white, #fafafa);
@@ -238,26 +248,27 @@ export const TitleText = styled.div`
   line-height: normal;
   display: flex;
   justifty-content: flex-start;
-  
+
   @media (min-width: 1024px) {
-    padding-left: ${(props) => 
-      (props.ishoveringYoung ? "126px" :  "")}; /*36+90*/ 
+    padding-left: ${(props) =>
+      props.ishoveringYoung ? "126px" : ""}; /*36+90*/
     margin-left: ${(props) =>
-      props.ishoveringFestival ? "126px" :
-      props.ishoveringCamp ? "-126px" :
-      "0"};
-  
-  color: ${(props) =>
-    props.ishoveringYoung
-      ? `#0A0B0A`
-      : props.ishoveringCamp
-      ? `#0A0B0A`
-      : props.ishoveringFestival
-      ? `#0A0B0A`
-      : `#FAFAFA)`};
+      props.ishoveringFestival
+        ? "126px"
+        : props.ishoveringCamp
+        ? "-126px"
+        : "0"};
+
+    color: ${(props) =>
+      props.ishoveringYoung
+        ? `#0A0B0A`
+        : props.ishoveringCamp
+        ? `#0A0B0A`
+        : props.ishoveringFestival
+        ? `#0A0B0A`
+        : `#FAFAFA)`};
   }
   transition: all 0.3s ease-out;
-  
 `;
 
 export const Rectangle = styled.div`
@@ -310,9 +321,7 @@ export const TitleList = styled.div`
 `;
 
 export const TitleList2 = styled(TitleList)`
-  background: ${(props) =>
-    props.ishoveringWith ? "#0A0B0A" : "#FAFAFA"
-  }
+  background: ${(props) => (props.ishoveringWith ? "#0A0B0A" : "#FAFAFA")};
 `;
 
 export const TitleLine = styled.div`
@@ -327,8 +336,7 @@ export const TitleFrameImg = styled.div`
       ? `url(${mediaUrl}Home/Dawn_Blue.png)`
       : props.ishoveringDate
       ? `url(${mediaUrl}Home/Dawn_Blue.png)`
-      : `url(${mediaUrl}Home/Dawn.png)`
-    };
+      : `url(${mediaUrl}Home/Dawn.png)`};
   background-size: cover;
   transition: background-image 0.3s ease-out;
 `;
@@ -339,7 +347,6 @@ export const TitleFrameImg2 = styled.div`
   background-image: url(${mediaUrl}Home/Dawn_Blue.png);
   background-size: cover;
   transition: background-image 0.3s ease-out;
-  
 `;
 
 export const TitleFrameText = styled.div`
@@ -357,11 +364,7 @@ export const TitleFrameText = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: ${(props) =>
-    props.$isDesktop
-      ? "38px"
-      : props.$isTablet
-      ? "32px"
-      : "21px"};
+    props.$isDesktop ? "38px" : props.$isTablet ? "32px" : "21px"};
   line-height: ${(props) =>
     props.$isDesktop ? "48px" : props.$isTablet ? "38px" : "32px"};
   letter-spacing: ${(props) =>
@@ -373,14 +376,11 @@ export const TitleFrameText = styled.div`
 `;
 
 export const TitleFrameText2 = styled(TitleFrameText)`
-  color: ${(props) =>
-      props.ishoveringWith
-      ? "white"
-      : "#0068FF"};
+  color: ${(props) => (props.ishoveringWith ? "white" : "#0068FF")};
 `;
 
 export const TitleFrameBox = styled.div`
-  width: auto; 
+  width: auto;
   height: auto;
   max-height: 90px;
   display: flex;
@@ -419,7 +419,6 @@ export const ArrowImg2 = styled(ArrowImg)`
   background-image: url(${mediaUrl}Home/Arrow_Blue.png);
 `;
 
-
 //2. Video
 export const VideoSection = styled.div`
   width: 100%;
@@ -448,8 +447,10 @@ export const VideoBox = styled.div`
   width: 100%;
   height: ${(props) =>
     props.$isDesktop ? "100%" : props.$isTablet ? "422px" : "314px"};
-  gap: ${(props) => (props.$isDesktop ? "17.998px" : props.$isTablet ? "0px" : "10px")};
-  padding: ${(props) => (props.$isDesktop ? "48px" : props.$isTablet ? "48px 0px" : "24px 0px")};
+  gap: ${(props) =>
+    props.$isDesktop ? "17.998px" : props.$isTablet ? "0px" : "10px"};
+  padding: ${(props) =>
+    props.$isDesktop ? "48px" : props.$isTablet ? "48px 0px" : "24px 0px"};
   justify-content: flex-end;
   align-items: center;
   display: flex;
@@ -466,29 +467,35 @@ export const VideoBox = styled.div`
 `; */
 
 export const VideoBtn = styled.div`
-  width: auto; 
-  height: ${(props) => (props.$isDesktop ? "auto" : props.$isTablet ? "45px" : "45px")};
+  width: auto;
+  height: ${(props) =>
+    props.$isDesktop ? "auto" : props.$isTablet ? "45px" : "45px"};
   padding: ${(props) => (props.$isDesktop ? "20px 28px" : "12px 16px")};
   border-radius: 100px;
   opacity: var(--sds-size-stroke-border);
-  background: var(--gradient, linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%));
+  background: var(
+    --gradient,
+    linear-gradient(102deg, #0068ff 23.99%, #b9ff9c 98.08%)
+  );
 
-  color: var(--new-main-white, #FAFAFA);
+  color: var(--new-main-white, #fafafa);
   text-align: center;
 
   font-family: MonSeimiBold;
-  font-size: ${(props) => (props.$isDesktop ? "20px" : props.$isTablet ? "20px 28px" : "12px")};
+  font-size: ${(props) =>
+    props.$isDesktop ? "20px" : props.$isTablet ? "20px 28px" : "12px"};
   font-style: normal;
   font-weight: 600;
   line-height: ${(props) => (props.$isDesktop ? "28px" : "18px")};
-  letter-spacing:${(props) => (props.$isDesktop ? "-0.2px" : "-0.12px")}; 
+  letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.12px")};
 `;
 
 export const CardSecionBox = styled.div`
   width: ${(props) => (props.$isDesktop ? "100%" : "100%")};
   height: ${(props) =>
     props.$isDesktop ? "auto" : props.$isTablet ? "302px" : "auto"};
-  padding: ${(props) => (props.$isDesktop ? "48px 144px" : props.$isTablet ? "48px" : "24px")};
+  padding: ${(props) =>
+    props.$isDesktop ? "48px 144px" : props.$isTablet ? "48px" : "24px"};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -526,11 +533,7 @@ export const CardText2 = styled.div`
   width: 100%;
   height: auto;
   font-size: ${(props) =>
-    props.$isDesktop
-      ? "20px"
-      : props.$isTablet
-      ? "16px"
-      : "12px"};
+    props.$isDesktop ? "20px" : props.$isTablet ? "16px" : "12px"};
   line-height: ${(props) => (props.$isDesktop ? "30px" : "24px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.16px")};
   align-self: center;
@@ -584,11 +587,10 @@ export const CardButton = styled.div`
   }
 `;
 
-
-
 //3.ClubInfo
 export const ClubInfoSection = styled.div`
-  width: 100%; height: auto;
+  width: 100%;
+  height: auto;
   padding: ${(props) =>
     props.$isDesktop
       ? "100px 144px"
@@ -608,8 +610,7 @@ export const ClubInfoSection = styled.div`
 `;
 
 export const ClubTitleBox = styled.div`
-  width: ${(props) =>
-    props.$isDesktop ? "1100px" : "100%"};
+  width: ${(props) => (props.$isDesktop ? "1100px" : "100%")};
   height: auto;
   padding: ${(props) => (props.$isDesktop ? "48px" : "24px")};
   display: flex;
@@ -696,19 +697,20 @@ export const ClubBtnText = styled.div`
 
 //4.Notice
 export const NoticeSection = styled.div`
-width: 100%; height: auto;
-padding: ${(props) =>
-  props.$isDesktop
-  ? "100px 144px"
-  : props.$isTablet
-  ? "50px 24px"
-  : "50px 12px"};
+  width: 100%;
+  height: auto;
+  padding: ${(props) =>
+    props.$isDesktop
+      ? "100px 144px"
+      : props.$isTablet
+      ? "50px 24px"
+      : "50px 12px"};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  `;
+`;
 
 export const NoticeTitleSet = styled.div`
   width: 100%;
@@ -719,37 +721,29 @@ export const NoticeTitleSet = styled.div`
   border-top: 1px solid var(--new-main-grey, #637d92);
   flex-direction: ${(props) => (props.$isDesktop ? "row" : "column")};
   justify-content: ${(props) => (props.$isDesktop ? "space-between" : "")};
-  b
 `;
 
 export const NoticeTitleText = styled.div`
   width: ${(props) =>
-    props.$isDesktop
-      ? "auto"
-      : props.$isTablet
-      ? "539px"
-      : "256px"};
+    props.$isDesktop ? "auto" : props.$isTablet ? "539px" : "256px"};
   height: auto;
   color: var(--new-main-black, #0a0b0a);
-  
-  font-family: ${(props) => (props.$isDesktop ? "MonExtraBold" : "MonSemiBold")};
+
+  font-family: ${(props) =>
+    props.$isDesktop ? "MonExtraBold" : "MonSemiBold"};
   font-style: normal;
   font-size: ${(props) =>
-    props.$isDesktop
-      ? "38px"
-      : props.$isTablet
-      ? "20px"
-      : "18px"}; 
+    props.$isDesktop ? "38px" : props.$isTablet ? "20px" : "18px"};
   font-weight: ${(props) => (props.$isDesktop ? "800" : "600")};
   line-height: ${(props) => (props.$isDesktop ? "48px" : "28px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-1.9px" : "-0.2px")};
   align-self: left;
   white-space: nowrap;
-
 `;
 
 export const NoticeBtnBox = styled.div`
-  width: 100%; height: auto;
+  width: 100%;
+  height: auto;
   padding: ${(props) => (props.$isDesktop ? "0px" : "48px 24px")};
 `;
 
@@ -769,14 +763,18 @@ export const NoticeBtn = styled.div`
   font-family: MonRegular;
   font-size: ${(props) =>
     props.$isDesktop ? "20px" : props.$isTablet ? "16px" : "12px"};
-    font-style: normal;
-    font-weight: 400;
-    line-height: ${(props) => (props.$isDesktop ? "30px" : props.$isTablet ? "24px" : "18px")};
-    letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : props.$isTablet ? "-0.16px" : "-0.12px")};
-  
+  font-style: normal;
+  font-weight: 400;
+  line-height: ${(props) =>
+    props.$isDesktop ? "30px" : props.$isTablet ? "24px" : "18px"};
+  letter-spacing: ${(props) =>
+    props.$isDesktop ? "-0.2px" : props.$isTablet ? "-0.16px" : "-0.12px"};
+
   &:hover {
-  background: var(--gradient, linear-gradient(102deg, #0068ff 23.99%, #b9ff9c 98.08%)
-  );
+    background: var(
+      --gradient,
+      linear-gradient(102deg, #0068ff 23.99%, #b9ff9c 98.08%)
+    );
   }
 `;
 
@@ -791,7 +789,8 @@ export const NoticeListSet = styled.div`
 `;
 
 export const NoticeListFrame = styled.div`
-  width: 100%; height: auto;
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -800,19 +799,17 @@ export const NoticeListFrame = styled.div`
 
 export const NoticeList = styled.div`
   width: 100%;
-  height: ${(props) =>
-    props.$isDesktop ? "120px" : "90px "};
+  height: ${(props) => (props.$isDesktop ? "120px" : "90px ")};
   display: flex;
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  border-bottom: 1px solid var(--new-main-primary, #0068FF);
+  border-bottom: 1px solid var(--new-main-primary, #0068ff);
   background: ${(props) =>
     props.ishovering
       ? "linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%)"
       : "white"};
   transition: background 0.2s ease;
-
 `;
 
 export const NoticeItemBox = styled.div`
@@ -826,9 +823,9 @@ export const NoticeItemBox = styled.div`
 `;
 
 export const NoticeTag = styled.div`
-  auto: auto; height: auto;
-  padding: ${(props) =>
-    props.$isDesktop ? "8px 18px" : "8px 12px"};
+  auto: auto;
+  height: auto;
+  padding: ${(props) => (props.$isDesktop ? "8px 18px" : "8px 12px")};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -856,13 +853,11 @@ export const NoticeText = styled.div`
   color: ${(props) => (props.ishovering ? "white" : "black")};
   font-family: MonRegular;
   font-size: ${(props) =>
-    props.$isDesktop
-      ? "28px"
-      : props.$isTablet
-      ? "18px"
-      : "14px"}; 
-  line-height: ${(props) => (props.$isDesktop ? "normal" : props.$isTablet ? "36px" : "24px")};
-  letter-spacing: ${(props) => (props.$isDesktop ? "-1.68px" : props.$isTablet ? "-1.4px" : "-0.16px")};
+    props.$isDesktop ? "28px" : props.$isTablet ? "18px" : "14px"};
+  line-height: ${(props) =>
+    props.$isDesktop ? "normal" : props.$isTablet ? "36px" : "24px"};
+  letter-spacing: ${(props) =>
+    props.$isDesktop ? "-1.68px" : props.$isTablet ? "-1.4px" : "-0.16px"};
   font-style: normal;
   font-weight: 400;
   transition: all 0.2s ease-out;
@@ -877,9 +872,10 @@ export const ArrowImg3 = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-image: ${(props) =>
-    props.ishovering ? `url(${mediaUrl}Home/Arrow.png)` : `url(${mediaUrl}Home/Arrow_Blue.png)`};
+    props.ishovering
+      ? `url(${mediaUrl}Home/Arrow.png)`
+      : `url(${mediaUrl}Home/Arrow_Blue.png)`};
   transition: all 0.2s ease-out;
-  
 `;
 
 export const ArrowImg2Box = styled.div`
@@ -932,7 +928,8 @@ export const SocialTitle = styled.div`
   font-style: normal;
   width: auto;
   height: ${(props) => (props.$isDesktop ? "46px" : "24px")};
-  font-size: ${(props) => (props.$isDesktop ? "38px" : props.$isTablet ? "20px" : "18px")};
+  font-size: ${(props) =>
+    props.$isDesktop ? "38px" : props.$isTablet ? "20px" : "18px"};
   font-weight: ${(props) => (props.$isDesktop ? "800" : "600")};
   line-height: ${(props) => (props.$isDesktop ? "normal" : "24px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-1.52px" : "0.4px")};
@@ -989,7 +986,7 @@ export const FrameCard = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-self: stretch; /*${mediaUrl}Home/Club/clubEmpty.png*/
-  background-image: url(${props => props.BgImage});
+  background-image: url(${(props) => props.BgImage});
   background-repeat: no-repeat;
   background-size: contain;
 `;
@@ -997,7 +994,7 @@ export const FrameCard = styled.div`
 export const IconImg = styled.div`
   width: ${(props) => (props.$isDesktop ? "40px" : "20px")};
   height: ${(props) => (props.$isDesktop ? "40px" : "20px")};
-  background-image: url(${props => props.IconImage});
+  background-image: url(${(props) => props.IconImage});
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
@@ -1040,7 +1037,7 @@ export const ArrowImg4 = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-`
+`;
 
 //6.CTA 배너
 export const CTASection = styled.div`
@@ -1080,22 +1077,22 @@ export const GridText = styled.div`
   font-weight: 400;
   font-size: ${(props) => (props.$isDesktop ? "16px" : "12px")};
   line-height: ${(props) => (props.$isDesktop ? "24px" : "18px")};
-  letter-spacing: ${(props) => (props.$isDesktop ? "-0.16px" : "-0.12px")}; 
+  letter-spacing: ${(props) => (props.$isDesktop ? "-0.16px" : "-0.12px")};
   flex-direction: row;
   word-spacing: 5px;
-  
+
   display: flex;
   align-items: center;
   white-space: nowrap;
   animation: scroll 30s linear infinite; /* 스크롤 애니메이션 적용 */
 
-   &:before {
-    content: '';
+  &:before {
+    content: "";
     display: inline-block;
     width: 100%; /* 텍스트 앞에 빈 공간을 추가 */
   }
 
-   & > span {
+  & > span {
     margin-right: 50px; /* 텍스트 간격 조절 */
   }
 
