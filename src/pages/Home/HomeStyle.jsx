@@ -13,9 +13,9 @@ const SliderObject = styled.div`
 export const TitleSection = styled.div`
   width: 100%;
   height: ${(props) =>
-    props.$isDesktop ? "100%" : props.$isTablet ? "972px" : "812px"};
-  padding: ${(props) =>
-    props.$isDesktop ? "0px" : props.$isTablet ? "96px 0px" : "64px 0px"};
+    props.$isDesktop ? "850px" : props.$isTablet ? "972px" : "812px"};
+  padding-top: ${(props) =>
+    props.$isDesktop ? "83px" : props.$isTablet ? "96px" : "64px"};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -86,75 +86,72 @@ export const SpacePortal = styled.img`
 export const TitleMainSet = styled.div`
   width: 100vw;
   height: ${(props) =>
-    props.$isDesktop ? "auto" : props.$isTablet ? "501px" : "225px"};
-  padding: ${(props) => (props.$isDesktop ? "36px 0px" : "0px")};
+    props.$isDesktop ? "340px" : props.$isTablet ? "501px" : "225px"};
+  margin: ${(props) => (props.$isDesktop ? "36px 0px" : "0px")};
   justify-content: ${(props) => (props.$isDesktop ? "center" : "flex-start")};
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-self: stretch;
   position: relative;
 `;
 
-export const TitleMiniText1 = styled.div`
-  width: 100%; max-width: 203px;
-  height: 100%; max-height: 36px;
+export const TitleDetailSet = styled.div`
+  width: 995px;
+  height: 170px;
   position: absolute;
-  left: 191px;
-  top: 210px;
+  right: 212px;
+  top: 37px;
+`;
+
+export const TitleMiniText1 = styled.div`
+  width: 100%; max-width: 196px;
+  height: 100%; max-height: 36px;
   color: var(--Base-Real-White, #FFF);
-  text-align: center;
+  text-align: right;
   font-family: MonRegular;
-  font-size: 26px;
+  font-size: var(--fontSize-28, 28px);
   font-style: normal;
   line-height: 36px; 
-  letter-spacing: -1.4px;
-  @media only screen and (min-width: 1024px) and (max-width: 1400px) {
-    left: 50px;
-  }
+  letter-spacing: -0.28px;
+  display: flex;
+  position: absolute;
+  left: 0;
+  bottom: 36px;
 `;
 
 export const TitleMiniText2 = styled(TitleMiniText1)`
-  max-width: 159px;
+  max-width: 145px;
   max-height: 36px;
-  left: 235px;
-  top: 246px;
-  @media only screen and (min-width: 1024px) and (max-width: 1400px) {
-    margin-left: -140px;
-  }
+  left:0;
+  bottom: 0px;
 `;
 
 export const TitleMiniText3 = styled.div`
   width: 100%; max-width: 159px;
   height: 100%; max-height: 36px;
-  position: absolute;
-  right: 269px;
-  bottom: 219px;
   color: var(--Base-Real-White, #FFF);
   text-align: center;
   font-family: MonRegular;
-  font-size: 26px;
+  font-size: var(--fontSize-28, 28px);
   font-style: normal;
   line-height: 36px; 
-  letter-spacing: -1.4px;
-  @media only screen and (min-width: 1024px) and (max-width: 1400px) {
-    right: 80px;
-  }
+  letter-spacing: -0.28px;
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 0;
 `;
 
 export const TitleMiniText4 = styled(TitleMiniText3)`
-  max-width: 249px;
+  max-width: 234px;
   max-height: 36px;
-  right: 178px;
-  bottom: 189px;
-  @media only screen and (min-width: 1024px) and (max-width: 1400px) {
-    margin-right: -160px;
-  }
+  top: 36px;
 `;
 
 export const TitleBox = styled.div`
   width: 100%;
   height: ${(props) =>
-    props.$isDesktop ? "144px" : props.$isTablet ? "105px" : "83px"};
+    props.$isDesktop ? "120px" : props.$isTablet ? "105px" : "83px"};
   padding: ${(props) =>
     props.$isDesktop ? "0px 256px" : props.$isTablet ? "0px 96px" : "0px"};
   gap: ${(props) => (props.$isDesktop ? "36px" : "0px")};
@@ -162,14 +159,14 @@ export const TitleBox = styled.div`
   justify-content: flex-start;
   text-align: left;
   display: flex;
-  margin-bottom: -12px;
+  margin-bottom: -10px;
 `;
 
 export const TextBox = styled.div`
   width: ${(props) =>
     props.$isDesktop ? "100%" : props.$isTablet ? "576px" : "360px"};
   height: ${(props) =>
-    props.$isDesktop ? "100%" : props.$isTablet ? "105px" : "83px"};
+    props.$isDesktop ? "120px" : props.$isTablet ? "105px" : "83px"};
   padding: ${(props) => (props.$isMobile ? "0px 0px 0px 12px" : "0px")};
   gap: ${(props) => (props.$isDesktop ? "36px" : "20px")};
   display: ${(props) => (props.$isMobile ? "" : "flex")};
@@ -195,8 +192,8 @@ export const TitlePortal = styled.div`
     : `url(${mediaUrl}Home/Portal.png)`
   }; 
   margin-left: ${(props) => 
-    props.ishoveringYoung ? "-738px" : /*90+36+570+36*/
-    props.ishoveringFestival ? "-915px" : /*90+36+753+36*/
+    props.ishoveringYoung ? "-650px" : /*90+36+488+36*/
+    props.ishoveringFestival ? "-807px" : /*90+36+645+36*/
     "0" }; 
   background-size: cover;
   transition: all 0.3s ease-out;
@@ -210,25 +207,24 @@ export const TitleDawn = styled.div`
   background-position: center;
   position: absolute;
   opacity: ${(props) => props.ishoveringCamp ? "1" : "0" };
-  margin-left: ${(props) => props.ishoveringCamp ? "507px" : "0" }; /*597-90*/
+  margin-left: ${(props) => props.ishoveringCamp ? "426px" : "0" };
   transition: all 0.3s ease-out;
   
 `;
 
 export const TitleText = styled.div`
   max-width: ${(props) =>
-    props.$isDesktop ? "753px" : props.$isTablet ? "484px" : "377px"};
+    props.$isDesktop ? "645px" : props.$isTablet ? "484px" : "377px"};
   height: ${(props) =>
-    props.$isDesktop ? "171px" : props.$isTablet ? "110px" : "85px"};
+    props.$isDesktop ? "146px" : props.$isTablet ? "110px" : "85px"};
   font-size: ${(props) =>
-    props.$isDesktop ? "140px" : props.$isTablet ? "90px" : "60px"}; /*mobile 70px*/
+    props.$isDesktop ? "120px" : props.$isTablet ? "90px" : "60px"}; /*mobile 70px*/
   letter-spacing: ${(props) =>
-    props.$isDesktop ? "2.8px" : props.$isTablet ? "1.8px" : "1.4px"};
+    props.$isDesktop ? "2.4px" : props.$isTablet ? "1.8px" : "1.4px"};
   color: var(--new-main-white, #fafafa);
   text-align: left;
   font-family: "MonAExtraBold";
   font-style: normal;
-  font-weight: 800;
   line-height: normal;
   display: flex;
   justifty-content: flex-start;
@@ -265,19 +261,20 @@ export const Rectangle = styled.div`
 `;
 
 export const TitleListSet = styled.div`
-  width: 100vw;
+  width: 100%;
   height: ${(props) =>
-    props.$isDesktop ? "432px" : props.$isTablet ? "315px" : "249px"};
+    props.$isDesktop ? "390px" : props.$isTablet ? "315px" : "249px"};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  align-self: stretch;
 `;
 
 export const TitleList = styled.div`
   width: 100%;
   height: ${(props) =>
-    props.$isDesktop ? "144px" : props.$isTablet ? "80px" : "80px"};
+    props.$isDesktop ? "130px" : props.$isTablet ? "80px" : "80px"};
   padding: ${(props) =>
     props.$isDesktop
       ? "12px 256px"
@@ -314,8 +311,8 @@ export const TitleLine = styled.div`
   border: 1px solid var(--new-main-white, #fafafa);
 `;
 export const TitleFrameImg = styled.div`
-  width: ${(props) => (props.$isDesktop ? "90px" : "45px")};
-  height: ${(props) => (props.$isDesktop ? "90px" : "45px")};
+  width: ${(props) => (props.$isDesktop ? "65px" : "45px")};
+  height: ${(props) => (props.$isDesktop ? "65px" : "45px")};
   background-image: ${(props) =>
     props.ishoveringPlace
       ? `url(${mediaUrl}Home/Dawn_Blue.png)`
@@ -328,8 +325,8 @@ export const TitleFrameImg = styled.div`
 `;
 
 export const TitleFrameImg2 = styled.div`
-  width: ${(props) => (props.$isDesktop ? "90px" : "45px")};
-  height: ${(props) => (props.$isDesktop ? "90px" : "45px")};
+  width: ${(props) => (props.$isDesktop ? "65px" : "45px")};
+  height: ${(props) => (props.$isDesktop ? "65px" : "45px")};
   background-image: url(${mediaUrl}Home/Dawn_Blue.png);
   background-size: cover;
   transition: background-image 0.3s ease-out;
@@ -349,7 +346,6 @@ export const TitleFrameText = styled.div`
   text-align: center;
   font-family: MonRegular;
   font-style: normal;
-  font-weight: 400;
   font-size: ${(props) =>
     props.$isDesktop
       ? "38px"
@@ -359,7 +355,7 @@ export const TitleFrameText = styled.div`
   line-height: ${(props) =>
     props.$isDesktop ? "48px" : props.$isTablet ? "38px" : "32px"};
   letter-spacing: ${(props) =>
-    props.$isDesktop ? "-1.9px" : props.$isTablet ? "-1.6px" : "-1.2px"};
+    props.$isDesktop ? "-0.38px" : props.$isTablet ? "-1.6px" : "-1.2px"};
 
   @media only screen and (min-width: 1024px) and (max-width: 1100px) {
     font-size: 31px;
@@ -379,13 +375,14 @@ export const TitleFrameBox = styled.div`
   max-height: 90px;
   display: flex;
   align-items: center;
+  align-self: stretch;
   gap: ${(props) => (props.$isDesktop ? "36px" : "12px")};
 `;
 
 export const ArrowImgBox = styled.div`
   width: ${(props) => (props.$isDesktop ? "65.0894px" : "45.6px")};
   height: ${(props) =>
-    props.$isDesktop ? "90px" : props.$isTablet ? "81px" : "59px"};
+    props.$isDesktop ? "106px" : props.$isTablet ? "81px" : "59px"};
   display: flex;
   padding: var(--Spacing-0, 0px) var(--sds-size-space-600);
   justify-content: right;
