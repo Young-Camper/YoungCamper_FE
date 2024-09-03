@@ -25,7 +25,7 @@ export const TitleSection = styled.div`
   
   animation-name: titleAct;
   animation-delay: 500ms;
-  animation-duration: 3000ms;
+  animation-duration: 1500ms;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 
@@ -106,7 +106,6 @@ export const TitleMiniText1 = styled.div`
   font-family: MonRegular;
   font-size: 26px;
   font-style: normal;
-  font-weight: 400;
   line-height: 36px; 
   letter-spacing: -1.4px;
   @media only screen and (min-width: 1024px) and (max-width: 1400px) {
@@ -135,7 +134,6 @@ export const TitleMiniText3 = styled.div`
   font-family: MonRegular;
   font-size: 26px;
   font-style: normal;
-  font-weight: 400;
   line-height: 36px; 
   letter-spacing: -1.4px;
   @media only screen and (min-width: 1024px) and (max-width: 1400px) {
@@ -165,16 +163,6 @@ export const TitleBox = styled.div`
   text-align: left;
   display: flex;
   margin-bottom: -12px;
-  @media (min-width: 1024px) {
-  border-top: ${(props) =>
-    props.ishoveringYoung
-      ? `2px solid #0A0B0A`
-      : props.ishoveringCamp
-      ? `2px solid #0A0B0A`
-      : props.ishoveringFestival
-      ? `2px solid #0A0B0A`
-      : ""};
-  }
 `;
 
 export const TextBox = styled.div`
@@ -307,7 +295,7 @@ export const TitleList = styled.div`
     if (props.ishoveringDate) return "#FAFAFA";
     return "";
   }};
-  border-bottom: ${(props) => {
+  border-top: ${(props) => {
     if (props.ishoveringPlace) return "none";
     if (props.ishoveringDate) return "none";
     if (props.ishoveringWith) return "none";
@@ -411,10 +399,10 @@ export const ArrowImg = styled.div`
   flex-shrink: 0;
   background-image: ${(props) =>
     props.ishoveringPlace
-      ? `url(${mediaUrl}Home/Arrow_Blue.png)`
+      ? `url(${mediaUrl}Home/ArrowBlue.png)`
       : props.ishoveringDate
-      ? `url(${mediaUrl}Home/Arrow_Blue.png)`
-      : `url(${mediaUrl}Home/Arrow.png)`};
+      ? `url(${mediaUrl}Home/ArrowBlue.png)`
+      : `url(${mediaUrl}Home/ArrowWhite.png)`};
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -422,7 +410,7 @@ export const ArrowImg = styled.div`
 `;
 
 export const ArrowImg2 = styled(ArrowImg)`
-  background-image: url(${mediaUrl}Home/Arrow_Blue.png);
+  background-image: url(${mediaUrl}Home/ArrowBlue.png);
 `;
 
 
@@ -883,7 +871,7 @@ export const ArrowImg3 = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-image: ${(props) =>
-    props.ishovering ? `url(${mediaUrl}Home/Arrow.png)` : `url(${mediaUrl}Home/Arrow_Blue.png)`};
+    props.ishovering ? `url(${mediaUrl}Home/ArrowWhite.png)` : `url(${mediaUrl}Home/ArrowBlue.png)`};
   transition: all 0.2s ease-out;
   
 `;
@@ -1065,7 +1053,7 @@ export const FrameBox = styled.div`
 export const FrameText = styled.div`
   width: ${(props) => (props.$isDesktop ? "auto" : "122px")}; /*desktop 260px*/
   height: ${(props) => (props.$isDesktop ? "96px" : "46px")};
-  font-size: ${(props) => (props.$isDesktop ? "39px" : "17px")};
+  font-size: ${(props) => (props.$isDesktop ? "42px" : "18px")};
   line-height: ${(props) => (props.$isDesktop ? "48px" : "22.737px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-1.9px" : "-0.9px")};
   color: var(--Base-Base-Black, #0a0b0a);
@@ -1084,9 +1072,9 @@ export const FrameImg = styled.a`
 `;
 
 export const ArrowImg4 = styled.div`
-  width: ${(props) => (props.$isDesktop ? "40px" : "20px")};
-  height: ${(props) => (props.$isDesktop ? "40px" : "20px")};
-  background-image: url(${mediaUrl}Home/Arrow_B.png);
+  width: ${(props) => (props.$isDesktop ? "34.453px" : "16.32px")};
+  height: ${(props) => (props.$isDesktop ? "30px" : "14.211px")};
+  background-image: url(${mediaUrl}Home/ArrowBlack.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
