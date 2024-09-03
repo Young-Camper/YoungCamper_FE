@@ -23,12 +23,10 @@ const Notice = () => {
 
   if (urgentNotices.length >= 4) {
     mainNotices = urgentNotices.slice(-4);
-    console.log("4UpmainNotices:", mainNotices);
   } else {
     mainNotices = urgentNotices.concat(
       nonUrgentNotices.slice(0, 4 - urgentNotices.length)
     );
-    console.log("4DownmainNotices:", mainNotices);
   }
 
   return (
