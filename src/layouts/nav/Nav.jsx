@@ -80,8 +80,9 @@ const Nav = () => {
           </S.Container>
         </S.Wrapper>
       )}
-      {isTablet && <S.Wrapper>{/* Tablet view 관련 내용 생략 */}</S.Wrapper>}
-      {isMobile && (
+      {/* Tablet view 관련 내용 생략 */}
+      {/* {isTablet && <S.Wrapper></S.Wrapper>} */}
+      {(isMobile || isTablet) && (
         <S.Wrapper>
           <S.Container>
             <S.FlexContainer>

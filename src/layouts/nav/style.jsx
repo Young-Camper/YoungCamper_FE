@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
     gap: 18px;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1023px) {
     width: 100%;
     height: 100%;
     justify-content: flex-start;
@@ -36,7 +36,7 @@ export const Container = styled.div`
     align-items: center;
     display: inline-flex;
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1023px) {
     /* flex: 1 1 0;
     align-self: stretch;
     justify-content: center;
@@ -62,7 +62,7 @@ export const FlexContainer = styled.div`
     align-items: center;
     display: flex;
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1023px) {
     /* width: 360px; */
     width: 100vw;
     align-self: stretch;
@@ -79,7 +79,7 @@ export const FlexContainer = styled.div`
 export const SideNavWrapper = styled.div`
   @media only screen and (min-width: 1024px) {
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1023px) {
     width: 100%;
     height: 100%;
     padding-top: 50px;
@@ -97,7 +97,7 @@ export const SideNavWrapper = styled.div`
 export const SideNav1111 = styled.div`
   @media only screen and (min-width: 1024px) {
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1023px) {
     width: 100%;
     height: 50px;
     padding-top: 16px;
@@ -125,7 +125,7 @@ export const LogoKr = styled.img`
     width: 123px;
     height: 45px;
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1023px) {
     width: 72px;
     height: 26px;
   }
@@ -137,7 +137,7 @@ export const LogoEn = styled.img`
     width: 123px;
     height: 76.13px;
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1023px) {
     width: 72px;
     /* height: 26px; */
   }
