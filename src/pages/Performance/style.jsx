@@ -57,8 +57,8 @@ export const EventTime = styled.div`
     0px 30px 18px rgba(0, 0, 0, 0.06), 0px 14px 14px rgba(0, 0, 0, 0.1),
     0px 3px 7px rgba(0, 0, 0, 0.12);
 
-  /* Primary/Mobile/Body1 */
-  font-family: MonARegular;
+  /* desktop/H1_reg */
+  font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "32px" : "18px")};
   font-style: normal;
   font-weight: 400;
@@ -106,8 +106,8 @@ export const EventName = styled.div`
   background: var(--new-main-primary, #0068ff);
   color: var(--Base-Real-White, #fff);
 
-  /* Primary/Desktop/H1_regular */
-  font-family: MonARegular;
+  /* desktop/H1_reg */
+  font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
   font-style: normal;
   font-weight: 400;
@@ -121,7 +121,7 @@ export const SmallText = styled.div`
   color: var(--new-main-white, #fafafa);
 
   /* Primary/Desktop/H1_regular */
-  font-family: MonARegular;
+  font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
   font-style: normal;
   font-weight: ${(props) => (props.$isDesktop ? "400" : "800")};
@@ -134,8 +134,8 @@ export const EventText = styled.div`
   align-items: center;
   color: var(--new-main-white, #fafafa);
 
-  /* Primary/Desktop/Hero1_regular */
-  font-family: MonARegular;
+  /* desktop/display2_reg */
+  font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "48px" : "28px")};
   font-style: normal;
   font-weight: 400;
@@ -175,8 +175,8 @@ export const GuideTime = styled.div`
     0px 30px 18px rgba(0, 0, 0, 0.06), 0px 14px 14px rgba(0, 0, 0, 0.1),
     0px 3px 7px rgba(0, 0, 0, 0.12);
 
-  /* Primary/Desktop/H1_regular */
-  font-family: MonARegular;
+  /* desktop/H1_reg */
+  font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "32px" : "18px")};
   font-style: normal;
   font-weight: 400;
@@ -198,8 +198,8 @@ export const GuideName = styled.div`
 
   color: var(--Base-Real-White, #fff);
 
-  /* Primary/Desktop/H1_regular */
-  font-family: MonARegular;
+  /* desktop/H1_reg */
+  font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
   font-style: normal;
   font-weight: 400;
@@ -287,8 +287,8 @@ export const ContentWrapper = styled.div`
 export const ArtistName = styled.div`
   color: var(--new-main-black, #0a0b0a);
 
-  /* Primary/Desktop/H1 */
-  font-family: MonARegular;
+  /* desktop/H1_eb */
+  font-family: "MonExtraBold";
   font-size: ${(props) => (props.$isMobile ? "24px" : "32px")};
   font-style: normal;
   font-weight: 800;
@@ -302,8 +302,8 @@ export const Line = styled.span`
 export const DetailText = styled.div`
   color: var(--new-grey-grey900, #4a5e6d);
 
-  /* Primary/Desktop/Body3 */
-  font-family: MonARegular;
+  /* desktop/Body2_reg */
+  font-family: "MonRegular";
   font-size: ${(props) => (props.$isMobile ? "12px" : "20px")};
   font-style: normal;
   font-weight: 400;
@@ -315,7 +315,9 @@ export const DetailText = styled.div`
 export const SubText = styled.div`
   padding-bottom: 10px;
   color: var(--new-grey-grey900, #4a5e6d);
-  font-family: Pretendard;
+
+  /* desktop/Body2_sb */
+  font-family: "MonSemiBold";
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -325,8 +327,8 @@ export const SubText = styled.div`
 export const ModalMusic = styled.div`
   color: var(--Secondary-Secondary900, #4a5e6d);
 
-  /* Primary/Desktop/Body3 */
-  font-family: MonARegular;
+  /* desktop/Body2_reg */
+  font-family: "MonRegular";
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

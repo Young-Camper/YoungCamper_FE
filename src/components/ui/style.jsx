@@ -41,7 +41,7 @@ export const MainText = styled.div`
   color: var(--new-main-black, #0a0b0a);
 
   /* desktop/display2_eb */
-  font-family: MonAExtraBold;
+  font-family: MonExtraBold;
   font-size: ${(props) => (props.$isDesktop ? "38px" : "20px")};
   font-style: normal;
   font-weight: var(--fontWeight-extrabold, 800);

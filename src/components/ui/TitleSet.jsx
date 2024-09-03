@@ -23,8 +23,8 @@ const Wrapper = styled.div`
 const MainText = styled.div`
   color: var(--text-black, #0a0b0a);
 
-  /* Primary/Desktop/Hero2 */
-  font-family: MonAExtraBold;
+  /* desktop/display2_eb */
+  font-family: "MonExtraBold";
   font-size: ${(props) =>
     props.$isDesktop ? "38px" : "20px"}; /* 데스크탑 38px, 모바일+태블릿 20px */
   font-style: normal;
@@ -35,8 +35,8 @@ const MainText = styled.div`
 const SubText = styled.div`
   color: var(--text-grey800, #637d92);
 
-  /* Primary/Desktop/Body1_regular */
-  font-family: MonARegular;
+  /* desktop/Body2_reg */
+  font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "20px" : "12px")};
   font-style: normal;
   font-weight: 400;
