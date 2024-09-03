@@ -2,6 +2,26 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  @media only screen and (min-width: 1024px) {
+    width: 100%;
+    height: 100%;
+    padding: 19px 20px;
+    overflow: hidden;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  @media only screen and (max-width: 1023px) {
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+  }
+  
   padding: ${(props) => (props.$isDesktop ? "5px 168px;" : "12px 20px")};
   display: flex;
   gap: 18px;
@@ -9,6 +29,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   height: ${(props) => (props.$isDesktop ? "73px" : "52px")};
+>>>>>>> develop
 
   //상단 고정
   position: fixed;
@@ -19,12 +40,99 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
+  @media only screen and (min-width: 1024px) {
+    align-self: stretch;
+    padding: 5px 5%;
+    background: white;
+    backdrop-filter: blur(64px);
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+  }
+  @media only screen and (max-width: 1023px) {
+    /* flex: 1 1 0;
+    align-self: stretch;
+    justify-content: center;
+    align-items: center;
+    display: flex; */
+    width: 100%;
+    height: 100%;
+    background: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+  }
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
+  }
+`;
+
+export const FlexContainer = styled.div`
+  @media only screen and (min-width: 1024px) {
+    flex: 1 1 0;
+    height: 73px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+  }
+  @media only screen and (max-width: 1023px) {
+    /* width: 360px; */
+    width: 100vw;
+    align-self: stretch;
+    padding: 12px 20px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    background-color: white;
+  }
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
+  }
+`;
+
+export const SideNavWrapper = styled.div`
+  @media only screen and (min-width: 1024px) {
+  }
+  @media only screen and (max-width: 1023px) {
+    width: 100%;
+    height: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    background-color: #0068ff;
+  }
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
+  }
+`;
+
+export const SideNav1111 = styled.div`
+  @media only screen and (min-width: 1024px) {
+  }
+  @media only screen and (max-width: 1023px) {
+    width: 100%;
+    height: 50px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px #fafafa solid;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+
+    /* flex-direction: column; */
+    /* gap: 16px; */
+  }
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
+  }
+=======
   flex-direction: ${(props) => (props.$isDesktop ? "row" : "")};
   display: flex;
   justify-content: space-between;
   width: 100%;
   align-items: center;
   max-width: 1440px;
+>>>>>>> develop
 `;
 
 export const Logo = styled.img`
@@ -38,7 +146,38 @@ export const Logo = styled.img`
       ? ""
       : "26px"};
 `;
+export const LogoKr = styled.img`
+  @media only screen and (min-width: 1024px) {
+    width: 123px;
+    height: 45px;
+  }
+  @media only screen and (max-width: 1023px) {
+    width: 72px;
+    height: 26px;
+  }
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
+  }
+`;
+export const LogoEn = styled.img`
+  @media only screen and (min-width: 1024px) {
+    width: 123px;
+    height: 76.13px;
+  }
+  @media only screen and (max-width: 1023px) {
+    width: 72px;
+    /* height: 26px; */
+  }
+  @media only screen and ((min-width: 769px) and (max-width: 1023px)) {
+  }
+`;
 
+export const StyledLink = styled(Link)`
+  color: #0a0b0a;
+  font-size: 20px;
+  font-family: "MonRegular";
+  font-weight: 400;
+  line-height: 30px;
+  word-wrap: break-word;
 export const LogoLink = styled(Link)``;
 
 export const StyledLink = styled(Link)`
@@ -48,6 +187,7 @@ export const StyledLink = styled(Link)`
   font-weight: 400;
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "30px" : "32px")};
+
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -78,6 +218,7 @@ export const LangSlider = styled.span`
     transform: translateY(-50%);
     color: #000;
     transition: 0.4s;
+    font-family: "MonSemiBold";
   }
 
   &:after {
@@ -90,9 +231,12 @@ export const LangSlider = styled.span`
     transform: translateY(-50%);
     color: transparent;
     transition: 0.4s;
+    font-family: "MonSemiBold";
   }
 
-  &:before,
+  &:before {
+    /* color: #e8eaea; */
+  }
   &:after {
     pointer-events: none;
   }
@@ -103,7 +247,7 @@ export const CheckBox = styled.input`
   width: 0;
   height: 0;
   &:checked + ${LangSlider} {
-    background-color: #b9ff9c;
+    background-color: #0068FF;
   }
 
   &:focus + ${LangSlider} {
@@ -117,7 +261,7 @@ export const CheckBox = styled.input`
 
   &:checked + ${LangSlider}:after {
     transform: translateY(-50%) translateX(-45px);
-    color: #000;
+    color: #ffffff;
   }
 `;
 
