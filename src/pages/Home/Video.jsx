@@ -58,7 +58,7 @@ const Video = () => {
           </S.CardText2>
         </S.CardDetailBox>
         
-        <Link to="/about" style={{ width: '100%' }}>
+        <Link to="/intro" style={{ width: '100%' }}>
           <S.CardButtonBox $isDesktop={isDesktop}>
           
             <S.CardButton
