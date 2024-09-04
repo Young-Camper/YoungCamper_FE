@@ -7,6 +7,7 @@ export const SearchWrapper = styled.div`
   display: flex;
   width: 100%;
   margin-right: ${(props) => (props.$isDesktop ? "48px" : "20px")};
+  margin-bottom: ${(props) => (props.$isDesktop ? "50px" : "")};
 `;
 
 export const SearchContainer = styled.div`
@@ -53,7 +54,6 @@ export const SubTitleWrapper = styled.div`
   display: flex;
   width: 100%;
   border-bottom: 1px solid #e7ebef;
-  padding-top: ${(props) => props.$paddingTop || "25px"};
   padding-bottom: ${(props) => props.$paddingBottom || "0px"};
   gap: 12px;
 `;
@@ -121,7 +121,7 @@ export const TitleContainer = styled.div`
 
 export const ContentWrapper = styled.div`
   width: 100%;
-  padding: ${(props) => (props.$isMobile ? "20px" : "48px")};
+  padding: ${(props) => (props.$isMobile ? "0px 20px" : "0px 48px")};
 `;
 
 export const ContentContainer = styled.div`
