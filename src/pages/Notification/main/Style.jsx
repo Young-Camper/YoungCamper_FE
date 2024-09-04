@@ -55,6 +55,7 @@ export const SubTitleWrapper = styled.div`
   width: 100%;
   border-bottom: 1px solid #e7ebef;
   padding-bottom: ${(props) => props.$paddingBottom || "0px"};
+  padding-top: ${(props) => props.$paddingTop || "0px"};
   gap: 12px;
 `;
 

@@ -8,6 +8,7 @@ const Subtitle = ({
   title,
   date,
   paddingBottom,
+  paddingTop,
   color,
   marginTop,
   marginBottom,
@@ -25,6 +26,7 @@ const Subtitle = ({
   return (
     <S.SubTitleWrapper
       $paddingBottom={paddingBottom}
+      $paddingTop={paddingTop}
       $marginTop={marginTop}
       $marginBottom={marginBottom}
     >

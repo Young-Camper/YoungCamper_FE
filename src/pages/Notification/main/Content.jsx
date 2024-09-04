@@ -112,6 +112,7 @@ const Content = ({ keyword }) => {
                 isTablet={isTablet}
                 isMobile={isMobile}
                 paddingBottom="25px"
+                paddingTop="25px"
               />
             </Link>
           ))
