@@ -6,7 +6,7 @@ import Attention from "../../components/ui/Attention";
 import useMediaQueries from "../../hooks/useMediaQueries";
 import ArtistModal from "./ArtistModal"; // 모달을 독립적으로 관리
 
-const Index = () => {
+const index = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const [modalOpen, setModalOpen] = useState(false);
   const [clickedArtist, setClickedArtist] = useState(null);
@@ -41,4 +41,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default index;
