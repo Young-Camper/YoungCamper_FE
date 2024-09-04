@@ -138,7 +138,7 @@ export const ProfileCard = styled.div`
 		border-radius: 100px;
 		border: 1px solid #CED7DE;
 		background: #FFF;
-		padding: ${(props) => props.$isDesktop ? "8px 16px" : "6px 12px" };
+		padding: ${(props) => props.$isDesktop ? "8px 16px" : "5px 8px" };
 		margin: 0;
 	}
 
@@ -155,8 +155,8 @@ export const ProfileCard = styled.div`
 		font-family: "MonRegular";
 		color: #4A5E6D; /* 텍스트 색상 조정 */
 		text-align: center;
-		font-size: ${(props) => props.$isDesktop ? "20px" : "12px" };
-		line-height: 22px;
+		font-size: ${(props) => props.$isDesktop ? "20px" : "9px" };
+		line-height: ${(props) => props.$isDesktop ? "22px" : "13px" };
 		letter-spacing: -0.16px;
 		padding: 28px 32px;
 		top: ${(props) => props.$isDesktop ? "138px" : "40px" }; /* 아래로 정렬은 238 */
