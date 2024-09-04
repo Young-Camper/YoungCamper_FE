@@ -140,6 +140,7 @@ export const EventText = styled.div`
 //   border: 0;
 // `;
 export const Arrow = styled.img`
+  cursor: pointer;
   width: ${(props) => (props.$isDesktop ? "28px" : "20px")};
   margin-left: ${(props) => (props.$isDesktop ? "10px" : "6px")};
 `;
