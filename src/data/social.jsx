@@ -5,7 +5,7 @@ const socialData = [
   {
     "id" : 1,
     "name": "Youngcamp Youtube",
-    "link": "https://www.dongguk.edu/main#none",
+    "link": "https://youtube.com/@youngcamp_dgu?si=varFM5dZcDp2CaaU",
     "image": `${mediaUrl}Home/YoutubeIcon.png`,
     "bgimage": `${mediaUrl}Home/Club/clubEmpty.png`
   },

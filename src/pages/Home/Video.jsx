@@ -33,7 +33,7 @@ const Video = () => {
           $isDesktop={isDesktop}
           src={`${mediaUrl}Home/YoungcampVideo.mp4`}
           autoPlay loop muted />
-        <Link to={`https://www.dongguk.edu/main#none`} >
+        <Link to={`https://youtube.com/@youngcamp_dgu?si=varFM5dZcDp2CaaU`} >
         <S.VideoBtn $isTablet={isTablet} $isDesktop={isDesktop}>
           영상 보러가기
         </S.VideoBtn>
