@@ -111,6 +111,8 @@ export const BtnWrapper = styled.div`
     props.$isDesktop ? "0 48px" : props.$isTablet ? "0 24px" : "0 12px"};
 `;
 export const JoinBtn = styled.div`
+  cursor: pointer;
+
   height: ${(props) => (props.$isDesktop ? "68px" : "45px")};
   display: flex;
   justify-content: center;
