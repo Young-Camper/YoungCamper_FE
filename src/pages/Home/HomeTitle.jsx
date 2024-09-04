@@ -40,12 +40,12 @@ const HomeTitle = () => {
       
         <S.TitleMainSet $isTablet={isTablet} $isDesktop={isDesktop}>
           {(isDesktop)&&(
-            <S.TitleDetailBox><S.TitleDetailSet>
+            <S.TitleDetailSet>
             <S.TitleMiniText1>who’s our 주인공</S.TitleMiniText1>
             <S.TitleMiniText2>youngcamp</S.TitleMiniText2>
             <S.TitleMiniText3>youngcamp</S.TitleMiniText3>
             <S.TitleMiniText4>dongguk university</S.TitleMiniText4>
-          </S.TitleDetailSet></S.TitleDetailBox>)}
+          </S.TitleDetailSet>)}
           <S.TitleBox
             $isTablet={isTablet}
             $isDesktop={isDesktop}

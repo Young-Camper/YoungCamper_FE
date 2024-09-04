@@ -13,9 +13,9 @@ const SliderObject = styled.div`
 export const TitleSection = styled.div`
   width: 100%;
   height: ${(props) =>
-    props.$isDesktop ? "850px" : props.$isTablet ? "972px" : "812px"};
+    props.$isDesktop ? "800px" : props.$isTablet ? "972px" : "812px"};
   padding-top: ${(props) =>
-    props.$isDesktop ? "83px" : props.$isTablet ? "96px" : "64px"};
+    props.$isDesktop ? "24px" : props.$isTablet ? "96px" : "64px"};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -88,28 +88,32 @@ export const TitleMainSet = styled.div`
   width: 100vw;
   height: ${(props) =>
     props.$isDesktop ? "340px" : props.$isTablet ? "501px" : "225px"};
-  margin: ${(props) => (props.$isDesktop ? "36px 0px" : "0px")};
+  margin: ${(props) => (props.$isDesktop ? "0px" : "0px")};
   justify-content: ${(props) => (props.$isDesktop ? "center" : "flex-start")};
   display: flex;
   flex-direction: column;
   align-self: stretch;
   position: relative;
 `;
-
 export const TitleDetailBox = styled.div`
   width: 100%;
   height: auto;
 `;
 
 export const TitleDetailSet = styled.div`
-  width: 995px;
-  height: 170px;
+  @media only screen and (min-width: 1024px) and (max-width: 1199px){
+    width: 95%;
+  }
+  @media only screen and (min-width: 1200px) and (max-width: 1400px){
+    width: 80%;
+  }
+  width: 70%;
+  height: 93px;
+  transform: translate(50%);
   position: absolute;
-  /* right: 212px;
-  top: 37px; */
-  left: 40%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 export const TitleMiniText1 = styled.div`
@@ -126,20 +130,16 @@ export const TitleMiniText1 = styled.div`
   letter-spacing: -0.28px;
   display: flex;
   position: absolute;
-  left: 0;
-  bottom: 36px;
 `;
 
 export const TitleMiniText2 = styled(TitleMiniText1)`
   max-width: 145px;
   max-height: 36px;
-  left: 0;
-  bottom: 0px;
+  padding: 36px 21px 0px 0px;
 `;
 
 export const TitleMiniText3 = styled.div`
-  width: 100%;
-  max-width: 159px;
+  width: auto;
   height: 100%;
   max-height: 36px;
   color: var(--Base-Real-White, #fff);
@@ -151,14 +151,14 @@ export const TitleMiniText3 = styled.div`
   letter-spacing: -0.28px;
   display: flex;
   position: absolute;
-  right: 0;
-  bottom: 36px;
+  right: 0px;
+  top: 21px;
 `;
 
 export const TitleMiniText4 = styled(TitleMiniText3)`
   max-width: 234px;
   max-height: 36px;
-  bottom: 0px;
+  top: 57px;
 `;
 
 export const TitleBox = styled.div`
@@ -166,7 +166,7 @@ export const TitleBox = styled.div`
   height: ${(props) =>
     props.$isDesktop ? "120px" : props.$isTablet ? "105px" : "83px"};
   padding: ${(props) =>
-    props.$isDesktop ? "0px 256px" : props.$isTablet ? "0px 96px" : "0px"};
+    props.$isDesktop ? "0px" : props.$isTablet ? "0px 96px" : "0px"};
   gap: ${(props) => (props.$isDesktop ? "36px" : "0px")};
   align-items: center;
   justify-content: flex-start;
