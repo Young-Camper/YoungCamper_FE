@@ -193,13 +193,13 @@ export const TitlePortal = styled.div`
   width: ${(props) => (props.$isDesktop ? "90px" : "45px")};
   height: ${(props) => (props.$isDesktop ? "90px" : "45px")};
   background-image: ${(props) =>
-    props.ishoveringYoung
+    props.$ishoveringYoung
       ? `url(${mediaUrl}Home/Portal_B.png)`
       : props.ishoveringFestival
       ? `url(${mediaUrl}Home/Portal_B.png)`
       : `url(${mediaUrl}Home/Portal.png)`};
   margin-left: ${(props) =>
-    props.ishoveringYoung
+    props.$ishoveringYoung
       ? "-650px" /*90+36+488+36*/
       : props.ishoveringFestival
       ? "-807px" /*90+36+645+36*/
@@ -244,15 +244,15 @@ export const TitleText = styled.div`
 
   @media (min-width: 1024px) {
     padding-left: ${(props) => 
-      (props.ishoveringYoung ? "" :  "")}; 
+      (props.$ishoveringYoung ? "" :  "")}; 
     margin-left: ${(props) =>
       props.ishoveringFestival ? "-645px" :
       props.ishoveringCamp ? "-126px" :
-      props.ishoveringYoung ? "-490.32px" :
+      props.$ishoveringYoung ? "-490.32px" :
       "0"};
   
   color: ${(props) =>
-    props.ishoveringYoung
+    props.$ishoveringYoung
       ? `#0A0B0A`
       : props.ishoveringCamp
       ? `#0A0B0A`
@@ -947,7 +947,7 @@ export const SocialFrame = styled.div`
         rgba(0, 104, 255, 0.4) 23.99%,
         rgba(185, 255, 156, 0.4) 98.08%
       ),
-      url(${(props) => props.BgImage});
+      url(${(props) => props.$BgImage});
   }
   transition: all 0.3s ease-out;
 `;
@@ -1025,7 +1025,7 @@ export const FrameCard = styled.div`
 export const IconImg = styled.div`
   width: ${(props) => (props.$isDesktop ? "40px" : "20px")};
   height: ${(props) => (props.$isDesktop ? "40px" : "20px")};
-  background-image: url(${(props) => props.IconImage});
+  background-image: url(${(props) => props.$IconImage});
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
@@ -1221,5 +1221,5 @@ export const GridBtnText = styled.div`
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.11px" : "-0.06px")};
   font-style: normal;
 
-  color: ${(props) => (props.ishoveringCTA ? `white` : `black`)};
+  color: ${(props) => (props.$ishoveringCTA ? `white` : `black`)};
 `;

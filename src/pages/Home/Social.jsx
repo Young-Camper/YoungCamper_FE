@@ -57,13 +57,13 @@ const Social = () => {
                   key={social.id}
                   $isTablet={isTablet}
                   $isDesktop={isDesktop}
-                  BgImage={social.bgimage}
+                  $BgImage={social.bgimage}
                 >
                   <S.FrameCard $isDesktop={isDesktop}>
                     <S.FrameBox $isDesktop={isDesktop}>
                       <S.IconImg
                         $isDesktop={isDesktop}
-                        IconImage={social.image}
+                        $IconImage={social.image}
                       />
                       <S.FrameText $isDesktop={isDesktop}>
                         {social.name}

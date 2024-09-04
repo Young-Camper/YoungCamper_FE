@@ -50,7 +50,7 @@ const HomeTitle = () => {
             $isDesktop={isDesktop}
             onMouseOver={() => handleMouseOver("young")}
             onMouseOut={() => handleMouseOut("young")}
-            ishoveringYoung={titleHover.young}
+            $ishoveringYoung={titleHover.young}
           >
             <S.TextBox
               $isTablet={isTablet}
@@ -58,7 +58,7 @@ const HomeTitle = () => {
               $isDesktop={isDesktop}
             >
               <S.TitleText
-                ishoveringYoung={titleHover.young}
+                $ishoveringYoung={titleHover.young}
                 $isTablet={isTablet}
                 $isDesktop={isDesktop}
               >
@@ -67,7 +67,7 @@ const HomeTitle = () => {
               {isDesktop && (
                 <S.TitlePortal
                   $isDesktop={isDesktop}
-                  ishoveringYoung={titleHover.young}
+                  $ishoveringYoung={titleHover.young}
                 />
               )}
             </S.TextBox>
