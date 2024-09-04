@@ -63,3 +63,9 @@ export const BannerImg = styled.img`
   height: ${(props) => (props.$isDesktop ? "186px" : "100px")};
   object-fit: contain;
 `;
+
+export const AdminLogout = styled.div`
+  position: fixed;
+  top: 10px;
+  left: 10px;
+`;
