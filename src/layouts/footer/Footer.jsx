@@ -12,19 +12,19 @@ const Footer = () => {
   return (
     <S.MainContainer $isDesktop={isDesktop}>
       {isDesktop &&
-      <S.Container>
+      <S.Container $isDesktop={isDesktop}>
         <S.Main>
           <S.Navigation>
             <S.StyledLink to={"/"} onClick={scrollToTop}>
-              <S.Logo>
+              <S.Logo $isDesktop={isDesktop}>
                 <img src={`${mediaUrl}Nav/Logo_kr.png`} alt="Logo_kr" />
               </S.Logo>
             </S.StyledLink>
           </S.Navigation>
-          <S.Section>
+          <S.Section $isDesktop={isDesktop}>
             <S.List>동국대학교 영캠퍼</S.List>
             <S.List>서울시 중구 필동로 1길 30 동국대학교</S.List>
-            <S.Section>
+            <S.Section $isDesktop={isDesktop}>
               <S.ContactInfoContainer>
                 <S.ContactInfoRow>
                   <S.ContactLabel>email</S.ContactLabel>
@@ -65,19 +65,19 @@ const Footer = () => {
       </S.Container>
       }
       {(isMobile || isTablet) && 
-      <S.Container>
+      <S.Container $isDesktop={isDesktop}>
         <S.Main>
           <S.Navigation>
             <S.StyledLink to={"/"} onClick={scrollToTop}>
-              <S.Logo>
+              <S.Logo $isDesktop={isDesktop}>
                 <img src={`${mediaUrl}Nav/Logo_kr.png`} alt="Logo_kr" />
               </S.Logo>
             </S.StyledLink>
           </S.Navigation>
-          <S.Section>
+          <S.Section $isDesktop={isDesktop}>
             <S.List>동국대학교 영캠퍼</S.List>
             <S.List>서울시 중구 필동로 1길 30 동국대학교</S.List>
-            <S.Section>
+            <S.Section $isDesktop={isDesktop}>
               <S.ContactInfoContainer>
                 <S.ContactInfoRow>
                   <S.ContactLabel>email</S.ContactLabel>
