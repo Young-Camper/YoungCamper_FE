@@ -28,6 +28,7 @@ export const Container = styled.div`
 `;
 
 export const Logo = styled.img`
+  background-color: transparent;
   width: ${(props) => (props.$isDesktop ? "123px" : "72px")};
   height: ${(props) =>
     props.$isDesktop
@@ -53,19 +54,18 @@ export const StyledLink = styled(Link)`
   display: flex;
   /* letter-spacing: -1.2px; */
 
-  //마우스 호버
-  transition: background 0.3s ease-out;
-  background: ${(props) => {
-    if (props.ishoveringPlace) return "#FAFAFA";
-    if (props.ishoveringDate) return "#FAFAFA";
-    return "";
-  }};
-  /* border-top: ${(props) => {
-    if (props.ishoveringPlace) return "none";
-    if (props.ishoveringDate) return "none";
-    if (props.ishoveringWith) return "none";
-    return "2px solid #FAFAFA";
-  }}; */
+
+  /* //클릭 피드백 
+  animation: clickHighlight 0.5s linear;
+  @keyframes clickHightight {
+    from {
+      background: #0068ff;
+    }
+    to {
+      background: #FFFFFF;
+    }
+  } */
+
 `;
 
 export const LangSlider = styled.span`
@@ -192,7 +192,18 @@ export const SideNav = styled.div`
   
 
   //사이드바 애니메이션 
-  
+  animation: modalRight 0.5s linear;
+
+  @keyframes modalRight {
+    from {
+      transform: translateX(30%);
+      opacity:0.5;
+    }
+    to {
+      transform: translateX(0);
+      opacity:1;
+    }
+  }
 `;
 
 // 사이드 네비게이션 내부 스타일
@@ -264,7 +275,6 @@ export const SideNavSet = styled.div`
 export const SideNavLink = styled.div`
   width: 100%;
   padding: 8px 0px;
-  /* margin: 8px 0px; */
   border-bottom: 2px solid white;
   font-family: "MonRegular";
   font-weight: 400;

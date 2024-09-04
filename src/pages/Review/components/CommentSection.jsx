@@ -7,41 +7,38 @@ import {
   CurrentPageButton,
 } from "../components/CommentStyle";
 
+import { getReviews } from "../../../lib/apis/api/getReviews";
+
 const itemsPerPage = 5; // 페이지 당 댓글 수
 const maxPageButtons = 5; // 한 번에 보여줄 페이지 버튼 수
 
 const CommentSection = () => {
   const [comments, setComments] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   const commentsRef = useRef(null); // 섹션 상단으로 스크롤하기 위한 ref
 
-  // API를 통해 JSON 파일을 불러오는 함수
-  const fetchComments = async () => {
+  // API를 통해 리뷰 데이터를 불러오는 함수
+  const fetchComments = async (page = 1) => {
     try {
-      const response = await fetch("/reviews.json");
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      // API 호출
+      const data = await getReviews(page - 1, itemsPerPage, "createdAt,desc");
+
+      if (data && data.content) {
+        setComments(data.content); // 리뷰 목록 설정
+        setTotalPages(data.totalPages); // 전체 페이지 수 설정
+      } else {
+        console.error("Unexpected data structure:", data);
+        setComments([]); // 응답 데이터가 없거나 구조가 다를 경우 빈 배열로 설정
       }
-      const data = await response.json();
-      setComments(data);
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
   };
 
-  // 컴포넌트가 마운트될 때 JSON 파일을 불러옴.
   useEffect(() => {
-    fetchComments();
-  }, []);
-
-  // 현재 페이지에 보여줄 댓글을 계산
-  const currentItems = comments.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
-
-  // 전체 페이지 수 계산
-  const totalPages = Math.ceil(comments.length / itemsPerPage);
+    fetchComments(currentPage); // 현재 페이지의 리뷰를 불러옴
+  }, [currentPage]);
 
   // 페이지 네비게이션 버튼 범위 계산
   const getPageRange = () => {
@@ -53,7 +50,7 @@ const CommentSection = () => {
 
   // 페이지 변경 핸들러
   const handlePageClick = (page) => {
-    setCurrentPage(page);
+    setCurrentPage(page); // 현재 페이지 설정
     if (commentsRef.current) {
       commentsRef.current.scrollIntoView({
         behavior: "smooth",
@@ -88,7 +85,7 @@ const CommentSection = () => {
 
   return (
     <CommentsContainer ref={commentsRef}>
-      {currentItems.map((comment) => (
+      {comments.map((comment) => (
         <CommentItem key={comment.id} comment={comment} />
       ))}
       {/* 페이지 네비게이션 */}
