@@ -61,6 +61,7 @@ const index = () => {
       const check = confirm("삭제하시겠습니까?");
       if (check) {
         try {
+          console.log("요청전 id 확인 : ", ids);
           const response = await deleteAnnouncements(ids);
           console.log("admin delete: ", response);
           alert("삭제되었습니다");
