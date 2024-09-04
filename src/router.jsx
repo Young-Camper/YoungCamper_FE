@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       // 관리자 페이지
       { path: "/admin42794", element: <Admin /> },
       { path: "/admin42794/list", element: <AdminList /> },
-      { path: "/admin42794/list/:num", element: <AdminDetail /> },
+      { path: "/admin42794/list/:id", element: <AdminDetail /> },
       { path: "/admin42794/write", element: <AdminWrite /> },
     ],
     errorElement: <NotFound />,

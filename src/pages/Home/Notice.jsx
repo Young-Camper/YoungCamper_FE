@@ -16,7 +16,18 @@ const Notice = () => {
     setHoveredIndex(null);
   };
 
-  const recentNotices = data.slice(-4);
+  const urgentNotices = data.filter((item) => item.urgent === "yes");
+  const nonUrgentNotices = data.filter((item) => item.urgent === "no");
+
+  let mainNotices = [];
+
+  if (urgentNotices.length >= 4) {
+    mainNotices = urgentNotices.slice(-4).reverse();
+  } else {
+    const nonUrgentToAdd = 4 - urgentNotices.length;
+    const addNotices = nonUrgentNotices.slice(0, nonUrgentToAdd).reverse();
+    mainNotices = urgentNotices.reverse().concat(addNotices);
+  }
 
   return (
     <S.NoticeSection $isTablet={isTablet} $isDesktop={isDesktop}>
@@ -39,7 +50,7 @@ const Notice = () => {
         </Link>
       </S.NoticeTitleSet>
       <S.NoticeListSet $isDesktop={isDesktop}>
-        {recentNotices.map((notice, index) => (
+        {mainNotices.map((notice, index) => (
           <S.NoticeListFrame
             key={notice.id}
             $isTablet={isTablet}
@@ -58,7 +69,7 @@ const Notice = () => {
                     $isDesktop={isDesktop}
                     ishovering={hoveredIndex === index}
                   >
-                    {notice.tag}
+                    {notice.urgent === "yes" ? "필독" : "전체"}
                   </S.NoticeTag>
                   <S.NoticeText
                     $isTablet={isTablet}
@@ -82,15 +93,15 @@ const Notice = () => {
 
       {(isTablet || isMobile) && (
         <Link to={"/notification"} style={{ width: "100%" }}>
-        <S.NoticeBtnBox>
-          <S.NoticeBtn
-            $isDesktop={isDesktop}
-            $isTablet={isTablet}
-            ishovering={hoveredIndex === "button"}
-          >
-            더 알아보기
-          </S.NoticeBtn>
-        </S.NoticeBtnBox>
+          <S.NoticeBtnBox>
+            <S.NoticeBtn
+              $isDesktop={isDesktop}
+              $isTablet={isTablet}
+              ishovering={hoveredIndex === "button"}
+            >
+              더 알아보기
+            </S.NoticeBtn>
+          </S.NoticeBtnBox>
         </Link>
       )}
     </S.NoticeSection>

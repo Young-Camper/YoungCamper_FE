@@ -15,12 +15,12 @@ export const Section = styled.div`
   display: flex;
   flex-direction: row;
   margin-left: ${(props) =>
-    props.$isDesktop && props.$isRight % 2 == 1 ? "0" : "auto"};
+    props.$isDesktop && props.$isRight ? "auto" : "0"};
 `;
 export const EventTime = styled.div`
   position: relative;
-  width: ${(props) => (props.$isDesktop ? "250px" : "90px")};
-  height: ${(props) => (props.$isDesktop || props.$isEvent ? "250px" : "90px")};
+  width: ${(props) => (props.$isDesktop ? "250px" : "150px")};
+  height: 150px;
 
   display: flex;
   flex-direction: column;
@@ -59,10 +59,10 @@ export const EventTime = styled.div`
 
   /* desktop/H1_reg */
   font-family: "MonRegular";
-  font-size: ${(props) => (props.$isDesktop ? "32px" : "18px")};
+  font-size: 16px;
   font-style: normal;
   line-height: 22px; /* 122.222% */
-  letter-spacing: -0.09px;
+  letter-spacing: -0.16px;
 `;
 export const TimeText = styled.div`
   width: 100%;
@@ -81,8 +81,8 @@ export const TimeText = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: ${(props) => props.$isEvent && "0.5"};
-    background: ${(props) => props.$isEvent && "#7992b4"};
+    opacity: 0.5;
+    background: #7992b4;
     z-index: -1;
   }
 `;
@@ -97,20 +97,13 @@ export const EventImg = styled.img`
 
 export const EventName = styled.div`
   display: flex;
-  width: ${(props) => (props.$isDesktop ? "500px" : "60vw")};
-  height: ${(props) => (props.$isDesktop || props.$isEvent ? "250px" : "90px")};
-  padding: 30px;
+  width: ${(props) => (props.$isDesktop ? "500px" : "50vw")};
+  height: 150px;
+  padding: ${(props) => (props.$isDesktop ? "30px" : "14px 15px")};
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-between;
   background: var(--new-main-primary, #0068ff);
-  color: var(--Base-Real-White, #fff);
-
-  /* desktop/H1_reg */
-  font-family: "MonRegular";
-  font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
-  font-style: normal;
-  line-height: 36px; /* 112.5% */
-  letter-spacing: -1.6px;
 `;
 export const SmallText = styled.div`
   height: 36px;
@@ -119,44 +112,44 @@ export const SmallText = styled.div`
   color: var(--new-main-white, #fafafa);
 
   /* Primary/Desktop/H1_regular */
-  font-family: "MonRegular";
-  font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
+  font-family: ${(props) => (props.$isDesktop ? "MonSemiBold" : "MonRegular")};
+  font-size: ${(props) => (props.$isDesktop ? "24px" : "16px")};
   font-style: normal;
-  line-height: 36px; /* 112.5% */
-  letter-spacing: -1.6px;
+  line-height: ${(props) => (props.$isDesktop ? "28px" : "22px")};
+  letter-spacing: ${(props) => (props.$isDesktop ? "-0.24px" : "-0.16px")};
 `;
 export const EventText = styled.div`
-  height: 80px;
   display: flex;
   align-items: center;
+  justify-content: end;
+  align-items: end;
   color: var(--new-main-white, #fafafa);
 
   /* desktop/display2_reg */
   font-family: "MonRegular";
-  font-size: ${(props) => (props.$isDesktop ? "48px" : "28px")};
+  font-size: ${(props) => (props.$isDesktop ? "24px" : "16px")};
   font-style: normal;
-  line-height: normal;
-  letter-spacing: -2.4px;
+  line-height: ${(props) => (props.$isDesktop ? "28px" : "22px")};
+  letter-spacing: ${(props) => (props.$isDesktop ? "-0.24px" : "-0.16px")};
 
   width: 100%;
-  border-bottom: 1px solid #fff;
 `;
-export const EventTextRight = styled(EventText)`
-  display: flex;
-  justify-content: end;
-  border: 0;
-`;
+// export const EventTextRight = styled(EventText)`
+//   display: flex;
+//   justify-content: end;
+//   border: 0;
+// `;
 export const Arrow = styled.img`
-  width: ${(props) => (props.$isDesktop ? "40px" : "30px")};
-  margin-left: ${(props) => (props.$isDesktop ? "24px" : "10px")};
+  width: ${(props) => (props.$isDesktop ? "28px" : "20px")};
+  margin-left: ${(props) => (props.$isDesktop ? "10px" : "6px")};
 `;
 export const GuideTime = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 
-  width: ${(props) => (props.$isDesktop ? "250px" : "90px")};
-  height: ${(props) => (props.$isDesktop || props.$isEvent ? "100px" : "90px")};
+  width: ${(props) => (props.$isDesktop ? "250px" : "150px")};
+  height: ${(props) => (props.$isDesktop ? "100px" : "90px")};
   background: linear-gradient(
       0deg,
       rgba(0, 0, 0, 0.2) 0%,
@@ -173,18 +166,18 @@ export const GuideTime = styled.div`
 
   /* desktop/H1_reg */
   font-family: "MonRegular";
-  font-size: ${(props) => (props.$isDesktop ? "32px" : "18px")};
+  font-size: ${(props) => (props.$isDesktop ? "22px" : "16px")};
   font-style: normal;
-  line-height: 36px; /* 112.5% */
-  letter-spacing: -1.6px;
+  line-height: ${(props) => (props.$isDesktop ? "30px" : "22px")};
+  letter-spacing: ${(props) => (props.$isDesktop ? "-.022px" : "-1.6px")};
 `;
 export const GuideName = styled.div`
   display: flex;
 
-  width: ${(props) => (props.$isDesktop ? "500px" : "60vw")};
+  width: ${(props) => (props.$isDesktop ? "500px" : "50vw")};
   height: ${(props) => (props.$isDesktop ? "100px" : "90px")};
 
-  padding: 0 30px;
+  padding: 14px 15px;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -193,12 +186,12 @@ export const GuideName = styled.div`
 
   color: var(--Base-Real-White, #fff);
 
-  /* desktop/H1_reg */
+  /* desktop/H3_sb */
   font-family: "MonRegular";
-  font-size: ${(props) => (props.$isDesktop ? "32px" : "24px")};
+  font-size: ${(props) => (props.$isDesktop ? "24px" : "16px")};
   font-style: normal;
-  line-height: 36px; /* 112.5% */
-  letter-spacing: -1.6px;
+  line-height: ${(props) => (props.$isDesktop ? "28px" : "22px")};
+  letter-spacing: ${(props) => (props.$isDesktop ? "-0.24px" : "-0.16px")};
 `;
 
 // ArtistModal.jsx
@@ -223,7 +216,7 @@ export const Modal = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: ${(props) => (props.$isMobile ? "340px" : "580px")};
+  width: ${(props) => (props.$isMobile ? "340px" : "588px")};
 
   padding: ${(props) =>
     props.$isMobile ? "10px 20px 48px 20px" : "10px 40px 48px 40px"};
@@ -277,6 +270,14 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: start;
 `;
+export const MusicWrapper = styled.div`
+  width: 100%;
+  height: 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  flex-wrap: wrap;
+`;
 
 export const ArtistName = styled.div`
   color: var(--new-main-black, #0a0b0a);
@@ -285,8 +286,8 @@ export const ArtistName = styled.div`
   font-family: "MonExtraBold";
   font-size: ${(props) => (props.$isMobile ? "24px" : "32px")};
   font-style: normal;
-  line-height: 36px; /* 112.5% */
-  letter-spacing: -1.92px;
+  line-height: ${(props) => (props.$isMobile ? "30px" : "38px")};
+  letter-spacing: ${(props) => (props.$isMobile ? "-0.72px" : "-0.96px")};
 `;
 export const Line = styled.span`
   border-bottom: 2px solid #0068ff;
@@ -312,18 +313,18 @@ export const SubText = styled.div`
   font-family: "MonSemiBold";
   font-size: 20px;
   font-style: normal;
-  line-height: 24px; /* 120% */
-  letter-spacing: 0.4px;
+  line-height: 28px;
+  letter-spacing: -0.2px;
 `;
 export const ModalMusic = styled.div`
   color: var(--Secondary-Secondary900, #4a5e6d);
 
   /* desktop/Body2_reg */
   font-family: "MonRegular";
-  font-size: 16px;
+  font-size: ${(props) => (props.$isMobile ? "16px" : "20px")};
   font-style: normal;
-  line-height: 24px; /* 150% */
-  letter-spacing: -0.04px;
+  line-height: ${(props) => (props.$isMobile ? "24px" : "30px")};
+  letter-spacing: ${(props) => (props.$isMobile ? "-0.16px" : "-0.2px")};
 
   display: flex;
   align-items: center;

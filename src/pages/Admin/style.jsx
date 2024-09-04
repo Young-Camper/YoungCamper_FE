@@ -31,18 +31,18 @@ export const BtnWrapper = styled.button`
 // Button Component
 export const DeleteBtn = styled.div`
   position: fixed;
-  right: 10%;
+  right: ${(props) => (props.$isDelete ? "20%" : "10%")};
   bottom: 5%;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 110px;
+  padding: 0 30px;
   height: 64px;
   align-items: center;
   border-radius: var(--XXL, 100px);
   opacity: var(--sds-size-stroke-border);
-  background: var(--new-main-primary, #0068ff);
+  background: ${(props) => (props.$isDelete ? "#000" : "#0068ff")};
   color: var(--new-main-white, #fafafa);
   text-align: center;
 
@@ -53,7 +53,16 @@ export const DeleteBtn = styled.div`
   line-height: 24px; /* 150% */
   letter-spacing: 0.16px;
 `;
-
+export const DeleteCheckBox = styled.input`
+  width: 40px;
+  height: 40px;
+  background-color: ${(props) => (props.$isChecked ? "#0068ff" : "#fff")};
+  border: 1px solid #0068ff;
+  position: absolute;
+  top: 25%;
+  left: -60px;
+  border-radius: 10px;
+`;
 // adminWrite
 export const AdminContainer = styled.div`
   display: flex;
@@ -129,4 +138,15 @@ export const InputContent = styled.textarea`
   font-style: normal;
   line-height: 30px; /* 150% */
   letter-spacing: -0.1px;
+`;
+export const RadioBtn = styled.input`
+  width: 30px;
+  height: 30px;
+  background-color: ${(props) => (props.$isChecked ? "#0068ff" : "#fff")};
+  border: 1px solid #0068ff;
+  border-radius: 50px;
+  margin: 10px 20px;
+`;
+export const PreviewImg = styled.img`
+  width: 300px;
 `;
