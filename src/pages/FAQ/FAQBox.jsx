@@ -48,11 +48,4 @@ const FAQBox = ({ question, answer, isOpen, onClick }) => {
   );
 };
 
-FAQBox.propTypes = {
-  question: PropTypes.string.isRequired,
-  answer: PropTypes.string.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
-};
-
 export default FAQBox;
