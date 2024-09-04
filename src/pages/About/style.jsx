@@ -10,9 +10,8 @@ export const TabBar = styled.div`
 	justify-content: center;
 	width: 100%;
 	max-width: 1440px;
-	padding: ${(props) => props.$isDesktop ? "83px 0px" : "0px 0px" };
+	padding: ${(props) => props.$isDesktop ? "100px 0px" : "0px 0px" };
 	margin: 0 auto;
-	margin-bottom: ${(props) => props.$isDesktop ? "100px" : "77px"};
 `;
 
 export const TabButton = styled.button`
@@ -47,10 +46,10 @@ export const SectionWrapper = styled.div`
 	display: flex;
 	width: 100%;
 	flex-direction: column;
-	padding: ${(props) => props.$isMobile ? "39px 24px" : props.$isTablet ? "58px 24px" : "48px 0px" };
+	padding: ${(props) => props.$isMobile ? "39px 24px" : props.$isTablet ? "46px 72px" : "46px 24px" };
 	gap: ${(props) => props.$isDesktop ? "24px" : "12px" };
 	max-width: 1440px;
-	margin: ${(props) => props.$isDesktop ? "51px" : "12px"} auto 0 auto;
+	margin: 0 auto;
 `;
 
 export const Category = styled.div`
@@ -75,18 +74,18 @@ export const ProfileListWrapper = styled.div`
 	display: flex;
 	width: 100%;
 	flex-wrap: wrap;
-	gap: 24px;
+	gap: ${(props) => props.$isDesktop ? "24px" : "12px" };
 	padding: ${(props) => props.$isDesktop ? "48px 0px" : "24px 24px" };
 	max-width: 1440px;
-	margin: 0 auto;
+	margin: ${(props) => props.$isDesktop ? "100px auto" : "0 auto" };
 	justify-content: center;
 `;
 
 export const ProfileCard = styled.div`
 	display: flex;
 	
-	min-width: 320px;
-	max-width: 350px;
+	min-width: ${(props) => props.$isDesktop ? "320px" : "150px" };
+	max-width: ${(props) => props.$isDesktop ? "350px" : "150px" };
 	flex-direction: column;
 	align-items: center;
 	flex: 1 0 0;
@@ -102,9 +101,8 @@ export const ProfileCard = styled.div`
 		border-top-right-radius: 12px;
 		opacity: 0.8;
 		width: 100%;
-		height: 320px;
+		height: ${(props) => props.$isDesktop ? "320px" : "144px" };
 		object-fit: cover;
-		margin-bottom: 10px;
 		object-fit: cover;
 		position: relative; /* 상대적 위치 설정 */
 		z-index: 1; 
@@ -115,7 +113,8 @@ export const ProfileCard = styled.div`
 		width: 100%;
 		border-bottom-left-radius: 12px;
 		border-bottom-right-radius: 12px;
-		padding: 28px 24px;
+		height: ${(props) => props.$isDesktop ? "96px" : "51px" };
+		padding: ${(props) => props.$isDesktop ? "28px 24px" : "28px 12px" };
 		justify-content: space-between;
 		align-items: center;
 		font-family: "MonRegular";
@@ -124,12 +123,11 @@ export const ProfileCard = styled.div`
 	name {
 		display: flex;
 		align-items: center;
-		height: 40px;
 		color: var(--Color-text-primary, #333);
-		font-size: ${(props) => props.$isDesktop ? "32px" : "24px" };
+		font-size: ${(props) => props.$isDesktop ? "32px" : "18px" };
 		font-style: normal;
 		color: #333;
-		line-height: 38px; 
+		line-height: ${(props) => props.$isDesktop ? "38px" : "24px" }; 
 		letter-spacing: -0.32px;
         margin: 0;
 	}
@@ -137,18 +135,17 @@ export const ProfileCard = styled.div`
 	.roleBox {
 		display: flex;
 		align-items: center;
-		height: 40px;
 		border-radius: 100px;
 		border: 1px solid #CED7DE;
 		background: #FFF;
-		padding: ${(props) => props.$isDesktop ? "8px 16px" : "8px 12px" };
+		padding: ${(props) => props.$isDesktop ? "8px 16px" : "6px 12px" };
 		margin: 0;
 	}
 
 	role {
-		font-size: 16px;
+		font-size: ${(props) => props.$isDesktop ? "16px" : "12px" };
 		color: #0A0B0A;
-		line-height: 24px; 
+		line-height: ${(props) => props.$isDesktop ? "24px" : "18px" };
 		letter-spacing: -0.16px;
 	}
 
@@ -158,11 +155,11 @@ export const ProfileCard = styled.div`
 		font-family: "MonRegular";
 		color: #4A5E6D; /* 텍스트 색상 조정 */
 		text-align: center;
-		font-size: ${(props) => props.$isDesktop ? "20px" : "16px" };
+		font-size: ${(props) => props.$isDesktop ? "20px" : "12px" };
 		line-height: 22px;
 		letter-spacing: -0.16px;
 		padding: 28px 32px;
-		top: 138px; /* 아래로 정렬은 238 */
+		top: ${(props) => props.$isDesktop ? "138px" : "40px" }; /* 아래로 정렬은 238 */
 		z-index: 2;
 	}
 
@@ -195,7 +192,7 @@ export const ProfileCard = styled.div`
 			top: 0;
 			left: 0;
 			width: 100%;
-			height: 320px; /* 이미지 높이와 동일하게 설정 */
+			height: ${(props) => props.$isDesktop ? "320px" : "144px" };
 			background: linear-gradient(104deg, rgba(185, 255, 156, 0.20) 0%, rgba(0, 104, 255, 0.20) 100%);
 			z-index: 2; /* 오버레이가 이미지 위로 위치하도록 설정 */
 			border-top-left-radius: 12px;
