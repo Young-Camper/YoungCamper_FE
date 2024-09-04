@@ -1,64 +1,122 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import InputModal from "./InputModal";
 import * as S from "./ReviewInputSectionStyle";
-
-//lib(비속어 필터링)
-import Filter from "badwords-ko";
-
 import { ReviewValidation } from "../hooks/ReviewValidation";
 import useMediaQueries from "../../../hooks/useMediaQueries";
+import useImageUpload from "../hooks/useImageUpload";
+import { uploadFilesToS3 } from "../hooks/uploadFilesToS3";
+import { postReview } from "../../../lib/apis/api/postReview";
+
+// lib(비속어 필터링)
+import Filter from "badwords-ko";
 
 const ReviewInputSection = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+  const filter = new Filter();
 
   const [review, setReview] = useState("");
   const [password, setPassword] = useState("");
-  const [imagePreviews, setImagePreviews] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
-  // 모달 로직
-  const { showModal, setShowModal, modalMessage, handleInputButtonClick } =
-    ReviewValidation();
+  const { handleInputButtonClick } = ReviewValidation();
 
-  // 사진 로직
-  const inputRef = useRef(null);
+  // 이미지 업로드 훅 사용
+  const {
+    imagePreviews,
+    inputRef,
+    handleButtonClick,
+    handleFileChange,
+    handleRemoveImage,
+    uploadedFiles,
+    setImagePreviews,
+    uploadMessage,
+    setUploadMessage,
+  } = useImageUpload(5);
 
-  const handleButtonClick = () => {
-    if (inputRef.current) {
-      inputRef.current.click();
-    }
-  };
+  // Review post 처리
+  const handleSubmit = async () => {
+    handleInputButtonClick(review, password);
 
-  const handleFileChange = (event) => {
-    const files = Array.from(event.target.files);
-    if (files.length + imagePreviews.length > 5) {
-      alert("최대 5개까지 이미지를 추가할 수 있습니다.");
+    // 필수 입력 확인
+    if (!password && !review) {
+      setModalMessage(
+        "비밀번호와 후기를 작성하지 않았습니다.\n숫자 4자리 비밀번호와 500자 이내의 후기를 작성해주세요."
+      );
+      setShowModal(true);
       return;
     }
 
-    const newPreviews = files.map((file) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      return new Promise((resolve) => {
-        reader.onloadend = () => {
-          resolve(reader.result);
-        };
-      });
-    });
+    if (!review) {
+      setModalMessage(
+        "후기를 작성하지 않았습니다.\n500자 이내 후기를 작성해주세요."
+      );
+      setShowModal(true);
+      return;
+    }
 
-    Promise.all(newPreviews).then((loadedImages) => {
-      setImagePreviews((prevImages) => [...prevImages, ...loadedImages]);
-    });
+    // 리뷰 텍스트 길이 확인
+    if (review.length < 10) {
+      setModalMessage("10자리 이상 입력해주세요.");
+      setShowModal(true);
+      return;
+    }
+
+    if (!password) {
+      setModalMessage(
+        "비밀번호를 입력하지 않았습니다.\n숫자 4자리 비밀번호를 입력해주세요."
+      );
+      setShowModal(true);
+      return;
+    }
+
+    let fileUrls = [];
+    if (uploadedFiles.length > 0) {
+      setUploadMessage("이미지 업로드 중입니다...");
+      fileUrls = await uploadFilesToS3(uploadedFiles, setUploadMessage);
+    }
+
+    const reviewData = {
+      password: password,
+      content: filter.clean(review),
+      imageUrls: fileUrls,
+    };
+
+    console.log("Submitting review data:", reviewData);
+
+    try {
+      const response = await postReview(reviewData);
+
+      if (response) {
+        alert("Review submitted successfully!");
+        setReview("");
+        setPassword("");
+        setImagePreviews([]);
+        setUploadMessage("");
+      } else {
+        setModalMessage("리뷰 제출에 실패했습니다.");
+        setShowModal(true);
+      }
+    } catch (error) {
+      console.error("Error submitting review:", error);
+
+      // 서버의 상세한 오류 메시지를 모달에 표시
+      if (error.response && error.response.data) {
+        setModalMessage(
+          `오류: ${
+            error.response.data.message || "리뷰 제출 중 오류가 발생했습니다."
+          }`
+        );
+      } else {
+        setModalMessage("리뷰 제출 중 오류가 발생했습니다.");
+      }
+      setShowModal(true);
+    }
   };
 
-  // 이미지 삭제 함수
-  const handleRemoveImage = (index) => {
-    setImagePreviews((prevImages) => prevImages.filter((_, i) => i !== index));
-  };
-
-  // 비밀번호 로직
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value.replace(/\D/g, "")); // 숫자가 아닌 입력 제거
+    setPassword(e.target.value.replace(/\D/g, ""));
   };
 
   return (
@@ -100,7 +158,7 @@ const ReviewInputSection = () => {
             $isDesktop={isDesktop}
             onClick={handleButtonClick}
           >
-            <img src={`${mediaUrl}Review/gallery.png`} alt="gallery" />
+            <img src={`${mediaUrl}Review/gellery.png`} alt="gellery" />
             사진
           </S.PhotoButton>
           <input
@@ -111,11 +169,7 @@ const ReviewInputSection = () => {
             style={{ display: "none" }}
             multiple
           />
-          <S.InputButton
-            onClick={() => handleInputButtonClick(review, password)}
-          >
-            입력
-          </S.InputButton>
+          <S.InputButton onClick={handleSubmit}>입력</S.InputButton>
         </S.PhotoInputContainer>
       </S.Review>
       <S.PasswordWrapper>
@@ -148,6 +202,7 @@ const ReviewInputSection = () => {
           onClose={() => setShowModal(false)}
         />
       )}
+      {uploadMessage && <pre>{uploadMessage}</pre>}
     </S.Textarea>
   );
 };

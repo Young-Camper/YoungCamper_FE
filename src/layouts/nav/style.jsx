@@ -28,6 +28,7 @@ export const Container = styled.div`
 `;
 
 export const Logo = styled.img`
+  background-color: transparent;
   width: ${(props) => (props.$isDesktop ? "123px" : "72px")};
   height: ${(props) =>
     props.$isDesktop
@@ -52,6 +53,19 @@ export const StyledLink = styled(Link)`
   gap: 6px;
   display: flex;
   /* letter-spacing: -1.2px; */
+
+
+  /* //클릭 피드백 
+  animation: clickHighlight 0.5s linear;
+  @keyframes clickHightight {
+    from {
+      background: #0068ff;
+    }
+    to {
+      background: #FFFFFF;
+    }
+  } */
+
 `;
 
 export const LangSlider = styled.span`
@@ -175,16 +189,32 @@ export const SideNav = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  transition: opacity 0.3s ease;
+  
+
+  //사이드바 애니메이션 
+  animation: modalRight 0.5s linear;
+
+  @keyframes modalRight {
+    from {
+      transform: translateX(30%);
+      opacity:0.5;
+    }
+    to {
+      transform: translateX(0);
+      opacity:1;
+    }
+  }
 `;
 
 // 사이드 네비게이션 내부 스타일
 export const NavMobile = styled.div`
   width: 100%;
+  height: 100%;
   background: #0068ff;
   color: white;
   display: flex;
   flex-direction: column;
+  transition: opacity 0.3s ease;
 `;
 
 // 상단 네비게이션 스타일
@@ -193,6 +223,7 @@ export const TopNav = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 53px;
 `;
 
 // 헤더 스타일
@@ -201,6 +232,7 @@ export const Header = styled.div`
   align-items: center;
   width: 100%;
   background-color: white;
+  height: 53px;
 `;
 
 // 헤더 내용 스타일
@@ -258,14 +290,18 @@ export const SideNavEtc = styled.div`
 
 // 사이드 네비게이션 언어 설정 스타일
 export const SideNavLang = styled.div`
-  /* margin-bottom: 20px; */
+  margin-bottom: 12px;
 `;
 
 // 사이드 네비게이션 언어 버튼 스타일
 export const SideNavLangBtn = styled.div`
   display: flex;
   justify-content: center;
-  padding: 12px 48px;
+  /* padding: 12px 48px; */
+  padding-left: 37px;
+  padding-right: 48px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 `;
 
 // 사이드 네비게이션 언어 텍스트 스타일
@@ -275,6 +311,7 @@ export const SideNavLangText = styled.span`
   font-size: 18px;
   color: #b9ff9c;
   border-bottom: 1px solid #b9ff9c;
+  font-family: "MonRegular";
 `;
 
 // 사이드 네비게이션 SNS 스타일

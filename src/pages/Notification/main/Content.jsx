@@ -89,7 +89,6 @@ const Content = ({ keyword }) => {
         num="번호"
         title="제목"
         date={isDesktop ? "날짜" : null}
-        $paddingBottom="0"
         color="black"
         fontFamily="MonSemiBold"
         fontWeight="600"
@@ -111,6 +110,8 @@ const Content = ({ keyword }) => {
                 fontSize={isDesktop ? "22px" : "18px"}
                 isDesktop={isDesktop}
                 isTablet={isTablet}
+                isMobile={isMobile}
+                paddingBottom="25px"
               />
             </Link>
           ))

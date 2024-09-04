@@ -102,6 +102,9 @@ export const TitleDetailSet = styled.div`
   position: absolute;
   right: 212px;
   top: 37px;
+  /* left: 40%;
+  top: 50%;
+  transform: translate(-50%, -50%); */
 `;
 
 export const TitleMiniText1 = styled.div`
@@ -144,13 +147,13 @@ export const TitleMiniText3 = styled.div`
   display: flex;
   position: absolute;
   right: 0;
-  top: 0;
+  bottom: 36px;
 `;
 
 export const TitleMiniText4 = styled(TitleMiniText3)`
   max-width: 234px;
   max-height: 36px;
-  top: 36px;
+  bottom: 0px;
 `;
 
 export const TitleBox = styled.div`
@@ -176,7 +179,7 @@ export const TextBox = styled.div`
   gap: ${(props) => (props.$isDesktop ? "36px" : "20px")};
   display: ${(props) => (props.$isMobile ? "" : "flex")};
   align-items: center;
-  justify-content: flex-start;
+  justify-content: ${(props) => (props.$isDesktop ? "center" : "flex-start")};
   text-align: left;
   position: relative;
   flex: 1 0 0;
@@ -190,13 +193,13 @@ export const TitlePortal = styled.div`
   width: ${(props) => (props.$isDesktop ? "90px" : "45px")};
   height: ${(props) => (props.$isDesktop ? "90px" : "45px")};
   background-image: ${(props) =>
-    props.ishoveringYoung
+    props.$ishoveringYoung
       ? `url(${mediaUrl}Home/Portal_B.png)`
       : props.ishoveringFestival
       ? `url(${mediaUrl}Home/Portal_B.png)`
       : `url(${mediaUrl}Home/Portal.png)`};
   margin-left: ${(props) =>
-    props.ishoveringYoung
+    props.$ishoveringYoung
       ? "-650px" /*90+36+488+36*/
       : props.ishoveringFestival
       ? "-807px" /*90+36+645+36*/
@@ -240,23 +243,20 @@ export const TitleText = styled.div`
   justifty-content: flex-start;
 
   @media (min-width: 1024px) {
-    padding-left: ${(props) =>
-      props.ishoveringYoung ? "126px" : ""}; /*36+90*/
     margin-left: ${(props) =>
-      props.ishoveringFestival
-        ? "126px"
-        : props.ishoveringCamp
-        ? "-126px"
-        : "0"};
-
-    color: ${(props) =>
-      props.ishoveringYoung
-        ? `#0A0B0A`
-        : props.ishoveringCamp
-        ? `#0A0B0A`
-        : props.ishoveringFestival
-        ? `#0A0B0A`
-        : `#FAFAFA)`};
+      props.ishoveringFestival ? "-645px" :
+      props.ishoveringCamp ? "-126px" :
+      props.$ishoveringYoung ? "-490.32px" :
+      "0"};
+  
+  color: ${(props) =>
+    props.$ishoveringYoung
+      ? `#0A0B0A`
+      : props.ishoveringCamp
+      ? `#0A0B0A`
+      : props.ishoveringFestival
+      ? `#0A0B0A`
+      : `#FAFAFA)`};
   }
   transition: all 800ms ease-out;
 `;
@@ -413,7 +413,7 @@ export const ArrowImg2 = styled(ArrowImg)`
 //2.  Video
 export const VideoSection = styled.div`
   width: 100%;
-  height: ${(props) => (props.$isMobile ? "812px" : "1024px")};
+  height: auto;
   padding: ${(props) => (props.$isDesktop ? "83px 0px 0px 0px" : "50px 0px")};
   gap: ${(props) => (props.$isTablet ? "96px" : "0px")};
   display: flex;
@@ -434,20 +434,19 @@ export const VideoSectionBox = styled.div`
   flex: 1 0 0;
 `;
 
-export const VideoBox = styled.div`
+export const VideoBox = styled.video`
   width: 100%;
   height: ${(props) =>
     props.$isDesktop ? "100%" : props.$isTablet ? "422px" : "314px"};
-  gap: ${(props) =>
-    props.$isDesktop ? "17.998px" : props.$isTablet ? "0px" : "10px"};
-  padding: ${(props) =>
-    props.$isDesktop ? "48px" : props.$isTablet ? "48px 0px" : "24px 0px"};
+  gap: ${(props) => (props.$isDesktop ? "17.998px" : props.$isTablet ? "0px" : "10px")};
+  padding: ${(props) => (props.$isDesktop ? "48px 0px" : props.$isTablet ? "48px 0px" : "24px 0px")};
   justify-content: flex-end;
   align-items: center;
   display: flex;
   flex-direction: column;
   flex: 1 0 0;
   background: var(--new-main-black, #0a0b0a);
+  object-fit: contain;
 `;
 
 /* export const VideoIFrame = styled.video`
@@ -458,9 +457,11 @@ export const VideoBox = styled.div`
 `; */
 
 export const VideoBtn = styled.div`
+  position: absolute;
+  margin-top: ${(props) => (props.$isDesktop ? "-116px" : props.$isTablet ? "-69px" : "-69px")}; /*48+68*/
+  transform: translateX(-50%);
   width: auto;
-  height: ${(props) =>
-    props.$isDesktop ? "auto" : props.$isTablet ? "45px" : "45px"};
+  height: ${(props) => (props.$isDesktop ? "auto" : props.$isTablet ? "45px" : "45px")};
   padding: ${(props) => (props.$isDesktop ? "20px 28px" : "12px 16px")};
   border-radius: 100px;
   opacity: var(--sds-size-stroke-border);
@@ -471,10 +472,8 @@ export const VideoBtn = styled.div`
 
   color: var(--new-main-white, #fafafa);
   text-align: center;
-
   font-family: MonSemiBold;
-  font-size: ${(props) => (props.$isDesktop ? "20px" : props.$isTablet ? "20px 28px" : "12px")};
-
+  font-size: ${(props) => (props.$isDesktop ? "20px" : "12px")};
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "28px" : "18px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.12px")};
@@ -931,8 +930,8 @@ export const SocialFrame = styled.div`
   display: flex;
   flex-shrink: 0;
   border-radius: 40px;
-  background-color: #fafafa;
-  background-image: url(${(props) => props.BgImage});
+  background-color: #FAFAFA;
+  background-image: url(${props => (props.$BgImage)});
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -946,7 +945,7 @@ export const SocialFrame = styled.div`
         rgba(0, 104, 255, 0.4) 23.99%,
         rgba(185, 255, 156, 0.4) 98.08%
       ),
-      url(${(props) => props.BgImage});
+      url(${(props) => props.$BgImage});
   }
   transition: all 0.3s ease-out;
 `;
@@ -1024,7 +1023,7 @@ export const FrameCard = styled.div`
 export const IconImg = styled.div`
   width: ${(props) => (props.$isDesktop ? "40px" : "20px")};
   height: ${(props) => (props.$isDesktop ? "40px" : "20px")};
-  background-image: url(${(props) => props.IconImage});
+  background-image: url(${(props) => props.$IconImage});
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
@@ -1220,5 +1219,5 @@ export const GridBtnText = styled.div`
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.11px" : "-0.06px")};
   font-style: normal;
 
-  color: ${(props) => (props.ishoveringCTA ? `white` : `black`)};
+  color: ${(props) => (props.$ishoveringCTA ? `white` : `black`)};
 `;
