@@ -49,7 +49,8 @@ export const SectionWrapper = styled.div`
 	flex-direction: column;
 	padding: ${(props) => props.$isMobile ? "39px 24px" : props.$isTablet ? "58px 24px" : "48px 0px" };
 	gap: ${(props) => props.$isDesktop ? "24px" : "12px" };
-	margin-bottom: ${(props) => props.$isDesktop ? "51px" : "12px"};
+	max-width: 1440px;
+	margin: ${(props) => props.$isDesktop ? "51px" : "12px"} auto 0 auto;
 `;
 
 export const Category = styled.div`
@@ -76,7 +77,8 @@ export const ProfileListWrapper = styled.div`
 	flex-wrap: wrap;
 	gap: 24px;
 	padding: ${(props) => props.$isDesktop ? "48px 0px" : "24px 24px" };
-
+	max-width: 1440px;
+	margin: 0 auto;
 	justify-content: center;
 `;
 
@@ -84,25 +86,26 @@ export const ProfileCard = styled.div`
 	display: flex;
 	
 	min-width: 320px;
-	max-width: 450px;
+	max-width: 350px;
 	flex-direction: column;
 	align-items: center;
 	flex: 1 0 0;
 	box-sizing: border-box;
-	border-radius: 8px;
+	border-radius: 24px;
 
 	position: relative; /* 추가: 상대적 위치 설정 */
 	
 
   	img {
 		background: #F6F6F6;
-		border-radius: 12px;
+		border-top-left-radius: 12px;
+		border-top-right-radius: 12px;
 		opacity: 0.8;
 		width: 100%;
-		height: 290px;
+		height: 320px;
 		object-fit: cover;
 		margin-bottom: 10px;
-
+		object-fit: cover;
 		position: relative; /* 상대적 위치 설정 */
 		z-index: 1; 
   	}
@@ -110,22 +113,25 @@ export const ProfileCard = styled.div`
 	.text-container {
 		display: flex;
 		width: 100%;
-		max-width: 350px;
-		padding: 28px 12px;
+		border-bottom-left-radius: 12px;
+		border-bottom-right-radius: 12px;
+		padding: 28px 24px;
 		justify-content: space-between;
 		align-items: center;
+		font-family: "MonRegular";
 	}
 
 	name {
 		display: flex;
 		align-items: center;
-		font-family: "MonSemibold";
 		height: 40px;
 		color: var(--Color-text-primary, #333);
 		font-size: 32px;
 		font-style: normal;
-		line-height: 22px;  
-         	margin: 0;
+		color: #333;
+		line-height: 38px; 
+		letter-spacing: -0.32px;
+        margin: 0;
 	}
 
 	.roleBox {
@@ -133,16 +139,17 @@ export const ProfileCard = styled.div`
 		align-items: center;
 		height: 40px;
 		border-radius: 100px;
-		border: 1px solid #E8E8E8;
+		border: 1px solid #CED7DE;
 		background: #FFF;
 		padding: 8px 16px;
 		margin: 0;
 	}
 
 	role {
-		font-family: "MonRegular";
 		font-size: 16px;
 		color: #0A0B0A;
+		line-height: 24px; 
+		letter-spacing: -0.16px;
 	}
 
 	.description {
@@ -150,11 +157,12 @@ export const ProfileCard = styled.div`
 		position: absolute; /* 오버레이 효과를 위해 */
 		font-family: "MonRegular";
 		color: #4A5E6D; /* 텍스트 색상 조정 */
-		text-align: right;
-		font-size: 20px;
+		text-align: center;
+		font-size: 22px;
+		line-height: 22px;
+		letter-spacing: -0.16px;
 		padding: 28px 32px;
-		bottom: 105px;
-		right: 0;
+		top: 138px; /* 아래로 정렬은 238 */
 		z-index: 2;
 	}
 
@@ -187,10 +195,11 @@ export const ProfileCard = styled.div`
 			top: 0;
 			left: 0;
 			width: 100%;
-			height: 290px; /* 이미지 높이와 동일하게 설정 */
+			height: 320px; /* 이미지 높이와 동일하게 설정 */
 			background: linear-gradient(104deg, rgba(185, 255, 156, 0.20) 0%, rgba(0, 104, 255, 0.20) 100%);
 			z-index: 2; /* 오버레이가 이미지 위로 위치하도록 설정 */
-			border-radius: 12px; /* 이미지의 border-radius와 동일하게 설정 */
+			border-top-left-radius: 12px;
+			border-top-right-radius: 12px;
 		}
 	}
 `;
