@@ -1,83 +1,115 @@
 import React, { useEffect, useState } from "react";
-import TitleSet from "../../../components/ui/TitleSet";
-import { getAdmin } from "../../../lib/apis/api/getAdmin";
-import * as S from "../../Notification/main/Style";
-import Subtitle from "../../Notification/main/Subtitle";
 import { Link, useNavigate } from "react-router-dom";
-import { DeleteBtn } from "../style";
-import axios from "axios";
 import useMediaQueries from "../../../hooks/useMediaQueries";
-import { ContentWrapper } from "../../../style/commonStyle";
+import { getAnnouncements } from "../../../lib/apis/api/getAnnouncements";
+import { deleteAnnouncements } from "../../../lib/apis/api/deleteAnnouncements";
+
+import * as S from "../../Notification/main/Style";
+import TitleSet from "../../../components/ui/TitleSet";
 import Loading from "../../../components/ui/Loading";
+import Subtitle from "../../Notification/main/Subtitle";
+import { ContentWrapper } from "../../../style/commonStyle";
+import { DeleteBtn } from "../style";
+import { DeleteCheckBox } from "../style";
 
 const index = () => {
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  const { isMobile, isTablet, isDesktop } = useMediaQueries();
+  const { isTablet, isDesktop } = useMediaQueries();
   const navigate = useNavigate();
   const [data, setData] = useState([
     {
       id: 1,
-      title: "타이틀1",
-      date: "2024-08-27",
+      title: "제목1",
+      content: "본문1",
+      date: "2024.09.04",
     },
     {
       id: 2,
-      title: "타이틀2",
-      date: "2024-08-27",
-    },
-    {
-      id: 3,
-      title: "타이틀3",
-      date: "2024-08-27",
-    },
-    {
-      id: 4,
-      title: "타이틀4",
-      date: "2024-08-27",
-    },
-    {
-      id: 5,
-      title: "타이틀5",
-      date: "2024-08-27",
+      title: "제목2",
+      content: "본문2",
+      date: "2024.09.04",
     },
   ]);
+  const [ids, setIds] = useState([]);
 
-  // ============== FE TEST CODE ==============
-  // useEffect(() => {
-  //   const getAdminData = async () => {
-  //     const response = await getAdmin();
-  //     setData(response.data);
-  //   };
-  //   getAdminData();
-  // }, []);
+  const handleCheckboxChange = (id) => {
+    if (ids.includes(id)) {
+      setIds(ids.filter((selectedId) => selectedId !== id));
+    } else {
+      setIds([...ids, id]);
+    }
+  };
 
-  // ============== BE TEST CODE - get 요청 ==============
+  // ======= api get =======
   useEffect(() => {
-    const getAdminData = async () => {
+    let isMounted = true;
+
+    const fetchData = async () => {
       try {
-        const response = await axios.get("/api/admin"); // API 엔드포인트
-        setData(response.data);
-        console.log("Successed!", response.data);
+        setLoading(true);
+        const response = await getAnnouncements();
+        if (isMounted) {
+          setData(response.data);
+        }
       } catch (error) {
-        console.error("Failed to fetch admin data:", error);
+        console.error("Error fetching announcements:", error);
+        if (isMounted) {
+          setError("데이터를 가져오는 중 오류가 발생했습니다.");
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
-    getAdminData();
+    fetchData();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
+
+  // ======= api delete =======
+  const handleAdminDelete = async () => {
+    if (ids.length > 0) {
+      const check = confirm("삭제하시겠습니까?");
+      if (check) {
+        try {
+          const response = await deleteAnnouncements(ids);
+          console.log("admin delete: ", response);
+          alert("삭제되었습니다");
+          navigate("/admin42794/list");
+        } catch (error) {
+          console.error("Error delete announcements:", error);
+        }
+      }
+    } else {
+      alert("선택된 게시글이 없습니다.");
+    }
+  };
 
   return loading ? (
     <Loading />
   ) : (
-    <div style={{ width: "100%" }}>
+    <div>
       <ContentWrapper>
         <TitleSet mainText="관리자 페이지" />
         <DeleteBtn
+          $isDelete={false}
           $isDesktop={isDesktop}
           onClick={() => navigate("/admin42794/write")}
         >
           작성
+        </DeleteBtn>
+        <DeleteBtn
+          $isDelete={true}
+          $isDesktop={isDesktop}
+          onClick={handleAdminDelete}
+        >
+          선택한 게시글 삭제하기
         </DeleteBtn>
         <S.ContentWrapper $isDesktop={isDesktop}>
           <Subtitle
@@ -95,18 +127,36 @@ const index = () => {
             gap="0px"
           />
           <S.ContentContainer>
-            {data.map((item, index) => (
-              <Link to={`/admin42794/list/${item.id}`} key={index}>
-                <Subtitle
-                  num={item.id}
-                  title={item.title}
-                  date={item.date}
-                  fontSize={isDesktop ? "24px" : "18px"}
-                  isDesktop={isDesktop}
-                  isTablet={isTablet}
-                />
-              </Link>
-            ))}
+            {data.length > 1 ? (
+              data.map((item, index) => (
+                <div
+                  key={index}
+                  style={{
+                    display: "flex",
+                    position: "relative",
+                  }}
+                >
+                  <DeleteCheckBox
+                    type="checkbox"
+                    onChange={() => handleCheckboxChange(item.id)}
+                    checked={ids.includes(item.id)}
+                    $isChecked={ids.includes(item.id)}
+                  />
+                  <Link to={`/admin42794/list/${item.id}`}>
+                    <Subtitle
+                      num={item.id}
+                      title={item.title}
+                      date={item.date}
+                      fontSize={isDesktop ? "24px" : "18px"}
+                      isDesktop={isDesktop}
+                      isTablet={isTablet}
+                    />
+                  </Link>
+                </div>
+              ))
+            ) : (
+              <>작성된 글이 없습니다.</>
+            )}
           </S.ContentContainer>
         </S.ContentWrapper>
       </ContentWrapper>

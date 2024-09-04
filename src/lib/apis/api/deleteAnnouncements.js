@@ -1,11 +1,11 @@
 import { API } from "../utils";
 
-export const getAdmin = async () => {
+export const deleteAnnouncements = async (ids) => {
   try {
     const response = await API.delete(`/api/admin/`, {
-      headers: {
-        sessionId: ``, // 실제 세션 ID를 여기에 넣어야 함
-      }
+      data: { 
+        ids: ids,
+      },
     });
     console.log("API success: ", response);
     return response.data;
