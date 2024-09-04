@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import Loading from "../../../components/ui/Loading";
 
+import { useTranslation } from "react-i18next";
+
 const Content = ({ keyword }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState([]);
@@ -15,6 +17,8 @@ const Content = ({ keyword }) => {
   const maxPage = 5;
   const { isTablet, isDesktop, isMobile } = useMediaQueries();
   const contentWrapperRef = useRef(null);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -106,9 +110,9 @@ const Content = ({ keyword }) => {
     >
       {/* 제목 표시 부분 */}
       <Subtitle
-        num="번호"
-        title="제목"
-        date={isDesktop ? "날짜" : null}
+        num={t(`notice.num`)}
+        title={t(`notice.title`)}
+        date={isDesktop ? t(`notice.date`) : null}
         color="black"
         fontFamily="MonSemiBold"
         fontWeight="600"
@@ -139,7 +143,7 @@ const Content = ({ keyword }) => {
             </Link>
           ))
         ) : (
-          <S.NoResults>등록된 게시글이 없습니다.</S.NoResults>
+          <S.NoResults>{t(`notice.noresult`)}</S.NoResults>
         )}
       </S.ContentContainer>
       {filteredItems.length > 0 && (

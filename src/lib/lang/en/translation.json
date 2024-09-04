@@ -10,9 +10,16 @@
     "about": "Team"
   },
   "notice": {
-    "title": "Announcement",
+    "maintitle": "Announcement",
     "subTitle": "Be sure to check the information below and join us to make this a fun festival for everyone!",
     "search": "Search",
-    "urgent": "Must read"
+    "urgent": "Must read",
+    "num": "No",
+    "title": "Title",
+    "date": "Date",
+    "noresult": "There are no registered posts."
+  },
+  "faq": {
+    "subTitle": "We have compiled answers to frequently asked questions."
   }
 }
