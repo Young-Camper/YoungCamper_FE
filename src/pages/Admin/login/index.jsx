@@ -23,7 +23,6 @@ const index = () => {
     try {
       const response = await adminLogin(id, pw);
 
-      // HTTP 상태 코드가 200일 때만 로그인 성공 처리
       console.log("Login response:", response);
       if (response.status === 200) {
         alert("로그인 성공!");
@@ -34,12 +33,10 @@ const index = () => {
         alert("ID, Password를 다시 확인해주세요.");
       }
     } catch (error) {
-      // 로그인 실패 시 오류 처리
       console.error("Login error:", error);
       alert("ID, Password를 다시 확인해주세요.");
 
       if (error.response) {
-        // 서버 응답이 있는 경우
         alert("ID, Password를 다시 확인해주세요.");
         console.log(
           "로그인 실패: " + (error.response.data.message || "서버 에러 발생")

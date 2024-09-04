@@ -12,32 +12,28 @@ import { ContentWrapper } from "../../../style/commonStyle";
 const index = () => {
   const { isDesktop } = useMediaQueries();
   const navigate = useNavigate();
-  const [title, setTitle] = useState(null);
-  const [content, setContent] = useState(null);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const [imageUrl, setImageUrl] = useState(null);
   const [fileUrl, setFileUrl] = useState(null);
   const [isPinned, setIsPinned] = useState(false);
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
-  };
+  const handleTitleChange = (e) => setTitle(e.target.value);
+  const handleContentChange = (e) => setContent(e.target.value);
+  const handlePinnedChange = (e) => setIsPinned(e.target.checked);
+
+  // 이미지 선택 핸들러
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setImageUrl(file);
     }
   };
-  const handleContentChange = (e) => {
-    setContent(e.target.value);
-  };
-  const handlePinnedChange = (e) => {
-    setIsPinned(e.target.checked);
-  };
 
   // 이미지 미리보기 URL
   const imagePreviewUrl = imageUrl ? URL.createObjectURL(imageUrl) : null;
 
-  // api post
+  // ====== api post ======
   const handleAdminPost = async () => {
     const check = confirm("작성하시겠습니까?");
 
@@ -46,19 +42,15 @@ const index = () => {
         const response = await postAnnouncement(
           title,
           content,
-          imageUrl,
+          imageUrl, // presignedurl 변경 필요
           fileUrl,
           isPinned
         );
 
-        // 응답 로그
         console.log("admin post response: ", response);
-
-        // 성공했을 때
         alert("작성되었습니다");
         navigate("/admin42794/list");
       } catch (error) {
-        // 실패했을 때
         console.error("Failed to post admin data: ", error);
         alert("작성에 실패했습니다. 다시 시도해주세요.");
       }

@@ -13,25 +13,10 @@ import { DeleteBtn } from "../style";
 import { DeleteCheckBox } from "../style";
 
 const index = () => {
-  // const [loading, setLoading] = useState(true);
   const [loading, setLoading] = useState(false);
-
   const { isTablet, isDesktop } = useMediaQueries();
   const navigate = useNavigate();
-  const [data, setData] = useState([
-    {
-      id: 1,
-      title: "제목1",
-      content: "본문1",
-      date: "2024.09.04",
-    },
-    {
-      id: 2,
-      title: "제목2",
-      content: "본문2",
-      date: "2024.09.04",
-    },
-  ]);
+  const [data, setData] = useState([]);
   const [ids, setIds] = useState([]);
 
   const handleCheckboxChange = (id) => {
@@ -50,14 +35,12 @@ const index = () => {
       try {
         setLoading(true);
         const response = await getAnnouncements();
-        if (isMounted) {
-          setData(response.data);
+        if (isMounted && response.data) {
+          setData(response.data.data);
+          console.log("Fetched data:", response.data.data);
         }
       } catch (error) {
         console.error("Error fetching announcements:", error);
-        if (isMounted) {
-          setError("데이터를 가져오는 중 오류가 발생했습니다.");
-        }
       } finally {
         if (isMounted) {
           setLoading(false);
@@ -83,7 +66,7 @@ const index = () => {
           alert("삭제되었습니다");
           navigate("/admin42794/list");
         } catch (error) {
-          console.error("Error delete announcements:", error);
+          console.error("Error deleting announcements:", error);
         }
       }
     } else {
@@ -127,7 +110,7 @@ const index = () => {
             gap="0px"
           />
           <S.ContentContainer>
-            {data.length > 1 ? (
+            {data.length > 0 ? (
               data.map((item, index) => (
                 <div
                   key={index}
@@ -146,7 +129,7 @@ const index = () => {
                     <Subtitle
                       num={item.id}
                       title={item.title}
-                      date={item.date}
+                      date={item.createAt}
                       fontSize={isDesktop ? "24px" : "18px"}
                       isDesktop={isDesktop}
                       isTablet={isTablet}

@@ -12,13 +12,14 @@ const index = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
 
-  // id 값으로 개별 컨텐츠 get 요청
+  // ====== api get ======
   useEffect(() => {
     const getData = async () => {
       const response = await getAnnouncement(id);
       setData(response.data);
     };
     getData();
+    console.log("id:", id);
   }, []);
 
   return (
@@ -29,7 +30,7 @@ const index = () => {
           <S.Title $isDesktop={isDesktop}>{data.title}</S.Title>
           <S.InfoContainer $isDesktop={isDesktop}>
             <S.Info>작성인: 관리자</S.Info>
-            <S.Info>등록일: {data.date}</S.Info>
+            <S.Info>등록일: {data.createdAt}</S.Info>
           </S.InfoContainer>
           <S.Line />
           <S.ContentWrapper $isDesktop={isDesktop}>
