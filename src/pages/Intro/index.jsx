@@ -1,15 +1,24 @@
 import React from "react";
-import MainTitle from "../../components/ui/MainTitle";
-import { ContentWrapper } from "../../style/commonStyle";
+import { ContentWrapper } from "./style";
+import useMediaQueries from "../../hooks/useMediaQueries";
+import IntroBanner from "./IntroBanner";
+import IntroContent from "./IntroContent";
 
 const index = () => {
+  const { isMobile, isTablet, isDesktop } = useMediaQueries();
+
   return (
-    <ContentWrapper>
-      <MainTitle
-        mainText="영캠프 소개"
-        subText="영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다."
-      />
-    </ContentWrapper>
+    <>
+      <IntroBanner />
+      <ContentWrapper
+        $isMobile={isMobile}
+        $isTablet={isTablet}
+        $isDesktop={isDesktop}
+        $isIntro={true}
+      >
+        <IntroContent />
+      </ContentWrapper>
+    </>
   );
 };
 
