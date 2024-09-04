@@ -5,12 +5,14 @@ import Urgent from "../main/Urgent";
 import ShowList from "./ShowList";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import { fetchNoticeDetail } from "../../../lib/apis/api/getNoticeDetail";
+import Loading from "../../../components/ui/Loading";
 
 const Content = () => {
   const { num } = useParams();
   const [notice, setNotice] = useState(null);
   const { isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+  const [loading, setLoading] = useState(true);
 
   //받아오는 날짜 데이터 포맷팅
   const formatDate = (dateString) => {
@@ -23,56 +25,59 @@ const Content = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await fetchNoticeDetail(num);
         setNotice(response.data);
         console.log(response);
       } catch (error) {
-        console.error("Error fetching notice detail: ", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
   }, [num]);
 
-  if (!notice) {
-    return (
-      <>
-        <S.NoResult>해당 공지사항을 찾을 수 없습니다.</S.NoResult>
-        <ShowList />
-      </>
-    );
-  }
-
   return (
     <>
       <S.TitleWrapper $isDesktop={isDesktop}>
-        {notice.isPinned === "yes" && (
-          <S.UrgentWrapper>
-            <Urgent />
-          </S.UrgentWrapper>
-        )}
-        <S.Title $isDesktop={isDesktop}>{notice.title}</S.Title>
-        <S.InfoContainer $isDesktop={isDesktop}>
-          <S.Info>작성인: 관리자</S.Info>
-          <S.Info>{formatDate(notice.createdAt)}</S.Info>
-        </S.InfoContainer>
-        <S.Line />
-        <S.ContentWrapper $isDesktop={isDesktop}>
-          <S.ContentImgContainer>
-            {notice.image && (
-              <S.ContentImgContainer>
-                <S.ContentImg
-                  src={`${mediaUrl}Notification/${notice.imageUrl}`}
-                  alt="공지 이미지"
-                />
-              </S.ContentImgContainer>
+        {loading ? (
+          <Loading />
+        ) : notice ? (
+          <>
+            {notice.isPinned && (
+              <S.UrgentWrapper>
+                <Urgent />
+              </S.UrgentWrapper>
             )}
-          </S.ContentImgContainer>
+            <S.Title $isDesktop={isDesktop}>{notice.title}</S.Title>
+            <S.InfoContainer $isDesktop={isDesktop}>
+              <S.Info>작성인: 관리자</S.Info>
+              <S.Info>{formatDate(notice.createdAt)}</S.Info>
+            </S.InfoContainer>
+            <S.Line />
+            <S.ContentWrapper $isDesktop={isDesktop}>
+              <S.ContentImgContainer>
+                {notice.image && (
+                  <S.ContentImgContainer>
+                    <S.ContentImg
+                      src={`${mediaUrl}Notification/${notice.imageUrl}`}
+                      alt="공지 이미지"
+                    />
+                  </S.ContentImgContainer>
+                )}
+              </S.ContentImgContainer>
 
-          <S.ContentText $isDesktop={isDesktop}>{notice.content}</S.ContentText>
-        </S.ContentWrapper>
-        <ShowList />
+              <S.ContentText $isDesktop={isDesktop}>
+                {notice.content}
+              </S.ContentText>
+            </S.ContentWrapper>
+            <ShowList />
+          </>
+        ) : (
+          <S.NoResult>등록된 게시글이 없습니다.</S.NoResult>
+        )}
       </S.TitleWrapper>
     </>
   );
