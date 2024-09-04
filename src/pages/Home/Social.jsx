@@ -26,7 +26,7 @@ const Social = () => {
 
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 3000,
     slidesToShow: slidesToScroll,
@@ -61,10 +61,14 @@ const Social = () => {
                 >
                   <S.FrameCard $isDesktop={isDesktop}>
                     <S.FrameBox $isDesktop={isDesktop}>
-                      <S.IconImg
+                    {/* {console.log('social.image matches:', social.image)} */}
+                     {social.image === `${mediaUrl}Home/WebIcon.png`
+                      ? <S.WebImg $isDesktop={isDesktop} $IconImage={social.image} />
+                      : <S.IconImg $isDesktop={isDesktop} $IconImage={social.image} />}
+                      {/* <S.IconImg
                         $isDesktop={isDesktop}
                         $IconImage={social.image}
-                      />
+                      /> */}
                       <S.FrameText $isDesktop={isDesktop}>
                         {social.name}
                       </S.FrameText>
@@ -78,6 +82,7 @@ const Social = () => {
                       </S.FrameImg>
                     </S.FrameBox>
                   </S.FrameCard>
+                  
                 </S.SocialFrame>
               ))}
             </Slider>

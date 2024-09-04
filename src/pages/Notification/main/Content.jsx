@@ -1,19 +1,38 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import * as S from "./Style";
 import Subtitle from "./Subtitle";
-import data from "../../../data/notice.json";
+import { fetchNoticeList } from "../../../lib/apis/api/getNotice";
 import Urgent from "./Urgent";
 import { Link } from "react-router-dom";
 import useMediaQueries from "../../../hooks/useMediaQueries";
+import Loading from "../../../components/ui/Loading";
 
 const Content = ({ keyword }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const itemsPerPage = 10;
   const maxPage = 5;
   const { isTablet, isDesktop, isMobile } = useMediaQueries();
   const contentWrapperRef = useRef(null);
 
-  // 공지사항 필터링 (긴급 및 일반 공지)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetchNoticeList();
+        console.log(response);
+        setData(response.data);
+
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching notice list: ", error);
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  // 필터링된 공지사항 데이터 (긴급 및 일반 공지)
   const filteredUrgentItems = data.filter(
     (item) =>
       item.urgent === "yes" &&
@@ -85,6 +104,7 @@ const Content = ({ keyword }) => {
       $isMobile={isMobile}
       ref={contentWrapperRef}
     >
+      {/* 제목 표시 부분 */}
       <Subtitle
         num="번호"
         title="제목"
@@ -100,18 +120,21 @@ const Content = ({ keyword }) => {
         gap="0px"
       />
       <S.ContentContainer>
-        {currentItems.length > 0 ? (
+        {loading ? (
+          <Loading />
+        ) : currentItems.length > 0 ? (
           currentItems.map((item, index) => (
-            <Link to={`/notification/${item.num}`} key={`${item.num}-${index}`}>
+            <Link to={`/notification/${item.id}`} key={`${item.id}-${index}`}>
               <Subtitle
-                num={item.urgent === "yes" ? <Urgent /> : item.num}
+                num={item.isPinned === "yes" ? <Urgent /> : item.num}
                 title={item.title}
-                date={item.date}
+                date={item.createdAt}
                 fontSize={isDesktop ? "22px" : "18px"}
                 isDesktop={isDesktop}
                 isTablet={isTablet}
                 isMobile={isMobile}
                 paddingBottom="25px"
+                paddingTop="25px"
               />
             </Link>
           ))
