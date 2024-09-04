@@ -11,7 +11,6 @@ const Footer = () => {
 
   return (
     <S.MainContainer $isDesktop={isDesktop}>
-      <S.Divider/>
       {isDesktop &&
       <S.Container>
         <S.Main>
