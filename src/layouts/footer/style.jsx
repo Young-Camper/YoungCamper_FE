@@ -9,16 +9,20 @@ export const MainContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #F2F2F2;
 `;
 
 export const Container = styled.div`
+    max-width: 1400px;
     align-self: stretch;
-    padding: 40px 20px 24px 20px;
+    padding: 48px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 32px;
+
+    border-top: 1px solid var(--new-main-grey, #637d92);
 
     @media only screen and (min-width: 1024px) {
         height: 391px;
@@ -35,6 +39,7 @@ export const Main = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 28px;
+
   @media only screen and (min-width: 1024px) {
     height: 233px;
   }
@@ -74,14 +79,14 @@ export const Logo = styled.div`
   
   @media only screen and (min-width: 1024px) {
     img{
-    width: 123px;
-    height: 45px;
+      width: 123px;
+      height: 45px;
     }
   }
   @media only screen and (max-width: 1023px) {
     img{
-        width: 85px;
-        height: 31pxx;
+        width: 55px;
+        height: 20px;
     }
   }
 `;
@@ -146,7 +151,7 @@ export const ContactInfoRow = styled.div`
 `;
 
 export const ContactLabel = styled.div`
-  color: #4A5E6D;
+  color: #637D92;
   font-family: 'MonRegular';
   word-wrap: break-word;
   @media only screen and (min-width: 1024px) {
@@ -221,11 +226,4 @@ export const IconContainer = styled.div`
 
 export const Icon = styled.img`
   
-`;
-
-
-export const Divider = styled.div`
-  width: 100%;
-  height: 100%;
-  border-top: 1px solid #CED7DE;
 `;
