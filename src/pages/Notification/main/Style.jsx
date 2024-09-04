@@ -53,8 +53,9 @@ export const SubTitleWrapper = styled.div`
   display: flex;
   width: 100%;
   border-bottom: 1px solid #e7ebef;
-  padding-top: ${(props) => props.paddingBottom || "25px"};
-  padding-bottom: ${(props) => props.paddingBottom || "25px"};
+  padding-top: ${(props) => props.$paddingTop || "25px"};
+  padding-bottom: ${(props) => props.$paddingBottom || "0px"};
+  gap: 12px;
 `;
 
 export const NumContainer = styled.div`
@@ -69,13 +70,16 @@ export const NumContainer = styled.div`
   display: flex;
   align-items: center;
   font-family: "MonSemiBold";
+
+  @media (max-width: 345px) {
+    padding: 14px 0px;
+  }
 `;
 
 export const DateContainer = styled.div`
-  padding: ${(props) => (props.$isDesktop ? "14px" : "")};
-  width: 15%;
+  padding: ${(props) => (props.$isDesktop ? "12px 10px" : "")};
+  width: 106px;
   display: flex;
-  /* font-weight: ${(props) => props.fontWeight || "400"}; */
   justify-content: ${(props) => (props.$isDesktop ? "center" : "")};
   font-size: ${(props) => (props.$isDesktop ? "16px" : "14px")};
   line-height: ${(props) => (props.$isDesktop ? "24px" : "22px")};
@@ -96,14 +100,21 @@ export const TitleDateContainer = styled.div`
 `;
 
 export const TitleContainer = styled.div`
-  padding: ${(props) => (props.$isDesktop ? "14px" : "")};
+  padding: ${(props) => (props.$isDesktop ? "17px 10px" : "")};
   width: 100%;
   font-size: ${(props) => props.fontSize || "16px"};
   /* font-weight: 600; */
   line-height: ${(props) => (props.$isDesktop ? "30px" : "22px")};
-  display: flex;
+  display: block;
   align-items: center;
   font-family: "MonSemiBold";
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (max-width: 375px) {
+    width: ${(props) => (props.$isEnglish ? "180px" : "200px")};
+  }
 `;
 
 //Content.jsx
