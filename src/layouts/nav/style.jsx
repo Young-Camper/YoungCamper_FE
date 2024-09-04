@@ -28,6 +28,7 @@ export const Container = styled.div`
 `;
 
 export const Logo = styled.img`
+  background-color: transparent;
   width: ${(props) => (props.$isDesktop ? "123px" : "72px")};
   height: ${(props) =>
     props.$isDesktop
@@ -43,6 +44,7 @@ export const StyledLink = styled(Link)`
   color: ${(props) => (props.$isDesktop ? "#0a0b0a;" : "white")};
   font-size: ${(props) => (props.$isTablet ? "24px" : "20px")};
   font-family: "MonRegular";
+  font-weight: 400;
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "30px" : "32px")};
   text-align: center;
@@ -50,7 +52,20 @@ export const StyledLink = styled(Link)`
   align-items: center;
   gap: 6px;
   display: flex;
-  height: 60px;
+  /* letter-spacing: -1.2px; */
+
+
+  /* //클릭 피드백 
+  animation: clickHighlight 0.5s linear;
+  @keyframes clickHightight {
+    from {
+      background: #0068ff;
+    }
+    to {
+      background: #FFFFFF;
+    }
+  } */
+
 `;
 
 export const LangSlider = styled.span`
@@ -116,7 +131,7 @@ export const CheckBox = styled.input`
 
   &:checked + ${LangSlider}:after {
     transform: translateY(-50%) translateX(-45px);
-    color: #ffffff;
+    color: #FFFFFF;
   }
 `;
 
@@ -177,7 +192,18 @@ export const SideNav = styled.div`
   
 
   //사이드바 애니메이션 
-  
+  animation: modalRight 0.5s linear;
+
+  @keyframes modalRight {
+    from {
+      transform: translateX(30%);
+      opacity:0.5;
+    }
+    to {
+      transform: translateX(0);
+      opacity:1;
+    }
+  }
 `;
 
 // 사이드 네비게이션 내부 스타일
@@ -248,7 +274,7 @@ export const SideNavSet = styled.div`
 // 사이드 네비게이션 링크 스타일
 export const SideNavLink = styled.div`
   width: 100%;
-  /* padding: 8px 0px; */
+  padding: 8px 0px;
   border-bottom: 2px solid white;
   font-family: "MonRegular";
   font-weight: 400;
