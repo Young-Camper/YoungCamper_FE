@@ -140,8 +140,8 @@ export const ContactInfoContainer = styled.div`
 
 export const ContactInfoRow = styled.div`
   display: inline-flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   gap: 8px;
 `;
 
@@ -150,11 +150,10 @@ export const ContactLabel = styled.div`
   font-family: 'MonRegular';
   word-wrap: break-word;
   @media only screen and (min-width: 1024px) {
-      font-size: 16px;
+    font-size: 16px;
     font-weight: 400;
-      line-height: 24px;
-
-    }
+    line-height: 24px;
+  }
   @media only screen and (max-width: 1023px) {
     font-size: 12px;
     font-weight: 600;
@@ -199,7 +198,7 @@ export const Content = styled.div`
   @media only screen and (max-width: 1023px) {
     color: #637D92;
   font-size: 13px;
-  font-family: 'PretendardRegular';
+  font-family: 'MonRegular';
   font-weight: 500;
   line-height: 18px;
   letter-spacing: 0.25px;
