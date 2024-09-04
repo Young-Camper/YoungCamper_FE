@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import { getAdminCheck } from "../../lib/apis/api/getAdminCheck";
+import { adminLogout } from "../../lib/apis/api/adminLogout";
+import { useNavigate } from "react-router-dom";
 
 const AdminCheck = () => {
-  const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate();
+  const [isAdmin, setIsAdmin] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,10 +22,26 @@ const AdminCheck = () => {
     fetchData();
   }, []);
 
+  // ======= api get =======
+  const handleAdminLogout = async () => {
+    const check = confirm("admin 로그아웃 하십니까🤓?");
+    if (check) {
+      try {
+        const response = await adminLogout();
+        alert("로그아웃 되었습니다!");
+        navigate("/");
+      } catch (error) {
+        console.error("Error admin logout:", error);
+      }
+    }
+  };
+
   return (
     isAdmin && (
       <>
-        <S.AdminCheckWrapper>관리자 로그아웃</S.AdminCheckWrapper>
+        <S.AdminLogout onClick={handleAdminLogout}>
+          관리자 로그아웃
+        </S.AdminLogout>
       </>
     )
   );

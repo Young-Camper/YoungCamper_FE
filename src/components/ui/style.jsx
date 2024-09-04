@@ -68,4 +68,8 @@ export const AdminLogout = styled.div`
   position: fixed;
   top: 10px;
   left: 10px;
+  color: #fff;
+  background-color: #111;
+  z-index: 100;
+  padding: 10px;
 `;

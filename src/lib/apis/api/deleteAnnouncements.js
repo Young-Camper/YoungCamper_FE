@@ -3,7 +3,7 @@ import { API } from "../utils";
 export const deleteAnnouncements = async (ids) => {
   try {
     const response = await API.delete(`/api/announcements`, {
-        ids: ids,
+        data: {ids: ids},
     });
     console.log("API success: ", response);
     return response.data;
