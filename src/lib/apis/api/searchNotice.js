@@ -9,7 +9,6 @@ export const searchNotice = async (keyword) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Error fetching notice list by keyword:", error);
     throw error;
   }
 };

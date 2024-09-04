@@ -4,8 +4,8 @@ import * as S from "./Style";
 import Urgent from "../main/Urgent";
 import ShowList from "./ShowList";
 import useMediaQueries from "../../../hooks/useMediaQueries";
-import { fetchNoticeDetail } from "../../../lib/apis/api/getNoticeDetail";
 import Loading from "../../../components/ui/Loading";
+import { getAnnouncement } from "../../../lib/apis/api/getAnnouncement";
 
 const Content = () => {
   const { num } = useParams();
@@ -27,9 +27,9 @@ const Content = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetchNoticeDetail(num);
+        const response = await getAnnouncement(num);
         setNotice(response.data);
-        console.log(response);
+        // console.log(response);
       } catch (error) {
       } finally {
         setLoading(false);

@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import * as S from "./Style";
 import Subtitle from "./Subtitle";
-import { fetchNoticeList } from "../../../lib/apis/api/getNotice";
 import Urgent from "./Urgent";
 import { Link } from "react-router-dom";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import Loading from "../../../components/ui/Loading";
 import { searchNotice } from "../../../lib/apis/api/searchNotice";
+import { getAnnouncement } from "../../../lib/apis/api/getAnnouncement";
 
 const Content = ({ keyword }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,7 +21,7 @@ const Content = ({ keyword }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetchNoticeList();
+        const response = await getAnnouncement();
         setData(response.data);
 
         setLoading(false);
@@ -44,6 +44,7 @@ const Content = ({ keyword }) => {
         } else {
           setData([]);
         }
+
         setLoading(false);
       } catch (error) {
         setLoading(false);
