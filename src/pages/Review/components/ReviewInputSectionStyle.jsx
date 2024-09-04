@@ -217,7 +217,7 @@ export const PasswordLabel = styled.div`
   color: #757575;
   font-size: ${(props) =>
     props.$isMobile ? "12px" : props.$isTablet ? "12px" : "16px"};
-  font-family: "MonRegular";
+ font-family: "MonRegular"
   font-weight: 400px;
   line-height: ${(props) =>
     props.$isMobile ? "18px" : props.$isTablet ? "18px" : "24px"};
