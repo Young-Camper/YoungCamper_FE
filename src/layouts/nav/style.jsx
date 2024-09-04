@@ -52,6 +52,20 @@ export const StyledLink = styled(Link)`
   gap: 6px;
   display: flex;
   /* letter-spacing: -1.2px; */
+
+  //마우스 호버
+  transition: background 0.3s ease-out;
+  background: ${(props) => {
+    if (props.ishoveringPlace) return "#FAFAFA";
+    if (props.ishoveringDate) return "#FAFAFA";
+    return "";
+  }};
+  /* border-top: ${(props) => {
+    if (props.ishoveringPlace) return "none";
+    if (props.ishoveringDate) return "none";
+    if (props.ishoveringWith) return "none";
+    return "2px solid #FAFAFA";
+  }}; */
 `;
 
 export const LangSlider = styled.span`
@@ -250,6 +264,7 @@ export const SideNavSet = styled.div`
 export const SideNavLink = styled.div`
   width: 100%;
   padding: 8px 0px;
+  /* margin: 8px 0px; */
   border-bottom: 2px solid white;
   font-family: "MonRegular";
   font-weight: 400;
