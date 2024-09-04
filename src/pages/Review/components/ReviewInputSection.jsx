@@ -1,59 +1,69 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import InputModal from "./InputModal";
 import * as S from "./ReviewInputSectionStyle";
-
-//lib(비속어 필터링)
-import Filter from "badwords-ko";
-
 import { ReviewValidation } from "../hooks/ReviewValidation";
 import useMediaQueries from "../../../hooks/useMediaQueries";
+import useImageUpload from "../hooks/useImageUpload";
+import { uploadFilesToS3 } from "../hooks/uploadFilesToS3";
+import { postReview } from "../../../lib/apis/api/postReview";
+
+// lib(비속어 필터링)
+import Filter from "badwords-ko";
 
 const ReviewInputSection = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+  const filter = new Filter(); // 비속어 필터링 함수
 
   const [review, setReview] = useState("");
   const [password, setPassword] = useState("");
-  const [imagePreviews, setImagePreviews] = useState([]);
 
   // 모달 로직
   const { showModal, setShowModal, modalMessage, handleInputButtonClick } =
     ReviewValidation();
 
-  // 사진 로직
-  const inputRef = useRef(null);
+  // 이미지 업로드 훅 사용
+  const {
+    imagePreviews,
+    inputRef,
+    handleButtonClick,
+    handleFileChange,
+    handleRemoveImage,
+    uploadedFiles, // 파일 리스트를 받아와야 함
+    setImagePreviews, // 추가한 상태 관리 함수
+    uploadMessage,
+  } = useImageUpload(5);
 
-  const handleButtonClick = () => {
-    if (inputRef.current) {
-      inputRef.current.click();
-    }
-  };
+  // Review post 처리
+  const handleSubmit = async () => {
+    // 리뷰 입력과 비밀번호 검증
+    handleInputButtonClick(review, password);
 
-  const handleFileChange = (event) => {
-    const files = Array.from(event.target.files);
-    if (files.length + imagePreviews.length > 5) {
-      alert("최대 5개까지 이미지를 추가할 수 있습니다.");
-      return;
-    }
-
-    const newPreviews = files.map((file) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      return new Promise((resolve) => {
-        reader.onloadend = () => {
-          resolve(reader.result);
+    const fileUrls = await uploadFilesToS3(uploadedFiles, setUploadMessage); // S3에 파일 업로드 후 URL 반환
+    if (fileUrls.length > 0) {
+      try {
+        // 리뷰 Request body로 변환
+        const reviewData = {
+          password: password,
+          content: filter.clean(review), // 비속어 필터링 적용
+          imageUrls: fileUrls, // S3에서 반환된 파일 URL 사용
         };
-      });
-    });
+        // 서버로 전송
+        const response = await postReview(reviewData);
 
-    Promise.all(newPreviews).then((loadedImages) => {
-      setImagePreviews((prevImages) => [...prevImages, ...loadedImages]);
-    });
-  };
-
-  // 이미지 삭제 함수
-  const handleRemoveImage = (index) => {
-    setImagePreviews((prevImages) => prevImages.filter((_, i) => i !== index));
+        if (response) {
+          alert("Review submitted successfully!");
+          setReview("");
+          setPassword("");
+          setImagePreviews([]); // 이미지 미리보기 초기화
+        } else {
+          alert("Failed to submit review.");
+        }
+      } catch (error) {
+        console.error("Error submitting review:", error);
+        alert("Error submitting review.");
+      }
+    }
   };
 
   // 비밀번호 로직
@@ -100,7 +110,7 @@ const ReviewInputSection = () => {
             $isDesktop={isDesktop}
             onClick={handleButtonClick}
           >
-            <img src={`${mediaUrl}Review/gallery.png`} alt="gallery" />
+            <img src={`${mediaUrl}Review/gellery.png`} alt="gellery" />
             사진
           </S.PhotoButton>
           <input
@@ -111,11 +121,7 @@ const ReviewInputSection = () => {
             style={{ display: "none" }}
             multiple
           />
-          <S.InputButton
-            onClick={() => handleInputButtonClick(review, password)}
-          >
-            입력
-          </S.InputButton>
+          <S.InputButton onClick={handleSubmit}>입력</S.InputButton>
         </S.PhotoInputContainer>
       </S.Review>
       <S.PasswordWrapper>
@@ -148,6 +154,7 @@ const ReviewInputSection = () => {
           onClose={() => setShowModal(false)}
         />
       )}
+      {uploadMessage && <pre>{uploadMessage}</pre>}
     </S.Textarea>
   );
 };

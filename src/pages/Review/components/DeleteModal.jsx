@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
 import useMediaQueries from "../../../hooks/useMediaQueries";
-
 import * as S from "../components/CommentStyle";
 
 const DeleteModal = ({ onClose, onConfirm }) => {
@@ -19,6 +17,11 @@ const DeleteModal = ({ onClose, onConfirm }) => {
   // 가시성 변경 함수
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prev) => !prev);
+  };
+
+  // 비밀번호 확인 및 삭제 처리
+  const handleConfirmClick = () => {
+    onConfirm(password); // 입력된 비밀번호를 부모 컴포넌트로 전달
   };
 
   return (
@@ -70,7 +73,7 @@ const DeleteModal = ({ onClose, onConfirm }) => {
             $isDesktop={isDesktop}
           >
             <S.CancelButton onClick={onClose}>취소</S.CancelButton>
-            <S.ConfirmButton onClick={onConfirm}>확인</S.ConfirmButton>
+            <S.ConfirmButton onClick={handleConfirmClick}>확인</S.ConfirmButton>
           </S.ModalActions>
         </S.ModalBox>
       </S.ModalContent>
