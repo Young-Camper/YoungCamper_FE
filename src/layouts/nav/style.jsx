@@ -178,14 +178,7 @@ export const SideNav = styled.div`
   
 
   //사이드바 애니메이션 
-  opacity: 0;
-  transform: translateX(100%);
-  transition: transform 0.5s ease, opacity 0.5s ease;
-
-  &.active {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  
 `;
 
 // 사이드 네비게이션 내부 스타일
@@ -272,14 +265,18 @@ export const SideNavEtc = styled.div`
 
 // 사이드 네비게이션 언어 설정 스타일
 export const SideNavLang = styled.div`
-  /* margin-bottom: 20px; */
+  margin-bottom: 12px;
 `;
 
 // 사이드 네비게이션 언어 버튼 스타일
 export const SideNavLangBtn = styled.div`
   display: flex;
   justify-content: center;
-  padding: 12px 48px;
+  /* padding: 12px 48px; */
+  padding-left: 37px;
+  padding-right: 48px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 `;
 
 // 사이드 네비게이션 언어 텍스트 스타일
@@ -289,6 +286,7 @@ export const SideNavLangText = styled.span`
   font-size: 18px;
   color: #b9ff9c;
   border-bottom: 1px solid #b9ff9c;
+  font-family: "MonRegular";
 `;
 
 // 사이드 네비게이션 SNS 스타일
