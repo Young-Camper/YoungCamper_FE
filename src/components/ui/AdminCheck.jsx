@@ -41,11 +41,18 @@ const AdminCheck = () => {
 
   return (
     isAdmin && (
-      <>
-        <S.AdminLogout onClick={handleAdminLogout}>
+      <S.AdminLogout>
+        <h4 onClick={handleAdminLogout} style={{ color: "red" }}>
           관리자 로그아웃
-        </S.AdminLogout>
-      </>
+        </h4>
+        <div>
+          <h4 onClick={() => navigate("/admin42794/list")}>
+            공지 글 조회 및 삭제
+          </h4>
+          <h4 onClick={() => navigate("/admin42794/write")}>공지 글 작성</h4>
+          <h4 onClick={() => navigate("/review")}>후기 삭제</h4>
+        </div>
+      </S.AdminLogout>
     )
   );
 };
