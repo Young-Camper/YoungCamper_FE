@@ -52,8 +52,8 @@ export const Logo = styled.div`
   justify-content: center;
   align-items: center;
   img{
-    width: ${(props) => (props.$isDesktop ? "123px;" : "55px;")};
-    height: ${(props) => (props.$isDesktop ? "45px;" : "20px;")};  
+    width: ${(props) => (props.$isDesktop ? "161px;" : "55px;")};
+    height: ${(props) => (props.$isDesktop ? "59px;" : "20px;")};  
   }
 `;
 

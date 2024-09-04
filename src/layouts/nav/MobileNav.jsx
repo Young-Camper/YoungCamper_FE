@@ -1,4 +1,3 @@
-import {useState} from "react";
 import { useTranslation } from "react-i18next";
 import * as S from "./style";
 import useMediaQueries from "../../hooks/useMediaQueries";
@@ -13,23 +12,6 @@ const MobileNav = ({
   const { t } = useTranslation();
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
-
-  //마우스 호버
-  const [titleHover, setTitleHover] = useState({
-    young: false,
-    camp: false,
-    festival: false,
-    date: false,
-    place: false,
-    with: false,
-  });
-  const handleMouseOver = (key) => {
-    setTitleHover((prev) => ({ ...prev, [key]: true }));
-  };
-
-  const handleMouseOut = (key) => {
-    setTitleHover((prev) => ({ ...prev, [key]: false }));
-  };
 
   return (
     <S.Wrapper $isDesktop={isDesktop}>
