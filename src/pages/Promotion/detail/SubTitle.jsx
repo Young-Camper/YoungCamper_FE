@@ -15,7 +15,7 @@ const SubTitle = ({ id }) => {
   return (
     <S.Wrapper $isMobile={isMobile} $isTablet={isTablet}>
       <S.SchoolBadgeDetail $isDesktop={isDesktop} >{club.school}</S.SchoolBadgeDetail>
-      <S.TextAndButton>
+      <S.TextAndButton $isDesktop={isDesktop}>
         <S.SchoolText $isDesktop={isDesktop}>{club.name}</S.SchoolText>
         {hasInstaLink && (
           <S.CTAButton $isDesktop={isDesktop} href={club.insta} target="_blank" rel="noopener noreferrer">
