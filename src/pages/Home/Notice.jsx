@@ -23,14 +23,10 @@ const Notice = () => {
 
   if (urgentNotices.length >= 4) {
     mainNotices = urgentNotices.slice(-4).reverse();
-    console.log("MainNoticeIF",mainNotices);
   } else {
     const nonUrgentToAdd = 4 - urgentNotices.length;
-    console.log("nonUrgentToAdd",nonUrgentToAdd);
     const addNotices = nonUrgentNotices.slice(0, nonUrgentToAdd).reverse();
-  
     mainNotices = urgentNotices.reverse().concat(addNotices);
-    console.log("MainNoticeEL",mainNotices);
   }
 
   return (
