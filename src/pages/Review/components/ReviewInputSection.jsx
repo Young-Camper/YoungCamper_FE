@@ -13,14 +13,14 @@ import Filter from "badwords-ko";
 const ReviewInputSection = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
-  const filter = new Filter(); // 비속어 필터링 함수
+  const filter = new Filter();
 
   const [review, setReview] = useState("");
   const [password, setPassword] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
-  // 모달 로직
-  const { showModal, setShowModal, modalMessage, handleInputButtonClick } =
-    ReviewValidation();
+  const { handleInputButtonClick } = ReviewValidation();
 
   // 이미지 업로드 훅 사용
   const {
@@ -29,46 +29,94 @@ const ReviewInputSection = () => {
     handleButtonClick,
     handleFileChange,
     handleRemoveImage,
-    uploadedFiles, // 파일 리스트를 받아와야 함
-    setImagePreviews, // 추가한 상태 관리 함수
+    uploadedFiles,
+    setImagePreviews,
     uploadMessage,
+    setUploadMessage,
   } = useImageUpload(5);
 
   // Review post 처리
   const handleSubmit = async () => {
-    // 리뷰 입력과 비밀번호 검증
     handleInputButtonClick(review, password);
 
-    const fileUrls = await uploadFilesToS3(uploadedFiles, setUploadMessage); // S3에 파일 업로드 후 URL 반환
-    if (fileUrls.length > 0) {
-      try {
-        // 리뷰 Request body로 변환
-        const reviewData = {
-          password: password,
-          content: filter.clean(review), // 비속어 필터링 적용
-          imageUrls: fileUrls, // S3에서 반환된 파일 URL 사용
-        };
-        // 서버로 전송
-        const response = await postReview(reviewData);
+    // 필수 입력 확인
+    if (!password && !review) {
+      setModalMessage(
+        "비밀번호와 후기를 작성하지 않았습니다.\n숫자 4자리 비밀번호와 500자 이내의 후기를 작성해주세요."
+      );
+      setShowModal(true);
+      return;
+    }
 
-        if (response) {
-          alert("Review submitted successfully!");
-          setReview("");
-          setPassword("");
-          setImagePreviews([]); // 이미지 미리보기 초기화
-        } else {
-          alert("Failed to submit review.");
-        }
-      } catch (error) {
-        console.error("Error submitting review:", error);
-        alert("Error submitting review.");
+    if (!review) {
+      setModalMessage(
+        "후기를 작성하지 않았습니다.\n500자 이내 후기를 작성해주세요."
+      );
+      setShowModal(true);
+      return;
+    }
+
+    // 리뷰 텍스트 길이 확인
+    if (review.length < 10) {
+      setModalMessage("10자리 이상 입력해주세요.");
+      setShowModal(true);
+      return;
+    }
+
+    if (!password) {
+      setModalMessage(
+        "비밀번호를 입력하지 않았습니다.\n숫자 4자리 비밀번호를 입력해주세요."
+      );
+      setShowModal(true);
+      return;
+    }
+
+    let fileUrls = [];
+    if (uploadedFiles.length > 0) {
+      setUploadMessage("이미지 업로드 중입니다...");
+      fileUrls = await uploadFilesToS3(uploadedFiles, setUploadMessage);
+    }
+
+    const reviewData = {
+      password: password,
+      content: filter.clean(review),
+      imageUrls: fileUrls,
+    };
+
+    console.log("Submitting review data:", reviewData);
+
+    try {
+      const response = await postReview(reviewData);
+
+      if (response) {
+        alert("Review submitted successfully!");
+        setReview("");
+        setPassword("");
+        setImagePreviews([]);
+        setUploadMessage("");
+      } else {
+        setModalMessage("리뷰 제출에 실패했습니다.");
+        setShowModal(true);
       }
+    } catch (error) {
+      console.error("Error submitting review:", error);
+
+      // 서버의 상세한 오류 메시지를 모달에 표시
+      if (error.response && error.response.data) {
+        setModalMessage(
+          `오류: ${
+            error.response.data.message || "리뷰 제출 중 오류가 발생했습니다."
+          }`
+        );
+      } else {
+        setModalMessage("리뷰 제출 중 오류가 발생했습니다.");
+      }
+      setShowModal(true);
     }
   };
 
-  // 비밀번호 로직
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value.replace(/\D/g, "")); // 숫자가 아닌 입력 제거
+    setPassword(e.target.value.replace(/\D/g, ""));
   };
 
   return (

@@ -1,5 +1,3 @@
-// 콘솔은 API 연결 완료 후 모두 지울 예정입니다.
-
 import { API } from "../utils"; 
 
 /**
@@ -10,9 +8,10 @@ import { API } from "../utils";
  * @param {Array<string>} reviewData.imageUrls - 이미지 URL 목록
  * @returns {Promise<Object>} - 서버 응답 데이터
  */
-
 export const postReview = async (reviewData) => {
   try {
+    // 요청 데이터 확인
+    console.log("Sending review data:", reviewData); 
     const response = await API.post(`/api/review`, reviewData, {
       headers: {
         'Content-Type': 'application/json',
@@ -34,6 +33,12 @@ export const postReview = async (reviewData) => {
     }
   } catch (error) {
     console.error("Error creating review:", error);
+
+    // 서버의 에러 메시지를 확인하여 구체적인 원인을 파악
+    if (error.response && error.response.data) {
+      console.error("Server error response:", error.response.data);
+    }
+
     throw error;
   }
 };
