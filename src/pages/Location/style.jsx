@@ -1,148 +1,5 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-align-self: stretch;
-height: 390px;
-padding-left: 48px;
-padding-right: 48px;
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
-align-items: flex-star 1   
-`;
-
-export const ImgTest = styled.img`
-  width: 1000px;
-  height: 800px;
-  margin: 0 auto;
-  display: block;
-  object-fit: cover;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-`;
-
-export const FAQWrapper = styled.div`
-  display: flex;
-  width: 1100px;
-  // padding: 132px 0px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 30px;
-`
-
-export const FAQBox = styled.div`
-  display: flex;
-  width: 100%;
-  min-width: 240px;
-  min-height: 80px;
-
-  justify-content: center;
-  align-items: center;
-  align-self: stretch;
-  flex-direction: column;
-
-  border-radius: 8px;
-  border: solid 1px #CED7DE;
-  background: #FFFFFF;
-`;
-
-export const FAQContent = styled.div`
-  display: flex;
-  padding: 12px 16px;
-  min-height: 80px;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  align-self: stretch;
-`;
-
-export const FAQTextContainer = styled.div`
-  display: flex;
-  width: 100%;
-  gap: 6px;
-`;
-
-export const FAQText1 = styled.div`
-  color: #0068FF;
-  font-family: Pretendard;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 28px; /* 116.667% */
-  letter-spacing: 0.48px;
-`;
-
-export const FAQText2 = styled.div`
-  color: #0A0B0A;
-  font-family: Pretendard;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 28px;
-  letter-spacing: 0.48px;
-`;
-
-export const FAQButton = styled.div`
-  display: flex;
-  width: 46px;
-  height: 46px;
-  align-items: center;
-`;
-
-export const AnswerBox = styled.div`
-  display: flex;
-  width: 100%;
-  min-height: 80px;
-  padding: 12px 16px;
-  align-items: center;
-  border-radius: 0px 0px 8px 8px;
-  background: #E7EBEF;
-`;
-
-/*----------------------------------------------------------------*/
-
-// const Container = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   padding-top: 50px;
-//   padding-bottom: 50px;
-//   display: inline-flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   gap: 50px;
-// `;
-
-// const TextSection = styled.div`
-//   height: 193px;
-//   padding: 48px;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: flex-start;
-//   align-items: flex-start;
-//   gap: 24px;
-// `;
-
-// const Title = styled.div`
-//   align-self: stretch;
-//   color: #0A0B0A;
-//   font-size: 38px;
-//   font-family: 'Montserrat';
-//   font-weight: 800;
-//   word-wrap: break-word;
-// `;
-
-// const SubTitle = styled.div`
-//   align-self: stretch;
-//   color: #637D92;
-//   font-size: 22px;
-//   font-family: 'Montserrat';
-//   font-weight: 400;
-//   word-wrap: break-word;
-// `;
-
 export const MapSection = styled.div`
 align-self: stretch;
 padding-left: 24px;
@@ -335,7 +192,7 @@ export const HeaderContent = styled.div`
 
 export const Title = styled.div`
   flex: 1 1 0;
-  height: 36px;
+  height: ${props => props.isDesktop? '36px' : '24px'};
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -371,9 +228,9 @@ export const Icon = styled.div`
 // 아코디언 내용 스타일
 export const AccordionContent = styled.div`
   align-self: stretch;
-  max-height: ${props => ((props.index === 0) ? '771px' : '282px')}; // 열려있을 때만 높이 설정
-  padding: ${props => (props.isOpen ? '48px 48px' : '0')}; 
-  maxWidth: 1004px;
+  max-height: ${props => ((props.index === 0) ? '771px' : '568px')}; // 열려있을 때만 높이 설정
+  padding: ${props => (props.isOpen ? '24px 48px' : '0')}; 
+  max-width: auto;
   background: white;
   flex-direction: column;
   justify-content: center;
@@ -387,7 +244,8 @@ export const AccordionContent = styled.div`
 
 export const ContentInner = styled.div`
   align-self: stretch;
-  max-height: ${props => (props.index === 0 ? '489px' : '186px')}; // 열려있을 때만 높이 설정
+  max-height: ${props => (props.index === 0 ? '489px' : '568px')}; // 열려있을 때만 높이 설정
+  width: auto;
   padding: 32px;
   flex-direction: column;
   justify-content: center;
@@ -400,7 +258,7 @@ export const ContentInner = styled.div`
 export const Placeholder = styled.div`
   align-self: stretch;
   justify-content: center;
-  width: 700px;
+  width: ${ props => props.isDesktop ? '736px' : 'auto'};
   height: 441px;
   background: #E3E3E3;
   border: 1px #E3E3E3 solid;
@@ -420,9 +278,106 @@ export const Description = styled.div`
 
 export const DescriptionContainer = styled.div`
   align-self: stretch;
-  padding: 48px;
+  padding: ${props => (props.index === 1 ? '48px' : '0px')};
   justify-content: center;
   align-items: flex-start;
-  gap: 10px;
+  gap: ${props => (props.index === 0 ? '10px' : '0px')};
   display: inline-flex;
+`;
+
+
+//transport.jsx styled-component
+
+
+
+//LocMap.jsx styled-component
+export const LocContainer = styled.div`
+  max-width: ${props => props.ismobile ?  '100%' : '1100px'};
+  max-height: ${props => props.ismobile ? 'auto' : '1317px'};
+  padding: ${props => props.ismobile ? '12px 12px ' : '0 48px '};
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const LocContentArea = styled.div`
+  align-self: stretch;
+  height: ${props => props.ismobile ? '412px':'1234px'};
+  padding: ${props => props.ismobile ? '0px':'48px'};
+  background: white;
+  border: 2px #0068FF solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+`;
+
+export const LocTitle = styled.div`
+  align-self: stretch;
+  padding: ${ props => props.ismobile ?
+    '12px 12px 0' : 
+    '48px 48px 0'
+  }; /* 상단 패딩만 추가 */
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: #0A0B0A;
+  font-size: 28px;
+  font-family: 'Pretendard';
+  font-weight: 600;
+  word-wrap: break-word;
+`;
+
+export const LocDescription = styled.div`
+  align-self: stretch;
+  padding: ${props => props.ismobile ? '24px' : '48px'};
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: #0A0B0A;
+  font-size: ${props => props.ismobile ? '12px' : '16px'};
+  font-family: 'Prentendard';
+  font-weight: 400;
+  word-wrap: break-word;
+
+`;
+
+export const LocImageContainer = styled.div`
+  align-self: stretch;
+  height: ${ props => props.ismobile ? '210px' : '878px'};
+  padding: ${ props => props.ismobile ? 
+    '12px'
+    :
+    '48px'
+  };
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const LocImage = styled.img`
+  align-self: stretch;
+  height: ${(props) => props.ismobile ? '221px': '782px'};
+  width: ${(props) => props.ismobile ? '100%': '100%'}; // 이미지 너비를 부모 컨테이너에 맞춰 꽉 채웁니다.
+  src: ${(props) => props.src}
+
+`;
+
+//index.
+export const Container = styled.div`
+  padding: 0px 48px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  @media (max-width: 768px) { // isMobile 상태를 활용
+    width: 100%; // 
+    height: auto; // 
+    padding: 0px;
+    font-size: 16px;
+  }
 `;
