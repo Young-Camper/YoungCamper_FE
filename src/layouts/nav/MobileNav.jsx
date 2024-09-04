@@ -82,9 +82,9 @@ const MobileNav = ({
                         $isTablet={isTablet}
                         to={`/${path}`}
                         onClick={() => setModalOpen(false)}
-                        onMouseOver={() => handleMouseOver("date")}
-                        onMouseOut={() => handleMouseOut("date")}
-                        ishoveringDate={titleHover.date}
+                        // onMouseOver={() => handleMouseOver("date")}
+                        // onMouseOut={() => handleMouseOut("date")}
+                        // ishoveringDate={titleHover.date}
                       >
                         {/* 양 옆에 이미지 추가 */}
                         {path === "promotion" ? (
