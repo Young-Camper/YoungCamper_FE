@@ -38,7 +38,7 @@ const Content = () => {
         <S.Title $isDesktop={isDesktop}>{notice.title}</S.Title>
         <S.InfoContainer $isDesktop={isDesktop}>
           <S.Info>작성인: 관리자</S.Info>
-          <S.Info>등록일: {notice.date}</S.Info>
+          <S.Info>{notice.date}</S.Info>
         </S.InfoContainer>
         <S.Line />
         <S.ContentWrapper $isDesktop={isDesktop}>
