@@ -43,7 +43,6 @@ export const StyledLink = styled(Link)`
   color: ${(props) => (props.$isDesktop ? "#0a0b0a;" : "white")};
   font-size: ${(props) => (props.$isTablet ? "24px" : "20px")};
   font-family: "MonRegular";
-  font-weight: 400;
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "30px" : "32px")};
   text-align: center;
@@ -51,7 +50,7 @@ export const StyledLink = styled(Link)`
   align-items: center;
   gap: 6px;
   display: flex;
-  /* letter-spacing: -1.2px; */
+  height: 60px;
 `;
 
 export const LangSlider = styled.span`
@@ -117,7 +116,7 @@ export const CheckBox = styled.input`
 
   &:checked + ${LangSlider}:after {
     transform: translateY(-50%) translateX(-45px);
-    color: #FFFFFF;
+    color: #ffffff;
   }
 `;
 
@@ -249,7 +248,7 @@ export const SideNavSet = styled.div`
 // 사이드 네비게이션 링크 스타일
 export const SideNavLink = styled.div`
   width: 100%;
-  padding: 8px 0px;
+  /* padding: 8px 0px; */
   border-bottom: 2px solid white;
   font-family: "MonRegular";
   font-weight: 400;
