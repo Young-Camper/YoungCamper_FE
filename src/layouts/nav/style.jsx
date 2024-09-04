@@ -175,16 +175,28 @@ export const SideNav = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  transition: opacity 0.3s ease;
+  
+
+  //사이드바 애니메이션 
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+
+  &.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
 `;
 
 // 사이드 네비게이션 내부 스타일
 export const NavMobile = styled.div`
   width: 100%;
+  height: 100%;
   background: #0068ff;
   color: white;
   display: flex;
   flex-direction: column;
+  transition: opacity 0.3s ease;
 `;
 
 // 상단 네비게이션 스타일
@@ -193,6 +205,7 @@ export const TopNav = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 53px;
 `;
 
 // 헤더 스타일
@@ -201,6 +214,7 @@ export const Header = styled.div`
   align-items: center;
   width: 100%;
   background-color: white;
+  height: 53px;
 `;
 
 // 헤더 내용 스타일
