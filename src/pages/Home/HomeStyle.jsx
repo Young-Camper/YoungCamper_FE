@@ -1033,6 +1033,16 @@ export const IconImg = styled.div`
   margin-bottom: ${(props) => (props.$isDesktop ? "96px" : "48px")};
 `;
 
+export const WebImg = styled.div`
+  width: ${(props) => (props.$isDesktop ? "32px" : "10.421px")};
+  height: ${(props) => (props.$isDesktop ? "32px" : "10.421px")};
+  background-image: url(${(props) => props.$IconImage});
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-bottom: ${(props) => (props.$isDesktop ? "96px" : "48px")};
+`
+
 export const FrameBox = styled.div`
   width: 100%;
   height: auto;
