@@ -5,11 +5,14 @@ import TitleSet from "../../../components/ui/TitleSet";
 import { ContentWrapper } from "../../../style/commonStyle";
 import { adminLogin } from "../../../lib/apis/api/adminLogin";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { adminState } from "../../../context/recoil/adminState";
 
 const index = () => {
   const navigate = useNavigate();
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
+  const [isAdmin, setIsAdmin] = useRecoilState(adminState);
 
   const handleIdChange = (e) => {
     setId(e.target.value);
@@ -26,14 +29,17 @@ const index = () => {
       console.log("Login response:", response);
       if (response.status === 200) {
         alert("로그인 성공!");
+        setIsAdmin(true);
         navigate("/admin42794/list");
       } else {
         setId("");
         setPw("");
+        setIsAdmin(false);
         alert("ID, Password를 다시 확인해주세요.");
       }
     } catch (error) {
       console.error("Login error:", error);
+      setIsAdmin(false);
       alert("ID, Password를 다시 확인해주세요.");
 
       if (error.response) {

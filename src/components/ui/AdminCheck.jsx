@@ -3,10 +3,12 @@ import * as S from "./style";
 import { getAdminCheck } from "../../lib/apis/api/getAdminCheck";
 import { adminLogout } from "../../lib/apis/api/adminLogout";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { adminState } from "../../context/recoil/adminState";
 
 const AdminCheck = () => {
   const navigate = useNavigate();
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useRecoilState(adminState);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,15 +22,16 @@ const AdminCheck = () => {
     };
 
     fetchData();
-  }, []);
+  }, [setIsAdmin]);
 
   // ======= api get =======
   const handleAdminLogout = async () => {
     const check = confirm("admin 로그아웃 하십니까🤓?");
     if (check) {
       try {
-        const response = await adminLogout();
+        await adminLogout();
         alert("로그아웃 되었습니다!");
+        setIsAdmin(false);
         navigate("/");
       } catch (error) {
         console.error("Error admin logout:", error);
