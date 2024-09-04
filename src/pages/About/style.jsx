@@ -126,7 +126,7 @@ export const ProfileCard = styled.div`
 		align-items: center;
 		height: 40px;
 		color: var(--Color-text-primary, #333);
-		font-size: 32px;
+		font-size: ${(props) => props.$isDesktop ? "32px" : "24px" };
 		font-style: normal;
 		color: #333;
 		line-height: 38px; 
@@ -141,7 +141,7 @@ export const ProfileCard = styled.div`
 		border-radius: 100px;
 		border: 1px solid #CED7DE;
 		background: #FFF;
-		padding: 8px 16px;
+		padding: ${(props) => props.$isDesktop ? "8px 16px" : "8px 12px" };
 		margin: 0;
 	}
 
@@ -158,7 +158,7 @@ export const ProfileCard = styled.div`
 		font-family: "MonRegular";
 		color: #4A5E6D; /* 텍스트 색상 조정 */
 		text-align: center;
-		font-size: 22px;
+		font-size: ${(props) => props.$isDesktop ? "20px" : "16px" };
 		line-height: 22px;
 		letter-spacing: -0.16px;
 		padding: 28px 32px;
