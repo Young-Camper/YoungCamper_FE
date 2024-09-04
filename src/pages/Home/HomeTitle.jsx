@@ -39,7 +39,8 @@ const HomeTitle = () => {
         </S.SpaceBoxTop>
       
         <S.TitleMainSet $isTablet={isTablet} $isDesktop={isDesktop}>
-          {(isDesktop)&&(<S.TitleDetailSet>
+          {(isDesktop)&&(
+            <S.TitleDetailSet>
             <S.TitleMiniText1>who’s our 주인공</S.TitleMiniText1>
             <S.TitleMiniText2>youngcamp</S.TitleMiniText2>
             <S.TitleMiniText3>youngcamp</S.TitleMiniText3>
