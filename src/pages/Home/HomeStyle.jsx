@@ -243,8 +243,6 @@ export const TitleText = styled.div`
   justifty-content: flex-start;
 
   @media (min-width: 1024px) {
-    padding-left: ${(props) => 
-      (props.$ishoveringYoung ? "" :  "")}; 
     margin-left: ${(props) =>
       props.ishoveringFestival ? "-645px" :
       props.ishoveringCamp ? "-126px" :
