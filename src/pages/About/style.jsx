@@ -193,7 +193,7 @@ export const ProfileCard = styled.div`
 			left: 0;
 			width: 100%;
 			height: ${(props) => props.$isDesktop ? "320px" : "144px" };
-			background: linear-gradient(104deg, rgba(185, 255, 156, 0.20) 0%, rgba(0, 104, 255, 0.20) 100%);
+			background: linear-gradient(104deg, rgba(185, 255, 156, 0.20) 0%, rgba(0, 104, 255, 0.20) 100%), #fff;
 			z-index: 2; /* 오버레이가 이미지 위로 위치하도록 설정 */
 			border-top-left-radius: 12px;
 			border-top-right-radius: 12px;
