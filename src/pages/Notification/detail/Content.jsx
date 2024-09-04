@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import * as S from "./Style";
 import Urgent from "../main/Urgent";
 import ShowList from "./ShowList";
-import data from "../../../data/notice.json";
 import useMediaQueries from "../../../hooks/useMediaQueries";
+import { fetchNoticeDetail } from "../../../lib/apis/api/getNoticeDetail";
 
 const Content = () => {
   const { num } = useParams();
@@ -12,10 +12,27 @@ const Content = () => {
   const { isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
+  //받아오는 날짜 데이터 포맷팅
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}.${month}.${day}`;
+  };
+
   useEffect(() => {
-    // 공지사항 데이터 찾기
-    const foundNotice = data.find((item) => item.num === parseInt(num, 10));
-    setNotice(foundNotice);
+    const fetchData = async () => {
+      try {
+        const response = await fetchNoticeDetail(num);
+        setNotice(response.data);
+        console.log(response);
+      } catch (error) {
+        console.error("Error fetching notice detail: ", error);
+      }
+    };
+
+    fetchData();
   }, [num]);
 
   if (!notice) {
@@ -30,7 +47,7 @@ const Content = () => {
   return (
     <>
       <S.TitleWrapper $isDesktop={isDesktop}>
-        {notice.urgent === "yes" && (
+        {notice.isPinned === "yes" && (
           <S.UrgentWrapper>
             <Urgent />
           </S.UrgentWrapper>
@@ -38,7 +55,7 @@ const Content = () => {
         <S.Title $isDesktop={isDesktop}>{notice.title}</S.Title>
         <S.InfoContainer $isDesktop={isDesktop}>
           <S.Info>작성인: 관리자</S.Info>
-          <S.Info>{notice.date}</S.Info>
+          <S.Info>{formatDate(notice.createdAt)}</S.Info>
         </S.InfoContainer>
         <S.Line />
         <S.ContentWrapper $isDesktop={isDesktop}>
@@ -46,7 +63,7 @@ const Content = () => {
             {notice.image && (
               <S.ContentImgContainer>
                 <S.ContentImg
-                  src={`${mediaUrl}Notification/${notice.image}`}
+                  src={`${mediaUrl}Notification/${notice.imageUrl}`}
                   alt="공지 이미지"
                 />
               </S.ContentImgContainer>

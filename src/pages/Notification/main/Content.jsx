@@ -98,6 +98,15 @@ const Content = ({ keyword }) => {
     scrollToContentWrapper();
   };
 
+  //받아오는 날짜 데이터 포맷팅
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}.${month}.${day}`;
+  };
+
   return (
     <S.ContentWrapper
       $isDesktop={isDesktop}
@@ -126,9 +135,9 @@ const Content = ({ keyword }) => {
           currentItems.map((item, index) => (
             <Link to={`/notification/${item.id}`} key={`${item.id}-${index}`}>
               <Subtitle
-                num={item.isPinned === "yes" ? <Urgent /> : item.num}
+                num={item.isPinned === "yes" ? <Urgent /> : item.id}
                 title={item.title}
-                date={item.createdAt}
+                date={formatDate(item.createdAt)}
                 fontSize={isDesktop ? "22px" : "18px"}
                 isDesktop={isDesktop}
                 isTablet={isTablet}
