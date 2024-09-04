@@ -22,11 +22,15 @@ const Notice = () => {
   let mainNotices = [];
 
   if (urgentNotices.length >= 4) {
-    mainNotices = urgentNotices.slice(-4);
+    mainNotices = urgentNotices.slice(-4).reverse();
+    console.log("MainNoticeIF",mainNotices);
   } else {
-    mainNotices = urgentNotices.concat(
-      nonUrgentNotices.slice(0, 4 - urgentNotices.length)
-    );
+    const nonUrgentToAdd = 4 - urgentNotices.length;
+    console.log("nonUrgentToAdd",nonUrgentToAdd);
+    const addNotices = nonUrgentNotices.slice(0, nonUrgentToAdd).reverse();
+  
+    mainNotices = urgentNotices.reverse().concat(addNotices);
+    console.log("MainNoticeEL",mainNotices);
   }
 
   return (
