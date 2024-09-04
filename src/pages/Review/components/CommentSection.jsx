@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import CommentItem from "./CommentItem";
+import Comment from "./CommentItem";
 import {
   CommentsContainer,
   PaginationContainer,
@@ -8,39 +8,40 @@ import {
 } from "../components/CommentStyle";
 
 import { getReviews } from "../../../lib/apis/api/getReviews";
+import Loading from "../../../components/ui/Loading"; // 로딩 컴포넌트 추가
 
-const itemsPerPage = 5; // 페이지 당 댓글 수
-const maxPageButtons = 5; // 한 번에 보여줄 페이지 버튼 수
+const itemsPerPage = 5;
+const maxPageButtons = 5;
 
-const CommentSection = () => {
+const CommentSection = ({ refresh }) => {
   const [comments, setComments] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1); // 페이지 상태를 1부터 시작
   const [totalPages, setTotalPages] = useState(0);
-  const commentsRef = useRef(null); // 섹션 상단으로 스크롤하기 위한 ref
+  const [loading, setLoading] = useState(false); // 로딩 상태 추가
+  const commentsRef = useRef(null);
 
-  // API를 통해 리뷰 데이터를 불러오는 함수
   const fetchComments = async (page = 1) => {
+    setLoading(true); // 로딩 시작
     try {
-      // API 호출
       const data = await getReviews(page - 1, itemsPerPage, "createdAt,desc");
-
       if (data && data.content) {
-        setComments(data.content); // 리뷰 목록 설정
-        setTotalPages(data.totalPages); // 전체 페이지 수 설정
+        setComments(data.content);
+        setTotalPages(data.totalPages);
       } else {
         console.error("Unexpected data structure:", data);
-        setComments([]); // 응답 데이터가 없거나 구조가 다를 경우 빈 배열로 설정
+        setComments([]);
       }
     } catch (error) {
       console.error("Error fetching comments:", error);
+    } finally {
+      setLoading(false); // 로딩 종료
     }
   };
 
   useEffect(() => {
-    fetchComments(currentPage); // 현재 페이지의 리뷰를 불러옴
-  }, [currentPage]);
+    fetchComments(currentPage);
+  }, [currentPage, refresh]);
 
-  // 페이지 네비게이션 버튼 범위 계산
   const getPageRange = () => {
     const start =
       Math.floor((currentPage - 1) / maxPageButtons) * maxPageButtons + 1;
@@ -48,9 +49,8 @@ const CommentSection = () => {
     return Array.from({ length: end - start + 1 }, (_, i) => start + i);
   };
 
-  // 페이지 변경 핸들러
   const handlePageClick = (page) => {
-    setCurrentPage(page); // 현재 페이지 설정
+    setCurrentPage(page); // 클릭된 페이지 번호로 상태 업데이트
     if (commentsRef.current) {
       commentsRef.current.scrollIntoView({
         behavior: "smooth",
@@ -59,10 +59,9 @@ const CommentSection = () => {
     }
   };
 
-  // 다음 페이지 그룹으로 이동
   const handleNextPageGroup = () => {
     const nextPage = Math.min(currentPage + maxPageButtons, totalPages);
-    setCurrentPage(nextPage);
+    setCurrentPage(nextPage); // 다음 페이지 그룹으로 이동
     if (commentsRef.current) {
       commentsRef.current.scrollIntoView({
         behavior: "smooth",
@@ -71,10 +70,9 @@ const CommentSection = () => {
     }
   };
 
-  // 이전 페이지 그룹으로 이동
   const handlePrevPageGroup = () => {
     const prevPage = Math.max(currentPage - maxPageButtons, 1);
-    setCurrentPage(prevPage);
+    setCurrentPage(prevPage); // 이전 페이지 그룹으로 이동
     if (commentsRef.current) {
       commentsRef.current.scrollIntoView({
         behavior: "smooth",
@@ -83,18 +81,27 @@ const CommentSection = () => {
     }
   };
 
-  return (
+  // 댓글 삭제 후 현재 페이지를 리렌더링하는 함수
+  const handleDeleteComment = () => {
+    fetchComments(currentPage); // 현재 페이지를 다시 불러옴
+  };
+
+  // 로딩 중일 때 로딩 컴포넌트를 보여주고, 로딩이 끝나면 댓글과 페이지네이션을 렌더링
+  return loading ? (
+    <Loading />
+  ) : (
     <CommentsContainer ref={commentsRef}>
       {comments.map((comment) => (
-        <CommentItem key={comment.id} comment={comment} />
+        <Comment
+          key={comment.id}
+          comment={comment}
+          onDelete={handleDeleteComment} // 삭제 핸들러 전달
+        />
       ))}
-      {/* 페이지 네비게이션 */}
       <PaginationContainer>
-        {/* 이전 그룹으로 이동하는 버튼 */}
         {currentPage > maxPageButtons && (
           <PageButton onClick={handlePrevPageGroup}>{"<"}</PageButton>
         )}
-        {/* 페이지 버튼 */}
         {getPageRange().map((page) =>
           page === currentPage ? (
             <CurrentPageButton key={page}>{page}</CurrentPageButton>
@@ -104,7 +111,6 @@ const CommentSection = () => {
             </PageButton>
           )
         )}
-        {/* 다음 그룹으로 이동하는 버튼 */}
         {Math.floor((currentPage - 1) / maxPageButtons) <
           Math.floor((totalPages - 1) / maxPageButtons) && (
           <PageButton onClick={handleNextPageGroup}>{">"}</PageButton>
