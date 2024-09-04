@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import * as S from "./Style";
 import Subtitle from "./Subtitle";
-import { fetchNoticeList } from "../../../lib/apis/api/getNotice";
 import Urgent from "./Urgent";
 import { Link } from "react-router-dom";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import Loading from "../../../components/ui/Loading";
+import { searchNotice } from "../../../lib/apis/api/searchNotice";
+import { getAnnouncement } from "../../../lib/apis/api/getAnnouncement";
 
 const Content = ({ keyword }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,35 +17,56 @@ const Content = ({ keyword }) => {
   const { isTablet, isDesktop, isMobile } = useMediaQueries();
   const contentWrapperRef = useRef(null);
 
+  //공지 리스트 get
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetchNoticeList();
-        console.log(response);
+        const response = await getAnnouncement();
         setData(response.data);
 
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching notice list: ", error);
         setLoading(false);
       }
     };
     fetchData();
   }, []);
 
+  //공지 검색
+  useEffect(() => {
+    const fetchSearchData = async () => {
+      setLoading(true);
+      try {
+        const response = await searchNotice(keyword);
+
+        if (Array.isArray(response.data)) {
+          setData(response.data);
+        } else {
+          setData([]);
+        }
+
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+      }
+    };
+
+    fetchSearchData();
+  }, [keyword]);
+
   // 필터링된 공지사항 데이터 (긴급 및 일반 공지)
   const filteredUrgentItems = data.filter(
     (item) =>
-      item.urgent === "yes" &&
-      (item.title.toLowerCase().includes(keyword.toLowerCase()) ||
-        item.content.toLowerCase().includes(keyword.toLowerCase()))
+      item.urgent === "true" &&
+      ((item.title?.toLowerCase() || "").includes(keyword.toLowerCase()) ||
+        (item.content?.toLowerCase() || "").includes(keyword.toLowerCase()))
   );
 
   const filteredRegularItems = data.filter(
     (item) =>
-      item.urgent !== "yes" &&
-      (item.title.toLowerCase().includes(keyword.toLowerCase()) ||
-        item.content.toLowerCase().includes(keyword.toLowerCase()))
+      item.urgent !== "true" &&
+      ((item.title?.toLowerCase() || "").includes(keyword.toLowerCase()) ||
+        (item.content?.toLowerCase() || "").includes(keyword.toLowerCase()))
   );
 
   // 필터링된 공지사항을 합침 (긴급 공지사항이 상단에 고정되도록)
@@ -98,6 +120,15 @@ const Content = ({ keyword }) => {
     scrollToContentWrapper();
   };
 
+  //받아오는 날짜 데이터 포맷팅
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}.${month}.${day}`;
+  };
+
   return (
     <S.ContentWrapper
       $isDesktop={isDesktop}
@@ -126,9 +157,9 @@ const Content = ({ keyword }) => {
           currentItems.map((item, index) => (
             <Link to={`/notification/${item.id}`} key={`${item.id}-${index}`}>
               <Subtitle
-                num={item.isPinned === "yes" ? <Urgent /> : item.num}
+                num={item.isPinned ? <Urgent /> : item.id}
                 title={item.title}
-                date={item.createdAt}
+                date={formatDate(item.createdAt)}
                 fontSize={isDesktop ? "22px" : "18px"}
                 isDesktop={isDesktop}
                 isTablet={isTablet}
