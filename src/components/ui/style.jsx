@@ -45,6 +45,7 @@ export const MainText = styled.div`
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "48px" : "28px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-1.9px" : "-1px")};
+  /* white-space: nowrap; */
 `;
 
 export const SubText = styled.div`
@@ -56,7 +57,6 @@ export const SubText = styled.div`
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "30px" : "18px")}; /* 150% */
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.06px")};
-  white-space: nowrap;
 `;
 
 export const BannerImg = styled.img`

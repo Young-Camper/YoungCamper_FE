@@ -421,6 +421,8 @@ export const QaApply = styled.p`
   font-size: 20px;
   font-style: normal;
   color: #637d92;
+  line-height: 30px;
+  white-space: pre-wrap;
 `;
 
 export const ApplyLinkSize = styled.p`
