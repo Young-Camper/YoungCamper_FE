@@ -44,5 +44,27 @@
     "modalsub": "When accessing the link below,\nGo to the club registration page",
     "recruit": "We're not recruiting right now",
     "goLink": "Go to Recruitment Form"
+  },
+  "schedule": {
+    "bannerTitle": "Schedule",
+    "bannerSubtitle": "There are special stages prepared for this Young Camp!",
+    "title": "Timetable",
+    "msubtitle": "Exciting music, moving performances, \nand even surprise events! \nEnjoy the performance and create\nyour own special memories!",
+    "subtitle": "Exciting music, moving performances, and even surprise events! \nEnjoy the performance and create your own special memories!",
+    "song": "Representative song"
+  },
+
+  "caution": {
+    "title": "Notice",
+    "caution": [
+      "Please follow the staff's instructions for your safety!",
+      "Re-entry is not allowed after exit!",
+      "No storage of items is available inside the venue!"
+    ],
+    "mcaution": [
+      "Please follow the staff's instructions for your safety!",
+      "Re-entry is not allowed after exit!",
+      "No storage of items \nis available inside the venue!"
+    ]
   }
 }

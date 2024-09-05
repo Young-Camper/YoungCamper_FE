@@ -2,9 +2,11 @@ import React, { useRef } from "react";
 import * as S from "./style";
 import useMediaQueries from "../../hooks/useMediaQueries";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const ArtistModal = ({ artist, setModalOpen }) => {
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+  const { t } = useTranslation();
 
   const { isMobile } = useMediaQueries();
   const modal = useRef();
@@ -31,7 +33,9 @@ const ArtistModal = ({ artist, setModalOpen }) => {
             </S.ArtistName>
           </S.ContentWrapper>
           <S.ContentWrapper>
-            {artist.music.length > 1 && <S.SubText>대표곡</S.SubText>}
+            {artist.music.length > 1 && (
+              <S.SubText>{t("schedule.song")}</S.SubText>
+            )}
             <S.MusicWrapper>
               {artist.music.map((music, index) => (
                 <a

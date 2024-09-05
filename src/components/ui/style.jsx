@@ -50,6 +50,7 @@ export const MainText = styled.div`
 
 export const SubText = styled.div`
   color: var(--new-grey-grey800, #637d92);
+  white-space: pre-wrap;
 
   /* desktop/Body2_reg */
   font-family: "MonRegular";
