@@ -24,8 +24,8 @@ const FAQBox = ({ question, answer, isOpen, onClick }) => {
     : closeImageDesktop;
 
   return (
-    <S.FAQBox onClick={onClick}>
-      <S.FAQContent>
+    <S.FAQBox onClick={onClick} $isMobile={isMobile}>
+      <S.FAQContent $isMobile={isMobile}>
         <S.FAQText1 $isMobile={isMobile} >
           <span className="a-text">Q. </span>{question}
         </S.FAQText1>

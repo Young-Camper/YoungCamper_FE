@@ -9,7 +9,7 @@ import faqData from "../../data/faqData.json";
 const index = () => {
   const { isMobile } = useMediaQueries();
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = isMobile ? 4 : faqData.length; // 모바일에서는 질문 4개, 나머지 뷰에선 모두 보이게
+  const itemsPerPage = isMobile ? 5 : faqData.length; // 모바일에서는 질문 4개, 나머지 뷰에선 모두 보이게
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
