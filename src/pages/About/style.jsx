@@ -150,7 +150,7 @@ export const ProfileCard = styled.div`
 
 	.description {
 		display: none; /* 기본적으로 숨김 */
-		width: ${(props) => props.$isDesktop ? "350px" : "170px" };
+		width: ${(props) => props.$isDesktop ? "350px" : "180px" };
 		position: absolute; /* 오버레이 효과를 위해 */
 		font-family: "MonRegular";
 		color: #4A5E6D; /* 텍스트 색상 조정 */
