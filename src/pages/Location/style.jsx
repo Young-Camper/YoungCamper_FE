@@ -1,157 +1,10 @@
 import styled from "styled-components";
 
-export const MapSection = styled.div`
-align-self: stretch;
-padding-left: 24px;
-padding-right: 24px;
-padding-top: 48px;
-padding-bottom: 48px;
-background: white;
-border-top: 2px #0068FF solid;
-display: inline-flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-
-min-width: 240px;
-min-height: 80px;
-${props => props.last && `
-  border-bottom: 2px #0068FF solid;
-`}
-
-&:hover {
-    background: linear-gradient(102deg, #0068FF 0%, #B9FF9C 100%);
-    color: rbga(0,0,0);
-
-  }
-`;
-
-export const MapContainer = styled.div`
-width: 100%;
-height: 100%;
-padding-left: 48px;
-padding-right: 48px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-`;
-
-export const MapHeader = styled.div`
-  flex: 1 1 0;
-  height: 34px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  flex-direction: row;
-`;
-
-export const MapTitleContainer = styled.div`
-  flex: 1 1 0;
-  height: 35px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 6px;
-  flex-direction: row;
-  
-`;
-
-export const MapTitle = styled.div`
-  color: #0068FF;
-  font-size: 28px;
-  font-family: 'Pretendard';
-  font-weight: 600;
-  word-wrap: break-word;
-`;
-
-export const ButtonWrapper = styled.div`
-  width: 48px;
-  height: 48px;
-  position: relative;
-`;
-
-export const Buttoncontainer = styled.div`
-
-width: 68px;
-align-self: stretch;
-padding-left: 10px;
-padding-right: 10px;
-padding-top: 12px;
-padding-bottom: 12px;
-display: flex;
-justify-content: center;
-align-items: center;
-`;
-// export const Button = styled.div`
-//   width: 44px;
-//   height: 44px;
-//   left: 2px;
-//   top: 2px;
-//   position: absolute;
-//   background: #0068FF;
-// `;
-
-export const AnswerInnerContainer = styled.div`
-  align-self: stretch;
-  height: 489px;
-  padding: 48px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const AnswerGrayBox = styled.div`
-  align-self: stretch;
-  flex: 1 1 0;
-  background: #E3E3E3;
-`;
-
-export const AnswerTextContainer = styled.div`
-display: flex;
-width: 100%;
-gap: 6px;
-`;
-
-export const AnswerText = styled.div`
-  flex: 1 1 0;
-  color: #0A0B0A;
-  font-size: 22px;
-  font-family: 'Pretendard';
-  font-weight: 400;
-  word-wrap: break-word;
-`;
-
-export const AnswerContent = styled.div`
-  align-self: stretch;
-  padding: 48px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 10px;
-
-  > div {
-    flex: 1 1 0;
-    color: #0A0B0A;
-    font-size: 22px;
-    font-family: 'Pretendard';
-    font-weight: 400;
-    line-height: 30px;
-    word-wrap: break-word;
-
-    /* Collapse 애니메이션을 위한 스타일 */
-    max-height: ${(props) => (props.isOpen === "true" ? '500px' : '0')}; /* 펼쳐졌을 때 최대 높이, 접혔을 때 0 */
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out; /* 부드러운 애니메이션 */
-  }
-`;
-
+//TransportContainer
 // 아코디언 헤더 스타일
 export const AccordionHeader = styled.div`
   align-self: stretch;
-  maxWidth: 1004px;
+  maxWidth: 1444px;
   maxHeight: 130px;
   padding: ${props => (props.isDesktop ? '48px 24px' : '24px 24px')};
   background: #FFFFFF;
@@ -187,6 +40,7 @@ export const HeaderContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
   }
 `;
 
@@ -197,8 +51,8 @@ export const Title = styled.div`
   justify-content: flex-start;
   align-items: center;
   color: ${props => props.isOpen ? "#FFFFFF" : "#0068FF"};
-  font-size: 28px;
-  font-family: 'Pretendard';
+  font-size: ${props => props.isDesktop ? '28px' : '16px'};
+  font-family: "MonRegular";
   font-weight: 600;
   line-height: 36px;
   word-wrap: break-word;
@@ -237,6 +91,7 @@ export const AccordionContent = styled.div`
   align-items: center;
   display: flex;
   
+  
   transition: height 0.3s ease; // 부드러운 높이 변화 애니메이션
 
   gap: 12px;
@@ -252,7 +107,6 @@ export const ContentInner = styled.div`
   align-items: center;
   display: flex;
 
-  border 1px #FFFFFF solid;
 `;
 
 export const Placeholder = styled.div`
@@ -268,8 +122,8 @@ export const Placeholder = styled.div`
 export const Description = styled.div`
   flex: 1 1 0;
   color: #0A0B0A;
-  font-size: 20px;
-  font-family: 'Prentendard';
+  font-size: ${ (props) => props.$ismobile ? '12px' : '20px'};
+  font-family: "MonRegular";
   font-weight: 400;
   line-height: 30px;
   word-wrap: break-word;
@@ -294,16 +148,16 @@ export const DescriptionContainer = styled.div`
 export const LocContainer = styled.div`
   max-width: ${props => props.ismobile ?  '100%' : '1100px'};
   max-height: ${props => props.ismobile ? 'auto' : '1317px'};
-  padding: ${props => props.ismobile ? '12px 12px ' : '0 48px '};
+  padding: ${props => props.ismobile ? '0px 12px ' : '0px 48px '};
   display: inline-flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 `;
 
 export const LocContentArea = styled.div`
   align-self: stretch;
-  height: ${props => props.ismobile ? '412px':'1234px'};
+  height: ${props => props.ismobile ? '348px':'1234px'};
   padding: ${props => props.ismobile ? '0px':'48px'};
   background: white;
   border: 2px #0068FF solid;
@@ -324,21 +178,21 @@ export const LocTitle = styled.div`
   justify-content: left;
   align-items: center;
   color: #0A0B0A;
-  font-size: 28px;
-  font-family: 'Pretendard';
+  font-size: ${ props => props.ismobile ?  '16px' : '28px'};
+  font-family: "MonRegular";
   font-weight: 600;
   word-wrap: break-word;
 `;
 
 export const LocDescription = styled.div`
   align-self: stretch;
-  padding: ${props => props.ismobile ? '24px' : '48px'};
+  padding: ${props => props.ismobile ? '12px' : '48px'};
   display: flex;
   justify-content: left;
   align-items: center;
   color: #0A0B0A;
   font-size: ${props => props.ismobile ? '12px' : '16px'};
-  font-family: 'Prentendard';
+  font-family: "MonRegular";
   font-weight: 400;
   word-wrap: break-word;
 
@@ -365,14 +219,14 @@ export const LocImage = styled.img`
   src: ${(props) => props.src}
 
 `;
-
 //index.
 export const Container = styled.div`
-  padding: 0px 48px;
+  padding: 0px 24px;
   display: inline-flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  
 
   @media (max-width: 768px) { // isMobile 상태를 활용
     width: 100%; // 
@@ -380,4 +234,140 @@ export const Container = styled.div`
     padding: 0px;
     font-size: 16px;
   }
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  /* max-width 초과시, 가운데 정렬 */
+  margin: 0 auto;
+
+  /* 반응형 */
+  max-width: 1900px;
+  /* max-width: ${(props)=> 
+  props.$isDesktop ? "1900px"
+  : props.$isTablet ? "768px"
+  : "360px"}; */
+
+  padding: 12px 12px;
+  gap: ${(props)=> props.$isIntro ?"64px":props.$isDesktop ? "100px": "50px"};
+`;
+
+//transportway.jsx
+export const WayContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+`;
+
+export const WaySection = styled.div`
+  align-self: stretch;
+  height: ${props => props.$height || 'auto'}; // height prop을 전달받아 동적으로 설정
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+`;
+
+export const WayTitleContainer = styled.div`
+  align-self: stretch;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+
+`;
+
+export const WayTitleBadge = styled.div`
+  padding: 4px 16px;
+  border-radius: 100px;
+  border: 2px #0068FF solid;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+`;
+
+export const WayTitleText = styled.div`
+  text-align: center;
+  color: #0068FF;
+  font-size: ${ (props) => props.$ismobile ? '12px' : '20px'};
+  font-family: "MonRegular";
+  font-weight: 600;
+  line-height: 28px;
+  word-wrap: break-word;
+
+`;
+
+export const WaySectionTitle = styled.div`
+  align-self: stretch;
+  padding-left: 6px;
+  padding-right: 6px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+
+  & > div {
+    flex: 1 1 0;
+    color: #0A0B0A;
+    font-size : ${ (props) => props.$ismobile ? '12px' : '20px'};
+    font-family: "MonRegular";
+    font-weight: 600;
+    line-height: 28px;
+    word-wrap: break-word;
+  }
+`;
+
+export const WayBusStopContainer = styled.div`
+  align-self: stretch;
+  height: 164px;
+  padding-left: 6px;
+  padding-right: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 24px;
+`;
+
+export const WayBusStopInfo = styled.div`
+  align-self: stretch;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  gap: 12px;
+`;
+
+export const WayBusStopName = styled.div`
+  color: #0A0B0A;
+  font-size: ${ (props) => props.$ismobile ? '12px' : '20px'};
+  font-family: "MonRegular";
+  font-weight: 600;
+  line-height: 28px;
+  word-wrap: break-word;
+`;
+
+export const WayBusNumbers = styled.div`
+  align-self: stretch;
+  color: #0A0B0A;
+  font-size: ${ (props) => props.$ismobile ? '12px' : '20px'};
+  font-family: "MonRegular";
+  font-weight: 400;
+  line-height: 30px;
+  word-wrap: break-word;
+
 `;
