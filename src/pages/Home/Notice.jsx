@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import useMediaQueries from "../../hooks/useMediaQueries";
 /* import data from "../../data/notice.json"; */
 import Loading from "../../components/ui/Loading";
-import { getAnnouncement } from "../../lib/apis/api/getAnnouncement";
+import { getAnnouncements } from "../../lib/apis/api/getAnnouncements";
 
 const Notice = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -80,8 +80,6 @@ const Notice = () => {
         <Loading />
       ) : (
         <S.NoticeListSet $isDesktop={isDesktop} >
-          {/* 공지가 있는 경우 */}
-          {/* {mainNotices.map((notice, index, isEmpty = false ) => ( */}
           {[
             ...mainNotices,
             ...Array(4 - mainNotices.length).fill({ isEmpty: true }),
