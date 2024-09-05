@@ -33,11 +33,12 @@ export const Review = styled.div`
 
 export const ReviewInput = styled.textarea`
   width: 100%;
+  min-height: 120px;
   padding: 12px 16px; /* textarea 박스 내부 여백 설정 */
   color: #000;
   font-size: ${(props) =>
     props.$isMobile ? "12px" : props.$isTablet ? "12px" : "20px"};
-  font-family: "PretendardRegular", sans-serif;
+  font-family: "MonRegular";
   font-weight: 400;
   line-height: 30px;
   word-wrap: break-word;
@@ -47,7 +48,7 @@ export const ReviewInput = styled.textarea`
   box-sizing: border-box;
   resize: none;
 
-  ::placeholder {
+  textarea::placeholder {
     color: #ced7de;
   }
 
@@ -115,8 +116,7 @@ export const PhotoBox = styled.div`
 export const PhotoInputContainer = styled.div`
   width: 100%;
   height: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: ${(props) => (props.$isMobile ? "0px 5px" : "0px 20px")};
   justify-content: space-between;
   align-items: center;
   display: inline-flex;

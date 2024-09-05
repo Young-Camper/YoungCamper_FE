@@ -1,17 +1,19 @@
 import { useState, useRef } from "react";
 
 const useImageUpload = (maxFiles = 5) => {
-  const [imagePreviews, setImagePreviews] = useState([]);
-  const [uploadedFiles, setUploadedFiles] = useState([]);
-  const [uploadMessage, setUploadMessage] = useState(""); // 추가된 상태
+  const [imagePreviews, setImagePreviews] = useState([]); // 이미지 미리보기 상태
+  const [uploadedFiles, setUploadedFiles] = useState([]); // 업로드된 파일 상태
+  const [uploadMessage, setUploadMessage] = useState(""); // 업로드 메시지 상태
   const inputRef = useRef(null);
 
+  // 파일 선택 버튼 클릭 처리
   const handleButtonClick = () => {
     if (inputRef.current) {
       inputRef.current.click();
     }
   };
 
+  // 파일 선택 후 미리보기 처리
   const handleFileChange = (event) => {
     const files = Array.from(event.target.files);
     if (files.length + imagePreviews.length > maxFiles) {
@@ -41,6 +43,7 @@ const useImageUpload = (maxFiles = 5) => {
     });
   };
 
+  // 이미지 삭제 처리
   const handleRemoveImage = (index) => {
     setImagePreviews((prevImages) => prevImages.filter((_, i) => i !== index));
     setUploadedFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
@@ -48,13 +51,14 @@ const useImageUpload = (maxFiles = 5) => {
 
   return {
     imagePreviews,
+    setImagePreviews, // 확인: setImagePreviews 반환
     inputRef,
     handleButtonClick,
     handleFileChange,
     handleRemoveImage,
     uploadedFiles,
-    uploadMessage, // 추가된 부분
-    setUploadMessage, // 추가된 부분
+    uploadMessage,
+    setUploadMessage,
   };
 };
 

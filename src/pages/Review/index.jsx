@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
 // Components
 import { ContentWrapper } from "../../style/commonStyle";
@@ -13,8 +13,15 @@ import useMediaQueries from "../../hooks/useMediaQueries";
 // Styles
 import * as S from "./style";
 
-const index = () => {
+const Index = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
+  const [refreshComments, setRefreshComments] = useState(false); // 리뷰 리프레시 상태 추가
+
+  // 성공 알림 콜백 함수
+  const handleSuccess = () => {
+    console.log("리랜더링 전달 성공!"); // 디버깅용 로그
+    setRefreshComments((prev) => !prev); // 상태를 토글하여 CommentSection 재렌더링 유도
+  };
 
   return (
     <>
@@ -31,14 +38,16 @@ const index = () => {
         </S.TitleWrapper>
 
         <S.Textfiled $isMobile={isMobile}>
-          <ReviewInputSection />
+          {/* ReviewInputSection에 onSuccess prop 전달 */}
+          <ReviewInputSection onSuccess={handleSuccess} />
         </S.Textfiled>
         <S.Comments $isMobile={isMobile} $isTablet={isTablet}>
-          <CommentSection />
+          {/* refresh 상태 변화에 따라 CommentSection 리렌더링 */}
+          <CommentSection refresh={refreshComments} />
         </S.Comments>
       </S.Container>
     </>
   );
 };
 
-export default index;
+export default Index;

@@ -34,8 +34,8 @@ const Notice = () => {
   }, []);
 
   //필독과 일반공지 구분
-  const urgentNotices = data && Array.isArray(data) ? data.filter((item) => item.isPinned === "yes") : [];
-  const nonUrgentNotices = data && Array.isArray(data) ? data.filter((item) => item.isPinned === "no") : [];
+  const urgentNotices = data && Array.isArray(data) ? data.filter((item) => item.isPinned === "true") : [];
+  const nonUrgentNotices = data && Array.isArray(data) ? data.filter((item) => item.isPinned === "false") : [];
   let mainNotices = [];
 
   //필독공지 -> 최신순으로 4개 정렬
