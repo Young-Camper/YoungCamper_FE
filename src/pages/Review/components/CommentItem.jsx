@@ -28,7 +28,7 @@ const Comment = ({ comment, onDelete }) => {
       console.error("리뷰 삭제 실패:", error);
       alert("비밀번호가 일치하지 않습니다.");
     }
-    setIsModalOpen(false);
+    setIsModalOpen(false); // 모달을 닫습니다.
   };
 
   function formatDate(dateString) {

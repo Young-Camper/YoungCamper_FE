@@ -49,6 +49,13 @@ const useImageUpload = (maxFiles = 5) => {
     setUploadedFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
   };
 
+  // 업로드 초기화 함수
+  const resetUpload = () => {
+    setImagePreviews([]);
+    setUploadedFiles([]);
+    setUploadMessage("");
+  };
+
   return {
     imagePreviews,
     setImagePreviews, // 확인: setImagePreviews 반환

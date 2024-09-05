@@ -24,7 +24,6 @@ const ReviewInputSection = ({ onSuccess }) => {
 
   const { handleInputButtonClick } = ReviewValidation();
 
-  // 이미지 업로드 훅 사용
   const {
     imagePreviews,
     inputRef,
@@ -35,6 +34,7 @@ const ReviewInputSection = ({ onSuccess }) => {
     setImagePreviews,
     uploadMessage,
     setUploadMessage,
+    resetUpload, // 추가된 초기화 함수
   } = useImageUpload(5);
 
   // 리뷰 등록 API 처리
@@ -99,7 +99,6 @@ const ReviewInputSection = ({ onSuccess }) => {
         alert("감사합니다. 영캠프 후기가 등록되었습니다.");
         setReview("");
         setPassword("");
-        setImagePreviews([]); // 이미지 미리보기 초기화
         setUploadMessage("");
         onSuccess(); // 부모 컴포넌트에 성공 알림
       } else {
