@@ -28,6 +28,8 @@ const HomeTitle = () => {
   return (
     <S.TitleSection $isTablet={isTablet} $isDesktop={isDesktop}>
       
+      
+        <S.TitleMainSet $isTablet={isTablet} $isDesktop={isDesktop}>
         <S.SpaceBoxTop $isTablet={isTablet}>
           <S.SpaceImgBox>
             <S.SpacePortal
@@ -37,8 +39,6 @@ const HomeTitle = () => {
             />
           </S.SpaceImgBox>
         </S.SpaceBoxTop>
-      
-        <S.TitleMainSet $isTablet={isTablet} $isDesktop={isDesktop}>
           {(isDesktop)&&(
             <S.TitleDetailSet>
             <S.TitleMiniText1>who’s our 주인공</S.TitleMiniText1>
@@ -78,7 +78,7 @@ const HomeTitle = () => {
             $isDesktop={isDesktop}
             onMouseOver={() => handleMouseOver("camp")}
             onMouseOut={() => handleMouseOut("camp")}
-            ishoveringCamp={titleHover.camp}
+            $ishoveringCamp={titleHover.camp}
           >
             <S.TextBox2
               $isTablet={isTablet}
@@ -86,13 +86,13 @@ const HomeTitle = () => {
               $isDesktop={isDesktop}
             >
               <S.TitleText
-                ishoveringCamp={titleHover.camp}
+                $ishoveringCamp={titleHover.camp}
                 $isTablet={isTablet}
                 $isDesktop={isDesktop}
               >
                 CAMP
               </S.TitleText>
-              {isDesktop && (<S.TitleDawn ishoveringCamp={titleHover.camp}></S.TitleDawn>)}
+              {isDesktop && (<S.TitleDawn $ishoveringCamp={titleHover.camp}></S.TitleDawn>)}
             </S.TextBox2>
           </S.TitleBox>
           <S.TitleBox
@@ -100,7 +100,7 @@ const HomeTitle = () => {
             $isDesktop={isDesktop}
             onMouseOver={() => handleMouseOver("festival")}
             onMouseOut={() => handleMouseOut("festival")}
-            ishoveringFestival={titleHover.festival}
+            $ishoveringFestival={titleHover.festival}
           >
             <S.TextBox
               $isTablet={isTablet}
@@ -108,7 +108,7 @@ const HomeTitle = () => {
               $isDesktop={isDesktop}
             >
               <S.TitleText
-                ishoveringFestival={titleHover.festival}
+                $ishoveringFestival={titleHover.festival}
                 $isTablet={isTablet}
                 $isDesktop={isDesktop}
               >
@@ -117,103 +117,109 @@ const HomeTitle = () => {
               {isDesktop && (
                 <S.TitlePortal
                   $isDesktop={isDesktop}
-                  ishoveringFestival={titleHover.festival}
+                  $ishoveringFestival={titleHover.festival}
                 />
               )}
             </S.TextBox>
           </S.TitleBox>
-          {(isTablet || isMobile) && <S.SpaceBoxBottom $isTablet={isTablet} />}
+          {(isTablet || isMobile) && <S.SpaceBoxBottom $isTablet={isTablet} $isMobile={isMobile}/>}
         </S.TitleMainSet>
      
 
       <S.TitleListSet $isTablet={isTablet} $isDesktop={isDesktop}>
+      <Link to={"/performance"} style={{ width: "100%" }}>
         <S.TitleList
           $isTablet={isTablet}
           $isDesktop={isDesktop}
           onMouseOver={() => handleMouseOver("date")}
           onMouseOut={() => handleMouseOut("date")}
-          ishoveringDate={titleHover.date}
+          $ishoveringDate={titleHover.date}
         >
           <S.TitleFrameBox $isDesktop={isDesktop}>
             <S.TitleFrameImg
               $isDesktop={isDesktop}
-              ishoveringDate={titleHover.date}
+              $ishoveringDate={titleHover.date}
             ></S.TitleFrameImg>
             <S.TitleFrameText
               $isTablet={isTablet}
               $isDesktop={isDesktop}
-              ishoveringDate={titleHover.date}
+              $ishoveringDate={titleHover.date}
             >
               2024.09.24
             </S.TitleFrameText>
           </S.TitleFrameBox>
           <S.ArrowImgBox $isTablet={isTablet} $isDesktop={isDesktop}>
-            <Link to={"/performance"}>
+            
               <S.ArrowImg
                 $isDesktop={isDesktop}
-                ishoveringDate={titleHover.date}
+                $ishoveringDate={titleHover.date}
               ></S.ArrowImg>
-            </Link>
+            
           </S.ArrowImgBox>
         </S.TitleList>
+        </Link>
+        <Link to={"/location"} style={{ width: "100%" }}>
         <S.TitleList
           $isTablet={isTablet}
           $isDesktop={isDesktop}
           onMouseOver={() => handleMouseOver("place")}
           onMouseOut={() => handleMouseOut("place")}
-          ishoveringPlace={titleHover.place}
+          $ishoveringPlace={titleHover.place}
         >
           <S.TitleFrameBox $isDesktop={isDesktop}>
             <S.TitleFrameImg
               $isDesktop={isDesktop}
-              ishoveringPlace={titleHover.place}
+              $ishoveringPlace={titleHover.place}
             ></S.TitleFrameImg>
             <S.TitleFrameText
               $isTablet={isTablet}
               $isDesktop={isDesktop}
-              ishoveringPlace={titleHover.place}
+              $ishoveringPlace={titleHover.place}
             >
               장충체육관
             </S.TitleFrameText>
           </S.TitleFrameBox>
           <S.ArrowImgBox $isTablet={isTablet} $isDesktop={isDesktop}>
-            <Link to={"/location"}>
+            
               <S.ArrowImg
                 $isDesktop={isDesktop}
-                ishoveringPlace={titleHover.place}
+                $ishoveringPlace={titleHover.place}
               ></S.ArrowImg>
-            </Link>
+            
           </S.ArrowImgBox>
         </S.TitleList>
+        </Link>
+        <Link to={"./promotion"} style={{ width: "100%" }}>
         <S.TitleList2
           $isTablet={isTablet}
           $isDesktop={isDesktop}
           onMouseOver={() => handleMouseOver("with")}
           onMouseOut={() => handleMouseOut("with")}
-          ishoveringWith={titleHover.with}
+          $ishoveringWith={titleHover.with}
         >
           <S.TitleFrameBox $isDesktop={isDesktop}>
             <S.TitleFrameImg2
               $isDesktop={isDesktop}
-              ishoveringWith={titleHover.with}
+              $ishoveringWith={titleHover.with}
             ></S.TitleFrameImg2>
             <S.TitleFrameText2
               $isTablet={isTablet}
               $isDesktop={isDesktop}
-              ishoveringWith={titleHover.with}
+              $ishoveringWith={titleHover.with}
             >
               YOUNGCAMP 함께하기
             </S.TitleFrameText2>
           </S.TitleFrameBox>
           <S.ArrowImgBox $isTablet={isTablet} $isDesktop={isDesktop}>
-            <Link to={"./promotion"}>
+            
               <S.ArrowImg2
                 $isDesktop={isDesktop}
-                ishoveringWith={titleHover.with}
+                $ishoveringWith={titleHover.with}
               ></S.ArrowImg2>
-            </Link>
+           
           </S.ArrowImgBox>
         </S.TitleList2>{" "}
+        </Link>
         <S.TitleLine></S.TitleLine>
       </S.TitleListSet>
     </S.TitleSection>

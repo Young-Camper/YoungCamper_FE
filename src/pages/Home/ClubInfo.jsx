@@ -27,10 +27,10 @@ const ClubInfo = () =>  {
         </S.GalleryBox>
         <S.ClubFrameBox $isTablet={isTablet} $isDesktop={isDesktop}>
           <Link to={"./promotion"}>
-            <S.ClubBtnBox $isTablet={isTablet} $isDesktop={isDesktop} ishoveringClub={isHoveringClub}
+            <S.ClubBtnBox $isTablet={isTablet} $isDesktop={isDesktop} $ishoveringClub={isHoveringClub}
               onMouseOver={handleMouseOver4}
               onMouseOut={handleMouseOut4} >
-              <S.ClubBtnText $isDesktop={isDesktop} ishoveringClub={isHoveringClub}>동아리 보러가기</S.ClubBtnText>
+              <S.ClubBtnText $isDesktop={isDesktop} $ishoveringClub={isHoveringClub}>동아리 보러가기</S.ClubBtnText>
             </S.ClubBtnBox>
             </Link>
         </S.ClubFrameBox>
