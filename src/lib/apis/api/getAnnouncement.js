@@ -3,10 +3,10 @@ import { API } from "../utils";
 export const getAnnouncement = async (id) => {
   try {
     const response = await API.get(`/api/announcements/${id}`);
-    console.log(response.data);
-    return response;
+    // console.log(response.data);
+    return response.data;
   } catch (error) {
-    console.error("API error: ", error);
+    // console.error("API error: ", error);
     throw error;
   }
 };
