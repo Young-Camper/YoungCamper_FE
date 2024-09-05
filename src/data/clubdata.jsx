@@ -31,7 +31,7 @@ export const ClubCardImg = styled.div`
   flex-direction: column;
   flex-shrink: 0;
   background: linear-gradient(180deg, rgba(10, 11, 10, 0.00) 0%,
-  rgba(10, 11, 10, 0.48) 100%), url(${props => props.bgImage}) lightgray 50% / cover no-repeat;
+  rgba(10, 11, 10, 0.48) 100%), url(${props => props.$bgImage}) lightgray 50% / cover no-repeat;
   object-fit: cover;
   display: flex;
   justify-content: flex-end;
@@ -75,20 +75,20 @@ export const CardName = styled.div`
   `;
 
 export const ClubImages = [
-    {id: 1, imageurl: `${mediaUrl}Home/Club/clubEmpty.png`, tag: "경영대학", name: "다붓다붓"},
-    {id: 2, imageurl: `${mediaUrl}Home/Club/club2.png`, tag: "경찰사법대", name: "캠폴스테이"},
-    {id: 3, imageurl: `${mediaUrl}Home/Club/club3.png`, tag: "공과대학", name: "공양미 300석"},
-    {id: 4, imageurl: `${mediaUrl}Home/Club/club4.png`, tag: "문과대학", name: "나를 찾아가는 여행"},
-    {id: 5, imageurl: `${mediaUrl}Home/Club/club5.png`, tag: "미래융합대학", name: "퓨처핸접"},
-    {id: 6, imageurl: `${mediaUrl}Home/Club/clubEmpty.png`, tag: "바이오시스템대학", name: "야단법석"},
-    {id: 7, imageurl: `${mediaUrl}Home/Club/club7.png`, tag: "법과대학", name: "불법단체"},
-    {id: 8, imageurl: `${mediaUrl}Home/Club/clubEmpty.png`, tag: "불교대학", name: "가람수호"},
-    {id: 9, imageurl: `${mediaUrl}Home/Club/club9.png`, tag: "사범대학", name: "불사대"},
-    {id: 10, imageurl: `${mediaUrl}Home/Club/club10.png`, tag: "사회과학대학", name: "템플애플"},
-    {id: 11, imageurl: `${mediaUrl}Home/Club/club11.png`, tag: "약학대학", name: "약사여래"},
-    {id: 12, imageurl: `${mediaUrl}Home/Club/club12.png`, tag: "예술대학", name: "진선미"},
-    {id: 13, imageurl: `${mediaUrl}Home/Club/club13.png`, tag: "이과대학", name: "자연과함께"}, 
-    {id: 14, imageurl: `${mediaUrl}Home/Club/clubEmpty.png`, tag: "AI융합대학", name: "부따이"}, 
-    {id: 15, imageurl: `${mediaUrl}Home/Club/clubEmpty.png`, tag: "일반대학원", name: "동국청년불자회"}, 
-    {id: 16, imageurl: `${mediaUrl}Home/Club/club16.png`, tag: "불교학생회", name: "동불"}, 
+    {id: 1, imageurl: `${mediaUrl}Home/Club/clubEmpty.png`, tag: "경영대학", name: "다붓다붓", link: "./promotion/1"},
+    {id: 2, imageurl: `${mediaUrl}Home/Club/club2.png`, tag: "경찰사법대", name: "캠폴스테이", link: "./promotion/2"},
+    {id: 3, imageurl: `${mediaUrl}Home/Club/club3.png`, tag: "공과대학", name: "공양미 300석", link: "./promotion/3"},
+    {id: 4, imageurl: `${mediaUrl}Home/Club/club4.png`, tag: "문과대학", name: "나를 찾아가는 여행", link: "./promotion/4"},
+    {id: 5, imageurl: `${mediaUrl}Home/Club/club5.png`, tag: "미래융합대학", name: "퓨처핸접", link: "./promotion/5"},
+    {id: 6, imageurl: `${mediaUrl}Home/Club/clubEmpty.png`, tag: "바이오시스템대학", name: "야단법석", link: "./promotion/6"},
+    {id: 7, imageurl: `${mediaUrl}Home/Club/club7.png`, tag: "법과대학", name: "불법단체", link: "./promotion/7"},
+    {id: 8, imageurl: `${mediaUrl}Home/Club/clubEmpty.png`, tag: "불교대학", name: "가람수호", link: "./promotion/8"},
+    {id: 9, imageurl: `${mediaUrl}Home/Club/club9.png`, tag: "사범대학", name: "불사대", link: "./promotion/9"},
+    {id: 10, imageurl: `${mediaUrl}Home/Club/club10.png`, tag: "사회과학대학", name: "템플애플", link: "./promotion/10"},
+    {id: 11, imageurl: `${mediaUrl}Home/Club/club11.png`, tag: "약학대학", name: "약사여래", link: "./promotion/11"},
+    {id: 12, imageurl: `${mediaUrl}Home/Club/club12.png`, tag: "예술대학", name: "진선미", link: "./promotion/12"},
+    {id: 13, imageurl: `${mediaUrl}Home/Club/club13.png`, tag: "이과대학", name: "자연과함께", link: "./promotion/13"}, 
+    {id: 14, imageurl: `${mediaUrl}Home/Club/clubEmpty.png`, tag: "AI융합대학", name: "부따이", link: "./promotion/14"}, 
+    {id: 15, imageurl: `${mediaUrl}Home/Club/clubEmpty.png`, tag: "일반대학원", name: "동국청년불자회", link: "./promotion/15"}, 
+    {id: 16, imageurl: `${mediaUrl}Home/Club/club16.png`, tag: "불교학생회", name: "동불", link: "./promotion/16"}, 
 ]

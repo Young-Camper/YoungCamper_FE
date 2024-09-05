@@ -200,13 +200,13 @@ export const TitlePortal = styled.div`
   background-image: ${(props) =>
     props.$ishoveringYoung
       ? `url(${mediaUrl}Home/Portal_B.png)`
-      : props.ishoveringFestival
+      : props.$ishoveringFestival
       ? `url(${mediaUrl}Home/Portal_B.png)`
       : `url(${mediaUrl}Home/Portal.png)`};
   margin-left: ${(props) =>
     props.$ishoveringYoung
       ? "-650px" /*90+36+488+36*/
-      : props.ishoveringFestival
+      : props.$ishoveringFestival
       ? "-807px" /*90+36+645+36*/
       : "0"};
   background-size: cover;
@@ -221,8 +221,8 @@ export const TitleDawn = styled.div`
   background-size: contain;
   background-position: center;
   position: absolute;
-  opacity: ${(props) => props.ishoveringCamp ? "1" : "0" };
-  margin-left: ${(props) => props.ishoveringCamp ? "426px" : "0" };
+  opacity: ${(props) => props.$ishoveringCamp ? "1" : "0" };
+  margin-left: ${(props) => props.$ishoveringCamp ? "426px" : "0" };
   transition: all 800ms ease-out;
 `;
 
@@ -244,22 +244,22 @@ export const TitleText = styled.div`
   font-family: "MonAExtraBold";
   font-style: normal;
   line-height: normal;
-  display: flex;
+  display: flex;C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="C:\chrome-dev-profile
   justifty-content: flex-start;
 
   @media (min-width: 1024px) {
     margin-left: ${(props) =>
-      props.ishoveringFestival ? "-645px" :
-      props.ishoveringCamp ? "-126px" :
+      props.$ishoveringFestival ? "-645px" :
+      props.$ishoveringCamp ? "-126px" :
       props.$ishoveringYoung ? "-490.32px" :
       "0"};
   
   color: ${(props) =>
     props.$ishoveringYoung
       ? `#0A0B0A`
-      : props.ishoveringCamp
+      : props.$ishoveringCamp
       ? `#0A0B0A`
-      : props.ishoveringFestival
+      : props.$ishoveringFestival
       ? `#0A0B0A`
       : `#FAFAFA)`};
   }
@@ -304,20 +304,20 @@ export const TitleList = styled.div`
   position: relative;
   transition: background 0.3s ease-out;
   background: ${(props) => {
-    if (props.ishoveringPlace) return "#FAFAFA";
-    if (props.ishoveringDate) return "#FAFAFA";
+    if (props.$ishoveringPlace) return "#FAFAFA";
+    if (props.$ishoveringDate) return "#FAFAFA";
     return "";
   }};
   border-top: ${(props) => {
-    if (props.ishoveringPlace) return "none";
-    if (props.ishoveringDate) return "none";
-    if (props.ishoveringWith) return "none";
+    if (props.$ishoveringPlace) return "none";
+    if (props.$ishoveringDate) return "none";
+    if (props.$ishoveringWith) return "none";
     return "2px solid #FAFAFA";
   }};
 `;
 
 export const TitleList2 = styled(TitleList)`
-  background: ${(props) => (props.ishoveringWith ? "#0A0B0A" : "#FAFAFA")};
+  background: ${(props) => (props.$ishoveringWith ? "#0A0B0A" : "#FAFAFA")};
 `;
 
 export const TitleLine = styled.div`
@@ -328,9 +328,9 @@ export const TitleFrameImg = styled.div`
   width: ${(props) => (props.$isDesktop ? "65px" : "45px")};
   height: ${(props) => (props.$isDesktop ? "65px" : "45px")};
   background-image: ${(props) =>
-    props.ishoveringPlace
+    props.$ishoveringPlace
       ? `url(${mediaUrl}Home/Dawn_Blue.png)`
-      : props.ishoveringDate
+      : props.$ishoveringDate
       ? `url(${mediaUrl}Home/Dawn_Blue.png)`
       : `url(${mediaUrl}Home/Dawn.png)`};
   background-size: cover;
@@ -349,9 +349,9 @@ export const TitleFrameText = styled.div`
   width: auto;
   height: auto;
   color: ${(props) =>
-    props.ishoveringPlace
+    props.$ishoveringPlace
       ? "#0068FF"
-      : props.ishoveringDate
+      : props.$ishoveringDate
       ? "#0068FF"
       : "white"};
   transition: color 0.3s ease-out;
@@ -371,7 +371,7 @@ export const TitleFrameText = styled.div`
 `;
 
 export const TitleFrameText2 = styled(TitleFrameText)`
-  color: ${(props) => (props.ishoveringWith ? "white" : "#0068FF")};
+  color: ${(props) => (props.$ishoveringWith ? "white" : "#0068FF")};
 `;
 
 export const TitleFrameBox = styled.div`
@@ -400,9 +400,9 @@ export const ArrowImg = styled.div`
   height: ${(props) => (props.$isDesktop ? "42.845px" : "30px")};
   flex-shrink: 0;
   background-image: ${(props) =>
-    props.ishoveringPlace
+    props.$ishoveringPlace
       ? `url(${mediaUrl}Home/ArrowBlue.png)`
-      : props.ishoveringDate
+      : props.$ishoveringDate
       ? `url(${mediaUrl}Home/ArrowBlue.png)`
       : `url(${mediaUrl}Home/ArrowWhite.png)`};
   background-repeat: no-repeat;
@@ -558,14 +558,14 @@ export const CardButton = styled.div`
   border-radius: var(--XXL, 100px);
   border: 1px solid #000;
   background: var(--Base-Real-White, #fff);
-  border: ${(props) => (props.ishoveringVideo ? "none" : "1px solid black")};
+  border: ${(props) => (props.$ishoveringVideo ? "none" : "1px solid black")};
 
   font-family: MonRegular;
   font-size: ${(props) => (props.$isDesktop ? "20px" : "12px")};
   line-weight: ${(props) => (props.$isDesktop ? "30px" : "18px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.12px")};
   font-style: normal;
-  color: ${(props) => (props.ishoveringVideo ? "white" : "#0A0B0A")};
+  color: ${(props) => (props.$ishoveringVideo ? "white" : "#0A0B0A")};
   transition: all 0.3s ease-out;
 
   &:hover {
@@ -658,7 +658,7 @@ export const ClubBtnBox = styled.div`
   border-radius: 100px;
   border: 1px solid #000;
   background: var(--Base-Real-White, #fff);
-  border: ${(props) => (props.ishoveringClub ? "none" : "1px solid black")};
+  border: ${(props) => (props.$ishoveringClub ? "none" : "1px solid black")};
 
   &:hover {
     background: var(
@@ -670,7 +670,7 @@ export const ClubBtnBox = styled.div`
 export const ClubBtnText = styled.div`
   width: 100%;
   height: auto;
-  color: ${(props) => (props.ishoveringClub ? "white" : "black")};
+  color: ${(props) => (props.$ishoveringClub ? "white" : "black")};
   text-align: center;
 
   font-family: MonRegular;
@@ -745,8 +745,8 @@ export const NoticeBtn = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: var(--XXL, 100px);
-  color: ${(props) => (props.ishovering ? "white" : "black")};
-  border: ${(props) => (props.ishovering ? "none" : "1px solid black")};
+  color: ${(props) => (props.$ishovering ? "white" : "black")};
+  border: ${(props) => (props.$ishovering ? "none" : "1px solid black")};
   text-align: center;
   transition: all 0.2s ease-out;
 
@@ -793,7 +793,7 @@ export const NoticeList = styled.div`
   align-self: stretch;
   border-bottom: 1px solid var(--new-main-primary, #0068ff);
   background: ${(props) =>
-    props.ishovering
+    props.$ishovering
       ? "linear-gradient(102deg, #0068FF 23.99%, #B9FF9C 98.08%)"
       : "white"};
   transition: background 0.2s ease;
@@ -827,15 +827,15 @@ export const NoticeTag = styled.div`
   margin-right: ${(props) => (props.$isDesktop ? "28px" : "22px")};
   font-style: normal;
 
-  color: ${(props) => (props.ishovering ? "#FAFAFA" : "#0068FF")};
-  border-color: ${(props) => (props.ishovering ? "#FAFAFA" : "#0068FF")};
+  color: ${(props) => (props.$ishovering ? "#FAFAFA" : "#0068FF")};
+  border-color: ${(props) => (props.$ishovering ? "#FAFAFA" : "#0068FF")};
   transition: all 0.2s ease-out;
 `;
 
 export const NoticeText = styled.div`
   width: auto;
   height: ${(props) => (props.$isDesktop ? "36px" : "24px")};
-  color: ${(props) => (props.ishovering ? "white" : "black")};
+  color: ${(props) => (props.$ishovering ? "white" : "black")};
   font-family: MonRegular;
   font-size: ${(props) =>
     props.$isDesktop ? "28px" : props.$isTablet ? "18px" : "14px"};
@@ -856,7 +856,7 @@ export const ArrowImg3 = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-image: ${(props) =>
-    props.ishovering
+    props.$ishovering
       ? `url(${mediaUrl}Home/ArrowWhite.png)`
       : `url(${mediaUrl}Home/ArrowBlue.png)`};
   transition: all 0.2s ease-out;
