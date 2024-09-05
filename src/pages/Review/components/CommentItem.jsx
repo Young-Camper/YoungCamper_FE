@@ -1,15 +1,12 @@
-// Comment.js
 import React, { useState } from "react";
 import DeleteModal from "./DeleteModal";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import * as S from "../components/CommentStyle";
 import { deleteReview } from "../../../lib/apis/api/deleteReview";
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, onDelete }) => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
-
-  // 삭제 모달 로직
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleDeleteClick = () => {
@@ -22,16 +19,28 @@ const Comment = ({ comment }) => {
 
   const handleConfirmDelete = async (password) => {
     try {
-      // 리뷰 삭제 API 호출
-      await deleteReview(comment.id, password);
-      alert("리뷰가 성공적으로 삭제되었습니다.");
-      // 여기에 리뷰 삭제 후 목록 갱신을 위한 로직 추가 예정
+      const response = await deleteReview(comment.id, password);
+      if (response.status === 200) {
+        alert("리뷰가 삭제되었습니다.");
+        onDelete(); // prop으로 전달된 삭제 핸들러 호출
+      }
     } catch (error) {
       console.error("리뷰 삭제 실패:", error);
-      alert("리뷰 삭제에 실패하였습니다.");
+      alert("비밀번호가 일치하지 않습니다.");
     }
-    setIsModalOpen(false);
+    setIsModalOpen(false); // 모달을 닫습니다.
   };
+
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
+    return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
+  }
 
   return (
     <S.CommentBox
@@ -45,7 +54,7 @@ const Comment = ({ comment }) => {
           $isTablet={isTablet}
           $isDesktop={isDesktop}
         >
-          {comment.id}
+          {comment.sequence}
         </S.CommentNumber>
       </S.CommentHeader>
       <S.CommentText
@@ -56,15 +65,21 @@ const Comment = ({ comment }) => {
         {comment.content}
       </S.CommentText>
 
-      {/* 이미지가 있을 때만 보여주기 */}
       {comment.imageUrls && comment.imageUrls.length > 0 && (
-        <S.CommentContent>
-          <S.ImageWrapper
-            $isMobile={isMobile}
-            $isTablet={isTablet}
-            $isDesktop={isDesktop}
-            image={comment.imageUrls[0]} // 첫 번째 이미지만 표시 (필요 시 다른 로직 적용 가능)
-          ></S.ImageWrapper>
+        <S.CommentContent
+          $isMobile={isMobile}
+          $isTablet={isTablet}
+          $isDesktop={isDesktop}
+        >
+          {comment.imageUrls.map((url, index) => (
+            <S.ImageWrapper
+              key={index}
+              $isMobile={isMobile}
+              $isTablet={isTablet}
+              $isDesktop={isDesktop}
+              image={url}
+            />
+          ))}
         </S.CommentContent>
       )}
 
@@ -74,7 +89,7 @@ const Comment = ({ comment }) => {
           $isTablet={isTablet}
           $isDesktop={isDesktop}
         >
-          {comment.createdAt}
+          {formatDate(comment.createdAt)}
         </S.CommentDate>
         <S.CommentActions>
           <S.DeleteIconContainer onClick={handleDeleteClick}>
@@ -99,7 +114,7 @@ const Comment = ({ comment }) => {
       {isModalOpen && (
         <DeleteModal
           onClose={handleCloseModal}
-          onConfirm={handleConfirmDelete} // 비밀번호를 받아 삭제 처리
+          onConfirm={handleConfirmDelete}
         />
       )}
     </S.CommentBox>

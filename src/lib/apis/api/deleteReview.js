@@ -14,8 +14,7 @@ export const deleteReview = async (reviewId, password) => {
       },
     });
 
-    // 서버 응답 확인
-    console.log("Review deleted:", response.data);
+   
 
     // 성공적인 응답이 있는 경우 데이터 반환
     if (response.status === 200) {

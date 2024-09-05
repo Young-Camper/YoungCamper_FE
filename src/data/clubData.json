@@ -171,11 +171,11 @@
     "id": 15,
     "name": "동국청년불자회",
     "school": "일반 대학원",
-    "image": "play15.png",
+    "image": "play15.jpeg",
     "intro": "동국대학교에 대학원생 원우들을 대상으로 '동국청년불자회'가 새롭게 설립되었습니다.",
     "direction": "동국청년불자회는 동국대학교의 건학 이념을 실현하고 청년불자를 양성하기 위해 만들어진 단체입니다.",
     "detailImg": "detail15.png",
-    "playimg": ["play15.png"],
+    "playimg": ["play15.jpeg"],
     "applylink": "",
     "insta": ""
   },

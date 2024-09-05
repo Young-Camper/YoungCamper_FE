@@ -91,15 +91,14 @@ export const ProfileCard = styled.div`
 	flex: 1 0 0;
 	box-sizing: border-box;
 	border-radius: 24px;
-
+	
 	position: relative; /* 추가: 상대적 위치 설정 */
 	
 
   	img {
-		background: #F6F6F6;
+		background: #FFF;
 		border-top-left-radius: 12px;
 		border-top-right-radius: 12px;
-		opacity: 0.8;
 		width: 100%;
 		height: ${(props) => props.$isDesktop ? "320px" : "144px" };
 		object-fit: cover;
@@ -113,8 +112,7 @@ export const ProfileCard = styled.div`
 		width: 100%;
 		border-bottom-left-radius: 12px;
 		border-bottom-right-radius: 12px;
-		height: ${(props) => props.$isDesktop ? "96px" : "51px" };
-		padding: ${(props) => props.$isDesktop ? "28px 24px" : "28px 12px" };
+		padding: ${(props) => props.$isDesktop ? "28px 24px" : "8px 12px" };
 		justify-content: space-between;
 		align-items: center;
 		font-family: "MonRegular";
@@ -151,6 +149,7 @@ export const ProfileCard = styled.div`
 
 	.description {
 		display: none; /* 기본적으로 숨김 */
+		width: ${(props) => props.$isDesktop ? "350px" : "180px" };
 		position: absolute; /* 오버레이 효과를 위해 */
 		font-family: "MonRegular";
 		color: #4A5E6D; /* 텍스트 색상 조정 */
@@ -158,9 +157,12 @@ export const ProfileCard = styled.div`
 		font-size: ${(props) => props.$isDesktop ? "20px" : "9px" };
 		line-height: ${(props) => props.$isDesktop ? "22px" : "13px" };
 		letter-spacing: -0.16px;
-		padding: 28px 32px;
-		top: ${(props) => props.$isDesktop ? "138px" : "40px" }; /* 아래로 정렬은 238 */
+		padding: 28px 20px;
+		top: ${(props) => props.$isDesktop ? "40%" : "37%" };
+		left: 50%;
+		transform: translate(-50%, -50%); /* 가로와 세로 모두 중앙에 정렬 */
 		z-index: 2;
+		white-space: pre-line;
 	}
 
 	&:hover {

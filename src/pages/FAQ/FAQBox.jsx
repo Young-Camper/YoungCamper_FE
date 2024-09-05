@@ -20,11 +20,10 @@ const FAQBox = ({ question, answer, isOpen, onClick }) => {
   const closeImage = isMobile ? closeImageMobile : closeImageDesktop;
 
   return (
-    <S.FAQBox onClick={onClick}>
-      <S.FAQContent>
-        <S.FAQText1 $isMobile={isMobile}>
-          <span className="a-text">Q. </span>
-          {question}
+    <S.FAQBox onClick={onClick} $isMobile={isMobile}>
+      <S.FAQContent $isMobile={isMobile}>
+        <S.FAQText1 $isMobile={isMobile} >
+          <span className="a-text">Q. </span>{question}
         </S.FAQText1>
         <S.FAQButton $isMobile={isMobile}>
           <img

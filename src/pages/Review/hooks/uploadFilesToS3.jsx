@@ -1,5 +1,3 @@
-// 콘솔은 API 연결 완료 후 모두 지울 예정입니다.
-
 import axios from "axios";
 import { getPresignedUrl } from "../../../lib/apis/api/getPresignedURL";
 
@@ -12,7 +10,7 @@ import { getPresignedUrl } from "../../../lib/apis/api/getPresignedURL";
 
 export const uploadFilesToS3 = async (uploadedFiles, setUploadMessage) => {
   if (uploadedFiles.length === 0) {
-    setUploadMessage("No file.\n");
+    console.log("No file to upload."); // 파일이 없을 경우 콘솔에 로그 출력
     return [];
   }
 
@@ -53,39 +51,30 @@ export const uploadFilesToS3 = async (uploadedFiles, setUploadMessage) => {
         });
 
         if (uploadResponse.status === 200 || uploadResponse.status === 201) {
-          setUploadMessage(
-            (prevMessage) =>
-              prevMessage + `File ${fileName} uploaded successfully!\n`
-          );
+          // 성공 시 콘솔에 로그 출력
+          console.log(`✔ File ${fileName} uploaded successfully!`);
           const s3FileUrl = `https://youngcamp-dev.s3.ap-northeast-2.amazonaws.com/${fileName}`;
           fileUrls.push(s3FileUrl);
         } else {
-          setUploadMessage(
-            (prevMessage) =>
-              prevMessage + `Failed to upload file ${file.originalName}.\n`
-          );
+          // 실패 시 콘솔에 로그 출력
+          console.log(`✘ Failed to upload file ${file.originalName}.`);
           allFilesUploadedSuccessfully = false;
         }
       } catch (error) {
         console.error("Error uploading file:", error);
-        setUploadMessage(
-          (prevMessage) =>
-            prevMessage + `Error uploading file ${file.originalName}.\n`
-        );
+        console.log(`⚠ Error uploading file ${file.originalName}.`);
         allFilesUploadedSuccessfully = false;
       }
     }
 
     if (!allFilesUploadedSuccessfully) {
-      setUploadMessage(
-        (prevMessage) => prevMessage + "Cannot complete the upload process.\n"
-      );
+      console.log("⚠ Cannot complete the upload process due to some errors.");
     }
 
     return fileUrls; // 성공적으로 업로드된 파일 URL을 반환
   } catch (error) {
     console.error("Error in upload process:", error);
-    setUploadMessage("Error during upload process.");
+    setUploadMessage("Error during upload process."); // 오류 메시지 설정
     return [];
   }
 };

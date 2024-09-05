@@ -56,6 +56,7 @@ export const SubText = styled.div`
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "30px" : "18px")}; /* 150% */
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.06px")};
+  white-space: nowrap;
 `;
 
 export const BannerImg = styled.img`
@@ -68,4 +69,11 @@ export const AdminLogout = styled.div`
   position: fixed;
   top: 10px;
   left: 10px;
+  color: #fff;
+  background-color: #111;
+  z-index: 100;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;

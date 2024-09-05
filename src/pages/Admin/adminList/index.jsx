@@ -11,6 +11,8 @@ import Subtitle from "../../Notification/main/Subtitle";
 import { ContentWrapper } from "../../../style/commonStyle";
 import { DeleteBtn } from "../style";
 import { DeleteCheckBox } from "../style";
+import { useRecoilValue } from "recoil";
+import { adminState } from "../../../context/recoil/adminState";
 
 const index = () => {
   const [loading, setLoading] = useState(false);
@@ -18,6 +20,16 @@ const index = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [ids, setIds] = useState([]);
+
+  const isAdmin = useRecoilValue(adminState);
+
+  // 관리자 여부 확인
+  useEffect(() => {
+    if (!isAdmin) {
+      alert("관리자 권한이 필요합니다.");
+      navigate("/admin42794");
+    }
+  }, [isAdmin, navigate]);
 
   const handleCheckboxChange = (id) => {
     if (ids.includes(id)) {
@@ -48,7 +60,9 @@ const index = () => {
       }
     };
 
-    fetchData();
+    if (isAdmin) {
+      fetchData();
+    }
 
     return () => {
       isMounted = false;
