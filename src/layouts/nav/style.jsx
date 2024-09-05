@@ -189,16 +189,14 @@ export const SideNav = styled.div`
   justify-content: flex-start;
 
   //사이드바 애니메이션
-  animation: modalRight 0.5s linear;
+  animation: modalRight 0.3s linear;
 
   @keyframes modalRight {
     from {
-      transform: translateX(30%);
-      opacity: 0.5;
+      transform: translateX(100%);
     }
     to {
       transform: translateX(0);
-      opacity: 1;
     }
   }
 `;
