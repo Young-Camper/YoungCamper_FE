@@ -73,7 +73,7 @@ export const CommentText = styled.div`
   align-self: stretch;
   color: #4a5e6d;
   font-size: ${(props) => (props.$isMobile ? "12px" : "22px")};
-  font-family: "PretendardRegular";
+  font-family: "MonRegular";
   font-weight: 400;
   line-height: ${(props) => (props.$isMobile ? "20px" : "30px")};
   word-wrap: break-word;
@@ -141,7 +141,7 @@ export const ImageWrapper = styled.div`
   border: 1px solid #ced7de;
   background-size: cover;
   background-position: center;
-  display: flex;
+  display: flex; /* 개별 이미지는 flex로 두고 정렬 */
   justify-content: center;
   align-items: center;
   position: relative;
@@ -156,10 +156,14 @@ export const ImageWrapper = styled.div`
 `;
 
 export const CommentContent = styled.div`
-  display: inline-flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 20px;
+  display: ${(props) => (props.$isMobile ? "grid" : "inline-flex")};
+  grid-template-columns: ${(props) =>
+    props.$isMobile ? "repeat(3, 1fr)" : "none"};
+  gap: 10px;
+  margin-top: ${(props) => (props.$isMobile ? "10px" : "0")};
+  justify-content: ${(props) => (props.$isMobile ? "center" : "flex-start")};
+  align-items: ${(props) => (props.$isMobile ? "flex-start" : "flex-start")};
+  flex-wrap: ${(props) => (props.$isMobile ? "wrap" : "wrap")};
 `;
 
 // DeleteModal 스타일
@@ -178,8 +182,8 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  width: ${(props) => (props.$isMobile ? "340px" : "564px")};
-  height: ${(props) => (props.$isMobile ? "365.59px" : "442px")};
+  width: ${(props) => (props.$isMobile ? "300px" : "564px")};
+  height: ${(props) => (props.$isMobile ? "300px" : "442px")};
   padding: ${(props) => (props.$isMobile ? "10px 20px" : "48px 80px")};
   background: white;
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
@@ -203,12 +207,13 @@ export const ModalText = styled.div`
   font-weight: 400;
   line-height: 38px;
   overflow-wrap: break-word;
+  white-space: nowrap;
 `;
 
 export const PasswordInputWrapper = styled.div`
   display: flex;
-  width: ${(props) => (props.$isMobile ? "300px" : "320px")};
-  height: ${(props) => (props.$isMobile ? "96px" : "96px")};
+  width: ${(props) => (props.$isMobile ? "250px" : "350px")};
+  height: ${(props) => (props.$isMobile ? "40px" : "96px")};
   justify-content: space-between;
   align-items: center;
   gap: 10px;
@@ -219,14 +224,15 @@ export const PasswordInputWrapper = styled.div`
 
 export const PasswordInput = styled.input`
   width: 100%;
-  padding: 0px 150px 0px 0px;
+  padding: 0px;
   color: #474747;
   font-size: 18px;
+  font-size: ${(props) => (props.$isMobile ? "14px" : "18px")};
   font-family: "MonRegular";
   line-height: 24px;
   border: none;
   border-radius: 8px;
-  text-align: center;
+  text-align: left;
   outline: none;
 `;
 
@@ -240,7 +246,7 @@ export const PasswordIcon = styled.div`
 `;
 
 export const PasswordIconImage = styled.img`
-  width: ${(props) => (props.$isMobile ? "32px" : "48px")};
+  width: ${(props) => (props.$isMobile ? "30px" : "50px")};
   height: auto;
 `;
 
