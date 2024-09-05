@@ -112,8 +112,8 @@ export const ProfileCard = styled.div`
 		width: 100%;
 		border-bottom-left-radius: 12px;
 		border-bottom-right-radius: 12px;
-		height: ${(props) => props.$isDesktop ? "96px" : "51px" };
-		padding: ${(props) => props.$isDesktop ? "28px 24px" : "28px 12px" };
+
+		padding: ${(props) => props.$isDesktop ? "28px 24px" : "8px 12px" };
 		justify-content: space-between;
 		align-items: center;
 		font-family: "MonRegular";
