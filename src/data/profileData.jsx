@@ -5,8 +5,8 @@ export const studentCommitteeProfiles = [
 	{ id: 1, name: "류용현", role: "단장", image: `${mediaUrl}About/S1.png`, description: "동국청년불자회 회장" },
 	{ id: 2, name: "최윤정", role: "부단장", image: `${mediaUrl}About/S2.png`, description: "다붓다붓 회장" },
 
-	{ id: 3, name: "박수영", role: "기획국장", image: sampleImage, description: "진선미 회장" },
-	{ id: 4, name: "김민수", role: "기획국원", image: `${mediaUrl}About/S4.png`, description: "템플애플 부회장" },
+	{ id: 3, name: "박수영", role: "기획국장", image: `${mediaUrl}About/S3.png`, description: "진선미 회장" },
+	{ id: 4, name: "김민수", role: "기획국원", image: sampleImage, description: "템플애플 부회장" },
 	{ id: 5, name: "류아라", role: "기획국원", image: sampleImage, description: "동불 부회장" },
 	{ id: 6, name: "문정민", role: "기획국원", image: sampleImage, description: "템플애플 회장" },
 	{ id: 7, name: "신민경", role: "기획국원", image: sampleImage, description: "야단법석 부회장" },
