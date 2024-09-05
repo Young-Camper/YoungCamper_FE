@@ -19,7 +19,6 @@ const CommentSection = ({ refresh }) => {
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(false); // 로딩 상태 추가
   const commentsRef = useRef(null);
-
   const fetchComments = async (page = 1) => {
     setLoading(true); // 로딩 시작
     try {
@@ -38,6 +37,7 @@ const CommentSection = ({ refresh }) => {
     }
   };
 
+  // 새 리뷰 등록 시 무조건 1페이지로 이동 및 페치
   useEffect(() => {
     fetchComments(currentPage);
   }, [currentPage, refresh]);
