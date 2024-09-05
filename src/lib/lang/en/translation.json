@@ -10,9 +10,26 @@
     "about": "Team"
   },
   "notice": {
-    "title": "Announcement",
+    "maintitle": "Announcement",
     "subTitle": "Be sure to check the information below and join us to make this a fun festival for everyone!",
     "search": "Search",
-    "urgent": "Must read"
+    "urgent": "Must read",
+    "num": "No",
+    "title": "Title",
+    "date": "Date",
+    "noresult": "There are no registered posts."
+  },
+  "faq": {
+    "subTitle": "We have compiled answers to frequently asked questions."
+  },
+  "about": {
+    "bannerSubtitle": "Korea's largest\nFestival of Young Buddhists,",
+    "title": "Korea’s largest youth Buddhist festival, <Young Camp>!",
+    "mtitle": "Korea’s largest \nyouth Buddhist festival, \n<Young Camp>!",
+    "subtitle": "A festival where Buddhist clubs come together to share their thoughts and support each other. \nWe invite you to Young Camp.",
+    "msubtitle": "Buddhist clubs come together to share their thoughts, \nA festival to support each other, \nWe invite you to Young Camp.",
+    "content": "Young Camp is an event carefully prepared from start to finish by the Dongguk University Buddhist Student Association Student Planning Committee.\n\nThis Young Camp is a project that originated from the deep intentions of Grand Master Jaseung.\nMonk Jaseung wanted to widely spread the teachings of Buddhism among college students and provide a festival venue where young Buddhists could enjoy themselves to their heart's content.\n\nAfter the monk passed away, Chairman Dongwan took up this wish and provided both material and spiritual support so that the Young Camp could be held successfully.\nThrough this event filled with the monk's warm heart, we hope that you will all newly experience the beauty and depth of Buddhism and enjoy the joy of being together.\nThank you.\n\n\n- All members of the Dongguk University Buddhist Student Association Student Planning Committee -",
+    "mcontent": "Young Camp is an event carefully prepared from start to finish by the Dongguk University Buddhist Student Association Student Planning Committee.\n\nThis Young Camp is a project that originated from the deep intentions of Grand Master Jaseung.\nMonk Jaseung wanted to widely spread the teachings of Buddhism among college students and provide a festival venue where young Buddhists could enjoy themselves to their heart's content.\n\nAfter the monk passed away, Chairman Dongwan took up this wish and provided both material and spiritual support so that the Young Camp could be held successfully.\nThrough this event filled with the monk's warm heart, we hope that you will all newly experience the beauty and depth of Buddhism and enjoy the joy of being together.\n\nThank you.\n\n- All members of the Dongguk University Buddhist Student Association Student Planning Committee -",
+    "btn": "View YoungCamp Schedule"
   }
 }
