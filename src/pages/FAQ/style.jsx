@@ -20,7 +20,7 @@ export const FAQWrapper = styled.div`
 `
 
 export const FAQBox = styled.div`
-  display: flex;
+  display: block;
   width: 100%;
   min-width: 240px;
   min-height: 80px;

@@ -1,8 +1,7 @@
 import React from "react";
 import * as S from "./style";
-import TitleSet from "../../components/ui/TitleSet";
+import TitleSet from "./locTitleSet";
 import TransportContainer from "./TransportContainer";
-import styled from "styled-components";
 import useMediaQueries from "../../hooks/useMediaQueries";
 
 
