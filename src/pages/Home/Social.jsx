@@ -24,21 +24,30 @@ const Social = () => {
   const slidesToShow = getSlidesToShow();
   const slidesToScroll = slidesToShow; 
 
+  const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
+    <S.PrevArrow
+        {...props} // currentSlide를 DOM 요소에 전달하지 않음
+        aria-disabled={currentSlide === 0 ? true : false}
+    />
+  );
+  
+  const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
+    <S.NextArrow
+      {...props} // slideCount를 DOM 요소에 전달하지 않음
+      aria-disabled={currentSlide === slideCount - 1 ? true : false}
+    />
+  );
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 3000,
     slidesToShow: slidesToScroll,
     
     arrows: true,
-    prevArrow: <S.PrevArrow $isDesktop={isDesktop}><S.SocialBtn/></S.PrevArrow>,
-    nextArrow: <S.NextArrow $isDesktop={isDesktop}><S.SocialBtn/></S.NextArrow>,
+    prevArrow: <SlickArrowLeft $isDesktop={isDesktop}><S.SocialBtn/></SlickArrowLeft>,
+    nextArrow: <SlickArrowRight $isDesktop={isDesktop}><S.SocialBtn/></SlickArrowRight>,
   };
-
-
-
-  /* const result = selectedNode.style.removeProperty(width); */
 
   return (
     
@@ -61,10 +70,14 @@ const Social = () => {
                 >
                   <S.FrameCard $isDesktop={isDesktop}>
                     <S.FrameBox $isDesktop={isDesktop}>
-                      <S.IconImg
+                    {/* {console.log('social.image matches:', social.image)} */}
+                     {social.image === `${mediaUrl}Home/WebIcon.png`
+                      ? <S.WebImg $isDesktop={isDesktop} $IconImage={social.image} />
+                      : <S.IconImg $isDesktop={isDesktop} $IconImage={social.image} />}
+                      {/* <S.IconImg
                         $isDesktop={isDesktop}
                         $IconImage={social.image}
-                      />
+                      /> */}
                       <S.FrameText $isDesktop={isDesktop}>
                         {social.name}
                       </S.FrameText>
@@ -78,6 +91,7 @@ const Social = () => {
                       </S.FrameImg>
                     </S.FrameBox>
                   </S.FrameCard>
+                  
                 </S.SocialFrame>
               ))}
             </Slider>

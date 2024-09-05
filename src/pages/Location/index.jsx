@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import MainTitle from "../../components/ui/MainTitle";
-import { ContentWrapper } from "../../style/commonStyle";
 import Attention from "../../components/ui/Attention";
 import LocMap from "./LocMap";
 import Transport from "./transport"
+
+import * as S from "./style";
 
 import useMediaQueries from "../../hooks/useMediaQueries";
 
@@ -18,20 +19,15 @@ const index = () => {
         mainText="장소안내"
         subText="장충체육관에서 여러분을 기다립니다."
       />
-      
-      { isDesktop ? (
-      <ContentWrapper>
+      <S.Wrapper
+        $isMobile={isMobile}
+        $isTablet={isTablet}
+        $isDesktop={isDesktop}
+      >
         <Transport />
         <LocMap />
         <Attention />
-      </ContentWrapper>
-  ) : (
-    <>
-      <Transport />
-      <LocMap />
-      <Attention />
-    </>
-  )}
+      </S.Wrapper>
   </>
   );
 };

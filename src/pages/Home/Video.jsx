@@ -31,9 +31,9 @@ const Video = () => {
         <S.VideoBox
           $isTablet={isTablet}
           $isDesktop={isDesktop}
-          src={`${mediaUrl}Home/YoungcampVideo.mp4`}
+          src={`${mediaUrl}Home/YoungcampVideoF.MOV`}
           autoPlay loop muted />
-        <Link to={`https://www.dongguk.edu/main#none`} >
+        <Link to={`https://youtube.com/@youngcamp_dgu?si=varFM5dZcDp2CaaU`} >
         <S.VideoBtn $isTablet={isTablet} $isDesktop={isDesktop}>
           영상 보러가기
         </S.VideoBtn>
@@ -61,7 +61,7 @@ const Video = () => {
           
             <S.CardButton
               $isDesktop={isDesktop}
-              ishoveringVideo={isHoveringVideo}
+              $ishoveringVideo={isHoveringVideo}
               onMouseOver={handleMouseOver}
               onMouseOut={handleMouseOut}
             >

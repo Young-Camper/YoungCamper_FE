@@ -1,28 +1,53 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import { getAnnouncement } from "../../../lib/apis/api/getAnnouncement";
 
 import * as S from "../../Notification/detail/Style";
 import TitleSet from "../../../components/ui/TitleSet";
 import { ContentWrapper } from "../../../style/commonStyle";
+import Loading from "../../../components/ui/Loading";
+import { useRecoilValue } from "recoil";
+import { adminState } from "../../../context/recoil/adminState";
 
 const index = () => {
   const { isDesktop } = useMediaQueries();
   const { id } = useParams();
   const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
+  const isAdmin = useRecoilValue(adminState);
+
+  // 관리자 여부 확인
+  useEffect(() => {
+    if (!isAdmin) {
+      alert("관리자 권한이 필요합니다.");
+      navigate("/admin42794");
+    }
+  }, [isAdmin, navigate]);
 
   // ====== api get ======
   useEffect(() => {
     const getData = async () => {
-      const response = await getAnnouncement(id);
-      setData(response.data);
+      try {
+        const response = await getAnnouncement(id);
+        setData(response.data.data);
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching announcement:", err);
+        setLoading(false);
+      }
     };
-    getData();
-    console.log("id:", id);
-  }, []);
 
-  return (
+    if (id && isAdmin) {
+      getData();
+    }
+  }, [id, isAdmin]);
+
+  return loading ? (
+    <Loading />
+  ) : (
     <div>
       <ContentWrapper $isDesktop={isDesktop}>
         <TitleSet mainText="상세 페이지" />

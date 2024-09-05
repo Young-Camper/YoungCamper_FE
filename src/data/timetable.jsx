@@ -143,14 +143,14 @@ export const lineup = [
     name: "다이나믹 듀오",
     time: "20:30",
     music: [
-      {
-        title: "고백",
-        youtubeURL: "https://www.youtube.com/watch?v=k6CBMCI07WY",
-      },
-      {
-        title: "불꽃놀이",
-        youtubeURL: "https://www.youtube.com/watch?v=Yb0nyLIfqf8",
-      },
+      // {
+      //   title: "고백",
+      //   youtubeURL: "https://www.youtube.com/watch?v=k6CBMCI07WY",
+      // },
+      // {
+      //   title: "불꽃놀이",
+      //   youtubeURL: "https://www.youtube.com/watch?v=Yb0nyLIfqf8",
+      // },
       {
         title: "거기서 거기",
         youtubeURL: "https://www.youtube.com/watch?v=Fs_p7BHfzO0",

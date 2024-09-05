@@ -18,8 +18,8 @@ const index = () => {
 
   // 소개글 변경될 수 있어 구분해둠
   const subtitle = activeTab === 'students' 
-  ? "영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다." 
-  : "영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다.";
+  ? "각 단과대학 불교동아리 회장단으로 구성되어 있습니다." 
+  : "본 홈페이지를 제작한 TF팀으로 동국대학교 학생들로 구성되어 있습니다.";
 
   const itemsPerPage = 9; // 페이지당 항목 수
   const indexOfLastProfile = currentPage * itemsPerPage;
@@ -36,7 +36,7 @@ const index = () => {
     <>
       <MainTitle
         mainText="기획단"
-        subText="영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다."
+        subText=""
       />
       <S.ContentWrapper $isDesktop={isDesktop}>
         <S.TabBar $isDesktop={isDesktop}>
