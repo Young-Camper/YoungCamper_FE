@@ -61,7 +61,7 @@ const Video = () => {
           
             <S.CardButton
               $isDesktop={isDesktop}
-              ishoveringVideo={isHoveringVideo}
+              $ishoveringVideo={isHoveringVideo}
               onMouseOver={handleMouseOver}
               onMouseOut={handleMouseOut}
             >
