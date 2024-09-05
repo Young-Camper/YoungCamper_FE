@@ -21,5 +21,5 @@ export const ContentWrapper = styled.div`
   : props.$isTablet ? "48px"
   : "50px 0"};
 
-  gap: ${(props)=> props.$isDesktop ? "100px": "50px"};
+  gap: ${(props)=> props.$isIntro ?"64px":props.$isDesktop ? "100px": "50px"};
 `;

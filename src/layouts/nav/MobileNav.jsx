@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import * as S from "./style";
 import useMediaQueries from "../../hooks/useMediaQueries";
@@ -82,6 +82,9 @@ const MobileNav = ({
                         $isTablet={isTablet}
                         to={`/${path}`}
                         onClick={() => setModalOpen(false)}
+                        // onMouseOver={() => handleMouseOver("date")}
+                        // onMouseOut={() => handleMouseOut("date")}
+                        // ishoveringDate={titleHover.date}
                       >
                         {/* 양 옆에 이미지 추가 */}
                         {path === "promotion" ? (

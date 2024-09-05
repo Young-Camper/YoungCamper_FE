@@ -39,10 +39,10 @@ const CTABanner = () => {
         <S.GridTitle $isTablet={isTablet} $isDesktop={isDesktop}>JOIN WITH US !</S.GridTitle>
         <S.GridBtnFrame $isTablet={isTablet} $isDesktop={isDesktop}>
         <Link to={"/promotion"}>
-          <S.GridBtn $isDesktop={isDesktop} ishoveringCTA={isHoveringCTA}
+          <S.GridBtn $isDesktop={isDesktop} $ishoveringCTA={isHoveringCTA}
               onMouseOver={handleMouseOver10}
               onMouseOut={handleMouseOut10}>
-            <S.GridBtnText $isDesktop={isDesktop} ishoveringCTA={isHoveringCTA}>영캠프 참가하기</S.GridBtnText>
+            <S.GridBtnText $isDesktop={isDesktop} $ishoveringCTA={isHoveringCTA}>영캠프 참가하기</S.GridBtnText>
           </S.GridBtn>
         </Link>
         </S.GridBtnFrame>

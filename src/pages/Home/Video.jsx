@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import * as S from "./HomeStyle";
-import VideoSrc from "../../assets/video/video-1.mp4";
 import useMediaQueries from "../../hooks/useMediaQueries";
 import { Link } from "react-router-dom";
+
+const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
 const Video = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
@@ -30,17 +31,14 @@ const Video = () => {
         <S.VideoBox
           $isTablet={isTablet}
           $isDesktop={isDesktop}
-          src={VideoSrc}
-          autoPlay
-          loop
-          muted
-        >
-          <Link to={`https://www.dongguk.edu/main#none`} style={{ width: "100%" }}>
-          <S.VideoBtn $isTablet={isTablet} $isDesktop={isDesktop}>
-            영상 보러가기
-          </S.VideoBtn>
-          </Link>
-        </S.VideoBox>
+          src={`${mediaUrl}Home/YoungcampVideoF.MOV`}
+          autoPlay loop muted />
+        <Link to={`https://youtube.com/@youngcamp_dgu?si=varFM5dZcDp2CaaU`} >
+        <S.VideoBtn $isTablet={isTablet} $isDesktop={isDesktop}>
+          영상 보러가기
+        </S.VideoBtn>
+        </Link>
+          
       </S.VideoSectionBox>
       <S.CardSecionBox $isTablet={isTablet} $isDesktop={isDesktop}>
         <S.CardText1 $isTablet={isTablet} $isMobile={isMobile}>
@@ -63,7 +61,7 @@ const Video = () => {
           
             <S.CardButton
               $isDesktop={isDesktop}
-              ishoveringVideo={isHoveringVideo}
+              $ishoveringVideo={isHoveringVideo}
               onMouseOver={handleMouseOver}
               onMouseOut={handleMouseOut}
             >

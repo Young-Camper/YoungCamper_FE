@@ -155,7 +155,7 @@ export const ClubDetail = styled.div`
 
 export const ContentWrapper = styled.div`
   padding: ${(props) =>
-    props.$isMobile ? "0px 24px" : props.$isTablet ? "0px 72px" : "0px"};
+    props.$isMobile ? "0px 24px" : props.$isTablet ? "0px 48px" : "0px"};
 `;
 
 //ClubImage
@@ -221,7 +221,7 @@ export const ClubImage = styled.div`
 export const Wrapper = styled.div`
   padding: ${(props) =>
     props.$isMobile
-      ? "48px 24px 24px 24px"
+      ? "48px 0px 24px 0px"
       : props.$isTablet
       ? "48px 24px 24px 24px"
       : "36px 0px 48px 0px"};
@@ -245,6 +245,8 @@ export const TextAndButton = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 24px;
+  height: ${(props) => (props.$isDesktop ? "80px" : "45px")};
 `;
 
 export const SchoolText = styled.div`

@@ -12,6 +12,7 @@ import { languageState } from "./context/recoil/languageState";
 import { useTranslation } from "react-i18next";
 import useMediaQueries from "./hooks/useMediaQueries";
 import ScrollToTop from "./style/ScrollToTop";
+import AdminCheck from "./components/ui/AdminCheck";
 
 const BackGroundColor = styled.div`
   width: 100vw;
@@ -49,6 +50,7 @@ const Layout = () => {
 
   return (
     <BackGroundColor>
+      <AdminCheck />
       <Nav />
       <Wrapper $isDesktop={isDesktop}>
         <Outlet /> {/* pages의 페이지가 적용 */}
