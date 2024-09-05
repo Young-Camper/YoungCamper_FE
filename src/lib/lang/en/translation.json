@@ -74,5 +74,9 @@
     "com": "student planning committee",
     "comIntro": "Young Camp is a special festival hosted jointly by Buddhist clubs at Korean universities.",
     "maker": "Young Camper"
+  },
+  "footer": {
+    "title": "Dongguk University Young Camp",
+    "location": "Dongguk University, 30 Pildong-ro 1-gil, Jung-gu, Seoul"
   }
 }
