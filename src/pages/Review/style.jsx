@@ -21,7 +21,7 @@ export const TitleWrapper = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   padding: ${(props) =>
-    props.$isMobile ? "40px 24px" : props.$isTablet ? "30px" : "0px"};
+    props.$isMobile ? "40px 24px 0 24px" : props.$isTablet ? "30px" : "0px"};
   box-sizing: border-box;
   row-gap: 24px;
   font-family: "MonSemiBold";

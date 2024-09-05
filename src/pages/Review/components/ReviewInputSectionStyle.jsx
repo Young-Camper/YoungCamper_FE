@@ -40,7 +40,7 @@ export const ReviewInput = styled.textarea`
     props.$isMobile ? "12px" : props.$isTablet ? "12px" : "20px"};
   font-family: "MonRegular";
   font-weight: 400;
-  line-height: 30px;
+  line-height: 20px;
   word-wrap: break-word;
   border: none;
   border-radius: 8px;
