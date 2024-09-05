@@ -1,4 +1,4 @@
-import {React, useEffect, useState} from "react";
+import { React, useEffect, useState } from "react";
 import * as S from "./HomeStyle";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -13,24 +13,30 @@ const Social = () => {
 
   const getSlidesToShow = () => {
     if (window.matchMedia("(min-width: 0) and (max-width: 399px)").matches) {
-      return 1.2; 
-    } else if (window.matchMedia("(min-width: 400px) and (max-width: 1000px)").matches) {
-      return 3; 
-    } else (window.matchMedia("(min-width: 1001px)").matches) 
-      return 2.2; 
-
+      return 1.2;
+    } else if (
+      window.matchMedia("(min-width: 400px) and (max-width: 490px)").matches
+    ) {
+      return 2;
+    } else if (
+      window.matchMedia("(min-width: 491px) and (max-width: 1000px)").matches
+    ) {
+      return 3;
+    } else {
+      return 2.2;
+    }
   };
-  
+
   const slidesToShow = getSlidesToShow();
-  const slidesToScroll = slidesToShow; 
+  const slidesToScroll = slidesToShow;
 
   const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
     <S.PrevArrow
-        {...props} // currentSlide를 DOM 요소에 전달하지 않음
-        aria-disabled={currentSlide === 0 ? true : false}
+      {...props} // currentSlide를 DOM 요소에 전달하지 않음
+      aria-disabled={currentSlide === 0 ? true : false}
     />
   );
-  
+
   const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
     <S.NextArrow
       {...props} // slideCount를 DOM 요소에 전달하지 않음
@@ -43,14 +49,21 @@ const Social = () => {
     infinite: false,
     speed: 3000,
     slidesToShow: slidesToScroll,
-    
+
     arrows: true,
-    prevArrow: <SlickArrowLeft $isDesktop={isDesktop}><S.SocialBtn/></SlickArrowLeft>,
-    nextArrow: <SlickArrowRight $isDesktop={isDesktop}><S.SocialBtn/></SlickArrowRight>,
+    prevArrow: (
+      <SlickArrowLeft $isDesktop={isDesktop}>
+        <S.SocialBtn />
+      </SlickArrowLeft>
+    ),
+    nextArrow: (
+      <SlickArrowRight $isDesktop={isDesktop}>
+        <S.SocialBtn />
+      </SlickArrowRight>
+    ),
   };
 
   return (
-    
     <S.SocialSection $isTablet={isTablet} $isDesktop={isDesktop}>
       <S.SocialContainer $isDesktop={isDesktop}>
         <S.SocialTop $isTablet={isTablet} $isDesktop={isDesktop}>
@@ -70,10 +83,18 @@ const Social = () => {
                 >
                   <S.FrameCard $isDesktop={isDesktop}>
                     <S.FrameBox $isDesktop={isDesktop}>
-                    {/* {console.log('social.image matches:', social.image)} */}
-                     {social.image === `${mediaUrl}Home/WebIcon.png`
-                      ? <S.WebImg $isDesktop={isDesktop} $IconImage={social.image} />
-                      : <S.IconImg $isDesktop={isDesktop} $IconImage={social.image} />}
+                      {/* {console.log('social.image matches:', social.image)} */}
+                      {social.image === `${mediaUrl}Home/WebIcon.png` ? (
+                        <S.WebImg
+                          $isDesktop={isDesktop}
+                          $IconImage={social.image}
+                        />
+                      ) : (
+                        <S.IconImg
+                          $isDesktop={isDesktop}
+                          $IconImage={social.image}
+                        />
+                      )}
                       {/* <S.IconImg
                         $isDesktop={isDesktop}
                         $IconImage={social.image}
@@ -91,7 +112,6 @@ const Social = () => {
                       </S.FrameImg>
                     </S.FrameBox>
                   </S.FrameCard>
-                  
                 </S.SocialFrame>
               ))}
             </Slider>
