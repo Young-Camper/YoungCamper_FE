@@ -3,16 +3,18 @@ import styled from "styled-components";
 import useMediaQueries from "../../hooks/useMediaQueries";
 
 const Wrapper = styled.div`
+  width: 100%;
   display: flex;
-  padding: ${(props) => (props.$isDesktop ? "48px" : "30px")};
+  padding: ${(props) => (props.$isMobile ? "24px" : "48px")};
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-self: stretch;
 `;
 const Container = styled.div`
+  width: 100%;
   display: flex;
-  padding: ${(props) => (props.$isDesktop ? "48px" : "20px")};
+  padding: ${(props) => (props.$isDesktop ? "48px" : "36px")};
   flex-direction: column;
   justify-content: center;
   gap: 10px;
@@ -38,7 +40,7 @@ const SubText = styled.div`
   letter-spacing: -0.45px;
 `;
 
-const Attention = () => {
+const Attention = ({ attention1, attention2, attention3 }) => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
 
   return (
@@ -60,14 +62,11 @@ const Attention = () => {
           $isTablet={isTablet}
           $isDesktop={isDesktop}
         >
-          ∙ 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한
-          축제입니다. 젊은이들의 에너지와 불교의 깊은 가르침이 어우러져 새로운
-          경험과 영감을 제공합니다. <br />
-          ∙ 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한
-          축제입니다. 젊은이들의 에너지와 불교의 깊은 가르침이 어우러져 새로운
-          경험과 영감을 제공합니다. <br />∙ 영캠프는 대한민국 대학 불교
-          동아리들이 연합하여 주최하는 특별한 축제입니다. 젊은이들의 에너지와
-          불교의 깊은 가르침이 어우러져 새로운 경험과 영감을 제공합니다.
+          {attention1}
+          <br />
+          {attention2}
+          <br />
+          {attention3}
         </SubText>
       </Container>
     </Wrapper>

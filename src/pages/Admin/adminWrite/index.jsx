@@ -46,7 +46,7 @@ const index = () => {
 
   // ====== api post ======
   const handleAdminPost = async () => {
-    if (!isAdmin) {
+    if (isAdmin) {
       const check = confirm("작성하시겠습니까?");
       if (check) {
         try {
