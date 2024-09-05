@@ -31,7 +31,7 @@ const Video = () => {
         <S.VideoBox
           $isTablet={isTablet}
           $isDesktop={isDesktop}
-          src={`${mediaUrl}Home/YoungcampVideoF.MOV`}
+          src={`${mediaUrl}Home/YoungcampVideoF.mov`}
           autoPlay loop muted />
         <Link to={`https://youtube.com/@youngcamp_dgu?si=varFM5dZcDp2CaaU`} >
         <S.VideoBtn $isTablet={isTablet} $isDesktop={isDesktop}>
