@@ -58,7 +58,7 @@ const useImageUpload = (maxFiles = 5) => {
 
   return {
     imagePreviews,
-    setImagePreviews, // 확인: setImagePreviews 반환
+    setImagePreviews,
     inputRef,
     handleButtonClick,
     handleFileChange,
@@ -66,6 +66,7 @@ const useImageUpload = (maxFiles = 5) => {
     uploadedFiles,
     uploadMessage,
     setUploadMessage,
+    resetUpload,
   };
 };
 

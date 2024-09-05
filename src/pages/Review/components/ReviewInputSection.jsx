@@ -7,9 +7,7 @@ import useImageUpload from "../hooks/useImageUpload";
 import { uploadFilesToS3 } from "../hooks/uploadFilesToS3";
 import { postReview } from "../../../lib/apis/api/postReview";
 import Loading from "../../../components/ui/Loading"; // 컴포넌트 이름 대문자로 수정
-
-// 비속어 필터링 라이브러리
-import Filter from "badwords-ko";
+import Filter from "badwords-ko"; // 비속어 필터링 라이브러리
 
 const ReviewInputSection = ({ onSuccess }) => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
@@ -76,8 +74,9 @@ const ReviewInputSection = ({ onSuccess }) => {
       setUploadMessage("이미지 업로드 중입니다...");
       try {
         fileUrls = await uploadFilesToS3(uploadedFiles, setUploadMessage);
+        resetUpload(); // 업로드 후 파일 및 미리보기 초기화
       } catch (error) {
-        setModalMessage("이미지 업로드에 실패했습니다.");
+        alert("이미지 업로드에 실패했습니다.");
         setShowModal(true);
         setLoading(false);
         return;
@@ -99,10 +98,11 @@ const ReviewInputSection = ({ onSuccess }) => {
         alert("감사합니다. 영캠프 후기가 등록되었습니다.");
         setReview("");
         setPassword("");
+        resetUpload(); // 이미지 미리보기 초기화
         setUploadMessage("");
         onSuccess(); // 부모 컴포넌트에 성공 알림
       } else {
-        setModalMessage("리뷰 제출에 실패했습니다.");
+        alert("리뷰 등록에 실패하였습니다.");
         setShowModal(true);
       }
     } catch (error) {

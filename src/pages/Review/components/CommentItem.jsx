@@ -20,9 +20,21 @@ const Comment = ({ comment, onDelete }) => {
   const handleConfirmDelete = async (password) => {
     try {
       const response = await deleteReview(comment.id, password);
-      if (response.status === 200) {
+
+      if ((response.status = 200)) {
         alert("리뷰가 삭제되었습니다.");
-        onDelete(); // prop으로 전달된 삭제 핸들러 호출
+
+        if (typeof onDelete === "function") {
+          console.log("onDelete 함수가 호출됩니다."); // 추가 디버깅 로그
+          onDelete(comment.id); // 삭제된 댓글의 ID를 부모 컴포넌트로 전달
+        } else {
+          console.error("onDelete가 함수가 아닙니다. onDelete:", onDelete);
+        }
+      } else {
+        console.error(
+          `Unexpected response structure or status: ${response.data}`
+        );
+        alert("리뷰 삭제에 실패했습니다.");
       }
     } catch (error) {
       console.error("리뷰 삭제 실패:", error);

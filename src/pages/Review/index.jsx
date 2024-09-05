@@ -19,7 +19,6 @@ const Index = () => {
 
   // 성공 알림 콜백 함수
   const handleSuccess = () => {
-    console.log("리랜더링 전달 성공!"); // 디버깅용 로그
     setRefreshComments((prev) => !prev); // 상태를 토글하여 CommentSection 재렌더링 유도
   };
 
