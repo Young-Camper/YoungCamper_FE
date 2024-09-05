@@ -5,11 +5,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import useMediaQueries from "../../hooks/useMediaQueries";
 import socialData from "../../data/social.jsx";
+import { useTranslation } from "react-i18next";
 
 const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
 const Social = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
+  const { t } = useTranslation();
 
   const getSlidesToShow = () => {
     if (window.matchMedia("(min-width: 0) and (max-width: 399px)").matches) {
@@ -68,7 +70,7 @@ const Social = () => {
       <S.SocialContainer $isDesktop={isDesktop}>
         <S.SocialTop $isTablet={isTablet} $isDesktop={isDesktop}>
           <S.SocialTitle $isTablet={isTablet} $isDesktop={isDesktop}>
-            최근 소식을 팔로우해보세요
+            {t("home.follow")}
           </S.SocialTitle>
         </S.SocialTop>
         <S.SocialBottom $isTablet={isTablet} $isDesktop={isDesktop}>

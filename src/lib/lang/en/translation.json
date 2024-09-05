@@ -78,5 +78,23 @@
   "footer": {
     "title": "Dongguk University Young Camp",
     "location": "Dongguk University, 30 Pildong-ro 1-gil, Jung-gu, Seoul"
+  },
+  "home": {
+    "title": "who’s our main character",
+    "location": "Jangchung Gymnasium",
+    "with": "Join with YoungCamp",
+    "video": "Going to watch a video",
+    "welcome": "Do you want to escape your boring daily life?\n\nCreated jointly by the Dongguk University Buddhist Club,\nWelcome to Young Camp, a special festival that only lasts for one day!",
+    "mwelcome": "Do you want to escape your boring daily life?\n\nCreated jointly by the Dongguk University Buddhist Club,\nWelcome to Young Camp, a special festival that only lasts for one day!",
+    "more": "Learn more about Young Camp",
+    "club": "Join with YoungCamp Club",
+    "moreClub": "Go to see the club",
+    "notice": "Check out our notices",
+    "noticeTagY": "must read",
+    "noticeTagN": "entire",
+    "noNotice": "no notice",
+    "moreNotice": "Learn more",
+    "follow": "Follow the latest news",
+    "join": "Join in YoungCamp"
   }
 }
