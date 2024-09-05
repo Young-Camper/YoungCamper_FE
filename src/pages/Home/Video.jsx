@@ -47,12 +47,11 @@ const Video = () => {
         
         <S.CardDetailBox $isMobile={isMobile}>
           <S.CardText2 $isTablet={isTablet} $isDesktop={isDesktop}>
-            지루한 일상을 탈출하고 싶으신가요?{"\n"}
+          지루한 일상을 탈출하고 싶으신가요?{"\n"}
             {"\n"}
-            동국대학교 연합 불교 동아리에서 연합해서 만든, 단 하루뿐인 특별한
-            축제,{"\n"}
+            동국대학교 연합 불교 동아리에서  {isMobile && <br />}연합해서 만든, {"\n"}
             {"\n"}
-            영캠프에 오신 걸 환영합니다!
+            단 하루뿐인 특별한 축제, {isMobile && <br />}영캠프에 오신 걸 환영합니다!
           </S.CardText2>
         </S.CardDetailBox>
         

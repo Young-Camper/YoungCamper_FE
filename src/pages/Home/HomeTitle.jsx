@@ -207,7 +207,7 @@ const HomeTitle = () => {
               $isDesktop={isDesktop}
               $ishoveringWith={titleHover.with}
             >
-              YOUNGCAMP 함께하기
+              영캠프 함께하기
             </S.TitleFrameText2>
           </S.TitleFrameBox>
           <S.ArrowImgBox $isTablet={isTablet} $isDesktop={isDesktop}>
