@@ -58,7 +58,7 @@ const useImageUpload = (maxFiles = 5) => {
 
   return {
     imagePreviews,
-    setImagePreviews,
+    setImagePreviews, // 확인: setImagePreviews 반환
     inputRef,
     handleButtonClick,
     handleFileChange,
@@ -66,7 +66,6 @@ const useImageUpload = (maxFiles = 5) => {
     uploadedFiles,
     uploadMessage,
     setUploadMessage,
-    resetUpload, // 추가된 초기화 함수
   };
 };
 

@@ -32,7 +32,11 @@ const index = () => {
           setModalOpen={setModalOpen}
           onArtistClick={handleOpenModal} // 모달 열기 핸들러 전달
         />
-        <Attention />
+        <Attention
+          attention1="∙ 안전을 위해 스태프의 안내를 따라주세요!"
+          attention2="∙ 퇴장 시 재 입장이 불가합니다!"
+          attention3="∙ 공연장 내 물품 보관이 불가합니다!"
+        />
       </ContentWrapper>
       {modalOpen && (
         <ArtistModal artist={clickedArtist} setModalOpen={setModalOpen} />

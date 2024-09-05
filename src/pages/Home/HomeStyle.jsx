@@ -295,6 +295,9 @@ export const TitleList = styled.div`
       : props.$isTablet
       ? "12px 96px"
       : "12px 16.72px"};
+  @media only screen and (min-width: 1024px) and (max-width: 1300px) {
+    padding: 12px 180px;
+  }
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -364,7 +367,7 @@ export const TitleFrameText = styled.div`
     props.$isDesktop ? "-0.38px" : props.$isTablet ? "-1.6px" : "-1.2px"};
 
   @media only screen and (min-width: 1024px) and (max-width: 1100px) {
-    font-size: 31px;
+    font-size: 35px;
   }
 `;
 
