@@ -6,11 +6,10 @@ import useMediaQueries from "../../../hooks/useMediaQueries";
 import useImageUpload from "../hooks/useImageUpload";
 import { uploadFilesToS3 } from "../hooks/uploadFilesToS3";
 import { postReview } from "../../../lib/apis/api/postReview";
+import Loading from "../../../components/ui/Loading"; // 컴포넌트 이름 대문자로 수정
+import Filter from "badwords-ko"; // 비속어 필터링 라이브러리
 
-// lib(비속어 필터링)
-import Filter from "badwords-ko";
-
-const ReviewInputSection = () => {
+const ReviewInputSection = ({ onSuccess }) => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
   const filter = new Filter();
@@ -19,10 +18,10 @@ const ReviewInputSection = () => {
   const [password, setPassword] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
+  const [loading, setLoading] = useState(false); // 초기 로딩 상태 false로 수정
 
   const { handleInputButtonClick } = ReviewValidation();
 
-  // 이미지 업로드 훅 사용
   const {
     imagePreviews,
     inputRef,
@@ -33,48 +32,55 @@ const ReviewInputSection = () => {
     setImagePreviews,
     uploadMessage,
     setUploadMessage,
+    resetUpload, // 추가된 초기화 함수
   } = useImageUpload(5);
 
-  // Review post 처리
+  // 리뷰 등록 API 처리
   const handleSubmit = async () => {
+    setLoading(true); // 로딩 시작
+
     handleInputButtonClick(review, password);
 
     // 필수 입력 확인
     if (!password && !review) {
       setModalMessage(
-        "비밀번호와 후기를 작성하지 않았습니다.\n숫자 4자리 비밀번호와 500자 이내의 후기를 작성해주세요."
-      );
-      setShowModal(true);
-      return;
-    }
-
-    if (!review) {
-      setModalMessage(
         "후기를 작성하지 않았습니다.\n500자 이내 후기를 작성해주세요."
       );
       setShowModal(true);
+      setLoading(false);
       return;
     }
 
     // 리뷰 텍스트 길이 확인
     if (review.length < 10) {
-      setModalMessage("10자리 이상 입력해주세요.");
+      setModalMessage("10자 이상 후기를 작성해주세요.");
       setShowModal(true);
+      setLoading(false);
       return;
     }
 
-    if (!password) {
+    // 비밀번호 길이 확인
+    if (password.length < 4) {
       setModalMessage(
         "비밀번호를 입력하지 않았습니다.\n숫자 4자리 비밀번호를 입력해주세요."
       );
       setShowModal(true);
+      setLoading(false);
       return;
     }
 
     let fileUrls = [];
     if (uploadedFiles.length > 0) {
       setUploadMessage("이미지 업로드 중입니다...");
-      fileUrls = await uploadFilesToS3(uploadedFiles, setUploadMessage);
+      try {
+        fileUrls = await uploadFilesToS3(uploadedFiles, setUploadMessage);
+        resetUpload(); // 업로드 후 파일 및 미리보기 초기화
+      } catch (error) {
+        setModalMessage("이미지 업로드에 실패했습니다.");
+        setShowModal(true);
+        setLoading(false);
+        return;
+      }
     }
 
     const reviewData = {
@@ -89,11 +95,12 @@ const ReviewInputSection = () => {
       const response = await postReview(reviewData);
 
       if (response) {
-        alert("Review submitted successfully!");
+        alert("감사합니다. 영캠프 후기가 등록되었습니다.");
         setReview("");
         setPassword("");
-        setImagePreviews([]);
+        resetUpload(); // 이미지 미리보기 초기화
         setUploadMessage("");
+        onSuccess(); // 부모 컴포넌트에 성공 알림
       } else {
         setModalMessage("리뷰 제출에 실패했습니다.");
         setShowModal(true);
@@ -112,14 +119,18 @@ const ReviewInputSection = () => {
         setModalMessage("리뷰 제출 중 오류가 발생했습니다.");
       }
       setShowModal(true);
+    } finally {
+      setLoading(false); // 로딩 상태 해제
     }
   };
 
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value.replace(/\D/g, ""));
+    setPassword(e.target.value.replace(/\D/g, "")); // 숫자만 입력 가능하게 처리
   };
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <S.Textarea $isMobile={isMobile}>
       <S.Review $isMobile={isMobile} $isTablet={isTablet}>
         <S.ReviewInput
@@ -151,7 +162,7 @@ const ReviewInputSection = () => {
         </S.ImagePreviewContainer>
 
         <S.Divider />
-        <S.PhotoInputContainer>
+        <S.PhotoInputContainer $isMobile={isMobile}>
           <S.PhotoButton
             $isMobile={isMobile}
             $isTablet={isTablet}
