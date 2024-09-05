@@ -14,15 +14,13 @@ export const TitleSection = styled.div`
   width: 100%;
   height: ${(props) =>
     props.$isDesktop ? "800px" : props.$isTablet ? "972px" : "812px"};
-  padding-top: ${(props) =>
-    props.$isDesktop ? "24px" : props.$isTablet ? "96px" : "64px"};
+  padding: ${(props) =>
+    props.$isDesktop ? "0px" : props.$isTablet ? "96px 0px" : "64px 0px"};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  flex: 1 0 0;
   background: linear-gradient(black, black);
-
   animation-name: titleAct;
   animation-delay: 500ms;
   animation-duration: 1500ms;
@@ -62,7 +60,7 @@ export const SpaceBoxBottom = styled(SpaceBoxTop)`
       ? "2px solid #FAFAFA"
       : ""};
   border-bottom: 0;
-  margin-bottom: -36px;
+  margin-bottom: 0px;
 `;
 
 export const SpaceImgBox = styled.div`
@@ -167,7 +165,7 @@ export const TitleBox = styled.div`
     props.$isDesktop ? "120px" : props.$isTablet ? "105px" : "83px"};
   padding: ${(props) =>
     props.$isDesktop ? "0px" : props.$isTablet ? "0px 96px" : "0px"};
-  gap: ${(props) => (props.$isDesktop ? "36px" : "0px")};
+  gap: ${(props) => (props.$isDesktop ? "36px" : props.$isTablet ? "0px" : "-12px")};
   align-items: center;
   justify-content: flex-start;
   text-align: left;
@@ -279,7 +277,7 @@ export const Rectangle = styled.div`
 export const TitleListSet = styled.div`
   width: 100%;
   height: ${(props) =>
-    props.$isDesktop ? "390px" : props.$isTablet ? "315px" : "249px"};
+    props.$isDesktop ? "auto" : props.$isTablet ? "auto" : "249px"};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -359,7 +357,7 @@ export const TitleFrameText = styled.div`
   font-family: MonRegular;
   font-style: normal;
   font-size: ${(props) =>
-    props.$isDesktop ? "38px" : props.$isTablet ? "32px" : "21px"};
+    props.$isDesktop ? "38px" : props.$isTablet ? "30px" : "21px"};
   line-height: ${(props) =>
     props.$isDesktop ? "48px" : props.$isTablet ? "38px" : "32px"};
   letter-spacing: ${(props) =>

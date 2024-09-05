@@ -25,7 +25,6 @@ export const ClubCardImg = styled.div`
   height: ${(props)=> (props.$isDesktop ? "276px" : props.$isTablet ? "190px" : "129.097px")};
   padding: ${(props)=> (props.$isDesktop ? "36px" : "16.839px")};
   border-radius: ${(props)=> (props.$isDesktop ? "40px" : "18.71px")};
-  margin-right: ${(props)=> (props.$isDesktop ? "10px" : "0px")};
   gap: ${(props)=> (props.$isDesktop ? "10px" : "4.677px")};
   display: flex;
   flex-direction: column;

@@ -28,6 +28,8 @@ const HomeTitle = () => {
   return (
     <S.TitleSection $isTablet={isTablet} $isDesktop={isDesktop}>
       
+      
+        <S.TitleMainSet $isTablet={isTablet} $isDesktop={isDesktop}>
         <S.SpaceBoxTop $isTablet={isTablet}>
           <S.SpaceImgBox>
             <S.SpacePortal
@@ -37,8 +39,6 @@ const HomeTitle = () => {
             />
           </S.SpaceImgBox>
         </S.SpaceBoxTop>
-      
-        <S.TitleMainSet $isTablet={isTablet} $isDesktop={isDesktop}>
           {(isDesktop)&&(
             <S.TitleDetailSet>
             <S.TitleMiniText1>who’s our 주인공</S.TitleMiniText1>
@@ -122,7 +122,7 @@ const HomeTitle = () => {
               )}
             </S.TextBox>
           </S.TitleBox>
-          {(isTablet || isMobile) && <S.SpaceBoxBottom $isTablet={isTablet} />}
+          {(isTablet || isMobile) && <S.SpaceBoxBottom $isTablet={isTablet} $isMobile={isMobile}/>}
         </S.TitleMainSet>
      
 
