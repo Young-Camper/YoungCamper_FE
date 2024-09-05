@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import Loading from "../../../components/ui/Loading";
 import { searchNotice } from "../../../lib/apis/api/searchNotice";
-import { getAnnouncement } from "../../../lib/apis/api/getAnnouncement";
-
+import { getAnnouncements } from "../../../lib/apis/api/getAnnouncements";
 import { useTranslation } from "react-i18next";
 
 const Content = ({ keyword }) => {
@@ -19,56 +18,75 @@ const Content = ({ keyword }) => {
   const { isTablet, isDesktop, isMobile } = useMediaQueries();
   const contentWrapperRef = useRef(null);
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  //공지 리스트 get
+  // 현재 언어 코드
+  const currentLanguage = i18n.language;
+
+  // 공지사항 리스트 가져오기
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getAnnouncement();
-        setData(response.data);
-
-        setLoading(false);
+        const response = await getAnnouncements();
+        if (Array.isArray(response.data.data)) {
+          const filteredData = response.data.data.map((item) => {
+            const content = item.contents.find(
+              (c) => c.languageCode === currentLanguage
+            );
+            return {
+              ...item,
+              title: content ? content.title : "",
+              content: content ? content.content : "",
+            };
+          });
+          setData(filteredData);
+        }
       } catch (error) {
+      } finally {
         setLoading(false);
       }
     };
     fetchData();
-  }, []);
+  }, [currentLanguage]);
 
-  //공지 검색
-  useEffect(() => {
-    const fetchSearchData = async () => {
-      setLoading(true);
-      try {
-        const response = await searchNotice(keyword);
-
-        if (Array.isArray(response.data)) {
-          setData(response.data);
-        } else {
-          setData([]);
-        }
-
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
+  // 공지 검색
+  const fetchSearchData = async () => {
+    setLoading(true);
+    try {
+      const response = await searchNotice(keyword);
+      if (Array.isArray(response.data.data)) {
+        const filteredData = response.data.data.map((item) => {
+          const content = item.contents.find(
+            (c) => c.languageCode === currentLanguage
+          );
+          return {
+            ...item,
+            title: content ? content.title : "",
+            content: content ? content.content : "",
+          };
+        });
+        setData(filteredData);
+      } else {
+        setData([]);
       }
-    };
-
-    fetchSearchData();
-  }, [keyword]);
+    } catch (error) {
+      setData([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // 필터링된 공지사항 데이터 (긴급 및 일반 공지)
   const filteredUrgentItems = data.filter(
     (item) =>
-      item.urgent === "true" &&
+      item.urgent === true &&
       ((item.title?.toLowerCase() || "").includes(keyword.toLowerCase()) ||
         (item.content?.toLowerCase() || "").includes(keyword.toLowerCase()))
   );
 
   const filteredRegularItems = data.filter(
     (item) =>
-      item.urgent !== "true" &&
+      item.urgent !== true &&
       ((item.title?.toLowerCase() || "").includes(keyword.toLowerCase()) ||
         (item.content?.toLowerCase() || "").includes(keyword.toLowerCase()))
   );
@@ -124,7 +142,7 @@ const Content = ({ keyword }) => {
     scrollToContentWrapper();
   };
 
-  //받아오는 날짜 데이터 포맷팅
+  // 받아오는 날짜 데이터 포맷팅
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const year = date.getFullYear();

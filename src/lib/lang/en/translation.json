@@ -12,12 +12,15 @@
   "notice": {
     "maintitle": "Announcement",
     "subTitle": "Be sure to check the information below and join us to make this a fun festival for everyone!",
+    "msubTitle": "Be sure to check the information below and join us to make this a fun festival for everyone!",
     "search": "Search",
     "urgent": "Must read",
     "num": "No",
     "title": "Title",
     "date": "Date",
-    "noresult": "There are no registered posts."
+    "noresult": "There are no registered posts.",
+    "write": "Written by: Administrator",
+    "list": "View List"
   },
   "faq": {
     "subTitle": "We have compiled answers to frequently asked questions."
