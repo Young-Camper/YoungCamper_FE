@@ -41,27 +41,27 @@ export const studentCommitteeProfiles = [
 ];
   
   export const youngCamperProfiles = [
-	{ id: 1, name: "황진경", role: "TF장", image: `${mediaUrl}About/Y3.png`, description: "융합보안학과 22\n\n" },
-	{ id: 2, name: "김준범", role: "PM", image: `${mediaUrl}About/Y3.png`, description: "수학과 19\n\n" },
+	{ id: 1, name: "황진경", role: "TF장", image: `${mediaUrl}About/Y1.png`, description: "융합보안학과 22\n\n\n능력자 영캠퍼분들과 함께라서\n하루하루가 행복했던💙\n영캠프도, 홈페이지도!\n많은 응원과 관심 부탁드리고,\n후기도 남겨주시길 바라요!☺️" },
+	{ id: 2, name: "김준범", role: "PM", image: `${mediaUrl}About/Y2.png`, description: "수학과 19\n\n\nYoung한 느낌의 불교,\n영캠프에서 즐겨볼까요?" },
 	{ id: 3, name: "이승협", role: "PM", image: `${mediaUrl}About/Y3.png`, description: "산업시스템공학과 20\n\n\n 공과대학 불교동아리,\n '공양미 300석'을 이끌고 있는\n이승협입니다! 영캠퍼의 PM을\n맡게 되어 영광입니다~!" },
 
 	// 디자인
-	{ id: 4, name: "한은서", role: "디자인", image: `${mediaUrl}About/Y3.png`, description: "상세 설명" },
-	{ id: 5, name: "윤혜정", role: "디자인", image: `${mediaUrl}About/Y3.png`, description: "상세 설명" },
-	{ id: 6, name: "이수빈", role: "디자인", image: `${mediaUrl}About/Y3.png`, description: "상세 설명" },
+	{ id: 4, name: "한은서", role: "디자인", image: `${mediaUrl}About/Y4.png`, description: "광고홍보학과 20\n\n\n디자인은 나의 발자취,\n나는 흔적을 남긴다 🎨😎" },
+	{ id: 5, name: "윤혜정", role: "디자인", image: `${mediaUrl}About/Y5.png`, description: "광고홍보학과 20\n\n\n인생사 새옹지마" },
+	{ id: 6, name: "이수빈", role: "디자인", image: `${mediaUrl}About/Y6.png`, description: "일본학과 19\n\n\n즐거운 하루가 되길\n바라는 마음으로 🩵" },
 	
 	// 백엔드
-	{ id: 7, name: "김찬빈", role: "BE팀장", image: `${mediaUrl}About/Y3.png`, description: "융합보안학과 23" },
-	{ id: 8, name: "김세은", role: "BE팀원", image: `${mediaUrl}About/Y3.png`, description: "가정교육학과 21" },
-	{ id: 9, name: "임주혁", role: "BE팀원", image: `${mediaUrl}About/Y3.png`, description: "컴퓨터공학과 19" },
+	{ id: 7, name: "김찬빈", role: "BE팀장", image: `${mediaUrl}About/Y7.png`, description: "융합보안학과 23\n\n\n일 더하기 일은? 더 힘듦이죠….\n하지만 이번 활동은 너무 재밌었어요 👀\n다들 즐겁고 행복한 축제 되세요! ✨" },
+	{ id: 8, name: "김세은", role: "BE팀원", image: `${mediaUrl}About/Y8.jpeg`, description: "가정교육학과 21\n\n\n함께 문제를 해결해나가고\n기술을 공유하는 과정 즐거웠어요!\n저희가 만든 사이트로 즐겨주세요🎉" },
+	{ id: 9, name: "임주혁", role: "BE팀원", image: `${mediaUrl}About/Y9.png`, description: "컴퓨터공학과 19\n\n\n맡은 부분이 간단한 작업임에도\n많은 것들을 배운 유익하고\n즐거운 프로젝트였어요.\n사이트 이용자 여러분도 유익하고\n즐거운 시간 보내시길 바랍니다🎆" },
 
 	// 프론트엔드1
 	{ id: 10, name: "오찬주", role: "FE1팀장", image: `${mediaUrl}About/Y10.png`, description: "정치외교학전공 22\n\n\n안녕하세요 ☺️🍈\n축제도, 축제 사이트도\n재밌게 즐기실 바랄게요 👀" },
 	{ id: 11, name: "강신지", role: "FE1팀원", image: `${mediaUrl}About/Y11.png`, description: "컴퓨터공학전공 21\n\n\n사이트를 구경하신 분들 모두\n행운 가득한 하루 되시길! 🍀✨" },
-	{ id: 12, name: "백동민", role: "FE1팀원", image: `${mediaUrl}About/Y3.png`, description: "멀티미디어공학과 21" },
-	{ id: 13, name: "이민수", role: "FE1팀원", image: `${mediaUrl}About/Y3.png`, description: "일어일문학과 17" },
+	{ id: 12, name: "백동민", role: "FE1팀원", image: `${mediaUrl}About/Y12.png`, description: "멀티미디어공학과 21\n\n\n즐거운 축제 되시길 바랄게요🤟" },
+	{ id: 13, name: "이민수", role: "FE1팀원", image: `${mediaUrl}About/Y13.jpeg`, description: "일어일문학과 17\n\n\n라스트 일어일문학과\n드디어 졸업합니다." },
 	{ id: 14, name: "설현아", role: "FE2팀장", image: `${mediaUrl}About/Y14.png`, description: "융합보안학과 22\n\n\n영캠퍼 1기 영광이에요😆\n영캠프도, 사이트도 잘 즐겨주세요🔥\n(깃허브 맞팔해요! @hyeona01)" },
-	{ id: 15, name: "김수빈", role: "FE2팀원", image: `${mediaUrl}About/Y3.png`, description: "불교학부 21" },
+	{ id: 15, name: "김수빈", role: "FE2팀원", image: `${mediaUrl}About/Y15.jpg`, description: "불교학부 21\n\n\n안녕하세요🤗\n영캠프 다들 즐거우셨나요?\n후기도 마구마구 남겨주세요🧡" },
 	{ id: 16, name: "오세인", role: "FE2팀원", image: `${mediaUrl}About/Y16.png`, description: "글로벌무역학과 24\n\n\n 영캠프 FE로 함께하게 되어\n매우 기쁩니다!😉 모두\n즐거운 축제 보내시길 바랍니다!🧡"},
-	{ id: 17, name: "이유진", role: "FE2팀원", image: `${mediaUrl}About/Y3.png`, description: "멀티미디어소프트웨어공학전공 20" }
+	{ id: 17, name: "이유진", role: "FE2팀원", image: `${mediaUrl}About/Y17.png`, description: "멀티미디어소프트웨어공학전공 20\n\n\n안녕하세요😙\n영캠프도 불교 동아리도\n즐겁게 활동하시길 바라요! 🧡" }
   ];
