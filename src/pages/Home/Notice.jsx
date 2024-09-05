@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import * as S from "./HomeStyle";
 import { Link } from "react-router-dom";
 import useMediaQueries from "../../hooks/useMediaQueries";
-/* import data from "../../data/notice.json"; */
 import Loading from "../../components/ui/Loading";
 import { getAnnouncements } from "../../lib/apis/api/getAnnouncements";
 
@@ -24,9 +23,8 @@ const Notice = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getAnnouncement();
+        const response = await getAnnouncements();
         setData(response.data);
-
         setLoading(false);
       } catch (error) {
         setLoading(false);
@@ -36,9 +34,8 @@ const Notice = () => {
   }, []);
 
   //필독과 일반공지 구분
-  const urgentNotices = data.filter((item) => item.isPinned === "yes");
-  const nonUrgentNotices = data.filter((item) => item.isPinned === "no");
-
+  const urgentNotices = data && Array.isArray(data) ? data.filter((item) => item.isPinned === "yes") : [];
+  const nonUrgentNotices = data && Array.isArray(data) ? data.filter((item) => item.isPinned === "no") : [];
   let mainNotices = [];
 
   //필독공지 -> 최신순으로 4개 정렬
