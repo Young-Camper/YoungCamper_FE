@@ -7,6 +7,7 @@ import * as S from "./style";
 import useMediaQueries from "../../hooks/useMediaQueries";
 
 const Index = () => {
+  const [activeTab, setActiveTab] = useState('students'); // 초기 활성 탭 설정
   const { isDesktop, isTablet, isMobile } = useMediaQueries();
 
   // 탭별로 currentPage 상태를 분리
@@ -15,16 +16,14 @@ const Index = () => {
     campers: 1,
   });
 
-  const [activeTab, setActiveTab] = useState('students'); // 초기 활성 탭 설정
-
-  // 현재 탭에 따라 프로필 데이터를 선택
+  // 탭에 따라 프로필 데이터를 선택
   const profilesToDisplay = activeTab === 'students'
     ? studentCommitteeProfiles
     : youngCamperProfiles;
 
-  const subtitle = activeTab === 'students' 
-    ? "학생 기획 위원단 소개"
-    : "영캠퍼 소개";
+    const subtitle = activeTab === 'students' 
+    ? "각 단과대학 불교동아리 회장단으로 구성되어 있습니다." 
+    : "본 홈페이지를 제작한 TF팀으로 동국대학교 학생들로 구성되어 있습니다.";
 
   const itemsPerPage = 9;
   const indexOfLastProfile = currentPageByTab[activeTab] * itemsPerPage;
@@ -53,7 +52,7 @@ const Index = () => {
     <>
       <MainTitle
         mainText="기획단"
-        subText="영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다."
+        subText=""
       />
       <S.ContentWrapper $isDesktop={isDesktop}>
         <S.TabBar $isDesktop={isDesktop}>
