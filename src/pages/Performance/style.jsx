@@ -140,6 +140,7 @@ export const EventText = styled.div`
 //   border: 0;
 // `;
 export const Arrow = styled.img`
+  cursor: pointer;
   width: ${(props) => (props.$isDesktop ? "28px" : "20px")};
   margin-left: ${(props) => (props.$isDesktop ? "10px" : "6px")};
 `;
@@ -250,11 +251,14 @@ export const ModalPosterImg = styled.div`
   max-height: ${(props) => (props.$isMobile ? "300px" : "400px")};
   border-radius: 8px;
   align-self: stretch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
   img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 `;
 
@@ -272,11 +276,9 @@ export const ContentWrapper = styled.div`
 `;
 export const MusicWrapper = styled.div`
   width: 100%;
-  height: 65px;
   display: flex;
   flex-direction: column;
   justify-content: start;
-  flex-wrap: wrap;
 `;
 
 export const ArtistName = styled.div`

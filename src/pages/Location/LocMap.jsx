@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import * as S from "./style";
-import TitleSet from "../../components/ui/TitleSet";
+import TitleSet from "./locTitleSet";
 import styled from "styled-components";
 
 import useMediaQueries from "../../hooks/useMediaQueries";
@@ -24,8 +24,7 @@ export const FloorButton = styled.div`
   align-items: center;
   text-align: center;
   font-size: ${props => props.ismobile ? '16px' : '24px'};
-  font-family: 'Pretended';
-  font-weight: 600;
+  font-family: "MonRegular";
   word-wrap: break-word;
   border: 2px #0068FF solid;
   border-bottom: none;
@@ -60,13 +59,15 @@ const LocMap = () => {
       title: "1층 현장 배치도",
       description:
         "영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다.",
-      image: `${mediaUrl}Location/1_floor_img.png`,
+      image: `${mediaUrl}Location/desktop_loc_pic.png`,
+      image_mobile: `${mediaUrl}Location/mobile_loc_pic.png`
     },
     2: {
       title: "2층 현장 배치도",
       description:
         "영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다.",
-      image: `${mediaUrl}Location/1_floor_img.png`,
+      image: `${mediaUrl}Location/desktop_loc_pic.png`,
+      image_mobile: `${mediaUrl}Location/mobile_loc_pic.png`
     },
   };
   return (
@@ -81,12 +82,11 @@ const LocMap = () => {
           <FloorButton active={floor === 2} onClick={() => setFloor(2)} ismobile = {isMobile}>2층</FloorButton>
         </FloorSelector>
         <S.LocContentArea ismobile = {isMobile}>
-          <S.LocTitle ismobile = {isMobile} >{floorData[floor].title}</S.LocTitle>
-          <S.LocDescription ismobile = {isMobile} >
-            {floorData[floor].description}
-          </S.LocDescription>
+            <S.LocTitle ismobile = {isMobile} >{floorData[floor].title}</S.LocTitle>
+            <S.LocDescription ismobile = {isMobile} > {floorData[floor].description} </S.LocDescription>
           <S.LocImageContainer ismobile = {isMobile}>
-            <S.LocImage src={floorData[floor].image} ismobile={isMobile} />
+            { !isMobile && <S.LocImage src={floorData[floor].image} ismobile={isMobile} /> }
+            { isMobile && <S.LocImage src={floorData[floor].image_mobile} ismobile={isMobile} /> }
           </S.LocImageContainer>
       </S.LocContentArea>
       </S.LocContainer>

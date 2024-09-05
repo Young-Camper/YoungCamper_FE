@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import { postAnnouncement } from "../../../lib/apis/api/postAnnouncement";
@@ -8,6 +8,8 @@ import TitleSet from "../../../components/ui/TitleSet";
 import { DeleteBtn } from "../style";
 import { ShowListContainer } from "../../Notification/detail/Style";
 import { ContentWrapper } from "../../../style/commonStyle";
+import { useRecoilValue } from "recoil";
+import { adminState } from "../../../context/recoil/adminState";
 
 const index = () => {
   const { isDesktop } = useMediaQueries();
@@ -18,11 +20,20 @@ const index = () => {
   const [fileUrl, setFileUrl] = useState(null);
   const [isPinned, setIsPinned] = useState(false);
 
+  const isAdmin = useRecoilValue(adminState);
+
+  // 관리자 여부 확인
+  useEffect(() => {
+    if (!isAdmin) {
+      alert("관리자 권한이 필요합니다.");
+      navigate("/admin42794");
+    }
+  }, [isAdmin, navigate]);
+
+  // 핸들러
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleContentChange = (e) => setContent(e.target.value);
   const handlePinnedChange = (e) => setIsPinned(e.target.checked);
-
-  // 이미지 선택 핸들러
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -35,27 +46,28 @@ const index = () => {
 
   // ====== api post ======
   const handleAdminPost = async () => {
-    const check = confirm("작성하시겠습니까?");
+    if (!isAdmin) {
+      const check = confirm("작성하시겠습니까?");
+      if (check) {
+        try {
+          const response = await postAnnouncement(
+            title,
+            content,
+            imageUrl, // presignedurl 변경 필요
+            fileUrl,
+            isPinned
+          );
 
-    if (check) {
-      try {
-        const response = await postAnnouncement(
-          title,
-          content,
-          imageUrl, // presignedurl 변경 필요
-          fileUrl,
-          isPinned
-        );
-
-        console.log("admin post response: ", response);
-        alert("작성되었습니다");
-        navigate("/admin42794/list");
-      } catch (error) {
-        console.error("Failed to post admin data: ", error);
-        alert("작성에 실패했습니다. 다시 시도해주세요.");
+          console.log("admin post response: ", response);
+          alert("작성되었습니다");
+          navigate("/admin42794/list");
+        } catch (error) {
+          console.error("Failed to post admin data: ", error);
+          alert("작성에 실패했습니다. 다시 시도해주세요.");
+        }
+      } else {
+        alert("취소되었습니다.");
       }
-    } else {
-      alert("취소되었습니다.");
     }
   };
 

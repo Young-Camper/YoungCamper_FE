@@ -22,10 +22,10 @@ const TransportBox = ({
 
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
-  const { isDesktop } = useMediaQueries();
+  const { isDesktop, isMobile } = useMediaQueries();
 
   return (
-    <div style={{ width: '100%', maxWidth: '1004px', height: '100%', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex', padding: isDesktop? '0 24px' : '0 0px' }}>
+    <div style={{ width: '100%', maxWidth: '1960px' ,height: '100%', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex', padding: isDesktop? '0 24px' : '0 0px' }}>
       <S.AccordionHeader onClick={onClick} isOpen={isOpen} index = {index} isDesktop = {isDesktop} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
         <S.HeaderContent>
           <S.Title isOpen = {isOpen} isDesktop = {isDesktop}  >{title}</S.Title>
@@ -38,10 +38,13 @@ const TransportBox = ({
       </S.AccordionHeader>
       {isOpen && <S.AccordionContent isOpen={isOpen} index = {index} isDesktop = {isDesktop}>
         <S.ContentInner index = {index}>
-          { (index === 0) &&  <S.Placeholder isDesktop = {isDesktop}></S.Placeholder>}
+          { (index === 0) &&  <S.Placeholder 
+          isDesktop = {isDesktop}> 
+          <img src = {isDesktop ? `${mediaUrl}Location/desktop_loc_pic.png` : `${mediaUrl}Location/mobile_loc_pic.png`}></img>
+          </S.Placeholder>}
         </S.ContentInner>
         <S.DescriptionContainer index = {index}>
-         { !(index === 1) && <S.Description index = {index}>{children}</S.Description> }
+         { !(index === 1) && <S.Description index = {index} $ismobile = {isMobile}>{children}</S.Description> }
          { (index === 1) && <Transportway /> }
         </S.DescriptionContainer>
       </S.AccordionContent>}
