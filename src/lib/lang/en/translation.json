@@ -12,12 +12,15 @@
   "notice": {
     "maintitle": "Announcement",
     "subTitle": "Be sure to check the information below and join us to make this a fun festival for everyone!",
+    "msubTitle": "Be sure to check the information below and join us to make this a fun festival for everyone!",
     "search": "Search",
     "urgent": "Must read",
     "num": "No",
     "title": "Title",
     "date": "Date",
-    "noresult": "There are no registered posts."
+    "noresult": "There are no registered posts.",
+    "write": "Written by: Administrator",
+    "list": "View List"
   },
   "faq": {
     "subTitle": "We have compiled answers to frequently asked questions."
@@ -31,5 +34,70 @@
     "content": "Young Camp is an event carefully prepared from start to finish by the Dongguk University Buddhist Student Association Student Planning Committee.\n\nThis Young Camp is a project that originated from the deep intentions of Grand Master Jaseung.\nMonk Jaseung wanted to widely spread the teachings of Buddhism among college students and provide a festival venue where young Buddhists could enjoy themselves to their heart's content.\n\nAfter the monk passed away, Chairman Dongwan took up this wish and provided both material and spiritual support so that the Young Camp could be held successfully.\nThrough this event filled with the monk's warm heart, we hope that you will all newly experience the beauty and depth of Buddhism and enjoy the joy of being together.\nThank you.\n\n\n- All members of the Dongguk University Buddhist Student Association Student Planning Committee -",
     "mcontent": "Young Camp is an event carefully prepared from start to finish by the Dongguk University Buddhist Student Association Student Planning Committee.\n\nThis Young Camp is a project that originated from the deep intentions of Grand Master Jaseung.\nMonk Jaseung wanted to widely spread the teachings of Buddhism among college students and provide a festival venue where young Buddhists could enjoy themselves to their heart's content.\n\nAfter the monk passed away, Chairman Dongwan took up this wish and provided both material and spiritual support so that the Young Camp could be held successfully.\nThrough this event filled with the monk's warm heart, we hope that you will all newly experience the beauty and depth of Buddhism and enjoy the joy of being together.\n\nThank you.\n\n- All members of the Dongguk University Buddhist Student Association Student Planning Committee -",
     "btn": "View YoungCamp Schedule"
+  },
+  "club": {
+    "bannerTitle": "Clubs with YoungCamp ",
+    "mbannerTitle": "Clubs with \nYoungCamp ",
+    "bannerSubtitle": "Let’s take a look at each Buddhist club at Dongguk University.",
+    "intro": "A one-line introduction to the club",
+    "dir": "Purpose and direction",
+    "insta": "Instagram",
+    "apply": "Join the club",
+    "modalTitle": "Would you like to join the club?",
+    "modalsub": "When accessing the link below,\nGo to the club registration page",
+    "recruit": "We're not recruiting right now",
+    "goLink": "Go to Recruitment Form"
+  },
+  "schedule": {
+    "bannerTitle": "Schedule",
+    "bannerSubtitle": "There are special stages prepared for this Young Camp!",
+    "title": "Timetable",
+    "msubtitle": "Exciting music, moving performances, \nand even surprise events! \nEnjoy the performance and create\nyour own special memories!",
+    "subtitle": "Exciting music, moving performances, and even surprise events! \nEnjoy the performance and create your own special memories!",
+    "song": "Representative song"
+  },
+
+  "caution": {
+    "title": "Notice",
+    "caution": [
+      "Please follow the staff's instructions for your safety!",
+      "Re-entry is not allowed after exit!",
+      "No storage of items is available inside the venue!"
+    ],
+    "mcaution": [
+      "Please follow the staff's instructions for your safety!",
+      "Re-entry is not allowed after exit!",
+      "No storage of items \nis available inside the venue!"
+    ]
+  },
+  "member": {
+    "bannerTitle": "Team",
+    "bannerSubtitle": "Young Camp is a special festival hosted jointly by Buddhist clubs at Korean universities.",
+    "mbannerSubtitle": "Young Camp is a special festival hosted jointly by Buddhist clubs at Korean universities.",
+    "com": "student planning committee",
+    "comIntro": "Young Camp is a special festival hosted jointly by Buddhist clubs at Korean universities.",
+    "maker": "Young Camper"
+  },
+  "footer": {
+    "title": "Dongguk University Young Camp",
+    "location": "Dongguk University, 30 Pildong-ro 1-gil, Jung-gu, Seoul"
+  },
+  "home": {
+    "title": "who’s our main character",
+    "location": "Jangchung Gymnasium",
+    "with": "Join with YoungCamp",
+    "video": "Going to watch a video",
+    "welcome": "Do you want to escape your boring daily life?\n\nCreated jointly by the Dongguk University Buddhist Club,\nWelcome to Young Camp, a special festival that only lasts for one day!",
+    "mwelcome": "Do you want to escape your boring daily life?\n\nCreated jointly by the Dongguk University Buddhist Club,\nWelcome to Young Camp, a special festival that only lasts for one day!",
+    "more": "Learn more about Young Camp",
+    "club": "Join with YoungCamp Club",
+    "moreClub": "Go to see the club",
+    "notice": "Check out our notices",
+    "noticeTagY": "must read",
+    "noticeTagN": "entire",
+    "noNotice": "no notice",
+    "moreNotice": "Learn more",
+    "follow": "Follow the latest news",
+    "join": "Join in YoungCamp"
   }
 }

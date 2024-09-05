@@ -5,11 +5,21 @@ import TimeTable from "./TimeTable";
 import Attention from "../../components/ui/Attention";
 import useMediaQueries from "../../hooks/useMediaQueries";
 import ArtistModal from "./ArtistModal"; // 모달을 독립적으로 관리
+import { useTranslation } from "react-i18next";
 
 const index = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const [modalOpen, setModalOpen] = useState(false);
   const [clickedArtist, setClickedArtist] = useState(null);
+  const { t } = useTranslation();
+
+  const bannerSubtitle = isMobile
+    ? t("schedule.mbannerSubtitle")
+    : t("schedule.bannerSubtitle");
+
+  const caution = isMobile
+    ? t("caution.mcaution", { returnObjects: true })
+    : t("caution.caution", { returnObjects: true });
 
   const handleOpenModal = (artist) => {
     setClickedArtist(artist);
@@ -19,8 +29,8 @@ const index = () => {
   return (
     <>
       <MainTitle
-        mainText="공연안내"
-        subText="이번 영캠프에서는 특별한 무대들이 준비되어 있어요!"
+        mainText={t("schedule.bannerTitle")}
+        subText={bannerSubtitle}
       />
       <ContentWrapper
         $isMobile={isMobile}
@@ -33,9 +43,9 @@ const index = () => {
           onArtistClick={handleOpenModal} // 모달 열기 핸들러 전달
         />
         <Attention
-          attention1="∙ 안전을 위해 스태프의 안내를 따라주세요!"
-          attention2="∙ 퇴장 시 재 입장이 불가합니다!"
-          attention3="∙ 공연장 내 물품 보관이 불가합니다!"
+          attention1={caution[0]}
+          attention2={caution[1]}
+          attention3={caution[2]}
         />
       </ContentWrapper>
       {modalOpen && (

@@ -40,6 +40,7 @@ const SubText = styled.div`
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "30px" : "18px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.06px")};
+  white-space: pre-wrap;
 `;
 
 const TitleSet = ({ mainText, subText, isBanner }) => {
