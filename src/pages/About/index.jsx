@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import MainTitle from "../../components/ui/MainTitle";
 import Section from "./Section";
 import Pagenation from "../FAQ/Pagenation";
-import { studentCommitteeProfiles, youngCamperProfiles } from "../../data/profileData";
+import {
+  studentCommitteeProfiles,
+  youngCamperProfiles,
+} from "../../data/profileData";
 import * as S from "./style";
 import useMediaQueries from "../../hooks/useMediaQueries";
+import { useTranslation } from "react-i18next";
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState('students'); // 초기 활성 탭 설정
+  const [activeTab, setActiveTab] = useState("students"); // 초기 활성 탭 설정
   const { isDesktop, isTablet, isMobile } = useMediaQueries();
+  const { t } = useTranslation();
 
   // 탭별로 currentPage 상태를 분리
   const [currentPageByTab, setCurrentPageByTab] = useState({
@@ -17,18 +22,21 @@ const Index = () => {
   });
 
   // 탭에 따라 프로필 데이터를 선택
-  const profilesToDisplay = activeTab === 'students'
-    ? studentCommitteeProfiles
-    : youngCamperProfiles;
+  const profilesToDisplay =
+    activeTab === "students" ? studentCommitteeProfiles : youngCamperProfiles;
 
-    const subtitle = activeTab === 'students' 
-    ? "각 단과대학 불교동아리 회장단으로 구성되어 있습니다." 
-    : "본 홈페이지를 제작한 TF팀으로 동국대학교 학생들로 구성되어 있습니다.";
+  const subtitle =
+    activeTab === "students"
+      ? "각 단과대학 불교동아리 회장단으로 구성되어 있습니다."
+      : "본 홈페이지를 제작한 TF팀으로 동국대학교 학생들로 구성되어 있습니다.";
 
   const itemsPerPage = 9;
   const indexOfLastProfile = currentPageByTab[activeTab] * itemsPerPage;
   const indexOfFirstProfile = indexOfLastProfile - itemsPerPage;
-  const currentProfiles = profilesToDisplay.slice(indexOfFirstProfile, indexOfLastProfile);
+  const currentProfiles = profilesToDisplay.slice(
+    indexOfFirstProfile,
+    indexOfLastProfile
+  );
   const totalProfiles = profilesToDisplay.length;
 
   const paginate = (pageNumber) => {
@@ -51,30 +59,30 @@ const Index = () => {
   return (
     <>
       <MainTitle
-        mainText="기획단"
-        subText=""
+        mainText={t("member.bannerTitle")}
+        subText={t("member.bannerSubtitle")}
       />
       <S.ContentWrapper $isDesktop={isDesktop}>
         <S.TabBar $isDesktop={isDesktop}>
-          <S.TabButton 
+          <S.TabButton
             $isDesktop={isDesktop}
-            isActive={activeTab === 'students'}
-            onClick={() => handleTabChange('students')}
+            isActive={activeTab === "students"}
+            onClick={() => handleTabChange("students")}
           >
-            학생 기획 위원단
+            {t("member.com")}
           </S.TabButton>
-          <S.TabButton 
+          <S.TabButton
             $isDesktop={isDesktop}
-            isActive={activeTab === 'campers'}
-            onClick={() => handleTabChange('campers')}
+            isActive={activeTab === "campers"}
+            onClick={() => handleTabChange("campers")}
           >
-            영캠퍼
+            {t("member.maker")}
           </S.TabButton>
         </S.TabBar>
 
         <Section
-          title={activeTab === 'students' ? "학생 기획 위원단" : "영캠퍼"}
-          subtitle={subtitle}
+          title={activeTab === "students" ? t("member.com") : t("member.maker")}
+          subtitle={t("member.comIntro")}
           profiles={isDesktop ? profilesToDisplay : currentProfiles}
         />
 

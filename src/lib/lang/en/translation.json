@@ -66,5 +66,13 @@
       "Re-entry is not allowed after exit!",
       "No storage of items \nis available inside the venue!"
     ]
+  },
+  "member": {
+    "bannerTitle": "Team",
+    "bannerSubtitle": "Young Camp is a special festival hosted jointly by Buddhist clubs at Korean universities.",
+    "mbannerSubtitle": "Young Camp is a special festival hosted jointly by Buddhist clubs at Korean universities.",
+    "com": "student planning committee",
+    "comIntro": "Young Camp is a special festival hosted jointly by Buddhist clubs at Korean universities.",
+    "maker": "Young Camper"
   }
 }
