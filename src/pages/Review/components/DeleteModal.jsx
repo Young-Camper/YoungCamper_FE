@@ -44,8 +44,9 @@ const DeleteModal = ({ onClose, onConfirm }) => {
             후기를 삭제하려면 <br />
             비밀번호 4자리를 입력해주세요!
           </S.ModalText>
-          <S.PasswordInputWrapper>
+          <S.PasswordInputWrapper $isMobile={isMobile}>
             <S.PasswordInput
+              $isMobile={isMobile}
               type={isPasswordVisible ? "text" : "password"}
               value={password}
               onChange={handlePasswordChange}
@@ -58,6 +59,7 @@ const DeleteModal = ({ onClose, onConfirm }) => {
               $isMobile={isMobile}
             >
               <S.PasswordIconImage
+                $isMobile={isMobile}
                 src={
                   isPasswordVisible
                     ? `${mediaUrl}Review/viewnum.png`
