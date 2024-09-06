@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react";
 import FAQBox from "./FAQBox";
 import * as S from "./style";
 import { useTranslation } from "react-i18next";
-
 import useMediaQueries from "../../hooks/useMediaQueries";
 
-// 다국어 JSON 파일을 로드하는 헬퍼 함수
-const loadFAQData = async (lang) => {
-  const response = await fetch(`src/data/faqData_${lang}.json`);
-  return response.json();
-};
+// 다국어 FAQ 데이터
+import { faq_en } from "../../data/faqData_en";
+import { faq_ko } from "../../data/faqData_ko";
 
 const FAQContainer = ({ currentPage, itemsPerPage }) => {
   const [faqs, setFaqs] = useState([]);
@@ -18,13 +15,10 @@ const FAQContainer = ({ currentPage, itemsPerPage }) => {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const currentLanguage = i18n.language;
-      const faqsData = await loadFAQData(currentLanguage);
-      setFaqs(faqsData);
-    };
+    const currentLanguage = i18n.language;
 
-    fetchData();
+    const faqData = currentLanguage === "ko" ? faq_ko : faq_en;
+    setFaqs(faqData);
   }, [i18n.language]);
 
   const toggleFaq = (key) => {
