@@ -7,15 +7,18 @@ import Transport from "./transport";
 import * as S from "./style";
 
 import useMediaQueries from "../../hooks/useMediaQueries";
+import { useTranslation } from "react-i18next";
 
 const index = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
+  const { t } = useTranslation();
+  const caution = t("location.caution", { returnObjects: true });
 
   return (
     <>
       <MainTitle
-        mainText="장소안내"
-        subText="장충체육관에서 여러분을 기다립니다."
+        mainText={t("location.bannerTitle")}
+        subText={t("location.bannerSubtitle")}
       />
       <S.Wrapper
         $isMobile={isMobile}
@@ -25,9 +28,9 @@ const index = () => {
         <Transport />
         <LocMap />
         <Attention
-          attention1="∙ 화장실은 2층에 위치해있으며, 사용 시 대기시간이 발생할 수 있습니다."
-          attention2="∙ 방문 시 안전을 위해 현장 통제를 따라주시길 바랍니다."
-          attention3="∙ 층 간 이동은 불가합니다."
+          attention1={caution[0]}
+          attention2={caution[1]}
+          attention3={caution[2]}
         />
       </S.Wrapper>
     </>
