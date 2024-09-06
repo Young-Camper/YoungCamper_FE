@@ -42,7 +42,7 @@ const ReviewInputSection = ({ onSuccess }) => {
     handleInputButtonClick(review, password);
 
     // 필수 입력 확인
-    if (!password && !review) {
+    if (!password || !review) {
       setModalMessage(
         "후기를 작성하지 않았습니다.\n500자 이내 후기를 작성해주세요."
       );
@@ -51,9 +51,9 @@ const ReviewInputSection = ({ onSuccess }) => {
       return;
     }
 
-    // 리뷰 텍스트 길이 확인
-    if (review.length < 10) {
-      setModalMessage("10자 이상 후기를 작성해주세요.");
+    // 리뷰 텍스트 길이 확인 (공백 포함 500자 이내)
+    if (review.length < 10 || review.length > 500) {
+      setModalMessage("후기를 10자 이상, 500자 이하로 작성해주세요.");
       setShowModal(true);
       setLoading(false);
       return;
@@ -83,9 +83,18 @@ const ReviewInputSection = ({ onSuccess }) => {
       }
     }
 
+    // 리뷰에서 \n을 다른 문자열로 대체
+    const tempReview = review.replace(/\n/g, "<NEWLINE>");
+
+    // 비속어 필터링 적용
+    const cleanedReview = filter.clean(tempReview);
+
+    // 필터링 후 다시 \n 복원
+    const finalReview = cleanedReview.replace(/<NEWLINE>/g, "\n");
+
     const reviewData = {
       password: password,
-      content: filter.clean(review),
+      content: finalReview, // 필터링 후 줄바꿈 복원된 텍스트 사용
       imageUrls: fileUrls,
     };
 
@@ -128,6 +137,14 @@ const ReviewInputSection = ({ onSuccess }) => {
     setPassword(e.target.value.replace(/\D/g, "")); // 숫자만 입력 가능하게 처리
   };
 
+  const handleReviewChange = (e) => {
+    const inputText = e.target.value;
+    // 공백 포함 500자 제한 적용
+    if (inputText.length <= 500) {
+      setReview(inputText);
+    }
+  };
+
   return loading ? (
     <Loading />
   ) : (
@@ -135,11 +152,12 @@ const ReviewInputSection = ({ onSuccess }) => {
       <S.Review $isMobile={isMobile} $isTablet={isTablet}>
         <S.ReviewInput
           value={review}
-          onChange={(e) => setReview(e.target.value)}
+          onChange={handleReviewChange}
           $isMobile={isMobile}
           $isTablet={isTablet}
-          maxLength={499}
+          maxLength={500} // 입력 자체를 500자로 제한
           placeholder="모든 후기는 익명이며, 500자 이내로 작성해 주세요. (비방, 욕설 등은 숨김처리 됩니다.)"
+          style={{ whiteSpace: "pre-wrap" }} // 줄바꿈 유지
         />
         <S.ImagePreviewContainer $isMobile={isMobile}>
           {imagePreviews.map((preview, index) => (

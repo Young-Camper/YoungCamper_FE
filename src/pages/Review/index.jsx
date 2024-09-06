@@ -15,11 +15,10 @@ import * as S from "./style";
 
 const Index = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
-  const [refreshComments, setRefreshComments] = useState(false); // 리뷰 리프레시 상태 추가
+  const [refreshComments, setRefreshComments] = useState(0);
 
-  // 성공 알림 콜백 함수
   const handleSuccess = () => {
-    setRefreshComments((prev) => !prev); // 상태를 토글하여 CommentSection 재렌더링 유도
+    setRefreshComments((prev) => prev + 1);
   };
 
   return (

@@ -89,7 +89,7 @@ const Comment = ({ comment, onDelete }) => {
               $isMobile={isMobile}
               $isTablet={isTablet}
               $isDesktop={isDesktop}
-              image={url}
+              $image={url}
             />
           ))}
         </S.CommentContent>

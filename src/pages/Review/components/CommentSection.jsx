@@ -52,11 +52,12 @@ const CommentSection = ({ refresh }) => {
   // 새 리뷰 등록 시 무조건 1페이지로 이동 및 페치
   useEffect(() => {
     if (refresh) {
+      setCurrentPage(1); // 리뷰 등록 시 currentPage를 1로 설정
       fetchComments(1, true); // refresh가 발생하면 1페이지를 페치
     }
   }, [refresh]);
 
-  // 현재 페이지 변경이나 댓글 목록 변경 시 페치
+  // 현재 페이지 변경 시 댓글 페치
   useEffect(() => {
     fetchComments(currentPage);
   }, [currentPage]);

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 
 export const Textarea = styled.div`
+  white-space: pre-wrap;
   width: 100%;
   position: relative;
   display: flex;
@@ -15,6 +16,7 @@ export const Textarea = styled.div`
 `;
 
 export const Review = styled.div`
+  white-space: pre-wrap;
   align-self: stretch;
   border-radius: 8px;
   background-color: #fafafa;
@@ -32,15 +34,17 @@ export const Review = styled.div`
 `;
 
 export const ReviewInput = styled.textarea`
+  white-space: pre-line;
   width: 100%;
   min-height: 120px;
-  padding: 12px 16px; /* textarea 박스 내부 여백 설정 */
+  padding: 12px 16px;
   color: #000;
   font-size: ${(props) =>
     props.$isMobile ? "12px" : props.$isTablet ? "12px" : "20px"};
   font-family: "MonRegular";
   font-weight: 400;
-  line-height: 20px;
+  line-height: ${(props) =>
+    props.$isMobile ? "20px" : props.$isTablet ? "20px" : "30px"};
   word-wrap: break-word;
   border: none;
   border-radius: 8px;
@@ -52,9 +56,13 @@ export const ReviewInput = styled.textarea`
     color: #ced7de;
   }
 
-  // 포커스시 아웃라인 제거 확인 필요.
   :focus {
     outline: none;
+  }
+
+  /* .hidden-br 클래스 스타일 */
+  .hidden-br {
+    display: none; /* 화면에 보이지 않도록 숨김 */
   }
 `;
 
@@ -217,7 +225,7 @@ export const PasswordLabel = styled.div`
   color: #757575;
   font-size: ${(props) =>
     props.$isMobile ? "12px" : props.$isTablet ? "12px" : "16px"};
- font-family: "MonRegular"
+  font-family: "MonRegular";
   font-weight: 400px;
   line-height: ${(props) =>
     props.$isMobile ? "18px" : props.$isTablet ? "18px" : "24px"};

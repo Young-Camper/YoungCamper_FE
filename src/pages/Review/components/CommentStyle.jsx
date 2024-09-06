@@ -70,6 +70,7 @@ export const CommentNumber = styled.div`
 `;
 
 export const CommentText = styled.div`
+  white-space: pre-wrap;
   align-self: stretch;
   color: #4a5e6d;
   font-size: ${(props) => (props.$isMobile ? "12px" : "22px")};
@@ -145,8 +146,7 @@ export const ImageWrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  background-image: ${({ image }) => (image ? `url(${image})` : "none")};
-
+  background-image: ${({ $image }) => ($image ? `url(${$image})` : "none")};
   & > div {
     position: absolute;
     font-size: 24px;
