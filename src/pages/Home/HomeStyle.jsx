@@ -446,8 +446,8 @@ export const VideoSectionBox = styled.div`
 `;
 
 export const VideoBox = styled.video`
-  width: 100%;
-  height: 100%;
+  width: 100%; max-width: 100%; //자동 확대되는 것을 제한하기 위해 시도
+  height: 100%; max-height: 100%;
   gap: ${(props) =>
     props.$isDesktop ? "17.998px" : props.$isTablet ? "0px" : "10px"};
   justify-content: flex-end;
@@ -1003,6 +1003,16 @@ export const SocialBtn = styled.button`
   }
 `;
 
+export const ArrowBox = styled.div`
+  width: auto; height: auto;
+  display: flex;
+  padding: ${(props) => (props.$isDesktop ? "16px 14px" : "10px 8px")};
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  background: var(--gradient_2, linear-gradient(104deg, rgba(185, 255, 156, 0.20) 0%, rgba(0, 104, 255, 0.20) 100%));
+`;
+
 export const NextArrow = styled.div`
   background: url(${mediaUrl}Home/SocialArrow.png),
     /* 다음 화살표 이미지 경로 */
@@ -1021,10 +1031,8 @@ export const NextArrow = styled.div`
   height: ${(props) => (props.$isDesktop ? "26px" : "13px")};
   right: -25px;
   position: absolute;
-  z-index: 1;
   border-radius: 50px;
-  opacity: var(--sds-size-stroke-border);
-  opacity: 1;
+  z-index: 1;
 `;
 
 export const PrevArrow = styled(NextArrow)`

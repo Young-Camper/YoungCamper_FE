@@ -12,11 +12,14 @@ function ClubSlider() {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 5000,
+    speed: 6000,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
     slidesToShow: 3,
+    draggable: false, // 드래그 비활성화
+    swipe: false, // 터치 스와이프 비활성화
+    touchMove: false, // 터치 이동 비활성화
     responsive: [
       {
         breakpoint: 1280,
