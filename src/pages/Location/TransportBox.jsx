@@ -40,7 +40,7 @@ const TransportBox = ({
         <S.ContentInner index = {index}>
           { (index === 0) &&  <S.Placeholder 
           isDesktop = {isDesktop}
-          src = {isDesktop? `${mediaUrl}Location/festival_desktop_pic.png` : `${mediaUrl}Location/festival_mobile_pic.png` }> 
+          src = {isDesktop? `${mediaUrl}Location/transport_pic.png` : `${mediaUrl}Location/transport_pic.png` }> 
           </S.Placeholder>}
         </S.ContentInner>
         <S.DescriptionContainer index = {index}>

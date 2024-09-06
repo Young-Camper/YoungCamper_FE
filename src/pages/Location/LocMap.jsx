@@ -59,15 +59,15 @@ const LocMap = () => {
       title: "1층 현장 배치도",
       description:
         "영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다.",
-      image: `${mediaUrl}Location/desktop_loc_pic.png`,
-      image_mobile: `${mediaUrl}Location/mobile_loc_pic.png`
+      image: `${mediaUrl}Location/location_pic.png`,
+      image_mobile: `${mediaUrl}Location/location_pic.png`
     },
     2: {
       title: "2층 현장 배치도",
       description:
         "영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다.",
-      image: `${mediaUrl}Location/desktop_loc_pic.png`,
-      image_mobile: `${mediaUrl}Location/mobile_loc_pic.png`
+      image: `${mediaUrl}Location/location_pic.png`,
+      image_mobile: `${mediaUrl}Location/location_pic.png`
     },
   };
   return (
@@ -78,8 +78,7 @@ const LocMap = () => {
       />
       <S.LocContainer ismobile = {isMobile}>
         <FloorSelector ismobile = {isMobile} >
-          <FloorButton active={floor === 1} onClick={() => setFloor(1)} ismobile = {isMobile}>1층</FloorButton>
-          <FloorButton active={floor === 2} onClick={() => setFloor(2)} ismobile = {isMobile}>2층</FloorButton>
+          <FloorButton active={floor === 1} onClick={() => setFloor(1)} ismobile = {isMobile}>배치도</FloorButton>
         </FloorSelector>
         <S.LocContentArea ismobile = {isMobile}>
             <S.LocTitle ismobile = {isMobile} >{floorData[floor].title}</S.LocTitle>

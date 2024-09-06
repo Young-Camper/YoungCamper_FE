@@ -159,7 +159,7 @@ export const LocContainer = styled.div`
 
 export const LocContentArea = styled.div`
   align-self: stretch;
-  height: ${props => props.ismobile ? '348px':'1234px'};
+  height: ${props => props.ismobile ? '448px':'1234px'};
   padding: ${props => props.ismobile ? '0px':'48px'};
   background: white;
   border: 2px #0068FF solid;
@@ -204,7 +204,7 @@ export const LocDescription = styled.div`
 
 export const LocImageContainer = styled.div`
   align-self: stretch;
-  height: ${ props => props.ismobile ? '210px' : '878px'};
+  height: ${ props => props.ismobile ? '310px' : '878px'};
   padding: ${ props => props.ismobile ? 
     '12px'
     :
@@ -218,7 +218,7 @@ export const LocImageContainer = styled.div`
 
 export const LocImage = styled.img`
   align-self: stretch;
-  height: ${(props) => props.ismobile ? '221px': '782px'};
+  height: ${(props) => props.ismobile ? '321px': '782px'};
   width: ${(props) => props.ismobile ? '100%': '100%'}; // 이미지 너비를 부모 컨테이너에 맞춰 꽉 채웁니다.
   src: ${(props) => props.src}
 
