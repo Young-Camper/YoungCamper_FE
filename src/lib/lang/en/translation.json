@@ -122,5 +122,32 @@
     "busnumber": "02-201(Seoul) N13, 144, 301, 7212",
     "station": "Dongguk University Station, Jangchung-dong",
     "stationNum": "02-222(Seoul) 05, 02, 03"
+  },
+  "review": {
+    "bannerTitle": "Reviews",
+    "bannerSubtitle": "Please leave an honest review so that we can grow further in the future.",
+    "title": "Please tell us what you think",
+    "subtitle": "We want to hear your inner thoughts.",
+    "ph": "All reviews are anonymous and must be written in 500 characters or less. (Slander, profanity, etc. will be hidden.)",
+    "photo": "picture",
+    "enter": "input",
+    "pw": "password",
+    "num": "Please enter a 4-digit number.",
+    "delete": "delete",
+    "noreview": "No review has been written.\nPlease write a review within 500 characters.",
+    "ten": "Please write a review of at least 10 characters.",
+    "under": "Please write within 500 characters.",
+    "nopw": "No password has been entered.\nPlease enter a 4-digit password.",
+    "ing": "Uploading image...",
+    "fail": "Image upload failed.",
+    "submit": "Thank you! Your review has been submitted.",
+    "nosubmit": "Failed to submit the review.",
+    "error": "An error occurred while submitting the review.",
+    "check": "check",
+    "modaltext": "To delete the review,\nplease enter your 4-digit password!",
+    "cancle": "Cancel",
+    "deletealert": "The review has been deleted.",
+    "deletefail": "Failed to delete the review.",
+    "notmatch": "The password does not match."
   }
 }

@@ -207,7 +207,7 @@ export const ModalText = styled.div`
   font-weight: 400;
   line-height: 38px;
   overflow-wrap: break-word;
-  white-space: nowrap;
+  white-space: pre-line;
 `;
 
 export const PasswordInputWrapper = styled.div`
