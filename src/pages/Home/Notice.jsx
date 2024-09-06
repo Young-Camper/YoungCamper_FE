@@ -10,7 +10,9 @@ const Notice = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const [loading, setLoading] = useState(true);
+  const [filteredData, setFilteredData] = useState([]);
   const [urgentNotices, setUrgentNotices] = useState([]);
+  const [updatedNotices, setupdatedNotices] = useState([]);
   const [nonUrgentNotices, setNonUrgentNotices] = useState([]);
   const [mainNotices, setMainNotices] = useState([]);
   const { t, i18n } = useTranslation();
@@ -31,7 +33,7 @@ const Notice = () => {
       try {
         const response = await getAnnouncements();
         if (Array.isArray(response.data.data)) {
-          const filteredData = response.data.data.map((item) => {
+          const FilteredData = response.data.data.map((item) => {
             const content = item.contents.find(
               (c) => c.languageCode === currentLanguage
             );
@@ -41,16 +43,7 @@ const Notice = () => {
               content: content ? content.content : "",
             };
           });
-
-          // 필독 공지 필터링
-          const urgentNotices = filteredData.filter(
-            (item) => item.isPinned === "true"
-          );
-          const nonUrgentNotices = filteredData.filter(
-            (item) => item.isPinned === "false"
-          );
-          setUrgentNotices(urgentNotices);
-          setNonUrgentNotices(nonUrgentNotices);
+          setFilteredData(FilteredData);
         }
       } catch (error) {
         // 오류 처리
@@ -63,26 +56,37 @@ const Notice = () => {
   }, [currentLanguage]);
 
   useEffect(() => {
-    let updatedNotices = [];
+    // 필독 공지 필터링
+    const urgentNotices = filteredData.filter((item) => item.isPinned === true);
+    const nonUrgentNotices = filteredData.filter(
+      (item) => item.isPinned === false
+    );
+    setUrgentNotices(urgentNotices);
+    setNonUrgentNotices(nonUrgentNotices);
+  }, [filteredData]);
 
-    //필독공지 -> 최신순으로 4개 정렬
-    if (urgentNotices.length >= 4) {
-      updatedNotices = urgentNotices.slice(-4).reverse();
-    } else {
-      const nonUrgentToAdd = 4 - urgentNotices.length;
-      const addNotices = nonUrgentNotices.slice(0, nonUrgentToAdd).reverse();
-      updatedNotices = [...urgentNotices].reverse().concat(addNotices);
-    }
-    //공지가 4개 이하일 때
-    if (updatedNotices.length < 4) {
-      const emptyNotices = Array(4 - updatedNotices.length).fill({
-        title: t("home.noNotice"),
-        isPinned: false,
-      });
-      updatedNotices = updatedNotices.concat(emptyNotices);
-    }
+  useEffect(() => {
+    if (urgentNotices.length > 0 || nonUrgentNotices.length > 0) {
+      let updatedNotices = [];
+      //필독공지 -> 최신순으로 4개 정렬
+      if (urgentNotices.length >= 4) {
+        const updatedNotices = urgentNotices.slice(-4).reverse();
+      } else {
+        const nonUrgentToAdd = 4 - urgentNotices.length;
+        const addNotices = nonUrgentNotices.slice(0, nonUrgentToAdd).reverse();
+        updatedNotices = [...urgentNotices].reverse().concat(addNotices);
+      }
+      //공지가 4개 이하일 때
+      if (updatedNotices.length < 4) {
+        const emptyNotices = Array(4 - updatedNotices.length).fill({
+          title: t("home.noNotice"),
+          isPinned: false,
+        });
+        updatedNotices = updatedNotices.concat(emptyNotices);
+      }
 
-    setMainNotices(updatedNotices);
+      setMainNotices(updatedNotices);
+    }
   }, [urgentNotices, nonUrgentNotices, t]);
 
   return (
@@ -117,13 +121,13 @@ const Notice = () => {
                 $isDesktop={isDesktop}
               >
                 <Link
-                  to={`/notification/${notice.num}`}
+                  to={`/notification/${notice.id}`}
                   style={{ width: "100%" }}
                 >
                   <S.NoticeList
                     $isTablet={isTablet}
                     $isDesktop={isDesktop}
-                    ishovering={hoveredIndex === index}
+                    $ishovering={hoveredIndex === index}
                     onMouseOver={() => handleMouseOver(index)}
                     onMouseOut={handleMouseOut}
                   >
@@ -133,7 +137,7 @@ const Notice = () => {
                     >
                       <S.NoticeTag
                         $isDesktop={isDesktop}
-                        ishovering={hoveredIndex === index}
+                        $ishovering={hoveredIndex === index}
                       >
                         {notice.isPinned
                           ? t("home.noticeTagY")
@@ -142,7 +146,7 @@ const Notice = () => {
                       <S.NoticeText
                         $isTablet={isTablet}
                         $isDesktop={isDesktop}
-                        ishovering={hoveredIndex === index}
+                        $ishovering={hoveredIndex === index}
                       >
                         {`${t(notice.title)}`}
                       </S.NoticeText>
@@ -150,7 +154,7 @@ const Notice = () => {
                     <S.ArrowImg2Box $isDesktop={isDesktop}>
                       <S.ArrowImg3
                         $isDesktop={isDesktop}
-                        ishovering={hoveredIndex === index}
+                        $ishovering={hoveredIndex === index}
                       />
                     </S.ArrowImg2Box>
                   </S.NoticeList>
