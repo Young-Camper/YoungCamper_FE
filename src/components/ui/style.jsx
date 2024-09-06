@@ -33,7 +33,7 @@ export const BannerTitle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
+  gap: ${(props) => props.gap || "24px"};
 `;
 
 export const MainText = styled.div`
