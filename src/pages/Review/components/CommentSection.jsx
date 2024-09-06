@@ -6,7 +6,6 @@ import {
   PageButton,
   CurrentPageButton,
 } from "../components/CommentStyle";
-
 import { getReviews } from "../../../lib/apis/api/getReviews";
 import Loading from "../../../components/ui/Loading"; // 로딩 컴포넌트 추가
 
@@ -35,7 +34,12 @@ const CommentSection = ({ refresh }) => {
       );
 
       if (data && data.content) {
-        setComments(data.content);
+        // 공백을 "%20"로 인코딩하여 이미지 URL을 처리
+        const processedComments = data.content.map((comment) => ({
+          ...comment,
+          imageUrls: comment.imageUrls.map((url) => url.replace(/\s/g, "%20")),
+        }));
+        setComments(processedComments);
         setTotalPages(data.totalPages);
       } else {
         console.error("Unexpected data structure:", data);
@@ -52,11 +56,12 @@ const CommentSection = ({ refresh }) => {
   // 새 리뷰 등록 시 무조건 1페이지로 이동 및 페치
   useEffect(() => {
     if (refresh) {
+      setCurrentPage(1); // 리뷰 등록 시 currentPage를 1로 설정
       fetchComments(1, true); // refresh가 발생하면 1페이지를 페치
     }
   }, [refresh]);
 
-  // 현재 페이지 변경이나 댓글 목록 변경 시 페치
+  // 현재 페이지 변경 시 댓글 페치
   useEffect(() => {
     fetchComments(currentPage);
   }, [currentPage]);

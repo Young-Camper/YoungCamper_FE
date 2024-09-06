@@ -10,7 +10,6 @@ export const getPresignedUrl = async (fileName) => {
     });
   return response.data.data;
   } catch (error) {
-    console.error("Error fetching presigned URL: ", error);
     throw error;
   }
 };

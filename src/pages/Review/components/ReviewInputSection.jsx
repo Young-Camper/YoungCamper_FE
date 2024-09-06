@@ -59,6 +59,14 @@ const ReviewInputSection = ({ onSuccess }) => {
       return;
     }
 
+    // 리뷰 텍스트 길이 확인 (공백 포함 500자 이내)
+    if (review.length > 500) {
+      setModalMessage("후기를 500자 이하로 작성해주세요."); // 모달 메시지 설정
+      setShowModal(true); // 모달 표시
+      setLoading(false);
+      return;
+    }
+
     // 비밀번호 길이 확인
     if (password.length < 4) {
       setModalMessage(
@@ -128,6 +136,20 @@ const ReviewInputSection = ({ onSuccess }) => {
     setPassword(e.target.value.replace(/\D/g, "")); // 숫자만 입력 가능하게 처리
   };
 
+  // 리뷰 입력값 변경 핸들러
+  const handleReviewChange = (e) => {
+    const inputText = e.target.value;
+
+    // 500자 초과 입력 방지
+    if (inputText.length <= 500) {
+      setReview(inputText);
+    } else {
+      // 500자를 초과하면 상태를 업데이트하지 않음
+      setModalMessage("500자 이내로 작성해주세요.");
+      setShowModal(true);
+    }
+  };
+
   return loading ? (
     <Loading />
   ) : (
@@ -135,10 +157,10 @@ const ReviewInputSection = ({ onSuccess }) => {
       <S.Review $isMobile={isMobile} $isTablet={isTablet}>
         <S.ReviewInput
           value={review}
-          onChange={(e) => setReview(e.target.value)}
+          onChange={handleReviewChange}
           $isMobile={isMobile}
           $isTablet={isTablet}
-          maxLength={499}
+          maxLength={500}
           placeholder="모든 후기는 익명이며, 500자 이내로 작성해 주세요. (비방, 욕설 등은 숨김처리 됩니다.)"
         />
         <S.ImagePreviewContainer $isMobile={isMobile}>

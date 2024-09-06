@@ -13,7 +13,6 @@ export const postReview = async (reviewData) => {
     });
     return response.data.data;
   }catch (error) {
-    console.error("Error creating review:", error);
     throw error;
   }
 };
