@@ -3,14 +3,19 @@ import * as S from "./HomeStyle";
 import { Link } from "react-router-dom";
 import useMediaQueries from "../../hooks/useMediaQueries";
 import Loading from "../../components/ui/Loading";
+import { getAnnouncements } from "../../lib/apis/api/getAnnouncements";
 import { useTranslation } from "react-i18next";
 
 const Notice = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
-  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { t } = useTranslation();
+  const [urgentNotices, setUrgentNotices] = useState([]);
+  const [nonUrgentNotices, setNonUrgentNotices] = useState([]);
+  const [mainNotices, setMainNotices] = useState([]);
+  const { t, i18n } = useTranslation();
+
+  const currentLanguage = i18n.language;
 
   const handleMouseOver = (index) => {
     setHoveredIndex(index);
@@ -25,40 +30,60 @@ const Notice = () => {
     const fetchData = async () => {
       try {
         const response = await getAnnouncements();
-        setData(response.data);
-        setLoading(false);
+        if (Array.isArray(response.data.data)) {
+          const filteredData = response.data.data.map((item) => {
+            const content = item.contents.find(
+              (c) => c.languageCode === currentLanguage
+            );
+            return {
+              ...item,
+              title: content ? content.title : "",
+              content: content ? content.content : "",
+            };
+          });
+
+          // 필독 공지 필터링
+          const urgentNotices = filteredData.filter(
+            (item) => item.isPinned === "true"
+          );
+          const nonUrgentNotices = filteredData.filter(
+            (item) => item.isPinned === "false"
+          );
+          setUrgentNotices(urgentNotices);
+          setNonUrgentNotices(nonUrgentNotices);
+        }
       } catch (error) {
+        // 오류 처리
+      } finally {
         setLoading(false);
       }
     };
+
     fetchData();
-  }, []);
+  }, [currentLanguage]);
 
-  //필독과 일반공지 구분
-  const urgentNotices =
-    data && Array.isArray(data)
-      ? data.filter((item) => item.isPinned === "true")
-      : [];
-  const nonUrgentNotices =
-    data && Array.isArray(data)
-      ? data.filter((item) => item.isPinned === "false")
-      : [];
-  let mainNotices = [];
+  useEffect(() => {
+    let updatedNotices = [];
 
-  //필독공지 -> 최신순으로 4개 정렬
-  if (urgentNotices.length >= 4) {
-    mainNotices = urgentNotices.slice(-4).reverse();
-  } else {
-    const nonUrgentToAdd = 4 - urgentNotices.length;
-    const addNotices = nonUrgentNotices.slice(0, nonUrgentToAdd).reverse();
-    mainNotices = urgentNotices.reverse().concat(addNotices);
-  }
+    //필독공지 -> 최신순으로 4개 정렬
+    if (urgentNotices.length >= 4) {
+      updatedNotices = urgentNotices.slice(-4).reverse();
+    } else {
+      const nonUrgentToAdd = 4 - urgentNotices.length;
+      const addNotices = nonUrgentNotices.slice(0, nonUrgentToAdd).reverse();
+      updatedNotices = [...urgentNotices].reverse().concat(addNotices);
+    }
+    //공지가 4개 이하일 때
+    if (updatedNotices.length < 4) {
+      const emptyNotices = Array(4 - updatedNotices.length).fill({
+        title: t("home.noNotice"),
+        isPinned: false,
+      });
+      updatedNotices = updatedNotices.concat(emptyNotices);
+    }
 
-  //공지가 4개 이하일 때
-  const emptyNotices = Array(4 - mainNotices.length).fill({
-    title: t("home.noNotice"),
-    isPinned: "no",
-  });
+    setMainNotices(updatedNotices);
+  }, [urgentNotices, nonUrgentNotices, t]);
 
   return (
     <S.NoticeSection $isTablet={isTablet} $isDesktop={isDesktop}>
@@ -84,20 +109,15 @@ const Notice = () => {
         <Loading />
       ) : (
         <S.NoticeListSet $isDesktop={isDesktop}>
-          {[
-            ...mainNotices,
-            ...Array(4 - mainNotices.length).fill({ isEmpty: true }),
-          ].map((notice, index) => {
-            const isEmpty = notice.isEmpty || notice === null; // notice가 null인 경우 빈 공지
-            const id = isEmpty ? `empty-${index}` : notice.id;
+          {[...mainNotices].map((notice, index) => {
             return (
               <S.NoticeListFrame
-                key={id}
+                key={index}
                 $isTablet={isTablet}
                 $isDesktop={isDesktop}
               >
                 <Link
-                  to={isEmpty ? "#" : `/notification/${notice.num}`}
+                  to={`/notification/${notice.num}`}
                   style={{ width: "100%" }}
                 >
                   <S.NoticeList
@@ -115,10 +135,8 @@ const Notice = () => {
                         $isDesktop={isDesktop}
                         ishovering={hoveredIndex === index}
                       >
-                        {isEmpty
+                        {notice.isPinned
                           ? t("home.noticeTagY")
-                          : notice.isPinned
-                          ? t("home.noticeTagY]")
                           : t("home.noticeTagN")}
                       </S.NoticeTag>
                       <S.NoticeText
@@ -126,7 +144,7 @@ const Notice = () => {
                         $isDesktop={isDesktop}
                         ishovering={hoveredIndex === index}
                       >
-                        {isEmpty ? t("home.noNotice") : notice.title}
+                        {`${t(notice.title)}`}
                       </S.NoticeText>
                     </S.NoticeItemBox>
                     <S.ArrowImg2Box $isDesktop={isDesktop}>
