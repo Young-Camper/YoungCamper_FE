@@ -11,7 +11,7 @@ const IntroContent = () => {
   const { t } = useTranslation();
   const title = isMobile ? t("about.mtitle") : t("about.title");
   const subtitle = isMobile ? t("about.msubtitle") : t("about.subtitle");
-  const content = isDesktop ? t("about.dcontent") : t("about.mcontent");
+  const content = isDesktop ? t("about.content") : t("about.mcontent");
 
   return (
     <>
