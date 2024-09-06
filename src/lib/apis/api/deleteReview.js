@@ -14,7 +14,6 @@ export const deleteReview = async (reviewId, password) => {
     });
     return response.data;
     } catch (error) {
-    console.error("Error deleting review:", error);
     throw error;
   }
 };

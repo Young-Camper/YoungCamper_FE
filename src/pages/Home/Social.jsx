@@ -97,10 +97,6 @@ const Social = () => {
                           $IconImage={social.image}
                         />
                       )}
-                      {/* <S.IconImg
-                        $isDesktop={isDesktop}
-                        $IconImage={social.image}
-                      /> */}
                       <S.FrameText $isDesktop={isDesktop}>
                         {social.name}
                       </S.FrameText>

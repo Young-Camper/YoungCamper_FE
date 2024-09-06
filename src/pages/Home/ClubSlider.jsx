@@ -5,17 +5,21 @@ import "slick-carousel/slick/slick-theme.css";
 import * as S from "../../data/clubdata";
 import useMediaQueries from "../../hooks/useMediaQueries";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function ClubSlider() {
   const { isDesktop, isTablet } = useMediaQueries();
   const settings = {
     dots: false,
     infinite: true,
-    speed: 5000,
+    speed: 6000,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
     slidesToShow: 3,
+    draggable: false, // 드래그 비활성화
+    swipe: false, // 터치 스와이프 비활성화
+    touchMove: false, // 터치 이동 비활성화
     responsive: [
       {
         breakpoint: 1280,
@@ -67,6 +71,8 @@ function ClubSlider() {
       },
     ],
   };
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language === "ko" ? 0 : 1;
 
   return (
     <S.SliderContainer $isDesktop={isDesktop}>
@@ -80,7 +86,7 @@ function ClubSlider() {
               $bgImage={image.imageurl}
             >
               <S.CardNameTag $isDesktop={isDesktop} $isTablet={isTablet}>
-                {image.tag}
+                {image.tag[currentLang]}
               </S.CardNameTag>
               <S.CardName $isDesktop={isDesktop} $isTablet={isTablet}>
                 {image.name}

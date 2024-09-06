@@ -3,11 +3,13 @@ import DeleteModal from "./DeleteModal";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import * as S from "../components/CommentStyle";
 import { deleteReview } from "../../../lib/apis/api/deleteReview";
+import { useTranslation } from "react-i18next";
 
 const Comment = ({ comment, onDelete }) => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   const handleDeleteClick = () => {
     setIsModalOpen(true);
@@ -22,23 +24,23 @@ const Comment = ({ comment, onDelete }) => {
       const response = await deleteReview(comment.id, password);
 
       if ((response.status = 200)) {
-        alert("리뷰가 삭제되었습니다.");
+        alert(t("review.deletealert"));
 
         if (typeof onDelete === "function") {
-          console.log("onDelete 함수가 호출됩니다."); // 추가 디버깅 로그
+          // console.log("onDelete 함수가 호출됩니다."); // 추가 디버깅 로그
           onDelete(comment.id); // 삭제된 댓글의 ID를 부모 컴포넌트로 전달
         } else {
-          console.error("onDelete가 함수가 아닙니다. onDelete:", onDelete);
+          // console.error("onDelete가 함수가 아닙니다. onDelete:", onDelete);
         }
       } else {
-        console.error(
-          `Unexpected response structure or status: ${response.data}`
-        );
-        alert("리뷰 삭제에 실패했습니다.");
+        // console.error(
+        //   `Unexpected response structure or status: ${response.data}`
+        // );
+        alert(t("review.deletefail"));
       }
     } catch (error) {
-      console.error("리뷰 삭제 실패:", error);
-      alert("비밀번호가 일치하지 않습니다.");
+      // console.error("리뷰 삭제 실패:", error);
+      alert(t("review.notmatch"));
     }
     setIsModalOpen(false); // 모달을 닫습니다.
   };
@@ -89,7 +91,7 @@ const Comment = ({ comment, onDelete }) => {
               $isMobile={isMobile}
               $isTablet={isTablet}
               $isDesktop={isDesktop}
-              image={url}
+              $image={url}
             />
           ))}
         </S.CommentContent>

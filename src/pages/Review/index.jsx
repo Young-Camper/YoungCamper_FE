@@ -6,6 +6,7 @@ import CommentSection from "./components/CommentSection";
 import MainTitle from "../../components/ui/MainTitle";
 import TitleSet from "../../components/ui/TitleSet";
 import ReviewInputSection from "./components/ReviewInputSection";
+import { useTranslation } from "react-i18next";
 
 // Hooks
 import useMediaQueries from "../../hooks/useMediaQueries";
@@ -15,24 +16,24 @@ import * as S from "./style";
 
 const Index = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
-  const [refreshComments, setRefreshComments] = useState(false); // 리뷰 리프레시 상태 추가
+  const [refreshComments, setRefreshComments] = useState(0);
+  const { t } = useTranslation();
 
-  // 성공 알림 콜백 함수
   const handleSuccess = () => {
-    setRefreshComments((prev) => !prev); // 상태를 토글하여 CommentSection 재렌더링 유도
+    setRefreshComments((prev) => prev + 1);
   };
 
   return (
     <>
       <MainTitle
-        mainText="후기"
-        subText="앞으로 더욱 성장할 수 있도록 솔직한 후기를 남겨주세요"
+        mainText={t("review.bannerTitle")}
+        subText={t("review.bannerSubtitle")}
       />
       <S.Container $isMobile={isMobile}>
         <S.TitleWrapper $isMobile={isMobile} $isTablet={isTablet}>
           <TitleSet
-            mainText="의견을 들려주세요."
-            subText="여러분의 속마음이 듣고 싶어요"
+            mainText={t("review.title")}
+            subText={t("review.subtitle")}
           />
         </S.TitleWrapper>
 

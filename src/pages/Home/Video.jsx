@@ -39,6 +39,7 @@ const Video = () => {
           autoPlay
           loop
           muted
+          playsInline
         />
         <Link to={`https://youtube.com/@youngcamp_dgu?si=varFM5dZcDp2CaaU`}>
           <S.VideoBtn $isTablet={isTablet} $isDesktop={isDesktop}>
