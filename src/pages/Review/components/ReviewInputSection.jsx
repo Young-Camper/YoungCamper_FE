@@ -42,7 +42,7 @@ const ReviewInputSection = ({ onSuccess }) => {
     handleInputButtonClick(review, password);
 
     // 필수 입력 확인
-    if (!password || !review) {
+    if (!password && !review) {
       setModalMessage(
         "후기를 작성하지 않았습니다.\n500자 이내 후기를 작성해주세요."
       );
@@ -51,10 +51,18 @@ const ReviewInputSection = ({ onSuccess }) => {
       return;
     }
 
-    // 리뷰 텍스트 길이 확인 (공백 포함 500자 이내)
-    if (review.length < 10 || review.length > 500) {
-      setModalMessage("후기를 10자 이상, 500자 이하로 작성해주세요.");
+    // 리뷰 텍스트 길이 확인
+    if (review.length < 10) {
+      setModalMessage("10자 이상 후기를 작성해주세요.");
       setShowModal(true);
+      setLoading(false);
+      return;
+    }
+
+    // 리뷰 텍스트 길이 확인 (공백 포함 500자 이내)
+    if (review.length > 500) {
+      setModalMessage("후기를 500자 이하로 작성해주세요."); // 모달 메시지 설정
+      setShowModal(true); // 모달 표시
       setLoading(false);
       return;
     }
@@ -83,18 +91,9 @@ const ReviewInputSection = ({ onSuccess }) => {
       }
     }
 
-    // 리뷰에서 \n을 다른 문자열로 대체
-    const tempReview = review.replace(/\n/g, "<NEWLINE>");
-
-    // 비속어 필터링 적용
-    const cleanedReview = filter.clean(tempReview);
-
-    // 필터링 후 다시 \n 복원
-    const finalReview = cleanedReview.replace(/<NEWLINE>/g, "\n");
-
     const reviewData = {
       password: password,
-      content: finalReview, // 필터링 후 줄바꿈 복원된 텍스트 사용
+      content: filter.clean(review),
       imageUrls: fileUrls,
     };
 
@@ -137,11 +136,17 @@ const ReviewInputSection = ({ onSuccess }) => {
     setPassword(e.target.value.replace(/\D/g, "")); // 숫자만 입력 가능하게 처리
   };
 
+  // 리뷰 입력값 변경 핸들러
   const handleReviewChange = (e) => {
     const inputText = e.target.value;
-    // 공백 포함 500자 제한 적용
+
+    // 500자 초과 입력 방지
     if (inputText.length <= 500) {
       setReview(inputText);
+    } else {
+      // 500자를 초과하면 상태를 업데이트하지 않음
+      setModalMessage("500자 이내로 작성해주세요.");
+      setShowModal(true);
     }
   };
 
@@ -155,9 +160,8 @@ const ReviewInputSection = ({ onSuccess }) => {
           onChange={handleReviewChange}
           $isMobile={isMobile}
           $isTablet={isTablet}
-          maxLength={500} // 입력 자체를 500자로 제한
+          maxLength={500}
           placeholder="모든 후기는 익명이며, 500자 이내로 작성해 주세요. (비방, 욕설 등은 숨김처리 됩니다.)"
-          style={{ whiteSpace: "pre-wrap" }} // 줄바꿈 유지
         />
         <S.ImagePreviewContainer $isMobile={isMobile}>
           {imagePreviews.map((preview, index) => (

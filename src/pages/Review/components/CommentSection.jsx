@@ -6,7 +6,6 @@ import {
   PageButton,
   CurrentPageButton,
 } from "../components/CommentStyle";
-
 import { getReviews } from "../../../lib/apis/api/getReviews";
 import Loading from "../../../components/ui/Loading"; // 로딩 컴포넌트 추가
 
@@ -35,7 +34,12 @@ const CommentSection = ({ refresh }) => {
       );
 
       if (data && data.content) {
-        setComments(data.content);
+        // 공백을 "%20"로 인코딩하여 이미지 URL을 처리
+        const processedComments = data.content.map((comment) => ({
+          ...comment,
+          imageUrls: comment.imageUrls.map((url) => url.replace(/\s/g, "%20")),
+        }));
+        setComments(processedComments);
         setTotalPages(data.totalPages);
       } else {
         console.error("Unexpected data structure:", data);
