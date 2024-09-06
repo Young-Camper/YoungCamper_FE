@@ -3,13 +3,14 @@ import * as S from "./HomeStyle";
 import { Link } from "react-router-dom";
 import useMediaQueries from "../../hooks/useMediaQueries";
 import Loading from "../../components/ui/Loading";
-import { getAnnouncements } from "../../lib/apis/api/getAnnouncements";
+import { useTranslation } from "react-i18next";
 
 const Notice = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   const handleMouseOver = (index) => {
     setHoveredIndex(index);
@@ -34,8 +35,14 @@ const Notice = () => {
   }, []);
 
   //필독과 일반공지 구분
-  const urgentNotices = data && Array.isArray(data) ? data.filter((item) => item.isPinned === "true") : [];
-  const nonUrgentNotices = data && Array.isArray(data) ? data.filter((item) => item.isPinned === "false") : [];
+  const urgentNotices =
+    data && Array.isArray(data)
+      ? data.filter((item) => item.isPinned === "true")
+      : [];
+  const nonUrgentNotices =
+    data && Array.isArray(data)
+      ? data.filter((item) => item.isPinned === "false")
+      : [];
   let mainNotices = [];
 
   //필독공지 -> 최신순으로 4개 정렬
@@ -49,7 +56,7 @@ const Notice = () => {
 
   //공지가 4개 이하일 때
   const emptyNotices = Array(4 - mainNotices.length).fill({
-    title: "등록된 공지가 없습니다.",
+    title: t("home.noNotice"),
     isPinned: "no",
   });
 
@@ -57,7 +64,7 @@ const Notice = () => {
     <S.NoticeSection $isTablet={isTablet} $isDesktop={isDesktop}>
       <S.NoticeTitleSet $isTablet={isTablet} $isDesktop={isDesktop}>
         <S.NoticeTitleText $isTablet={isTablet} $isDesktop={isDesktop}>
-          주요 공지사항을 확인해보세요
+          {t("home.notice")}
         </S.NoticeTitleText>
         <Link to={"/notification"}>
           {isDesktop && (
@@ -68,7 +75,7 @@ const Notice = () => {
               onMouseOver={() => handleMouseOver("button")}
               onMouseOut={handleMouseOut}
             >
-              더 알아보기
+              {t("home.moreNotice")}
             </S.NoticeBtn>
           )}
         </Link>
@@ -76,7 +83,7 @@ const Notice = () => {
       {loading ? (
         <Loading />
       ) : (
-        <S.NoticeListSet $isDesktop={isDesktop} >
+        <S.NoticeListSet $isDesktop={isDesktop}>
           {[
             ...mainNotices,
             ...Array(4 - mainNotices.length).fill({ isEmpty: true }),
@@ -109,17 +116,17 @@ const Notice = () => {
                         ishovering={hoveredIndex === index}
                       >
                         {isEmpty
-                          ? "전체"
-                          : notice.isPinned === "yes"
-                          ? "필독"
-                          : "전체"}
+                          ? t("home.noticeTagY")
+                          : notice.isPinned
+                          ? t("home.noticeTagY]")
+                          : t("home.noticeTagN")}
                       </S.NoticeTag>
                       <S.NoticeText
                         $isTablet={isTablet}
                         $isDesktop={isDesktop}
                         ishovering={hoveredIndex === index}
                       >
-                        {isEmpty ? "등록된 공지가 없습니다." : notice.title}
+                        {isEmpty ? t("home.noNotice") : notice.title}
                       </S.NoticeText>
                     </S.NoticeItemBox>
                     <S.ArrowImg2Box $isDesktop={isDesktop}>
@@ -143,7 +150,7 @@ const Notice = () => {
               $isTablet={isTablet}
               ishovering={hoveredIndex === "button"}
             >
-              더 알아보기
+              {t("home.moreNotice")}
             </S.NoticeBtn>
           </S.NoticeBtnBox>
         </Link>

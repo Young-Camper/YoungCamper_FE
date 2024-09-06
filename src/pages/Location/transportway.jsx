@@ -7,7 +7,7 @@ const transportway =  () => {
   const { isMobile } = useMediaQueries();
   return (
     <S.WayContainer $ismobile = {isMobile}>
-      <S.WaySection $height={96}>
+      <S.WaySection $height={isMobile ? 80 :96}>
         <S.WayTitleContainer>
           <S.WayTitleBadge>
             <S.WayTitleText  $ismobile= {isMobile}>지하철</S.WayTitleText>
@@ -17,7 +17,7 @@ const transportway =  () => {
           <div>지하철 3호선 동대입구역 5번출구 (체육관 직접연결)</div>
         </S.WaySectionTitle>
       </S.WaySection>
-      <S.WaySection $height={232} $ismobile= {isMobile}>
+      <S.WaySection $height={isMobile ? 116 : 232} $ismobile= {isMobile}>
         <S.WayTitleContainer>
           <S.WayTitleBadge>
             <S.WayTitleText $ismobile= {isMobile}>버스</S.WayTitleText>

@@ -12,9 +12,9 @@ const Transport = () => {
 
   return (
     <>
-      <TitleSet isDesktop={isDesktop}
+      { !isMobile && <TitleSet isDesktop={isDesktop}
         mainText="오시는 길"
-      />
+      /> }
       <S.Container>
         <TransportContainer/>
       </S.Container>

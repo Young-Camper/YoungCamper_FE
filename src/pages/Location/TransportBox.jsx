@@ -39,8 +39,8 @@ const TransportBox = ({
       {isOpen && <S.AccordionContent isOpen={isOpen} index = {index} isDesktop = {isDesktop}>
         <S.ContentInner index = {index}>
           { (index === 0) &&  <S.Placeholder 
-          isDesktop = {isDesktop}> 
-          <img src = {isDesktop ? `${mediaUrl}Location/desktop_loc_pic.png` : `${mediaUrl}Location/mobile_loc_pic.png`}></img>
+          isDesktop = {isDesktop}
+          src = {isDesktop? `${mediaUrl}Location/festival_desktop_pic.png` : `${mediaUrl}Location/festival_mobile_pic.png` }> 
           </S.Placeholder>}
         </S.ContentInner>
         <S.DescriptionContainer index = {index}>

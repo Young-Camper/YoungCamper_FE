@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   /* width: ${(props) =>
     props.$isDesktop ? "1100px" : props.$isTablet ? "672px" : "360px"}; */
 
-  padding: ${(props) => (props.$isDesktop ? "48px 0px" : "30px 20px")};
+  padding: ${(props) => (props.$isDesktop ? "48px 24px" : "30px 20px")};
 
   flex-direction: column;
   align-items: flex-start;

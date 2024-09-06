@@ -83,7 +83,7 @@ export const Icon = styled.div`
 export const AccordionContent = styled.div`
   align-self: stretch;
   max-height: ${props => ((props.index === 0) ? '771px' : '568px')}; // 열려있을 때만 높이 설정
-  padding: ${props => (props.isOpen ? '24px 48px' : '0')}; 
+  padding: ${props => (props.isOpen ?( props.index === 1 ? '12px 12px'  : '24px 48px' ): '0')}; 
   max-width: auto;
   background: white;
   flex-direction: column;
@@ -100,23 +100,23 @@ export const AccordionContent = styled.div`
 export const ContentInner = styled.div`
   align-self: stretch;
   max-height: ${props => (props.index === 0 ? '489px' : '568px')}; // 열려있을 때만 높이 설정
-  width: auto;
-  padding: 32px;
+  width: 100%;
+  padding: ${props => (props.$isDesktop ? '32px' : '0px')};
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  display: flex;
-
+  display: inline-flex;
+  object-fit: contain;
 `;
 
-export const Placeholder = styled.div`
-  align-self: stretch;
+export const Placeholder = styled.img`
+  
   justify-content: center;
-  width: ${ props => props.isDesktop ? '736px' : 'auto'};
+  width: ${ props => props.isDesktop ? '736px' : '100%'};
   height: 441px;
-  background: #E3E3E3;
-  border: 1px #E3E3E3 solid;
-  display: flex;
+  object-fit: contain;  
+  display: inline-flex;
+  src: ${props => props.$img}
 `;
 
 export const Description = styled.div`
@@ -125,14 +125,16 @@ export const Description = styled.div`
   font-size: ${ (props) => props.$ismobile ? '12px' : '20px'};
   font-family: "MonRegular";
   font-weight: 400;
-  line-height: 30px;
+  line-height: ${(props) => props.$ismobile ? '18px' : '30px'};
   word-wrap: break-word;
+
+  letter: -1%;
 
 `;
 
 export const DescriptionContainer = styled.div`
   align-self: stretch;
-  padding: ${props => (props.index === 1 ? '48px' : '0px')};
+  padding: ${props => (props.index === 1 ? '48px 48px' : '0px')};
   justify-content: center;
   align-items: flex-start;
   gap: ${props => (props.index === 0 ? '10px' : '0px')};
@@ -195,6 +197,8 @@ export const LocDescription = styled.div`
   font-family: "MonRegular";
   font-weight: 400;
   word-wrap: break-word;
+  line-height: ${props => props.ismobile ? '18px' : '30px'};
+  letter: -1%;
 
 `;
 
@@ -233,6 +237,7 @@ export const Container = styled.div`
     height: auto; // 
     padding: 0px;
     font-size: 16px;
+    padding-top: 36px
   }
 `;
 
@@ -258,12 +263,13 @@ export const Wrapper = styled.div`
 export const WayContainer = styled.div`
   width: 100%;
   height: 100%;
-  padding: 24px;
+  padding: ${props => props.$ismobile ? '0px' : '24px'};
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 48px;
+  gap: ${props => props.$ismobile ? '12px' : '48px'};
+  
 `;
 
 export const WaySection = styled.div`
@@ -274,6 +280,8 @@ export const WaySection = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 12px;
+  overflow: ${props => props.$ismobile ? 'auto' : 'visible'}; // 모바일 환경에서 overflow 처리
+  
 `;
 
 export const WayTitleContainer = styled.div`
@@ -300,7 +308,7 @@ export const WayTitleBadge = styled.div`
 export const WayTitleText = styled.div`
   text-align: center;
   color: #0068FF;
-  font-size: ${ (props) => props.$ismobile ? '12px' : '20px'};
+  font-size: ${ (props) => props.$ismobile ? '14px' : '24px'};
   font-family: "MonRegular";
   font-weight: 600;
   line-height: 28px;
@@ -321,11 +329,12 @@ export const WaySectionTitle = styled.div`
   & > div {
     flex: 1 1 0;
     color: #0A0B0A;
-    font-size : ${ (props) => props.$ismobile ? '12px' : '20px'};
+    font-size : ${ (props) => props.$ismobile ? '14px' : '24px'}
     font-family: "MonRegular";
     font-weight: 600;
     line-height: 28px;
     word-wrap: break-word;
+    word-break: break-all;
   }
 `;
 
@@ -338,7 +347,7 @@ export const WayBusStopContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 24px;
+  gap: ${props => props.$ismobile ? '12px' : '24px'};
 `;
 
 export const WayBusStopInfo = styled.div`
@@ -354,7 +363,7 @@ export const WayBusStopInfo = styled.div`
 
 export const WayBusStopName = styled.div`
   color: #0A0B0A;
-  font-size: ${ (props) => props.$ismobile ? '12px' : '20px'};
+  font-size: ${ (props) => props.$ismobile ? '14px' : '20px'};
   font-family: "MonRegular";
   font-weight: 600;
   line-height: 28px;
