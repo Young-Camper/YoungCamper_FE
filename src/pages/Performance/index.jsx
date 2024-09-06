@@ -11,11 +11,16 @@ const index = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const [modalOpen, setModalOpen] = useState(false);
   const [clickedArtist, setClickedArtist] = useState(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const bannerSubtitle = isMobile
-    ? t("schedule.mbannerSubtitle")
-    : t("schedule.bannerSubtitle");
+  const currentLanguage = i18n.language;
+
+  const Gap = () => {
+    if (isMobile) {
+      return currentLanguage === "en" ? "0px" : "7px";
+    }
+    return "24px";
+  };
 
   const caution = isMobile
     ? t("caution.mcaution", { returnObjects: true })
@@ -30,7 +35,8 @@ const index = () => {
     <>
       <MainTitle
         mainText={t("schedule.bannerTitle")}
-        subText={bannerSubtitle}
+        subText={t("schedule.subtitle")}
+        gap={Gap}
       />
       <ContentWrapper
         $isMobile={isMobile}

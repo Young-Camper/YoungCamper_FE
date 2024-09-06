@@ -77,11 +77,8 @@ const TimeTable = ({ onArtistClick }) => {
 
   // -------------------------- return --------------------------
 
-  const subtitle = isMobile ? t("schedule.msubtitle") : t("schedule.subtitle");
-
   return (
     <>
-      <TitleSet mainText={t("schedule.title")} subText={subtitle} />
       <S.Container $isDesktop={isDesktop}>
         {timetable &&
           timetable.map((event) =>
