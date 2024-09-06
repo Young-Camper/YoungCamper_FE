@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import * as S from "../components/CommentStyle";
+import { useTranslation } from "react-i18next";
 
 const DeleteModal = ({ onClose, onConfirm }) => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
@@ -8,6 +9,8 @@ const DeleteModal = ({ onClose, onConfirm }) => {
 
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const { t } = useTranslation();
 
   // 비밀번호 입력 시 상태 업데이트
   const handlePasswordChange = (e) => {
@@ -41,8 +44,7 @@ const DeleteModal = ({ onClose, onConfirm }) => {
             $isTablet={isTablet}
             $isDesktop={isDesktop}
           >
-            후기를 삭제하려면 <br />
-            비밀번호 4자리를 입력해주세요!
+            {t("review.modaltext")}
           </S.ModalText>
           <S.PasswordInputWrapper $isMobile={isMobile}>
             <S.PasswordInput
@@ -74,8 +76,14 @@ const DeleteModal = ({ onClose, onConfirm }) => {
             $isTablet={isTablet}
             $isDesktop={isDesktop}
           >
-            <S.CancelButton onClick={onClose}>취소</S.CancelButton>
-            <S.ConfirmButton onClick={handleConfirmClick}>확인</S.ConfirmButton>
+            <S.CancelButton onClick={onClose}>
+              {" "}
+              {t("review.cancle")}
+            </S.CancelButton>
+            <S.ConfirmButton onClick={handleConfirmClick}>
+              {" "}
+              {t("review.check")}
+            </S.ConfirmButton>
           </S.ModalActions>
         </S.ModalBox>
       </S.ModalContent>
