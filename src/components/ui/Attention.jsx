@@ -23,6 +23,7 @@ const Container = styled.div`
   border-radius: 12px;
   border: 1.5px solid var(--main-neutral300, #ced7de);
   opacity: var(--sds-size-stroke-border);
+  word-break: keep-all;
 `;
 
 const MainText = styled.div`

@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
+  margin-top: ${(props) => (props.$isDesktop ? "100px" : "50px")};
 
   /* 768px ~ 1150px 사이의 별도 padding 값 적용 (기존 1110일 때 좌우 padding 0) */
   @media (min-width: 768px) and (max-width: 1150px) {
@@ -28,9 +29,10 @@ const MainText = styled.div`
   font-size: ${(props) =>
     props.$isDesktop ? "38px" : "20px"}; /* 데스크탑 38px, 모바일+태블릿 20px */
   font-style: normal;
-  line-height: ${(props) => (props.$isDesktop ? "48px" : "24px")};
+  line-height: ${(props) => (props.$isDesktop ? "48px " : "24px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-1.9px" : "0.4px")};
-  padding: ${(props) =>(props.$isDesktop ? "0px 24px": "0px")};
+  padding: ${(props) => (props.$isDesktop ? "0px 24px" : "0px")};
+  /* border: 1px solid red; */
 `;
 const SubText = styled.div`
   color: var(--text-grey800, #637d92);
@@ -41,7 +43,7 @@ const SubText = styled.div`
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "30px" : "18px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.06px")};
-  padding: ${(props) =>(props.$isDesktop ? "0px 24px": "0px")};
+  padding: ${(props) => (props.$isDesktop ? "0px 24px" : "0px")};
 `;
 
 const TitleSet = ({ mainText, subText, isBanner }) => {
