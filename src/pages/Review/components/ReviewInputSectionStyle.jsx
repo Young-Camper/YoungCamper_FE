@@ -2,7 +2,6 @@ import styled from "styled-components";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 
 export const Textarea = styled.div`
-  white-space: pre-wrap;
   width: 100%;
   position: relative;
   display: flex;
@@ -31,6 +30,18 @@ export const Review = styled.div`
     props.$isMobile ? "16px" : props.$isTablet ? "18px" : "20px"};
   line-height: ${(props) =>
     props.$isMobile ? "24px" : props.$isTablet ? "28px" : "30px"};
+  ::placeholder {
+    color: #ced7de;
+  }
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #ced7de;
+  }
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #ced7de;
+  }
 `;
 
 export const ReviewInput = styled.textarea`
@@ -52,18 +63,35 @@ export const ReviewInput = styled.textarea`
   box-sizing: border-box;
   resize: none;
 
-  textarea::placeholder {
-    color: #ced7de;
-  }
-
   :focus {
     outline: none;
   }
 
-  /* .hidden-br 클래스 스타일 */
-  .hidden-br {
-    display: none; /* 화면에 보이지 않도록 숨김 */
+  .hidden-br .hidden-br {
+    display: none;
   }
+`;
+
+export const inputCountWrapper = styled.div`
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  padding: 8px;
+`;
+
+export const inputCount = styled.div`
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #ced7de;
+  font-size: ${(props) =>
+    props.$isMobile ? "12px" : props.$isTablet ? "12px" : "20px"};
+  font-family: "MonRegular";
+  font-weight: 400;
 `;
 
 export const Divider = styled.div`

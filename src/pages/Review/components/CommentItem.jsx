@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DeleteModal from "./DeleteModal";
+import ImageModal from "./ImageModal";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import * as S from "../components/CommentStyle";
 import { deleteReview } from "../../../lib/apis/api/deleteReview";
@@ -8,7 +9,9 @@ import { useTranslation } from "react-i18next";
 const Comment = ({ comment, onDelete }) => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
   const { t } = useTranslation();
 
   const handleDeleteClick = () => {
@@ -25,27 +28,40 @@ const Comment = ({ comment, onDelete }) => {
 
       if ((response.status = 200)) {
         alert(t("review.deletealert"));
-
-        if (typeof onDelete === "function") {
-          // console.log("onDelete 함수가 호출됩니다."); // 추가 디버깅 로그
-          onDelete(comment.id); // 삭제된 댓글의 ID를 부모 컴포넌트로 전달
-        } else {
-          // console.error("onDelete가 함수가 아닙니다. onDelete:", onDelete);
-        }
+        onDelete();
       } else {
-        // console.error(
-        //   `Unexpected response structure or status: ${response.data}`
-        // );
         alert(t("review.deletefail"));
       }
     } catch (error) {
-      // console.error("리뷰 삭제 실패:", error);
-      alert(t("review.notmatch"));
+      // Error 객체의 구조와 내용을 명확히 출력
+      console.error("Error deleting review:", error);
+
+      if (error.response) {
+        // 서버로부터의 응답이 있는 경우
+        console.error("Response data:", error.response.data);
+        console.error("Response status:", error.response.status);
+        console.error("Response headers:", error.response.headers);
+        alert(`Error: ${error.response.data.message || t("review.notmatch")}`);
+      } else if (error.request) {
+        // 요청이 만들어졌지만 서버에서 응답이 없을 경우
+        console.error("No response received:", error.request);
+        alert("서버로부터 응답이 없습니다.");
+      } else {
+        // 요청 설정 중에 오류가 발생한 경우
+        console.error("Error setting up the request:", error.message);
+        alert(`요청 오류: ${error.message}`);
+      }
+    } finally {
+      setIsModalOpen(false);
     }
-    setIsModalOpen(false); // 모달을 닫습니다.
   };
 
-  function formatDate(dateString) {
+  const handleImageClick = (url) => {
+    setSelectedImage(url);
+    setIsImageModalOpen(true);
+  };
+
+  const formatDate = (dateString) => {
     const date = new Date(dateString);
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -54,7 +70,13 @@ const Comment = ({ comment, onDelete }) => {
     const minutes = String(date.getMinutes()).padStart(2, "0");
     const seconds = String(date.getSeconds()).padStart(2, "0");
     return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
-  }
+  };
+
+  const decodeHtmlEntities = (text) => {
+    const textArea = document.createElement("textarea");
+    textArea.innerHTML = text;
+    return textArea.value;
+  };
 
   return (
     <S.CommentBox
@@ -76,7 +98,7 @@ const Comment = ({ comment, onDelete }) => {
         $isTablet={isTablet}
         $isDesktop={isDesktop}
       >
-        {comment.content}
+        {decodeHtmlEntities(comment.content)}
       </S.CommentText>
 
       {comment.imageUrls && comment.imageUrls.length > 0 && (
@@ -92,6 +114,7 @@ const Comment = ({ comment, onDelete }) => {
               $isTablet={isTablet}
               $isDesktop={isDesktop}
               $image={url}
+              onClick={() => handleImageClick(url)}
             />
           ))}
         </S.CommentContent>
@@ -129,6 +152,12 @@ const Comment = ({ comment, onDelete }) => {
         <DeleteModal
           onClose={handleCloseModal}
           onConfirm={handleConfirmDelete}
+        />
+      )}
+      {isImageModalOpen && (
+        <ImageModal
+          imageUrl={selectedImage}
+          onClose={() => setIsImageModalOpen(false)}
         />
       )}
     </S.CommentBox>
