@@ -68,14 +68,14 @@ const TransportBox = ({ title, children, index, onClick, isOpen }) => {
                   $isDesktop={isDesktop}
                   src={
                     isDesktop
-                      ? `${mediaUrl}Location/transport_pic.png`
-                      : `${mediaUrl}Location/transport_pic.png`
+                      ? `${mediaUrl}Location/desktop_dummy_pic.png`
+                      : `${mediaUrl}Location/mobile_dummy_pic.png`
                   }
                 ></S.Placeholder>
               )}
             </S.ContentInner>
           )}
-          <S.DescriptionContainer index={index} $isDesktop={isDesktop}>
+          <S.DescriptionContainer $index={index} $isDesktop={isDesktop}>
             {index !== 1 ? (
               <S.Description index={index} $isMobile={isMobile}>
                 {children}
