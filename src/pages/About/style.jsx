@@ -115,25 +115,32 @@ export const ProfileCard = styled.div`
     width: 100%;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
-    padding: ${(props) => (props.$isDesktop ? "28px 24px" : "8px 0px")};
+    padding: ${(props) => (props.$isDesktop ? "28px 24px" 
+      : props.$isTablet && props.$isEnglish ? "8px 6px" 
+      : props.$isMobile && props.$isEnglish ? "8px 6px" : "8px 12px")};
     justify-content: space-between;
     align-items: center;
     font-family: "MonRegular";
     gap: ${(props) => (props.$isDesktop ? "12px" : "3px")};
     min-height: ${(props) =>
-    props.$isEnglish && props.$isDesktop ? "142px" : props.$isEnglish && props.$isTablet ? "82px" : props.$isEnglish && props.$isMobile ? "82px" : "auto"};
+    props.$isEnglish && props.$isDesktop ? "132px" : props.$isEnglish && props.$isTablet ? "64px" : props.$isEnglish && props.$isMobile ? "64px" : "auto"};
   }
 
   name {
     display: flex;
     align-items: center;
     color: var(--Color-text-primary, #333);
-    font-size: ${(props) => (props.$isDesktop ? "32px" : "18px")};
+    font-size: ${(props) => (props.$isDesktop ? "32px" 
+      : props.$isTablet && props.$isEnglish ? "16px" 
+      : props.$isMobile && props.$isEnglish ? "16px" : "18px")};
     font-style: normal;
     color: #333;
-    line-height: ${(props) => (props.$isDesktop ? "38px" : "24px")};
+    line-height: ${(props) => (props.$isDesktop ? "38px" 
+      : props.$isTablet && props.$isEnglish ? "20px" 
+      : props.$isMobile && props.$isEnglish ? "20px" : "24px")};
     letter-spacing: -0.32px;
     margin: 0;
+    white-space: pre-line;
   }
 
   .roleBox {
@@ -147,9 +154,13 @@ export const ProfileCard = styled.div`
   }
 
   .role {
-    font-size: ${(props) => (props.$isDesktop ? "16px" : props.$isTablet && props.$isEnglish ? "10px" : props.$isMobile && props.$isEnglish ? "10px":"12px")};
+    font-size: ${(props) => (props.$isDesktop ? "16px" 
+      : props.$isTablet && props.$isEnglish ? "10px" 
+      : props.$isMobile && props.$isEnglish ? "10px" : "12px")};
     color: #0a0b0a;
-    line-height: ${(props) => (props.$isDesktop ? "24px" : "18px")};
+    line-height: ${(props) => (props.$isDesktop ? "24px" 
+      : props.$isTablet && props.$isEnglish ? "10px" 
+      : props.$isMobile && props.$isEnglish ? "10px" : "18px")};
     letter-spacing: -0.16px;
     text-align: center;
     white-space: pre-line;
@@ -219,3 +230,11 @@ export const ProfileCard = styled.div`
     }
   }
 `;
+
+export const TermDescription = styled.div`
+    font-family: "MonRegular";
+    color: #637D92;
+    text-align: right;
+    font-size: ${(props) => (props.$isDesktop ? "18" : "10px")};
+
+`

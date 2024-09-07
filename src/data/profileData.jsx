@@ -4,7 +4,7 @@ const sampleImage = `${mediaUrl}Promotion/emptyImage.png`;
 export const studentCommitteeProfiles = [
   {
     id: 1,
-    name: ["류용현", "Yonghyeon Ryu"],
+    name: ["류용현", "Yonghyeon\nRyu"],
     role: ["단장", "Director"],
     image: `${mediaUrl}About/S1.png`,
     description: [
@@ -14,14 +14,14 @@ export const studentCommitteeProfiles = [
   },
   {
     id: 2,
-    name: ["최윤정", "Yoonjung Choi"],
+    name: ["최윤정", "Yoonjung\nChoi"],
     role: ["부단장", "Vice\nDirector"],
     image: `${mediaUrl}About/S2.png`,
     description: ["다붓다붓 회장", "President of Dabutdabeot"],
   },
   {
     id: 3,
-    name: ["박수영", "Sooyoung Park"],
+    name: ["박수영", "Sooyoung\nPark"],
     role: ["기획국장", "Planning\nDirector"],
     image: `${mediaUrl}About/S3.png`,
     description: ["진선미 회장", "President of Jinseonmi"],
@@ -87,15 +87,15 @@ export const studentCommitteeProfiles = [
   },
   {
     id: 12,
-    name: ["황진경", "Jinkyoung Hwang"],
-    role: ["홍보국장", "Public Relations Director"],
+    name: ["황진경", "Jinkyoung\nHwang"],
+    role: ["홍보국장", "PR\nDirector"],
     image: `${mediaUrl}About/S12.png`,
     description: ["퓨처핸접 부회장", "Vice President of Future Hands-on"],
   },
   {
     id: 13,
-    name: ["강준혁", "Junhyuk Kang"],
-    role: ["홍보국원", "Public Relations Staff"],
+    name: ["강준혁", "Junhyuk\nKang"],
+    role: ["홍보국원", "PR Staff"],
     image: sampleImage,
     description: [
       "공양미 300석 부회장",
@@ -105,14 +105,14 @@ export const studentCommitteeProfiles = [
   {
     id: 14,
     name: ["김민수", "Minsu Kim"],
-    role: ["홍보국원", "Public\nRelations Staff"],
+    role: ["홍보국원", "PR Staff"],
     image: `${mediaUrl}About/S14.png`,
     description: ["진선미 부회장", "Vice President of Jinseonmi"],
   },
   {
     id: 15,
     name: ["김수민", "Sumin Kim"],
-    role: ["홍보국원", "Public\nRelations Staff"],
+    role: ["홍보국원", "PR Staff"],
     image: sampleImage,
     description: [
       "나를 찾아가는 여행 회장",
@@ -121,29 +121,29 @@ export const studentCommitteeProfiles = [
   },
   {
     id: 16,
-    name: ["김준범", "Junbeom Kim"],
-    role: ["홍보국원", "Public Relations Staff"],
+    name: ["김준범", "Junbeom\nKim"],
+    role: ["홍보국원", "PR Staff"],
     image: sampleImage,
     description: ["자연과 함께 회장", "President of Nature Together"],
   },
   {
     id: 17,
-    name: ["백희수", "Heesoo Baek"],
-    role: ["홍보국원", "Public Relations Staff"],
+    name: ["백희수", "Heesoo\nBaek"],
+    role: ["홍보국원", "PR Staff"],
     image: `${mediaUrl}About/S17.png`,
     description: ["자연과 함께 부회장", "Vice President of Nature Together"],
   },
   {
     id: 18,
-    name: ["양석우", "Seokwoo Yang"],
-    role: ["홍보국원", "Public Relations Staff"],
+    name: ["양석우", "Seokwoo\nYang"],
+    role: ["홍보국원", "PR Staff"],
     image: sampleImage,
     description: ["다붓다붓 부회장", "Vice President of Dabutdabeot"],
   },
   {
     id: 19,
-    name: ["이승협", "Seunghyup Lee"],
-    role: ["홍보국원", "Public Relations Staff"],
+    name: ["이승협", "Seunghyup\nLee"],
+    role: ["홍보국원", "PR Staff"],
     image: `${mediaUrl}About/S19.png`,
     description: [
       "공양미 300석 회장",
