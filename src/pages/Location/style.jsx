@@ -12,7 +12,7 @@ export const AccordionHeader = styled.div`
   border-top: ${(props) =>
     props.index === 0 && !props.$isOpen && !props.$isHovered
       ? "2px solid #0068FF"
-      : "none"};
+      : "2px transparent solid" };
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -146,17 +146,22 @@ export const LocContainer = styled.div`
   padding: ${(props) => (props.$isMobile ? "12px " : "48px ")};
   display: inline-flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: ${(props) => (props.$isMobile ? "12px" : "50px")};
+
+
 `;
 
 export const LocContentArea = styled.div`
   align-self: stretch;
   /* height: ${(props) => (props.$isMobile ? "448px" : "1234px")}; */
   padding: ${(props) => (props.$isMobile ? "12px" : "48px")};
-  background: white;
-  border: 2px #0068ff solid;
+  
+  border: 1px #fafafa solid;
+  border-radius: ${(props) => (props.$isMobile ? "20px" : "50px")};
+  background: #fafafa;
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -171,8 +176,10 @@ export const LocTitle = styled.div`
   justify-content: left;
   align-items: center;
   color: #0a0b0a;
-  font-size: ${(props) => (props.$isMobile ? "16px" : "28px")};
+  font-size: ${(props) => (props.$isMobile ? "18px" : "28px")};
   font-family: "MonSemiBold";
+
+  line-heght: 24px;
   word-wrap: break-word;
 `;
 
@@ -204,10 +211,13 @@ export const LocImage = styled.img`
   align-self: stretch;
   /* height: ${(props) => (props.ismobile ? "321px" : "782px")}; */
   width: ${(props) =>
-    props.isMobile
+    props.$isMobile
       ? "100%"
       : "100%"}; // 이미지 너비를 부모 컨테이너에 맞춰 꽉 채웁니다.
   src: ${(props) => props.src};
+
+  border: 1px transparent soild;
+  border-radius: 50px;
 `;
 //index.
 export const Container = styled.div`
@@ -216,6 +226,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+
 
   @media (max-width: 768px) {
     // isMobile 상태를 활용
@@ -352,4 +363,29 @@ export const WayBusNumbers = styled.div`
   font-weight: 400;
   line-height: 30px;
   word-wrap: break-word;
+`;
+
+export const WayImgContainer = styled.div`
+  width: 100%;
+  background-color: #fafafa;
+  padding: 12px;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+
+  border: 1px transparent soild;
+  border-radius: ${(props) => (props.$isMobile? "20px":"50px" )};
+`;
+
+export const WayImg = styled.img`
+  align-self: center;
+  width: auto; // 이미지 너비를 부모 컨테이너에 맞춰 꽉 채웁니다.
+  height: ${(props) => (props.$isMobile? "246px" : "498px")};
+  src: ${(props) => props.src};
+
+    width: ${(props) =>
+    props.isMobile
+      ? "100%"
+      : "100%"}; // 이미지 너비를 부모 컨테이너에 맞춰 꽉 채웁니다.
+  
 `;

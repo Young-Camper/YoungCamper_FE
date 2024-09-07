@@ -7,9 +7,15 @@ import { useTranslation } from "react-i18next";
 const transportway = () => {
   const { isMobile } = useMediaQueries();
   const { t } = useTranslation();
+  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
   return (
     <S.WayContainer $isMobile={isMobile}>
+
+      <S.WayImgContainer>
+        <S.WayImg src= {`${mediaUrl}Location/transport_pic.png`} $isMobile = {isMobile}/>
+      </S.WayImgContainer>
+
       <S.WaySection $height={isMobile ? 80 : 96}>
         <S.WayTitleContainer>
           <S.WayTitleBadge>
