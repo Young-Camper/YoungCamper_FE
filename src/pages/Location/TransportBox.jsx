@@ -61,7 +61,7 @@ const TransportBox = ({ title, children, index, onClick, isOpen }) => {
           index={index}
           $isDesktop={isDesktop}
         >
-          {index !== 1 && (
+          {index !== 2 && (
             <S.ContentInner index={index}>
               {index === 0 && (
                 <S.Placeholder
