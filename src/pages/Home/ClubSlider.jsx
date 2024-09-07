@@ -35,7 +35,6 @@ function ClubSlider() {
       // 슬라이드 변경 시 로컬 스토리지에 인덱스 저장
       localStorage.setItem('lastSlide', current);
       setCurrentSlide(current);
-      console.log('index',current);
     },
     responsive: [
       {
