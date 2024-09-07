@@ -77,7 +77,7 @@ const Index = () => {
 
         <Section
           title={activeTab === "students" ? t("member.com") : t("member.maker")}
-          subtitle={t("member.comIntro")}
+          subtitle={activeTab === "students" ? t("member.comIntro") : t("member.makerIntro")}
           profiles={isDesktop ? profilesToDisplay : currentProfiles}
           activeTab={activeTab}
         />
