@@ -120,6 +120,8 @@ export const ProfileCard = styled.div`
     align-items: center;
     font-family: "MonRegular";
     gap: ${(props) => (props.$isDesktop ? "12px" : "3px")};
+    min-height: ${(props) =>
+    props.$isEnglish && props.$isDesktop ? "142px" : props.$isEnglish && props.$isTablet ? "82px" : props.$isEnglish && props.$isMobile ? "82px" : "auto"};
   }
 
   name {
@@ -144,11 +146,13 @@ export const ProfileCard = styled.div`
     margin: 0;
   }
 
-  role {
-    font-size: ${(props) => (props.$isDesktop ? "16px" : "12px")};
+  .role {
+    font-size: ${(props) => (props.$isDesktop ? "16px" : props.$isTablet && props.$isEnglish ? "10px" : props.$isMobile && props.$isEnglish ? "10px":"12px")};
     color: #0a0b0a;
     line-height: ${(props) => (props.$isDesktop ? "24px" : "18px")};
     letter-spacing: -0.16px;
+    text-align: center;
+    white-space: pre-line;
   }
 
   .description {
