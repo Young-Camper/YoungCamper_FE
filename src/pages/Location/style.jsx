@@ -368,7 +368,7 @@ export const WayBusNumbers = styled.div`
 export const WayImgContainer = styled.div`
   width: 100%;
   background-color: #fafafa;
-  padding: 0px 0px;
+  padding: 12px 0px;
   justify-content: center;
   align-items: center;
   display: inline-flex;
