@@ -75,7 +75,7 @@ const TransportBox = ({ title, children, index, onClick, isOpen }) => {
               )}
             </S.ContentInner>
           )}
-          <S.DescriptionContainer index={index} $isDesktop={isDesktop}>
+          <S.DescriptionContainer $index={index} $isDesktop={isDesktop}>
             {index !== 1 ? (
               <S.Description index={index} $isMobile={isMobile}>
                 {children}

@@ -131,7 +131,7 @@ export const Description = styled.div`
 
 export const DescriptionContainer = styled.div`
   align-self: stretch;
-  padding: ${(props) => (props.$isDesktop ? "48px" : "24px")};
+  padding: ${(props) => (props.$isDesktop ? ( (props.$index === 1) ? "0px" : "48px") : "24px")};
   justify-content: center;
   align-items: flex-start;
   display: inline-flex;
@@ -368,10 +368,11 @@ export const WayBusNumbers = styled.div`
 export const WayImgContainer = styled.div`
   width: 100%;
   background-color: #fafafa;
-  padding: 12px;
+  padding: 0px 0px;
   justify-content: center;
   align-items: center;
   display: inline-flex;
+  margin-top: 0;
 
   border: 1px transparent soild;
   border-radius: ${(props) => (props.$isMobile? "20px":"50px" )};
