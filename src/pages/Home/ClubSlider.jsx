@@ -9,6 +9,16 @@ import { useTranslation } from "react-i18next";
 
 function ClubSlider() {
   const { isDesktop, isTablet } = useMediaQueries();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const sliderRef = React.useRef(null); // Slider 참조
+
+  useEffect(() => {
+    // 브라우저 저장소(로컬 스트리지)에 마지막 슬라이드 저장
+    const savedSlide = localStorage.getItem('lastSlide');
+    if (savedSlide && sliderRef.current) {
+      sliderRef.current.slickGoTo(parseInt(savedSlide, 10)); // 슬라이더를 저장된 인덱스로 이동
+    }
+  }, []);
   
   const settings = {
     dots: false,
@@ -21,6 +31,11 @@ function ClubSlider() {
     draggable: false, // 드래그 비활성화
     swipe: false, // 터치 스와이프 비활성화
     touchMove: false, // 터치 이동 비활성화
+    afterChange: (current) => {
+      // 슬라이드 변경 시 로컬 스토리지에 인덱스 저장
+      localStorage.setItem('lastSlide', current);
+      setCurrentSlide(current);
+    },
     responsive: [
       {
         breakpoint: 1280,
@@ -77,7 +92,7 @@ function ClubSlider() {
 
   return (
     <S.SliderContainer $isDesktop={isDesktop}>
-      <Slider {...settings}>
+      <Slider ref={sliderRef} {...settings}>
         {S.ClubImages.map((image) => (
           <Link to={image.link ? image.link : ""} key={image.id}>
             <S.ClubCardImg
