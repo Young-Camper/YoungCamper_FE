@@ -382,6 +382,7 @@ export const WayImg = styled.img`
   align-self: center;
   width: auto; // 이미지 너비를 부모 컨테이너에 맞춰 꽉 채웁니다.
   height: ${(props) => (props.$isMobile? "246px" : "498px")};
+  object-fit: contain; 
   src: ${(props) => props.src};
 
     width: ${(props) =>
