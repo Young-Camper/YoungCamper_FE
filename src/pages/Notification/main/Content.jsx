@@ -27,21 +27,10 @@ const Content = ({ keyword }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getAnnouncements();
-        if (Array.isArray(response.data.data)) {
-          const filteredData = response.data.data.map((item) => {
-            const content = item.contents.find(
-              (c) => c.languageCode === currentLanguage
-            );
-            return {
-              ...item,
-              title: content ? content.title : "",
-              content: content ? content.content : "",
-            };
-          });
-          setData(filteredData);
-        }
+        const response = await getAnnouncements(currentLanguage);
+        setData(response.data.data);
       } catch (error) {
+        setLoading(true);
       } finally {
         setLoading(false);
       }
@@ -53,26 +42,12 @@ const Content = ({ keyword }) => {
   const fetchSearchData = async () => {
     setLoading(true);
     try {
-      const response = await searchNotice(keyword);
-      if (Array.isArray(response.data.data)) {
-        const filteredData = response.data.data.map((item) => {
-          const content = item.contents.find(
-            (c) => c.languageCode === currentLanguage
-          );
-          return {
-            ...item,
-            title: content ? content.title : "",
-            content: content ? content.content : "",
-          };
-        });
-        setData(filteredData);
-      } else {
-        setData([]);
-      }
+      const response = await searchNotice(keyword, currentLanguage);
+      // return response.data.data;
+      setData(response.data.data);
     } catch (error) {
-      setData([]);
-    } finally {
-      setLoading(false);
+      // console.error("Error searching notices:", error);
+      // return [];
     }
   };
 

@@ -116,7 +116,6 @@ export const ShowListContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 120px;
   color: #0a0b0a;
   text-align: center;
   font-family: "MonRegular";

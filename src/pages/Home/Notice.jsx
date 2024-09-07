@@ -31,20 +31,9 @@ const Notice = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getAnnouncements();
-        if (Array.isArray(response.data.data)) {
-          const FilteredData = response.data.data.map((item) => {
-            const content = item.contents.find(
-              (c) => c.languageCode === currentLanguage
-            );
-            return {
-              ...item,
-              title: content ? content.title : "",
-              content: content ? content.content : "",
-            };
-          });
-          setFilteredData(FilteredData);
-        }
+        const response = await getAnnouncements(currentLanguage);
+        // console.log(response);
+        setMainNotices(response.data.data);
       } catch (error) {
         // 오류 처리
       } finally {

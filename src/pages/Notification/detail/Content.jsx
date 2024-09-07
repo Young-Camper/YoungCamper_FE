@@ -30,18 +30,9 @@ const Content = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await getAnnouncement(num);
+        const response = await getAnnouncement(num, currentLanguage);
         // console.log(response);
-        if (response.data) {
-          const content = response.data.contents.find(
-            (c) => c.languageCode === currentLanguage
-          );
-          setNotice({
-            ...response.data,
-            title: content ? content.title : "",
-            content: content ? content.content : "",
-          });
-        }
+        setNotice(response.data.data);
       } catch (error) {
       } finally {
         setLoading(false);
