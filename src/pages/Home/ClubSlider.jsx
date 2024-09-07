@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,10 +9,11 @@ import { useTranslation } from "react-i18next";
 
 function ClubSlider() {
   const { isDesktop, isTablet } = useMediaQueries();
+  
   const settings = {
     dots: false,
     infinite: true,
-    speed: 6000,
+    speed: 1700,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -98,5 +99,6 @@ function ClubSlider() {
     </S.SliderContainer>
   );
 }
+
 
 export default ClubSlider;
