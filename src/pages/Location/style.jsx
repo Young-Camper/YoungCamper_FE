@@ -12,7 +12,7 @@ export const AccordionHeader = styled.div`
   border-top: ${(props) =>
     props.index === 0 && !props.$isOpen && !props.$isHovered
       ? "2px solid #0068FF"
-      : "2px transparent solid" };
+      : "2px transparent solid"};
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -84,7 +84,7 @@ export const AccordionContent = styled.div`
   align-self: stretch;
   /* max-height: ${(props) =>
     props.index === 0 ? "771px" : "568px"}; // 열려있을 때만 높이 설정 */
-  padding: ${(props) => (props.$isDesktop ? "48px 0px" : "24px 0px")};
+  padding: ${(props) => (props.$isDesktop ? "48px" : "24px")};
   background: white;
   flex-direction: column;
   justify-content: center;
@@ -127,11 +127,14 @@ export const Description = styled.div`
   display: flex;
   text-align: center;
   justify-content: center;
+  white-space: pre-line;
+  word-break: keep-all;
 `;
 
 export const DescriptionContainer = styled.div`
   align-self: stretch;
-  padding: ${(props) => (props.$isDesktop ? ( (props.$index === 1) ? "0px" : "48px") : "24px")};
+  /* padding: ${(props) =>
+    props.$isDesktop ? (props.$index === 1 ? "0px" : "48px") : "24px"}; */
   justify-content: center;
   align-items: flex-start;
   display: inline-flex;
@@ -149,19 +152,17 @@ export const LocContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin-bottom: ${(props) => (props.$isMobile ? "12px" : "50px")};
-
-
 `;
 
 export const LocContentArea = styled.div`
   align-self: stretch;
   /* height: ${(props) => (props.$isMobile ? "448px" : "1234px")}; */
   padding: ${(props) => (props.$isMobile ? "12px" : "48px")};
-  
+
   border: 1px #fafafa solid;
   border-radius: ${(props) => (props.$isMobile ? "20px" : "50px")};
   background: #fafafa;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -179,7 +180,7 @@ export const LocTitle = styled.div`
   font-size: ${(props) => (props.$isMobile ? "18px" : "28px")};
   font-family: "MonSemiBold";
 
-  line-heght: 24px;
+  line-height: 24px;
   word-wrap: break-word;
 `;
 
@@ -227,7 +228,6 @@ export const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
 
-
   @media (max-width: 768px) {
     // isMobile 상태를 활용
     width: 100%; //
@@ -264,7 +264,7 @@ export const WayContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: ${(props) => (props.$isMobile ? "20px" : "48px")};
+  /* gap: ${(props) => (props.$isMobile ? "20px" : "48px")}; */
 `;
 
 export const WaySection = styled.div`
@@ -276,6 +276,8 @@ export const WaySection = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 12px;
+  padding: ${(props) =>
+    props.$isDesktop ? (props.$index === 1 ? "0px" : "48px") : "24px"};
 `;
 
 export const WayTitleContainer = styled.div`
@@ -375,19 +377,18 @@ export const WayImgContainer = styled.div`
   margin-top: 0;
 
   border: 1px transparent soild;
-  border-radius: ${(props) => (props.$isMobile? "20px":"50px" )};
+  border-radius: ${(props) => (props.$isMobile ? "20px" : "50px")};
 `;
 
 export const WayImg = styled.img`
   align-self: center;
-  width: auto; // 이미지 너비를 부모 컨테이너에 맞춰 꽉 채웁니다.
-  height: ${(props) => (props.$isMobile? "246px" : "498px")};
-  object-fit: contain; 
+  width: 100%; // 이미지 너비를 부모 컨테이너에 맞춰 꽉 채웁니다.
+  max-height: 498.5px;
+  object-fit: contain;
   src: ${(props) => props.src};
 
-    width: ${(props) =>
+  width: ${(props) =>
     props.isMobile
       ? "100%"
       : "100%"}; // 이미지 너비를 부모 컨테이너에 맞춰 꽉 채웁니다.
-  
 `;

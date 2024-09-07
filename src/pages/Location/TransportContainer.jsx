@@ -21,10 +21,7 @@ const TransportContainer = () => {
         onClick={() => toggleAccordion(0)}
         isOpen={activeIndex === 0}
         index={0}
-      >
-        영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한
-        축제입니다.
-      </TransportBox>
+      ></TransportBox>
       <TransportBox
         title={t("location.public")}
         onClick={() => toggleAccordion(1)}
@@ -40,8 +37,7 @@ const TransportContainer = () => {
         isOpen={activeIndex === 2}
         index={2}
       >
-        영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한
-        축제입니다.
+        {t("location.parkContent")}
       </TransportBox>
     </>
   );
