@@ -25,11 +25,6 @@ const Index = () => {
   const profilesToDisplay =
     activeTab === "students" ? studentCommitteeProfiles : youngCamperProfiles;
 
-  const subtitle =
-    activeTab === "students"
-      ? "각 단과대학 불교동아리 회장단으로 구성되어 있습니다."
-      : "본 홈페이지를 제작한 TF팀으로 동국대학교 학생들로 구성되어 있습니다.";
-
   const itemsPerPage = 9;
   const indexOfLastProfile = currentPageByTab[activeTab] * itemsPerPage;
   const indexOfFirstProfile = indexOfLastProfile - itemsPerPage;
@@ -60,7 +55,7 @@ const Index = () => {
     <>
       <MainTitle
         mainText={t("member.bannerTitle")}
-        subText={t("member.bannerSubtitle")}
+        subText={t("")}
       />
       <S.ContentWrapper $isDesktop={isDesktop}>
         <S.TabBar $isDesktop={isDesktop}>
@@ -82,8 +77,9 @@ const Index = () => {
 
         <Section
           title={activeTab === "students" ? t("member.com") : t("member.maker")}
-          subtitle={t("member.comIntro")}
+          subtitle={activeTab === "students" ? t("member.comIntro") : t("member.makerIntro")}
           profiles={isDesktop ? profilesToDisplay : currentProfiles}
+          activeTab={activeTab}
         />
 
         {(isTablet || isMobile) && (
