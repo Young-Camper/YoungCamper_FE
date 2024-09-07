@@ -19,11 +19,11 @@ const Section = ({ title, subtitle, profiles, activeTab }) => {
       >
         <Category>{title}</Category>
         <S.Subtitle $isDesktop={isDesktop}>{subtitle}</S.Subtitle>
-        {currentLang === 1 && activeTab === "students" &&
-        <S.TermDescription $isDesktop={isDesktop}>* PR: Public Relations</S.TermDescription>
-        }
       </S.SectionWrapper>
       <ProfileList $isDesktop={isDesktop} profiles={profiles} />
+      {currentLang === 1 && activeTab === "students" &&
+        <S.TermDescription $isDesktop={isDesktop} $isTablet={isTablet}>* PR: Public Relations</S.TermDescription>
+        }
     </>
   );
 };

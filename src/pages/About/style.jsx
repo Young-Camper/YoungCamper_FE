@@ -81,7 +81,7 @@ export const ProfileListWrapper = styled.div`
   gap: ${(props) => (props.$isDesktop ? "24px" : "12px")};
   padding: ${(props) => (props.$isDesktop ? "48px 0px" : "24px 24px")};
   max-width: 1440px;
-  margin: ${(props) => (props.$isDesktop ? "100px auto" : "0 auto")};
+  margin: ${(props) => (props.$isDesktop ? "100px 0px auto" : "0 auto")};
   justify-content: center;
 `;
 
@@ -232,9 +232,10 @@ export const ProfileCard = styled.div`
 `;
 
 export const TermDescription = styled.div`
-    font-family: "MonRegular";
-    color: #637D92;
-    text-align: right;
-    font-size: ${(props) => (props.$isDesktop ? "18" : "10px")};
-
+  font-family: "MonRegular";
+  color: #637D92;
+  text-align: right;
+  font-size: ${(props) => (props.$isDesktop ? "18px" : "10px")};
+  margin-bottom: 100px;
+  padding: ${(props) => (props.$isDesktop ? "0px" : props.$isTablet ? "0px 46px" : "0px 24px")}
 `
