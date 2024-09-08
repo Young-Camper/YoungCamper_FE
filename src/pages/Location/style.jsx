@@ -20,16 +20,24 @@ export const AccordionHeader = styled.div`
   border-bottom: 2px solid #0068ff;
 
   ${(props) =>
-    props.$isDesktop ? `
-    background: white;
-    &:hover {
-      background: linear-gradient(102deg, #0068FF 0%, #B9FF9C 100%);
-      border-top: 2px transparent solid;
-      border-bottom: 2px transparent solid;
-    }
-    ` 
+    props.$isDesktop ? 
+      props.$isOpen 
+      ? `
+        background: #0068FF;
+        border-top: 2px transparent solid; 
+        border-bottom: 2px transparent solid; 
+      ` 
+      :
+      `
+        background: white;
+        &:hover {
+          background: linear-gradient(102deg, #0068FF 0%, #B9FF9C 100%);
+          border-top: 2px transparent solid;
+          border-bottom: 2px transparent solid;
+        } 
+      ` 
     :
-    props.$isOpen
+      props.$isOpen
       ? `
         background: #0068FF;
         border-top: 2px transparent solid; 
@@ -136,6 +144,8 @@ export const Description = styled.div`
   display: flex;
   text-align: center;
   justify-content: center;
+
+  max-width: 900px;
   white-space: pre-line;
   word-break: keep-all;
 `;
