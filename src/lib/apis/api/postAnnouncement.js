@@ -1,33 +1,13 @@
 import { API } from "../utils";
 
-export const postAnnouncement = async (
-  imageUrl,
-  fileUrl,
-  isPinned,
-  koContent,
-  enContent,
-  koTitle, 
-  enTitle
-) => {
+export const postAnnouncement = async (requestBody) => {
   try {
-    const response = await API.post("/api/announcements", {
-      imageUrl:imageUrl,
-      fileUrl:fileUrl,
-      isPinned:isPinned,
-      contents:[{
-        languageCode: "ko",
-        title: koTitle,
-        content: koContent
-      },{
-        languageCode: "en",
-        title: enTitle,
-        content: enContent
-      },]
-    });
+    // API 요청
+    const response = await API.post("/api/announcements", requestBody);
     console.log("API success: ", response);
-    return response.data;
+    return response.data; // 성공 시 데이터 반환
   } catch (error) {
-    console.error(error);
-    throw error;
+    console.error("API error: ", error);
+    throw error; // 에러 발생 시 처리
   }
 };

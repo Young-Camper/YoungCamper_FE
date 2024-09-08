@@ -6,10 +6,10 @@ export const adminLogin = async (id, pw) => {
       id: id,
       pw: pw,
     });
-    console.log("API success: ", response);
+    // console.log("API success: ", response);
     return response;
   } catch (error) {
-    console.error("API error: ", error);
+    // console.error("API error: ", error);
     throw error;
   }
 };

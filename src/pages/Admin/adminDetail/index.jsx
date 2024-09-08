@@ -35,7 +35,7 @@ const index = () => {
         setData(response.data.data);
         setLoading(false);
       } catch (err) {
-        console.error("Error fetching announcement:", err);
+        // console.error("Error fetching announcement:", err);
         setLoading(false);
       }
     };
