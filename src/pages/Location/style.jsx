@@ -21,6 +21,7 @@ export const AccordionHeader = styled.div`
 
   ${(props) =>
     props.$isDesktop ? `
+    background: white;
     &:hover {
       background: linear-gradient(102deg, #0068FF 0%, #B9FF9C 100%);
       border-top: 2px transparent solid;
