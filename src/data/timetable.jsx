@@ -3,7 +3,7 @@ const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 export const timetable = [
   {
     id: 1,
-    name: ["수계습의", "수계습의"],
+    name: ["수계습의", "PANCA SILA"],
     time: "17:00",
     index: "",
     is_event: false,
