@@ -2,10 +2,16 @@
   {
     "id": 1,
     "name": "다붓다붓",
-    "school": "경영대학",
+    "school": ["경영대학", "Business School"],
     "image": "emptylogo.png",
-    "intro": "경영과 불교의 만남! 차세대 기업인이 될 멋진 인재들의 마음 수양 동아리입니다!",
-    "direction": "경영인의 덕목이 무엇인지 불교 교리를 통해 알아보고, 일상적인 스트레스에서 벗어날 수 있는 힐링의 시간을 만들어감",
+    "intro": [
+      "경영과 불교의 만남! 차세대 기업인이 될 멋진 인재들의 마음 수양 동아리입니다!",
+      "A meeting of business and Buddhism! A club for the spiritual cultivation of future business leaders!"
+    ],
+    "direction": [
+      "경영인의 덕목이 무엇인지 불교 교리를 통해 알아보고, 일상적인 스트레스에서 벗어날 수 있는 힐링의 시간을 만들어감",
+      "Explore the virtues of business people through Buddhist teachings and create healing times to escape from everyday stress."
+    ],
     "detailImg": "emptyImage.png",
     "playimg": [],
     "applylink": "https://forms.gle/ffBzVs3aryyVqU4Z8",
@@ -14,10 +20,16 @@
   {
     "id": 2,
     "name": "캠폴스테이",
-    "school": "경찰사법대학",
+    "school": ["경찰사법대학", "College of Police and Law"],
     "image": "club2.png",
-    "intro": "템플스테이의 따뜻함과 편안함이 공존하는 캠퍼스의 폴리스, 경찰사법대학 캠폴스테이입니다.",
-    "direction": "불교에 대한 호기심을 채워주기 위해, 그리고 더 나아가 불법을 공부하며 올곧은 사람이 되기 위해 모인 경찰사법대학의 불교소모임, 캠폴스테이입니다.",
+    "intro": [
+      "템플스테이의 따뜻함과 편안함이 공존하는 캠퍼스의 폴리스, 경찰사법대학 캠폴스테이입니다.",
+      "A place where the warmth and comfort of temple stay coexist on campus, Police and Law College Campol Stay."
+    ],
+    "direction": [
+      "불교에 대한 호기심을 채워주기 위해, 그리고 더 나아가 불법을 공부하며 올곧은 사람이 되기 위해 모인 경찰사법대학의 불교소모임, 캠폴스테이입니다.",
+      "A Buddhist group at the College of Police and Law, gathering to satisfy curiosity about Buddhism and study Buddhist principles to become upright individuals."
+    ],
     "detailImg": "detail2.png",
     "playimg": ["play2.png", "play2add.png"],
     "applylink": "https://naver.me/FRcqNze5",
@@ -26,10 +38,16 @@
   {
     "id": 3,
     "name": "공양미 300석",
-    "school": "공과대학",
+    "school": ["공과대학", "College of Engineering"],
     "image": "club3.png",
-    "intro": "300인의 공학도가 드리는 공양의 아름다움, 공양미 300석입니다!",
-    "direction": "우리 공양미는 차가운 속성의 공학과 따뜻하고 인자한 불교가 만나 꾸준하고 천천히 새로운 아름다움을 만들어 나갑니다. 가볍고 즐거운 행사들과 함께 언제나 당신을 기다립니다!",
+    "intro": [
+      "300인의 공학도가 드리는 공양의 아름다움, 공양미 300석입니다!",
+      "The beauty of offerings from 300 engineers, 300 Bowls of Offering!"
+    ],
+    "direction": [
+      "우리 공양미는 차가운 속성의 공학과 따뜻하고 인자한 불교가 만나 꾸준하고 천천히 새로운 아름다움을 만들어 나갑니다. 가볍고 즐거운 행사들과 함께 언제나 당신을 기다립니다!",
+      "Our offering combines the cold attributes of engineering with the warmth and compassion of Buddhism, steadily and slowly creating new beauty. We are always waiting for you with light and enjoyable events!"
+    ],
     "detailImg": "detail3.png",
     "playimg": ["play3.png", "play3add.png"],
     "applylink": "https://forms.gle/EvKCn22MBTkAeUQv7",
@@ -38,10 +56,16 @@
   {
     "id": 4,
     "name": "나를 찾아가는 여행",
-    "school": "문과대학",
+    "school": ["문과대학", "College of Humanities"],
     "image": "club4.png",
-    "intro": "깨달음을 찾는 여정, 진정한 나와의 만남, 나를 찾아가는 여행입니다.",
-    "direction": "여행을 통해 새로운 문화와 불교의 뜻을 경험하고, 이것을 학문적으로 이해하고 체험함으로써 내면의 평화와 깨달음을 얻는 과정/서로의 마음을 이해하고 존중하는 공동체를 형성",
+    "intro": [
+      "깨달음을 찾는 여정, 진정한 나와의 만남, 나를 찾아가는 여행입니다.",
+      "A journey to find enlightenment, a meeting with the true self, Journey to Find Myself."
+    ],
+    "direction": [
+      "여행을 통해 새로운 문화와 불교의 뜻을 경험하고, 이것을 학문적으로 이해하고 체험함으로써 내면의 평화와 깨달음을 얻는 과정/서로의 마음을 이해하고 존중하는 공동체를 형성",
+      "Through travel, experience new cultures and the meaning of Buddhism, and gain inner peace and enlightenment by understanding and experiencing it academically. Form a community that understands and respects each other’s hearts."
+    ],
     "detailImg": "detail4.png",
     "playimg": [],
     "applylink": "https://forms.gle/Tv2aJpnEfDv8qCf56",
@@ -50,10 +74,16 @@
   {
     "id": 5,
     "name": "퓨처핸접",
-    "school": "미래융합대학",
+    "school": ["미래융합대학", "College of Future Convergence"],
     "image": "club5.png",
-    "intro": "회사와 학업에 지친 미융인 손을 들라, 다 함께 즐기는 불교 ‘퓨처핸접’",
-    "direction": "'미래융합대학' 학우들로만 구성된 불교 동아리로 불교 관련 컨텐츠 뿐만 아니라 유익한 컨텐츠를 진행하며, 궁극적으로 부처님 법을 전하고자 합니다.",
+    "intro": [
+      "회사와 학업에 지친 미융인 손을 들라, 다 함께 즐기는 불교 ‘퓨처핸접’",
+      "For those exhausted from work and studies, raise your hand and enjoy Buddhism together with ‘Future Hands Up’"
+    ],
+    "direction": [
+      "'미래융합대학' 학우들로만 구성된 불교 동아리로 불교 관련 컨텐츠 뿐만 아니라 유익한 컨텐츠를 진행하며, 궁극적으로 부처님 법을 전하고자 합니다.",
+      "A Buddhist club composed only of students from the College of Future Convergence, offering not only Buddhist-related content but also useful content, ultimately aiming to spread the Buddha's teachings."
+    ],
     "detailImg": "detail5.png",
     "playimg": ["play5.png", "play5add.png"],
     "applylink": "https://forms.gle/ZEEkNsJKzAyj1mnJ8",
@@ -62,10 +92,16 @@
   {
     "id": 6,
     "name": "야단법석",
-    "school": "바이오시스템대학",
+    "school": ["바이오시스템대학", "College of Bio Systems"],
     "image": "emptylogo.png",
-    "intro": "부처님의 가르침 아래에서 하나되는 바이오시스템대학 불교소모임 '야단법석'입니다!",
-    "direction": "‘야단법석’은 부처님의 가르침을 바탕으로 학업과 일상에서 선을 행하고, 학생들이 불교와 더 가까워지는 것을 목표로 하고 있습니다.",
+    "intro": [
+      "부처님의 가르침 아래에서 하나되는 바이오시스템대학 불교소모임 '야단법석'입니다!",
+      "‘Yadan Beopseok’, a Buddhist group in the College of Bio Systems united under the teachings of Buddha!"
+    ],
+    "direction": [
+      "‘야단법석’은 부처님의 가르침을 바탕으로 학업과 일상에서 선을 행하고, 학생들이 불교와 더 가까워지는 것을 목표로 하고 있습니다.",
+      "‘Yadan Beopseok’ aims to practice goodness in academics and daily life based on Buddha’s teachings, and to bring students closer to Buddhism."
+    ],
     "detailImg": "emptyImage.png",
     "playimg": [],
     "applylink": "",
@@ -74,10 +110,16 @@
   {
     "id": 7,
     "name": "불법단체",
-    "school": "법과대학",
+    "school": ["법과대학", "College of Law"],
     "image": "club7.png",
-    "intro": "동국대학교 법과대학 불교동아리는 창립과 함께 1학기 신입회원 85명이 가입했으며, 운영진을 포함하여 93명이 템플스테이, 정기법회 등 다채롭고 체계적으로 활동하고 있습니다 !",
-    "direction": "동아리원들에게 불교의식과 불교 문화를 체험할 다양한 기회를 제공해 불교의 매력을 느끼도록 한다.",
+    "intro": [
+      "동국대학교 법과대학 불교동아리는 창립과 함께 1학기 신입회원 85명이 가입했으며, 운영진을 포함하여 93명이 템플스테이, 정기법회 등 다채롭고 체계적으로 활동하고 있습니다 !",
+      "Dongguk University College of Law Buddhist club started with 85 new members in the first semester, including 93 members in total, actively participating in temple stays, regular services, and more!"
+    ],
+    "direction": [
+      "동아리원들에게 불교의식과 불교 문화를 체험할 다양한 기회를 제공해 불교의 매력을 느끼도록 한다.",
+      "Provide various opportunities for club members to experience Buddhist rituals and culture, making them feel the charm of Buddhism."
+    ],
     "detailImg": "detail7.png",
     "playimg": [],
     "applylink": "",
@@ -86,10 +128,16 @@
   {
     "id": 8,
     "name": "가람수호",
-    "school": "불교대학",
+    "school": ["불교대학", "College of Buddhism"],
     "image": "club8.png",
-    "intro": "동국이라는 가람을 수호하는 사람들",
-    "direction": "불교대학 학생들로 하여금 부처님의 가르침을 올바르게 배워 행복한 삶을 살 수 있도록 하며 더 나아가 청년 전법 활동을 선도할 수 있도록 한다.",
+    "intro": [
+      "동국이라는 가람을 수호하는 사람들",
+      "People who protect the sacred site of Dongguk"
+    ],
+    "direction": [
+      "불교대학 학생들로 하여금 부처님의 가르침을 올바르게 배워 행복한 삶을 살 수 있도록 하며 더 나아가 청년 전법 활동을 선도할 수 있도록 한다.",
+      "To help students of the College of Buddhism learn Buddha’s teachings correctly and live a happy life, and to lead youth Dharma activities."
+    ],
     "detailImg": "detail8.png",
     "playimg": ["play8.png"],
     "applylink": "",
@@ -98,10 +146,16 @@
   {
     "id": 9,
     "name": "불(佛)사대",
-    "school": "사범대학",
+    "school": ["사범대학", "College of Education"],
     "image": "club9.png",
-    "intro": "사범대학 불교 콘텐츠 교육봉사 동아리 불(佛)사대입니다!",
-    "direction": "불(佛)사대는 사범대 청년 불자들이 부처님 말씀과 불법(佛法)에 따라 공부한 것을 다양한 불교 콘텐츠 교육봉사 활동을 통해 중․고등학교 청소년 불자들과 함께 나누고자 모인 동아리입니다. 사범대학 불교동아리 불(佛)사대는 저희가 가진 교육 봉사 재능으로 최선을 다해 미래의 불자들에게 불교를 알리고, 부처님의 말씀을 함께 공부하며 실천해 나갈 것입니다.",
+    "intro": [
+      "사범대학 불교 콘텐츠 교육봉사 동아리 불(佛)사대입니다!",
+      "Buddha's Four Divisions, a Buddhist content education and volunteer club at the College of Education!"
+    ],
+    "direction": [
+      "불(佛)사대는 사범대 청년 불자들이 부처님 말씀과 불법(佛法)에 따라 공부한 것을 다양한 불교 콘텐츠 교육봉사 활동을 통해 중․고등학교 청소년 불자들과 함께 나누고자 모인 동아리입니다. 사범대학 불교동아리 불(佛)사대는 저희가 가진 교육 봉사 재능으로 최선을 다해 미래의 불자들에게 불교를 알리고, 부처님의 말씀을 함께 공부하며 실천해 나갈 것입니다.",
+      "Buddha's Four Divisions gathers youth Buddhist practitioners from the College of Education to share their learning of Buddha’s teachings and Dharma through various educational and volunteer activities. We will do our best to introduce Buddhism to future Buddhists and practice Buddha’s teachings together."
+    ],
     "detailImg": "detail9.png",
     "playimg": ["play9.png", "play9add.png"],
     "applylink": "https://docs.google.com/forms/d/e/1FAIpQLScl5V5g4bXXNF244ctj1SRVwoS8YalT4UExImPZ3yxZOMFwfg/viewform",
@@ -110,10 +164,16 @@
   {
     "id": 10,
     "name": "템플애플",
-    "school": "사회과학대학",
+    "school": ["사회과학대학", "College of Social Sciences"],
     "image": "club10.png",
-    "intro": "내일 세상이 멸망해도 한 그루의 사과나무를 심겠다는 마음으로 누구나 즐기는 불교를 꿈꾸는 템플애플입니다.",
-    "direction": "동국대학교 사회과학대학 불교동아리 '템플애플'은 사회과학대학 학우들이 불교를 친밀하게 느끼고 일상에서 불교를 즐길 수 있도록 하는 것을 목표로 합니다. 이러한 취지에 맞게 재밌는 활동을 추구하며,  지혜와 자비, 정진을 실천하는 동아리로 나아가려 한다. 이를 통해 사회에 이바지할 수 있는 청년 불자로써 성장하고자 한다.",
+    "intro": [
+      "내일 세상이 멸망해도 한 그루의 사과나무를 심겠다는 마음으로 누구나 즐기는 불교를 꿈꾸는 템플애플입니다.",
+      "Temple Apple, a club dreaming of making Buddhism enjoyable for everyone with the spirit of planting an apple tree even if the world ends tomorrow."
+    ],
+    "direction": [
+      "동국대학교 사회과학대학 불교동아리 '템플애플'은 사회과학대학 학우들이 불교를 친밀하게 느끼고 일상에서 불교를 즐길 수 있도록 하는 것을 목표로 합니다. 이러한 취지에 맞게 재밌는 활동을 추구하며, 지혜와 자비, 정진을 실천하는 동아리로 나아가려 한다. 이를 통해 사회에 이바지할 수 있는 청년 불자로써 성장하고자 한다.",
+      "Temple Apple, a Buddhist club in the College of Social Sciences, aims to make Buddhism feel close and enjoyable in everyday life for students. The club seeks fun activities, practices wisdom, compassion, and diligence, and aims to grow as a young Buddhist contributing to society."
+    ],
     "detailImg": "detail10.png",
     "playimg": [],
     "applylink": "https://docs.google.com/forms/d/1-qXGdvXwh3Zq_8RCIGMiGWlVEZGnYaH07N56qV28SpA/edit",
@@ -122,10 +182,16 @@
   {
     "id": 11,
     "name": "약사여래",
-    "school": "약학대학",
+    "school": ["약학대학", "College of Pharmacy"],
     "image": "club11.png",
-    "intro": "중생의 질병을 치료하고 재앙을 소멸시키며, 부처의 원만행을 닦는 이로 하여금 깨달음을 얻게 하는 부처인 약사여래불의 뜻을 담은 동아리 입니다.",
-    "direction": "약학 지식과 불교 철학의 조화를 통해 학생들은 마음의 안정을 찾고, 이를 통해 더 나은 사회를 만드는 데 기여할 수 있는 역량을 기르는 것을 목표로 하고 있으면 봉사활동을 주활동으로 하고 있습니다.",
+    "intro": [
+      "중생의 질병을 치료하고 재앙을 소멸시키며, 부처의 원만행을 닦는 이로 하여금 깨달음을 얻게 하는 부처인 약사여래불의 뜻을 담은 동아리 입니다.",
+      "A club embodying the meaning of Yaksa Yorae Buddha, who heals the diseases of sentient beings, removes calamities, and helps individuals attain enlightenment."
+    ],
+    "direction": [
+      "약학 지식과 불교 철학의 조화를 통해 학생들은 마음의 안정을 찾고, 이를 통해 더 나은 사회를 만드는 데 기여할 수 있는 역량을 기르는 것을 목표로 하고 있으면 봉사활동을 주활동으로 하고 있습니다.",
+      "Through the harmony of pharmaceutical knowledge and Buddhist philosophy, students aim to find mental stability and develop the ability to contribute to a better society, with a focus on volunteer activities."
+    ],
     "detailImg": "detail11.png",
     "playimg": ["play11.png"],
     "applylink": "https://docs.google.com/forms/u/0/d/e/1FAIpQLSe9zmotR0q81zoOdqkYq0uztbw-Hu-XkXq4ATKBOqqZqXvn8Q/alreadyresponded?usp=sf_link",
@@ -134,10 +200,16 @@
   {
     "id": 12,
     "name": "진선미",
-    "school": "예술대학",
+    "school": ["예술대학", "College of Arts"],
     "image": "club12.png",
-    "intro": "부처님 안에서 선을 행하고 아름다움을 추구하는 진선미입니다.",
-    "direction": "과거 예술은 작가, 전공자들만의 세계라고 여겨졌으나, 지금은 모든 사람들이 아름다움을 추구합니다. 진선미는 모든 사람들의 아름다움에 부처님의 진리를 담아낼 수 있도록 아름다움을 지향하고 그것들을 널리 알리는 데 진력하겠다.",
+    "intro": [
+      "부처님 안에서 선을 행하고 아름다움을 추구하는 진선미입니다.",
+      "Jinsunmi, pursuing goodness and beauty within the teachings of Buddha."
+    ],
+    "direction": [
+      "과거 예술은 작가, 전공자들만의 세계라고 여겨졌으나, 지금은 모든 사람들이 아름다움을 추구합니다. 진선미는 모든 사람들의 아름다움에 부처님의 진리를 담아낼 수 있도록 아름다움을 지향하고 그것들을 널리 알리는 데 진력하겠다.",
+      "In the past, art was considered a world for artists and professionals, but now everyone pursues beauty. Jinsunmi aims to embody Buddha’s truth in beauty and strive to widely spread this beauty."
+    ],
     "detailImg": "detail12.png",
     "playimg": [],
     "applylink": "https://naver.me/xpWZQ3a6",
@@ -146,10 +218,16 @@
   {
     "id": 13,
     "name": "자연科 함께",
-    "school": "이과대학",
+    "school": ["이과대학", "College of Natural Sciences"],
     "image": "club13.png",
-    "intro": "자연 속에서 학문의 이치와 자연의 이치를 깨달으며, 지,덕,체를 향상시키는 '자연科 함께'",
-    "direction": "‘자연 科 함께’는 자연과학을 연구하는 이과대학 학생들의 동아리 연합체로서 자연과학 각 학과별 스터디 모임과 축구 등 스포츠 동아리 들이 부처님 이름 아래 하나로 모인 불교친화적 연합 동아리입니다.",
+    "intro": [
+      "자연 속에서 학문의 이치와 자연의 이치를 깨달으며, 지,덕,체를 향상시키는 '자연科 함께'",
+      "‘Together with Nature’, realizing the principles of science and nature while enhancing wisdom, virtue, and physical strength."
+    ],
+    "direction": [
+      "‘자연 科 함께’는 자연과학을 연구하는 이과대학 학생들의 동아리 연합체로서 자연과학 각 학과별 스터디 모임과 축구 등 스포츠 동아리 들이 부처님 이름 아래 하나로 모인 불교친화적 연합 동아리입니다.",
+      "‘Together with Nature’ is a Buddhist-friendly association of natural science students, combining study groups from various natural science departments and sports clubs under Buddha’s name."
+    ],
     "detailImg": "detail13.png",
     "playimg": [],
     "applylink": "https://form.naver.com/response/oQFJFMrXUs98TPgk-ArGJQ",
@@ -158,10 +236,16 @@
   {
     "id": 14,
     "name": "부따이",
-    "school": "AI융합대학",
+    "school": ["AI융합대학", "College of AI Convergence"],
     "image": "emptylogo.png",
-    "intro": "동국대학교 AI융합대학 불교동아리 BUDDHAI입니다.",
-    "direction": "불교의 가르침 중 하나인 나눔을 실천하기 위한 봉사활동 진행. 방학 중 템플스테이를 진행 및 사찰 생활 직접 체험. 우리나라 불교문화 콘텐츠 개발 경진대회 개최 등을 진행할 것입니다.",
+    "intro": [
+      "동국대학교 AI융합대학 불교동아리 BUDDHAI입니다.",
+      "BUDDHAI, a Buddhist club at Dongguk University’s College of AI Convergence."
+    ],
+    "direction": [
+      "불교의 가르침 중 하나인 나눔을 실천하기 위한 봉사활동 진행. 방학 중 템플스테이를 진행 및 사찰 생활 직접 체험. 우리나라 불교문화 콘텐츠 개발 경진대회 개최 등을 진행할 것입니다.",
+      "Conducting volunteer activities to practice one of the Buddhist teachings, sharing. Organizing temple stays during vacations and directly experiencing temple life. Hosting a competition for developing Buddhist cultural content in Korea."
+    ],
     "detailImg": "emptyImage.png",
     "playimg": [],
     "applylink": "https://docs.google.com/forms/d/e/1FAIpQLScw_ouZZWLK2GefzLILpYOfTr7DW69HvuTI3twjmWgqmDq9Tw/viewform",
@@ -170,22 +254,34 @@
   {
     "id": 15,
     "name": "동국청년불자회",
-    "school": "일반 대학원",
-    "image": "play15.png",
-    "intro": "동국대학교에 대학원생 원우들을 대상으로 '동국청년불자회'가 새롭게 설립되었습니다.",
-    "direction": "동국청년불자회는 동국대학교의 건학 이념을 실현하고 청년불자를 양성하기 위해 만들어진 단체입니다.",
+    "school": ["일반 대학원", "General Graduate School"],
+    "image": "play15.jpeg",
+    "intro": [
+      "동국대학교에 대학원생 원우들을 대상으로 '동국청년불자회'가 새롭게 설립되었습니다.",
+      "‘Dongguk Young Buddhists Association’ has been newly established for graduate students at Dongguk University."
+    ],
+    "direction": [
+      "동국청년불자회는 동국대학교의 건학 이념을 실현하고 청년불자를 양성하기 위해 만들어진 단체입니다.",
+      "The Dongguk Young Buddhists Association was created to realize the founding philosophy of Dongguk University and to nurture young Buddhists."
+    ],
     "detailImg": "detail15.png",
-    "playimg": ["play15.png"],
+    "playimg": ["play15.jpeg"],
     "applylink": "",
     "insta": ""
   },
   {
     "id": 16,
     "name": "동불",
-    "school": "불교학생회",
+    "school": ["불교학생회", "Buddhist Student Association"],
     "image": "club16.png",
-    "intro": "동국대학교 중앙 불교 동아리로 다양한 불교 활동 및 친목 도모 활동을 통해 동아리원 간의 활발한 교류를 하는 화합의 장 입니다!!",
-    "direction": "동불 동아리는 불교에 관심이 있거나, 종교와 상관없이 마음의 안정을 찾고 싶은 사람들을 위한 공간입니다. 다양한 학과의 친구들과 교류하며 불교의 가르침을 통해 일상 속 피로와 스트레스를 해소할 수 있는 기회를 제공합니다. 또한, 명상과 같은 심신 수련을 통해 자신을 돌아보고 내면의 평화를 찾는 경험을 할 수 있습니다. 불교에 대한 깊은 이해는 물론, 새로운 경험을 통해 삶의 균형을 찾고 싶은 모든 분들을 환영합니다!!",
+    "intro": [
+      "동국대학교 중앙 불교 동아리로 다양한 불교 활동 및 친목 도모 활동을 통해 동아리원 간의 활발한 교류를 하는 화합의 장 입니다!!",
+      "Dongbul, the central Buddhist club at Dongguk University, is a space for lively exchanges among members through various Buddhist activities and fellowship!!"
+    ],
+    "direction": [
+      "동불 동아리는 불교에 관심이 있거나, 종교와 상관없이 마음의 안정을 찾고 싶은 사람들을 위한 공간입니다. 다양한 학과의 친구들과 교류하며 불교의 가르침을 통해 일상 속 피로와 스트레스를 해소할 수 있는 기회를 제공합니다. 또한, 명상과 같은 심신 수련을 통해 자신을 돌아보고 내면의 평화를 찾는 경험을 할 수 있습니다. 불교에 대한 깊은 이해는 물론, 새로운 경험을 통해 삶의 균형을 찾고 싶은 모든 분들을 환영합니다!!",
+      "Dongbul is a space for those interested in Buddhism or those seeking mental stability, regardless of religion. It provides opportunities to relieve daily stress and fatigue through Buddhist teachings and exchanges with friends from various departments. Members can also experience inner peace and self-reflection through practices like meditation. All are welcome to find balance in life and deepen their understanding of Buddhism!!"
+    ],
     "detailImg": "detail16.png",
     "playimg": [],
     "applylink": "https://forms.gle/Qcmeu767DsHCdYHW7",

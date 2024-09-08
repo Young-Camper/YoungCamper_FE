@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
@@ -51,9 +51,9 @@ export const Logo = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  img{
-    width: ${(props) => (props.$isDesktop ? "161px;" : "55px;")};
-    height: ${(props) => (props.$isDesktop ? "59px;" : "20px;")};  
+  img {
+    width: ${(props) => (props.$isDesktop ? "161px;" : "70px;")};
+    /* height: ${(props) => (props.$isDesktop ? "59px;" : "20px;")}; */
   }
 `;
 
@@ -74,21 +74,18 @@ export const List = styled.div`
   align-items: flex-start;
   gap: 8px;
 
-  color: #0A0B0A;
-  font-family: 'MonRegular';
+  color: #0a0b0a;
+  font-family: "MonRegular";
   font-weight: 400;
   word-wrap: break-word;
 
   @media only screen and (min-width: 1024px) {
     font-size: 16px;
     line-height: 24px;
-
-  
-    }
+  }
   @media only screen and (max-width: 1023px) {
     font-size: 12px;
     line-height: 18px;
-
   }
 `;
 
@@ -102,7 +99,7 @@ export const ContactInfoContainer = styled.div`
   gap: 8px;
   @media only screen and (min-width: 1024px) {
     height: 56px;
-    }
+  }
   @media only screen and (max-width: 1023px) {
     height: 44px;
   }
@@ -116,8 +113,8 @@ export const ContactInfoRow = styled.div`
 `;
 
 export const ContactLabel = styled.div`
-  color: #637D92;
-  font-family: 'MonRegular';
+  color: #637d92;
+  font-family: "MonRegular";
   word-wrap: break-word;
   @media only screen and (min-width: 1024px) {
     font-size: 16px;
@@ -128,13 +125,12 @@ export const ContactLabel = styled.div`
     font-size: 12px;
     font-weight: 400;
     line-height: 18px;
-
   }
 `;
 
 export const ContactText = styled.div`
-  color: #0A0B0A;
-  font-family: 'MonRegular';
+  color: #0a0b0a;
+  font-family: "MonRegular";
   word-wrap: break-word;
   @media only screen and (min-width: 1024px) {
     font-size: 16px;
@@ -157,7 +153,7 @@ export const Sub = styled.div`
   @media only screen and (min-width: 1024px) {
     height: 62px;
     gap: 12px;
-    }
+  }
   @media only screen and (max-width: 1023px) {
     height: 52px;
     gap: 8px;
@@ -167,20 +163,20 @@ export const Sub = styled.div`
 export const Content = styled.div`
   word-wrap: break-word;
   @media only screen and (min-width: 1024px) {
-    color: #92A5B5;
+    color: #92a5b5;
     font-size: 16px;
-    font-family: 'MonRegular';
+    font-family: "MonRegular";
     font-weight: 400;
     line-height: 24px;
-    }
+  }
   @media only screen and (max-width: 1023px) {
-    color: #637D92;
-  font-size: 12px;
-  font-family: 'MonRegular';
-  font-weight: 400;
-  line-height: 18px;
-  letter-spacing: 0.25px;
-    }
+    color: #637d92;
+    font-size: 12px;
+    font-family: "MonRegular";
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.25px;
+  }
 `;
 
 export const Action = styled.div`
@@ -197,6 +193,4 @@ export const IconContainer = styled.div`
   position: relative;
 `;
 
-export const Icon = styled.img`
-  
-`;
+export const Icon = styled.img``;

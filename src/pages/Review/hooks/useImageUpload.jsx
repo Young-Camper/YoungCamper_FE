@@ -16,18 +16,23 @@ const useImageUpload = (maxFiles = 5) => {
   // 파일 선택 후 미리보기 처리
   const handleFileChange = (event) => {
     const files = Array.from(event.target.files);
+
+    // 최대 파일 수 초과 확인
     if (files.length + imagePreviews.length > maxFiles) {
       alert(`최대 ${maxFiles}개까지 이미지를 추가할 수 있습니다.`);
       return;
     }
 
+    // 새로운 파일들 처리
     const newPreviews = files.map((file) => {
       const blobUrl = URL.createObjectURL(file);
       return { originalName: file.name, url: blobUrl, type: file.type, file };
     });
 
+    // 기존 파일에 새로운 파일 추가
     setUploadedFiles((prevFiles) => [...prevFiles, ...newPreviews]);
 
+    // 이미지 미리보기 처리
     const previewPromises = files.map((file) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
@@ -41,6 +46,9 @@ const useImageUpload = (maxFiles = 5) => {
     Promise.all(previewPromises).then((loadedImages) => {
       setImagePreviews((prevImages) => [...prevImages, ...loadedImages]);
     });
+
+    // input 값 초기화
+    event.target.value = "";
   };
 
   // 이미지 삭제 처리
@@ -58,7 +66,7 @@ const useImageUpload = (maxFiles = 5) => {
 
   return {
     imagePreviews,
-    setImagePreviews, // 확인: setImagePreviews 반환
+    setImagePreviews,
     inputRef,
     handleButtonClick,
     handleFileChange,
@@ -66,6 +74,7 @@ const useImageUpload = (maxFiles = 5) => {
     uploadedFiles,
     uploadMessage,
     setUploadMessage,
+    resetUpload,
   };
 };
 

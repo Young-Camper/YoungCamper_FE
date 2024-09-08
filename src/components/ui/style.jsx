@@ -33,7 +33,7 @@ export const BannerTitle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
+  gap: ${(props) => props.gap || "24px"};
 `;
 
 export const MainText = styled.div`
@@ -45,10 +45,12 @@ export const MainText = styled.div`
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "48px" : "28px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-1.9px" : "-1px")};
+  /* white-space: nowrap; */
 `;
 
 export const SubText = styled.div`
   color: var(--new-grey-grey800, #637d92);
+  white-space: pre-wrap;
 
   /* desktop/Body2_reg */
   font-family: "MonRegular";
@@ -56,7 +58,6 @@ export const SubText = styled.div`
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "30px" : "18px")}; /* 150% */
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.06px")};
-  white-space: nowrap;
 `;
 
 export const BannerImg = styled.img`

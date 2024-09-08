@@ -2,10 +2,13 @@
 
 import { API } from "../utils";
 
-export const searchNotice = async (keyword) => {
+export const searchNotice = async (keyword, languageCode) => {
   try {
     const response = await API.get("/api/announcements/search", {
       params: { keyword: keyword },
+      headers: {
+        "Accept-Language": languageCode,
+      },
     });
     return response.data;
   } catch (error) {

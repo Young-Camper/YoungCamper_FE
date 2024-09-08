@@ -13,11 +13,9 @@ const Search = ({ onSearch }) => {
   const keywordChangeHandler = (event) => {
     setKeyword(event.target.value);
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const searchResults = await onSearch(keyword);
-    setResults(searchResults);
+    onSearch(keyword);
   };
 
   return (

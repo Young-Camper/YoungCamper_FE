@@ -21,7 +21,10 @@ const index = () => {
 
   return (
     <Wrapper>
-      <MainTitle mainText={t(`notice.title`)} subText={t(`notice.subTitle`)} />
+      <MainTitle
+        mainText={t(`notice.maintitle`)}
+        subText={t(`notice.subTitle`)}
+      />
       <ContentWrapper>
         <Search onSearch={handleSearch} />
         <Content keyword={searchKeyword} />

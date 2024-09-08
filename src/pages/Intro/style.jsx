@@ -43,6 +43,7 @@ export const IntroWrapper = styled.div`
 `;
 export const IntroTitle = styled.div`
   color: var(--new-main-white, #fafafa);
+  white-space: pre-wrap;
 
   /* desktop/display2_eb */
   font-family: "MonExtraBold";
@@ -66,7 +67,7 @@ export const MainText = styled.div`
   align-items: center;
   gap: 10px;
   align-self: stretch;
-
+  white-space: pre-wrap;
   color: var(--Contextual-Text-Primary, #000);
   text-align: center;
 
@@ -81,6 +82,7 @@ export const MainText = styled.div`
 export const ContentTitle = styled.div`
   color: var(--Contextual-Text-Primary, #000);
   text-align: center;
+  white-space: pre-wrap;
 
   /* desktop/H3_sb */
   font-family: "MonSeimiBold";
@@ -94,6 +96,7 @@ export const ContentText = styled.div`
     props.$isDesktop ? "548px" : props.$isTablet ? "334px" : "314px"};
   color: var(--new-grey-grey800, #637d92);
   text-align: center;
+  white-space: pre-wrap;
 
   /* desktop/Body2_reg */
   font-family: "MonRegular";

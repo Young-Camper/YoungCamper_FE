@@ -4,12 +4,20 @@ import { Link } from "react-router-dom";
 import useMediaQueries from "../../hooks/useMediaQueries";
 import Loading from "../../components/ui/Loading";
 import { getAnnouncements } from "../../lib/apis/api/getAnnouncements";
+import { useTranslation } from "react-i18next";
 
 const Notice = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
-  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filteredData, setFilteredData] = useState([]);
+  const [urgentNotices, setUrgentNotices] = useState([]);
+  const [updatedNotices, setupdatedNotices] = useState([]);
+  const [nonUrgentNotices, setNonUrgentNotices] = useState([]);
+  const [mainNotices, setMainNotices] = useState([]);
+  const { t, i18n } = useTranslation();
+
+  const currentLanguage = i18n.language;
 
   const handleMouseOver = (index) => {
     setHoveredIndex(index);
@@ -23,41 +31,58 @@ const Notice = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getAnnouncements();
-        setData(response.data);
-        setLoading(false);
+        const response = await getAnnouncements(currentLanguage);
+        // console.log(response);
+        setMainNotices(response.data.data);
       } catch (error) {
+        // 오류 처리
+      } finally {
         setLoading(false);
       }
     };
+
     fetchData();
-  }, []);
+  }, [currentLanguage]);
 
-  //필독과 일반공지 구분
-  const urgentNotices = data && Array.isArray(data) ? data.filter((item) => item.isPinned === "true") : [];
-  const nonUrgentNotices = data && Array.isArray(data) ? data.filter((item) => item.isPinned === "false") : [];
-  let mainNotices = [];
+  useEffect(() => {
+    // 필독 공지 필터링
+    const urgentNotices = filteredData.filter((item) => item.isPinned === true);
+    const nonUrgentNotices = filteredData.filter(
+      (item) => item.isPinned === false
+    );
+    setUrgentNotices(urgentNotices);
+    setNonUrgentNotices(nonUrgentNotices);
+  }, [filteredData]);
 
-  //필독공지 -> 최신순으로 4개 정렬
-  if (urgentNotices.length >= 4) {
-    mainNotices = urgentNotices.slice(-4).reverse();
-  } else {
-    const nonUrgentToAdd = 4 - urgentNotices.length;
-    const addNotices = nonUrgentNotices.slice(0, nonUrgentToAdd).reverse();
-    mainNotices = urgentNotices.reverse().concat(addNotices);
-  }
+  useEffect(() => {
+    if (urgentNotices.length > 0 || nonUrgentNotices.length > 0) {
+      let updatedNotices = [];
+      //필독공지 -> 최신순으로 4개 정렬
+      if (urgentNotices.length >= 4) {
+        const updatedNotices = urgentNotices.slice(-4).reverse();
+      } else {
+        const nonUrgentToAdd = 4 - urgentNotices.length;
+        const addNotices = nonUrgentNotices.slice(0, nonUrgentToAdd).reverse();
+        updatedNotices = [...urgentNotices].reverse().concat(addNotices);
+      }
+      //공지가 4개 이하일 때
+      if (updatedNotices.length < 4) {
+        const emptyNotices = Array(4 - updatedNotices.length).fill({
+          title: t("home.noNotice"),
+          isPinned: false,
+        });
+        updatedNotices = updatedNotices.concat(emptyNotices);
+      }
 
-  //공지가 4개 이하일 때
-  const emptyNotices = Array(4 - mainNotices.length).fill({
-    title: "등록된 공지가 없습니다.",
-    isPinned: "no",
-  });
+      setMainNotices(updatedNotices);
+    }
+  }, [urgentNotices, nonUrgentNotices, t]);
 
   return (
     <S.NoticeSection $isTablet={isTablet} $isDesktop={isDesktop}>
       <S.NoticeTitleSet $isTablet={isTablet} $isDesktop={isDesktop}>
         <S.NoticeTitleText $isTablet={isTablet} $isDesktop={isDesktop}>
-          주요 공지사항을 확인해보세요
+          {t("home.notice")}
         </S.NoticeTitleText>
         <Link to={"/notification"}>
           {isDesktop && (
@@ -68,7 +93,7 @@ const Notice = () => {
               onMouseOver={() => handleMouseOver("button")}
               onMouseOut={handleMouseOut}
             >
-              더 알아보기
+              {t("home.moreNotice")}
             </S.NoticeBtn>
           )}
         </Link>
@@ -76,27 +101,22 @@ const Notice = () => {
       {loading ? (
         <Loading />
       ) : (
-        <S.NoticeListSet $isDesktop={isDesktop} >
-          {[
-            ...mainNotices,
-            ...Array(4 - mainNotices.length).fill({ isEmpty: true }),
-          ].map((notice, index) => {
-            const isEmpty = notice.isEmpty || notice === null; // notice가 null인 경우 빈 공지
-            const id = isEmpty ? `empty-${index}` : notice.id;
+        <S.NoticeListSet $isDesktop={isDesktop}>
+          {[...mainNotices].map((notice, index) => {
             return (
               <S.NoticeListFrame
-                key={id}
+                key={index}
                 $isTablet={isTablet}
                 $isDesktop={isDesktop}
               >
                 <Link
-                  to={isEmpty ? "#" : `/notification/${notice.num}`}
+                  to={`/notification/${notice.id}`}
                   style={{ width: "100%" }}
                 >
                   <S.NoticeList
                     $isTablet={isTablet}
                     $isDesktop={isDesktop}
-                    ishovering={hoveredIndex === index}
+                    $ishovering={hoveredIndex === index}
                     onMouseOver={() => handleMouseOver(index)}
                     onMouseOut={handleMouseOut}
                   >
@@ -106,26 +126,24 @@ const Notice = () => {
                     >
                       <S.NoticeTag
                         $isDesktop={isDesktop}
-                        ishovering={hoveredIndex === index}
+                        $ishovering={hoveredIndex === index}
                       >
-                        {isEmpty
-                          ? "전체"
-                          : notice.isPinned === "yes"
-                          ? "필독"
-                          : "전체"}
+                        {notice.isPinned
+                          ? t("home.noticeTagY")
+                          : t("home.noticeTagN")}
                       </S.NoticeTag>
                       <S.NoticeText
                         $isTablet={isTablet}
                         $isDesktop={isDesktop}
-                        ishovering={hoveredIndex === index}
+                        $ishovering={hoveredIndex === index}
                       >
-                        {isEmpty ? "등록된 공지가 없습니다." : notice.title}
+                        {`${t(notice.title)}`}
                       </S.NoticeText>
                     </S.NoticeItemBox>
                     <S.ArrowImg2Box $isDesktop={isDesktop}>
                       <S.ArrowImg3
                         $isDesktop={isDesktop}
-                        ishovering={hoveredIndex === index}
+                        $ishovering={hoveredIndex === index}
                       />
                     </S.ArrowImg2Box>
                   </S.NoticeList>
@@ -143,7 +161,7 @@ const Notice = () => {
               $isTablet={isTablet}
               ishovering={hoveredIndex === "button"}
             >
-              더 알아보기
+              {t("home.moreNotice")}
             </S.NoticeBtn>
           </S.NoticeBtnBox>
         </Link>

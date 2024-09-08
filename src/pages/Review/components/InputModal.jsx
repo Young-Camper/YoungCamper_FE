@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import useMediaQueries from "../../../hooks/useMediaQueries";
+import { useTranslation } from "react-i18next";
 
 const InputModal = ({ message, onClose }) => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+  const { t } = useTranslation();
 
   return (
     <ModalWrapper>
@@ -38,7 +40,7 @@ const InputModal = ({ message, onClose }) => {
             $isTablet={isTablet}
             $isDesktop={isDesktop}
           >
-            확인
+            {t("review.check")}
           </Button>
         </ButtonContainer>
       </ModalContent>
@@ -107,7 +109,7 @@ const ButtonContainer = styled.div`
 const Button = styled.button`
   color: #0068ff;
   flex: 1;
-  height: ${(props) => (props.$isMobile ? "45px" : "70px")}
+  height: ${(props) => (props.$isMobile ? "45px" : "70px")};
   display: flex;
   justify-content: center;
   align-items: center;

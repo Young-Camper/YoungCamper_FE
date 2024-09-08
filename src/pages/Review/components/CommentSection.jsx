@@ -6,25 +6,38 @@ import {
   PageButton,
   CurrentPageButton,
 } from "../components/CommentStyle";
-
 import { getReviews } from "../../../lib/apis/api/getReviews";
-import Loading from "../../../components/ui/Loading"; // 로딩 컴포넌트 추가
+import Loading from "../../../components/ui/Loading";
 
 const itemsPerPage = 5;
 const maxPageButtons = 5;
 
 const CommentSection = ({ refresh }) => {
   const [comments, setComments] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1); // 페이지 상태를 1부터 시작
+  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [loading, setLoading] = useState(false); // 로딩 상태 추가
+  const [loading, setLoading] = useState(false);
   const commentsRef = useRef(null);
-  const fetchComments = async (page = 1) => {
-    setLoading(true); // 로딩 시작
+  const isFetching = useRef(false);
+
+  const fetchComments = async (page = 1, forceFirstPage = false) => {
+    if (isFetching.current) return;
+    isFetching.current = true;
+    setLoading(true);
     try {
-      const data = await getReviews(page - 1, itemsPerPage, "createdAt,desc");
+      const fetchPage = forceFirstPage ? 1 : page;
+      const data = await getReviews(
+        fetchPage - 1,
+        itemsPerPage,
+        "createdAt,desc"
+      );
+
       if (data && data.content) {
-        setComments(data.content);
+        const processedComments = data.content.map((comment) => ({
+          ...comment,
+          imageUrls: comment.imageUrls.map((url) => url.replace(/\s/g, "%20")),
+        }));
+        setComments(processedComments);
         setTotalPages(data.totalPages);
       } else {
         console.error("Unexpected data structure:", data);
@@ -33,14 +46,30 @@ const CommentSection = ({ refresh }) => {
     } catch (error) {
       console.error("Error fetching comments:", error);
     } finally {
-      setLoading(false); // 로딩 종료
+      setLoading(false);
+      isFetching.current = false;
     }
   };
 
   // 새 리뷰 등록 시 무조건 1페이지로 이동 및 페치
   useEffect(() => {
+    if (refresh) {
+      setCurrentPage(1);
+      fetchComments(1, true);
+    }
+  }, [refresh]);
+
+  // 현재 페이지 변경 시 댓글 페치
+  useEffect(() => {
     fetchComments(currentPage);
-  }, [currentPage, refresh]);
+  }, [currentPage]);
+
+  // comments 상태가 변경되면 리렌더링
+  useEffect(() => {
+    if (comments.length === 0 && currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  }, [comments]);
 
   const getPageRange = () => {
     const start =
@@ -50,7 +79,7 @@ const CommentSection = ({ refresh }) => {
   };
 
   const handlePageClick = (page) => {
-    setCurrentPage(page); // 클릭된 페이지 번호로 상태 업데이트
+    setCurrentPage(page);
     if (commentsRef.current) {
       commentsRef.current.scrollIntoView({
         behavior: "smooth",
@@ -61,7 +90,7 @@ const CommentSection = ({ refresh }) => {
 
   const handleNextPageGroup = () => {
     const nextPage = Math.min(currentPage + maxPageButtons, totalPages);
-    setCurrentPage(nextPage); // 다음 페이지 그룹으로 이동
+    setCurrentPage(nextPage);
     if (commentsRef.current) {
       commentsRef.current.scrollIntoView({
         behavior: "smooth",
@@ -72,7 +101,7 @@ const CommentSection = ({ refresh }) => {
 
   const handlePrevPageGroup = () => {
     const prevPage = Math.max(currentPage - maxPageButtons, 1);
-    setCurrentPage(prevPage); // 이전 페이지 그룹으로 이동
+    setCurrentPage(prevPage);
     if (commentsRef.current) {
       commentsRef.current.scrollIntoView({
         behavior: "smooth",
@@ -81,12 +110,10 @@ const CommentSection = ({ refresh }) => {
     }
   };
 
-  // 댓글 삭제 후 현재 페이지를 리렌더링하는 함수
   const handleDeleteComment = () => {
     fetchComments(currentPage); // 현재 페이지를 다시 불러옴
   };
 
-  // 로딩 중일 때 로딩 컴포넌트를 보여주고, 로딩이 끝나면 댓글과 페이지네이션을 렌더링
   return loading ? (
     <Loading />
   ) : (
@@ -95,7 +122,7 @@ const CommentSection = ({ refresh }) => {
         <Comment
           key={comment.id}
           comment={comment}
-          onDelete={handleDeleteComment} // 삭제 핸들러 전달
+          onDelete={handleDeleteComment}
         />
       ))}
       <PaginationContainer>

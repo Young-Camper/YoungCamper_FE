@@ -15,7 +15,7 @@ export const FAQWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: ${(props) => (props.$isMobile ? "24px" : "30px")};
   margin: 0 auto;
 `
 
@@ -23,8 +23,7 @@ export const FAQBox = styled.div`
   display: block;
   width: 100%;
   min-width: 240px;
-  min-height: 80px;
-
+  min-height: ${(props) => (props.$isMobile ? "60px" : "80px")};
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -39,7 +38,7 @@ export const FAQBox = styled.div`
 export const FAQContent = styled.div`
   display: flex;
   padding: 12px 16px;
-  min-height: 80px;
+  min-height: ${(props) => (props.$isMobile ? "60px" : "80px")};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -49,8 +48,8 @@ export const FAQContent = styled.div`
 export const FAQText1 = styled.div`
   color: #0A0B0A;
   
-  font-family: ${(props) => (props.$isMobile ? "MonRegular" : "MonSemiBold")};
-  font-size: ${(props) => (props.$isMobile ? "18px" : "22px")};
+  font-family: ${(props) => (props.$isMobile ? "MonSemiBold" : "MonSemiBold")};
+  font-size: ${(props) => (props.$isMobile ? "16px" : "22px")};
   line-height: ${(props) => (props.$isMobile ? "24px" : "30px")};
   letter-spacing: ${(props) => (props.$isMobile ? "-0.09px" : "-0.22px")};
 
@@ -63,14 +62,14 @@ export const FAQText1 = styled.div`
 export const FAQText2 = styled.div`
   color: #0A0B0A;
   font-family: "MonRegular";
-  font-size: ${(props) => (props.$isMobile ? "18px" : "20px")};
+  font-size: ${(props) => (props.$isMobile ? "14px" : "20px")};
   line-height: ${(props) => (props.$isMobile ? "24px" : "30px")};
   letter-spacing: ${(props) => (props.$isMobile ? "-0.09px" : "-0.22px")};
   
   span.a-text {
     color: #0068FF;
-    font-family: ${(props) => (props.$isMobile ? "MonRegular" : "MonSemiBold")};
-    font-size: ${(props) => (props.$isMobile ? "18px" : "22px")};
+    font-family: ${(props) => (props.$isMobile ? "MonSemiBold" : "MonSemiBold")};
+    font-size: ${(props) => (props.$isMobile ? "16px" : "22px")};
   }
 
   a {

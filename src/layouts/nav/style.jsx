@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  padding: ${(props) => (props.$isDesktop ? "5px 168px;" : "12px 20px")};
+  padding: ${(props) => (props.$isDesktop ? "5px 40px;" : "12px 20px")};
   display: flex;
   gap: 18px;
   width: 100vw;
@@ -33,7 +33,7 @@ export const Logo = styled.img`
   height: ${(props) =>
     props.$isDesktop
       ? props.$isEnglish
-        ? "60px"
+        ? "65px"
         : "45px"
       : props.$isEnglish
       ? ""

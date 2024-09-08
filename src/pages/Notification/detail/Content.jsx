@@ -6,15 +6,18 @@ import ShowList from "./ShowList";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import Loading from "../../../components/ui/Loading";
 import { getAnnouncement } from "../../../lib/apis/api/getAnnouncement";
+import { useTranslation } from "react-i18next";
 
 const Content = () => {
   const { num } = useParams();
   const [notice, setNotice] = useState(null);
   const { isDesktop } = useMediaQueries();
-  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
   const [loading, setLoading] = useState(true);
 
-  //받아오는 날짜 데이터 포맷팅
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
+  // 받아오는 날짜 데이터 포맷팅
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const year = date.getFullYear();
@@ -27,9 +30,9 @@ const Content = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await getAnnouncement(num);
-        setNotice(response.data);
+        const response = await getAnnouncement(num, currentLanguage);
         // console.log(response);
+        setNotice(response.data.data);
       } catch (error) {
       } finally {
         setLoading(false);
@@ -37,7 +40,7 @@ const Content = () => {
     };
 
     fetchData();
-  }, [num]);
+  }, [num, currentLanguage]);
 
   return (
     <>
@@ -53,22 +56,16 @@ const Content = () => {
             )}
             <S.Title $isDesktop={isDesktop}>{notice.title}</S.Title>
             <S.InfoContainer $isDesktop={isDesktop}>
-              <S.Info>작성인: 관리자</S.Info>
+              <S.Info>{t("notice.write")}</S.Info>
               <S.Info>{formatDate(notice.createdAt)}</S.Info>
             </S.InfoContainer>
             <S.Line />
             <S.ContentWrapper $isDesktop={isDesktop}>
-              <S.ContentImgContainer>
-                {notice.image && (
-                  <S.ContentImgContainer>
-                    <S.ContentImg
-                      src={`${mediaUrl}Notification/${notice.imageUrl}`}
-                      alt="공지 이미지"
-                    />
-                  </S.ContentImgContainer>
-                )}
-              </S.ContentImgContainer>
-
+              {notice.imageUrl ? (
+                <S.ContentImgContainer>
+                  <S.ContentImg src={notice.imageUrl} alt="공지 이미지" />
+                </S.ContentImgContainer>
+              ) : null}
               <S.ContentText $isDesktop={isDesktop}>
                 {notice.content}
               </S.ContentText>
