@@ -30,7 +30,7 @@ const Content = ({ keyword }) => {
         const response = await getAnnouncements(currentLanguage);
         setData(response.data.data);
       } catch (error) {
-        console.error("Error fetching announcements:", error);
+        // console.error("Error fetching announcements:", error);
       } finally {
         setLoading(false);
       }
@@ -47,7 +47,7 @@ const Content = ({ keyword }) => {
           const response = await searchNotice(keyword, currentLanguage);
           setData(response.data.data);
         } catch (error) {
-          console.error("Error searching notices:", error);
+          // console.error("Error searching notices:", error);
         } finally {
           setLoading(false);
         }
