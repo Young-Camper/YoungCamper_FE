@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import { useTranslation } from "react-i18next";
+import { useBodyScrollLock } from "../hooks/useBodtScrollLock"; // 스크롤 잠금 훅 가져오기
 
 const InputModal = ({ message, onClose }) => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
   const { t } = useTranslation();
+  const { lockScroll, openScroll } = useBodyScrollLock(); // 스크롤 잠금 훅 사용
+
+  useEffect(() => {
+    lockScroll(); // 모달이 열릴 때 스크롤 잠금
+
+    return () => {
+      openScroll(); // 모달이 닫힐 때 스크롤 해제
+    };
+  }, [lockScroll, openScroll]);
 
   return (
     <ModalWrapper>
