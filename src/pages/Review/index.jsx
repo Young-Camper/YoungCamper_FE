@@ -30,13 +30,7 @@ const Index = () => {
         subText={t("review.bannerSubtitle")}
       />
       <S.Container $isMobile={isMobile}>
-        <S.TitleWrapper $isMobile={isMobile} $isTablet={isTablet}>
-          <TitleSet
-            mainText={t("review.title")}
-            subText={t("review.subtitle")}
-          />
-        </S.TitleWrapper>
-
+        <S.TitleWrapper $isMobile={isMobile} $isTablet={isTablet} />
         <S.Textfiled $isMobile={isMobile}>
           {/* ReviewInputSection에 onSuccess prop 전달 */}
           <ReviewInputSection onSuccess={handleSuccess} />

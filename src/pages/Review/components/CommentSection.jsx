@@ -16,6 +16,7 @@ const CommentSection = ({ refresh }) => {
   const [comments, setComments] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [totalElements, setTotalElements] = useState(0);
   const [loading, setLoading] = useState(false);
   const commentsRef = useRef(null);
   const isFetching = useRef(false);
@@ -39,6 +40,7 @@ const CommentSection = ({ refresh }) => {
         }));
         setComments(processedComments);
         setTotalPages(data.totalPages);
+        setTotalElements(data.totalElements); // 전체 엘리먼트 수 설정
       } else {
         console.error("Unexpected data structure:", data);
         setComments([]);
@@ -89,7 +91,7 @@ const CommentSection = ({ refresh }) => {
   };
 
   const handleNextPageGroup = () => {
-    const nextPage = Math.min(currentPage + maxPageButtons, totalPages);
+    const nextPage = Math.min(currentPage + 1, totalPages);
     setCurrentPage(nextPage);
     if (commentsRef.current) {
       commentsRef.current.scrollIntoView({
@@ -100,7 +102,7 @@ const CommentSection = ({ refresh }) => {
   };
 
   const handlePrevPageGroup = () => {
-    const prevPage = Math.max(currentPage - maxPageButtons, 1);
+    const prevPage = Math.max(currentPage - 1, 1);
     setCurrentPage(prevPage);
     if (commentsRef.current) {
       commentsRef.current.scrollIntoView({
@@ -118,11 +120,14 @@ const CommentSection = ({ refresh }) => {
     <Loading />
   ) : (
     <CommentsContainer ref={commentsRef}>
-      {comments.map((comment) => (
+      {comments.map((comment, index) => (
         <Comment
           key={comment.id}
           comment={comment}
           onDelete={handleDeleteComment}
+          sequenceNumber={
+            totalElements - ((currentPage - 1) * itemsPerPage + index)
+          }
         />
       ))}
       <PaginationContainer>

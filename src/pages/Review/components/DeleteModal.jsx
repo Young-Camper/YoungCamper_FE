@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import * as S from "../components/CommentStyle";
 import { useTranslation } from "react-i18next";
+import { useBodyScrollLock } from "../hooks/useBodtScrollLock";
 
 const DeleteModal = ({ onClose, onConfirm }) => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
@@ -11,6 +12,15 @@ const DeleteModal = ({ onClose, onConfirm }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const { t } = useTranslation();
+  const { lockScroll, openScroll } = useBodyScrollLock(); // 스크롤 잠금 훅 사용
+
+  useEffect(() => {
+    lockScroll(); // 모달이 열릴 때 스크롤 잠금
+
+    return () => {
+      openScroll(); // 모달이 닫힐 때 스크롤 해제
+    };
+  }, [lockScroll, openScroll]);
 
   // 비밀번호 입력 시 상태 업데이트
   const handlePasswordChange = (e) => {
@@ -77,11 +87,9 @@ const DeleteModal = ({ onClose, onConfirm }) => {
             $isDesktop={isDesktop}
           >
             <S.CancelButton onClick={onClose}>
-              {" "}
               {t("review.cancle")}
             </S.CancelButton>
             <S.ConfirmButton onClick={handleConfirmClick}>
-              {" "}
               {t("review.check")}
             </S.ConfirmButton>
           </S.ModalActions>
