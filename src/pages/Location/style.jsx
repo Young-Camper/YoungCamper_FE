@@ -20,19 +20,25 @@ export const AccordionHeader = styled.div`
   border-bottom: 2px solid #0068ff;
 
   ${(props) =>
+    props.$isDesktop ? `
+    background: white;
+    &:hover {
+      background: linear-gradient(102deg, #0068FF 0%, #B9FF9C 100%);
+      border-top: 2px transparent solid;
+      border-bottom: 2px transparent solid;
+    }
+    ` 
+    :
     props.$isOpen
       ? `
         background: #0068FF;
         border-top: 2px transparent solid; 
         border-bottom: 2px transparent solid; 
       `
-      : `
+      :
+       `
         background: white;
-        &:hover {
-          background: linear-gradient(102deg, #0068FF 0%, #B9FF9C 100%);
-          border-top: 2px transparent solid;
-          border-bottom: 2px transparent solid;
-        }
+
       `}
 `;
 
@@ -59,9 +65,12 @@ export const Title = styled.div`
   word-wrap: break-word;
 
   // Header에 호버 시 Title 색상 변경
-  ${AccordionHeader}:hover & {
-    color: #ffffff;
+  ${
+    (props)=> (props.$isDesktop ?   `${AccordionHeader}:hover & {
+      color: #ffffff;}` : ``
+    )
   }
+
 `;
 
 export const IconContainer = styled.div`
@@ -370,7 +379,7 @@ export const WayBusNumbers = styled.div`
 export const WayImgContainer = styled.div`
   width: 100%;
   background-color: #fafafa;
-  padding: 12px 0px;
+  padding: ${(props) => props.$isMobile ? "16px" : ( props.$isTablet ? "20px" : "12px")};
   justify-content: center;
   align-items: center;
   display: inline-flex;
@@ -386,9 +395,4 @@ export const WayImg = styled.img`
   max-height: 498.5px;
   object-fit: contain;
   src: ${(props) => props.src};
-
-  width: ${(props) =>
-    props.isMobile
-      ? "100%"
-      : "100%"}; // 이미지 너비를 부모 컨테이너에 맞춰 꽉 채웁니다.
 `;

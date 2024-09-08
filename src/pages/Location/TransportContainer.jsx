@@ -17,12 +17,6 @@ const TransportContainer = () => {
   return (
     <>
       <TransportBox
-        title={t("location.map")}
-        onClick={() => toggleAccordion(0)}
-        isOpen={activeIndex === 0}
-        index={0}
-      ></TransportBox>
-      <TransportBox
         title={t("location.public")}
         onClick={() => toggleAccordion(1)}
         isOpen={activeIndex === 1}
