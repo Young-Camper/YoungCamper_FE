@@ -42,10 +42,6 @@ const Video = () => {
           playsInline
         />
         <Link to={`https://youtube.com/@youngcamp_dgu?si=varFM5dZcDp2CaaU`} style={{ width: "100%" }}>
-          {/* <S.VideoBtn $isTablet={isTablet} $isDesktop={isDesktop}>
-            {t("home.video")}
-          </S.VideoBtn> */}
-
           <S.VideoBtnBox>
             <S.VideoBtnText $isTablet={isTablet} $isDesktop={isDesktop}>영상 보러가기</S.VideoBtnText>
             <S.VideoBtnImg $isTablet={isTablet} $isDesktop={isDesktop}></S.VideoBtnImg>

@@ -55,12 +55,12 @@ const Social = () => {
     arrows: true,
     prevArrow: (
       <SlickArrowLeft $isDesktop={isDesktop}>
-        <S.SocialBtn />
+    
       </SlickArrowLeft>
     ),
     nextArrow: (
       <SlickArrowRight $isDesktop={isDesktop}>
-        <S.SocialBtn />
+      
       </SlickArrowRight>
     ),
   };

@@ -1019,65 +1019,44 @@ export const SocialSliderBox = styled.div`
 
   .slick-slide {
     margin: ${(props) => (props.$isDesktop ? "0px 10px" : "0px 4.737px")};
+    position: relative;
   }
   .slick-track {
     display: flex;
     align-items: flex-start;
   }
-  .slick-prev:before{
+  .slick-prev:before, .slick-next:before {
+    content: ''; /* 기본 화살표를 덮어쓰기 위한 빈 content */
     background: url(${mediaUrl}Home/ArrowBlack.png);
-    /* 다음 화살표 이미지 경로 */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     width: ${(props) => (props.$isDesktop ? "20px" : "10px")};
     height: ${(props) => (props.$isDesktop ? "20px" : "10px")};
     position: absolute;
-    transform: rotate(225deg);
-    left: -10px;
     opacity: 0;
-    z-index:1;
-    &:hover {
-      opacity: 0; /* 호버 및 클릭 상태에서도 불투명도 유지 */
-    outline: none;
-    background: url(${mediaUrl}Home/ArrowBlack.png);
-  }
-  }
-  .slick-next:before {
-    background: url(${mediaUrl}Home/ArrowBlack.png);
-    /* 다음 화살표 이미지 경로 */
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: ${(props) => (props.$isDesktop ? "20px" : "10px")};
-    height: ${(props) => (props.$isDesktop ? "20px" : "10px")};
-    transform: rotate(45deg);
-    right: -10px;
-    position: absolute;
-    opacity: 0;
-    z-index: 1;
-    &:hover {
-      opacity: 1; /* 호버 및 클릭 상태에서도 불투명도 유지 */
-    outline: none;
-    background: url(${mediaUrl}Home/ArrowBlack.png);
+    z-index: 10;
+    transition: opacity 0.3s ease; 
   }
 
+   .slick-prev:hover:before, .slick-next:hover:before,
+   .slick-prev:focus:before, .slick-next:focus:before {
+    background: url(${mediaUrl}Home/ArrowBlack.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: ${(props) => (props.$isDesktop ? "20px" : "10px")};
+    height: ${(props) => (props.$isDesktop ? "20px" : "10px")};
+    position: absolute;
+    opacity: 1;
+    z-index: 1;
+    transition: opacity 0.3s ease; 
   }
 
   
+}
 `;
 
-export const SocialBtn = styled.button`
-  width: auto;
-  height: auto;
-  opacity: 1;
-  &:hover,
-  &:focus,
-  &:active {
-    opacity: 1; /* 호버 및 클릭 상태에서도 불투명도 유지 */
-    outline: none;
-  }
-`;
 
 export const ArrowBox = styled.div`
   width: auto;
@@ -1105,14 +1084,12 @@ export const NextArrow = styled.div`
   background-repeat: no-repeat;
   width: ${(props) => (props.$isDesktop ? "20px" : "10px")};
   height: ${(props) => (props.$isDesktop ? "20px" : "10px")};
-  transform: rotate(45deg);
-  right: -10px;
+  transform: translateX(50%) translateY(50%) rotate(45deg);
   position: absolute;
 `;
 
 export const PrevArrow = styled(NextArrow)`
-  transform: rotate(225deg);
-  left: -10px;
+  transform: translateX(50%) translateY(50%) rotate(225deg);
 `;
 
 export const FrameCard = styled.a`
