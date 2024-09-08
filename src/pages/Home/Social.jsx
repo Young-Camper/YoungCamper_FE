@@ -83,7 +83,10 @@ const Social = () => {
                   $isDesktop={isDesktop}
                   $BgImage={social.bgimage}
                 >
-                  <S.FrameCard $isDesktop={isDesktop}>
+                  <S.FrameCard $isDesktop={isDesktop}
+                      href={social.link}
+                      target="_blank"
+                      rel="noopener noreferrer">
                     <S.FrameBox $isDesktop={isDesktop}>
                       {/* {console.log('social.image matches:', social.image)} */}
                       {social.image === `${mediaUrl}Home/WebIcon.png` ? (
@@ -102,9 +105,6 @@ const Social = () => {
                       </S.FrameText>
                       <S.FrameImg
                         $isDesktop={isDesktop}
-                        href={social.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
                       >
                         <S.ArrowImg4 $isDesktop={isDesktop} />
                       </S.FrameImg>
