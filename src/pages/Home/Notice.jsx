@@ -59,7 +59,7 @@ const Notice = () => {
       let updatedNotices = [];
       //필독공지 -> 최신순으로 4개 정렬
       if (urgentNotices.length >= 4) {
-        const updatedNotices = urgentNotices.slice(-4).reverse();
+        updatedNotices = urgentNotices.slice(-4).reverse();
       } else {
         const nonUrgentToAdd = 4 - urgentNotices.length;
         const addNotices = nonUrgentNotices.slice(0, nonUrgentToAdd).reverse();
@@ -76,6 +76,7 @@ const Notice = () => {
 
       setMainNotices(updatedNotices);
     }
+    console.log('notice:', mainNotices);
   }, [urgentNotices, nonUrgentNotices, t]);
 
   return (
