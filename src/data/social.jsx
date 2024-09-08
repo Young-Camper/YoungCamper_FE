@@ -1,3 +1,4 @@
+//import { FaYoutube } from "react-icons/fa"; youtube icon 삽입
 const mediaUrl = import.meta.env.VITE_MEDIA_URL
 
 
@@ -6,8 +7,9 @@ const socialData = [
     "id" : 1,
     "name": "Youngcamp Youtube",
     "link": "https://youtube.com/@youngcamp_dgu?si=varFM5dZcDp2CaaU",
-    "image": `${mediaUrl}Home/YoutubeIcon.png`,
+    "image": `${mediaUrl}Home/YoutubeIconS.svg`,
     "bgimage": `${mediaUrl}Home/clubEmpty-Logo.png`
+    /* "image": `${mediaUrl}Home/YoutubeIcon.png`, */
   },
   {
     "id" : 2,
