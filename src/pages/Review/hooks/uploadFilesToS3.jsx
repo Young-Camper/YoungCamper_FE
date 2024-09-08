@@ -53,7 +53,7 @@ export const uploadFilesToS3 = async (uploadedFiles, setUploadMessage) => {
         if (uploadResponse.status === 200 || uploadResponse.status === 201) {
           // 성공 시 콘솔에 로그 출력
           console.log(`✔ File ${fileName} uploaded successfully!`);
-          const s3FileUrl = `https://youngcamp-dev.s3.ap-northeast-2.amazonaws.com/${fileName}`;
+          const s3FileUrl = `https://dpy17a4qtt448.cloudfront.net/${fileName}`;
           fileUrls.push(s3FileUrl);
         } else {
           // 실패 시 콘솔에 로그 출력
