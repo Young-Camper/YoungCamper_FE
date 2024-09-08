@@ -33,7 +33,7 @@ export const BannerTitle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
+  gap: ${(props) => props.gap || "24px"};
 `;
 
 export const MainText = styled.div`
@@ -45,10 +45,12 @@ export const MainText = styled.div`
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "48px" : "28px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-1.9px" : "-1px")};
+  /* white-space: nowrap; */
 `;
 
 export const SubText = styled.div`
   color: var(--new-grey-grey800, #637d92);
+  white-space: pre-wrap;
 
   /* desktop/Body2_reg */
   font-family: "MonRegular";
@@ -62,4 +64,17 @@ export const BannerImg = styled.img`
   width: ${(props) => (props.$isDesktop ? "230px" : "124px")};
   height: ${(props) => (props.$isDesktop ? "186px" : "100px")};
   object-fit: contain;
+`;
+
+export const AdminLogout = styled.div`
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  color: #fff;
+  background-color: #111;
+  z-index: 100;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;

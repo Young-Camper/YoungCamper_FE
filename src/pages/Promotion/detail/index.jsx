@@ -14,16 +14,15 @@ const index = () => {
 
   return (
     <>
-      <S.ClubDetail $isDesktop={isDesktop}>
+      <S.ContentWrapperFix $isDesktop={isDesktop} $isMobile={isMobile} $isTablet={isTablet}>
         <BackPage></BackPage>
         <SubTitle id={id}></SubTitle>
-        <ClubImage id={id}></ClubImage>
-        <S.ContentWrapper $isMobile={isMobile} $isTablet={isTablet}>
+      </S.ContentWrapperFix>
+      <S.ContentWrapper $isMobile={isMobile} $isTablet={isTablet} $isDesktop={isDesktop}>
+          <ClubImage id={id}></ClubImage>
           <ClubContent id={id}></ClubContent>
           <ClubApply id={id}></ClubApply>
-        </S.ContentWrapper>
-        
-      </S.ClubDetail>
+      </S.ContentWrapper>
       
     </>
   )

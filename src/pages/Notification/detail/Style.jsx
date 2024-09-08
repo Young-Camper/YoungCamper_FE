@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const UrgentWrapper = styled.div`
   display: flex;
   width: 100%;
-  padding: 0px 48px;
+  /* padding: 0px 48px; */
 `;
 export const TitleWrapper = styled.div`
   margin-top: ${(props) => (props.$isDesktop ? "48px" : "")};
@@ -116,13 +116,12 @@ export const ShowListContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 120px;
   color: #0a0b0a;
   text-align: center;
   font-family: "MonRegular";
   font-size: ${(props) => (props.$isDesktop ? "16px" : "12px")};
   font-style: normal;
-  /* font-weight: 400; */
+  height: ${(props) => (props.$isDesktop ? "" : "45px")};
   cursor: pointer;
 `;
 

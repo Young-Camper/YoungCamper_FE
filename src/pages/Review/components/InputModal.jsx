@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import useMediaQueries from "../../../hooks/useMediaQueries";
+import { useTranslation } from "react-i18next";
 
 const InputModal = ({ message, onClose }) => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+  const { t } = useTranslation();
 
   return (
     <ModalWrapper>
@@ -38,7 +40,7 @@ const InputModal = ({ message, onClose }) => {
             $isTablet={isTablet}
             $isDesktop={isDesktop}
           >
-            확인
+            {t("review.check")}
           </Button>
         </ButtonContainer>
       </ModalContent>
@@ -64,8 +66,8 @@ const ModalWrapper = styled.div`
 `;
 
 const ModalContent = styled.div`
-  width: ${(props) => (props.$isMobile ? "340px" : "588px")};
-  height: ${(props) => (props.$isMobile ? "252px" : "463px")};
+  width: ${(props) => (props.$isMobile ? "300px" : "588px")};
+  height: ${(props) => (props.$isMobile ? "250px" : "463px")};
   padding: ${(props) => (props.$isMobile ? "10px 20px" : "48px 80px")};
   background: white;
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
@@ -89,7 +91,7 @@ const MessageContainer = styled.div`
   align-items: center;
   text-align: center;
   color: #474747;
-  font-size: ${(props) => (props.$isMobile ? "18px" : "25px")};
+  font-size: ${(props) => (props.$isMobile ? "16px" : "25px")};
   font-family: "MonRegular";
   font-weight: 400;
   line-height: ${(props) => (props.$isMobile ? "24px" : "38px")};
@@ -107,7 +109,7 @@ const ButtonContainer = styled.div`
 const Button = styled.button`
   color: #0068ff;
   flex: 1;
-  height: ${(props) => (props.$isMobile ? "45px" : "70px")}
+  height: ${(props) => (props.$isMobile ? "45px" : "70px")};
   display: flex;
   justify-content: center;
   align-items: center;

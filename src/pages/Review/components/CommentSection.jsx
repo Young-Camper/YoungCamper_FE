@@ -1,49 +1,76 @@
 import React, { useState, useEffect, useRef } from "react";
-import CommentItem from "./CommentItem";
+import Comment from "./CommentItem";
 import {
   CommentsContainer,
   PaginationContainer,
   PageButton,
   CurrentPageButton,
 } from "../components/CommentStyle";
+import { getReviews } from "../../../lib/apis/api/getReviews";
+import Loading from "../../../components/ui/Loading";
 
-const itemsPerPage = 5; // 페이지 당 댓글 수
-const maxPageButtons = 5; // 한 번에 보여줄 페이지 버튼 수
+const itemsPerPage = 5;
+const maxPageButtons = 5;
 
-const CommentSection = () => {
+const CommentSection = ({ refresh }) => {
   const [comments, setComments] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const commentsRef = useRef(null); // 섹션 상단으로 스크롤하기 위한 ref
+  const [totalPages, setTotalPages] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const commentsRef = useRef(null);
+  const isFetching = useRef(false);
 
-  // API를 통해 JSON 파일을 불러오는 함수
-  const fetchComments = async () => {
+  const fetchComments = async (page = 1, forceFirstPage = false) => {
+    if (isFetching.current) return;
+    isFetching.current = true;
+    setLoading(true);
     try {
-      const response = await fetch("/reviews.json");
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      const fetchPage = forceFirstPage ? 1 : page;
+      const data = await getReviews(
+        fetchPage - 1,
+        itemsPerPage,
+        "createdAt,desc"
+      );
+
+      if (data && data.content) {
+        const processedComments = data.content.map((comment) => ({
+          ...comment,
+          imageUrls: comment.imageUrls.map((url) => url.replace(/\s/g, "%20")),
+        }));
+        setComments(processedComments);
+        setTotalPages(data.totalPages);
+      } else {
+        console.error("Unexpected data structure:", data);
+        setComments([]);
       }
-      const data = await response.json();
-      setComments(data);
     } catch (error) {
       console.error("Error fetching comments:", error);
+    } finally {
+      setLoading(false);
+      isFetching.current = false;
     }
   };
 
-  // 컴포넌트가 마운트될 때 JSON 파일을 불러옴.
+  // 새 리뷰 등록 시 무조건 1페이지로 이동 및 페치
   useEffect(() => {
-    fetchComments();
-  }, []);
+    if (refresh) {
+      setCurrentPage(1);
+      fetchComments(1, true);
+    }
+  }, [refresh]);
 
-  // 현재 페이지에 보여줄 댓글을 계산
-  const currentItems = comments.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  // 현재 페이지 변경 시 댓글 페치
+  useEffect(() => {
+    fetchComments(currentPage);
+  }, [currentPage]);
 
-  // 전체 페이지 수 계산
-  const totalPages = Math.ceil(comments.length / itemsPerPage);
+  // comments 상태가 변경되면 리렌더링
+  useEffect(() => {
+    if (comments.length === 0 && currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  }, [comments]);
 
-  // 페이지 네비게이션 버튼 범위 계산
   const getPageRange = () => {
     const start =
       Math.floor((currentPage - 1) / maxPageButtons) * maxPageButtons + 1;
@@ -51,7 +78,6 @@ const CommentSection = () => {
     return Array.from({ length: end - start + 1 }, (_, i) => start + i);
   };
 
-  // 페이지 변경 핸들러
   const handlePageClick = (page) => {
     setCurrentPage(page);
     if (commentsRef.current) {
@@ -62,7 +88,6 @@ const CommentSection = () => {
     }
   };
 
-  // 다음 페이지 그룹으로 이동
   const handleNextPageGroup = () => {
     const nextPage = Math.min(currentPage + maxPageButtons, totalPages);
     setCurrentPage(nextPage);
@@ -74,7 +99,6 @@ const CommentSection = () => {
     }
   };
 
-  // 이전 페이지 그룹으로 이동
   const handlePrevPageGroup = () => {
     const prevPage = Math.max(currentPage - maxPageButtons, 1);
     setCurrentPage(prevPage);
@@ -86,18 +110,25 @@ const CommentSection = () => {
     }
   };
 
-  return (
+  const handleDeleteComment = () => {
+    fetchComments(currentPage); // 현재 페이지를 다시 불러옴
+  };
+
+  return loading ? (
+    <Loading />
+  ) : (
     <CommentsContainer ref={commentsRef}>
-      {currentItems.map((comment) => (
-        <CommentItem key={comment.id} comment={comment} />
+      {comments.map((comment) => (
+        <Comment
+          key={comment.id}
+          comment={comment}
+          onDelete={handleDeleteComment}
+        />
       ))}
-      {/* 페이지 네비게이션 */}
       <PaginationContainer>
-        {/* 이전 그룹으로 이동하는 버튼 */}
         {currentPage > maxPageButtons && (
           <PageButton onClick={handlePrevPageGroup}>{"<"}</PageButton>
         )}
-        {/* 페이지 버튼 */}
         {getPageRange().map((page) =>
           page === currentPage ? (
             <CurrentPageButton key={page}>{page}</CurrentPageButton>
@@ -107,7 +138,6 @@ const CommentSection = () => {
             </PageButton>
           )
         )}
-        {/* 다음 그룹으로 이동하는 버튼 */}
         {Math.floor((currentPage - 1) / maxPageButtons) <
           Math.floor((totalPages - 1) / maxPageButtons) && (
           <PageButton onClick={handleNextPageGroup}>{">"}</PageButton>

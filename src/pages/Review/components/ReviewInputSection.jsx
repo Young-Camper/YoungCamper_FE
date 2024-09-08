@@ -1,77 +1,181 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import InputModal from "./InputModal";
 import * as S from "./ReviewInputSectionStyle";
-
-//lib(비속어 필터링)
-import Filter from "badwords-ko";
-
 import { ReviewValidation } from "../hooks/ReviewValidation";
 import useMediaQueries from "../../../hooks/useMediaQueries";
+import useImageUpload from "../hooks/useImageUpload";
+import { uploadFilesToS3 } from "../hooks/uploadFilesToS3";
+import { postReview } from "../../../lib/apis/api/postReview";
+import Loading from "../../../components/ui/Loading";
+import Filter from "badwords-ko";
+import { useTranslation } from "react-i18next";
 
-const ReviewInputSection = () => {
+const ReviewInputSection = ({ onSuccess }) => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+  const filter = new Filter();
 
   const [review, setReview] = useState("");
   const [password, setPassword] = useState("");
-  const [imagePreviews, setImagePreviews] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [inputCount, setInputCount] = useState(0);
 
-  // 모달 로직
-  const { showModal, setShowModal, modalMessage, handleInputButtonClick } =
-    ReviewValidation();
+  const { t } = useTranslation();
 
-  // 사진 로직
-  const inputRef = useRef(null);
+  const { handleInputButtonClick } = ReviewValidation();
 
-  const handleButtonClick = () => {
-    if (inputRef.current) {
-      inputRef.current.click();
+  const {
+    imagePreviews,
+    inputRef,
+    handleButtonClick,
+    handleFileChange,
+    handleRemoveImage,
+    uploadedFiles,
+    setImagePreviews,
+    uploadMessage,
+    setUploadMessage,
+    resetUpload,
+  } = useImageUpload(5);
+
+  // 글자 수 계산 함수 (띄어쓰기는 항상 1글자로 계산)
+  const calculateCharLength = (text) => {
+    let length = 0;
+
+    for (let i = 0; i < text.length; i++) {
+      // trim() 제거하여 공백을 그대로 카운트
+      const char = text[i];
+      if (char === " ") {
+        length += 1; // 띄어쓰기는 무조건 1로 계산
+      } else if (char.match(/[\0-\x7f]/)) {
+        length += 1; // 영어, 숫자 등 ASCII 범위 문자는 1로 계산
+      } else {
+        length += 1; // 한글 등 비 ASCII 문자는 1로 계산
+      }
+    }
+    return length;
+  };
+
+  // 리뷰 입력값 변경 핸들러
+  const handleReviewChange = (e) => {
+    const inputText = e.target.value;
+    const charLength = calculateCharLength(inputText);
+
+    // 글자 수 계산하여 상태 업데이트
+    setInputCount(charLength);
+
+    // 500글자 초과 입력 방지
+    if (charLength <= 500) {
+      setReview(inputText);
+    } else {
+      // setModalMessage(t("review.under"));
+      // setShowModal(true);
     }
   };
 
-  const handleFileChange = (event) => {
-    const files = Array.from(event.target.files);
-    if (files.length + imagePreviews.length > 5) {
-      alert("최대 5개까지 이미지를 추가할 수 있습니다.");
+  const handleSubmit = async () => {
+    setLoading(true);
+
+    handleInputButtonClick(review, password);
+
+    // 필수 입력 확인
+    if (!password && !review) {
+      setModalMessage(t("review.noreview"));
+      setShowModal(true);
+      setLoading(false);
       return;
     }
 
-    const newPreviews = files.map((file) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      return new Promise((resolve) => {
-        reader.onloadend = () => {
-          resolve(reader.result);
-        };
-      });
-    });
+    // 리뷰 텍스트 길이 확인
+    if (inputCount < 10) {
+      setModalMessage(t("review.ten"));
+      setShowModal(true);
+      setLoading(false);
+      return;
+    }
 
-    Promise.all(newPreviews).then((loadedImages) => {
-      setImagePreviews((prevImages) => [...prevImages, ...loadedImages]);
-    });
+    // 비밀번호 길이 확인
+    if (password.length < 4) {
+      setModalMessage(t("review.nopw"));
+      setShowModal(true);
+      setLoading(false);
+      return;
+    }
+
+    let fileUrls = [];
+    if (uploadedFiles.length > 0) {
+      setUploadMessage(t("review.ing"));
+      try {
+        fileUrls = await uploadFilesToS3(uploadedFiles, setUploadMessage);
+        resetUpload();
+      } catch (error) {
+        alert(t("review.fail"));
+        setShowModal(true);
+        setLoading(false);
+        return;
+      }
+    }
+
+    // 리뷰에서 \n을 다른 문자열로 대체
+    const tempReview = review.replace(/\n/g, "<NEWLINE>");
+
+    // 비속어 필터링 적용
+    const cleanedReview = filter.clean(tempReview);
+
+    // 필터링 후 다시 \n 복원
+    const finalReview = cleanedReview.replace(/<NEWLINE>/g, "\n");
+
+    const reviewData = {
+      password: password,
+      content: finalReview,
+      imageUrls: fileUrls,
+    };
+
+    try {
+      const response = await postReview(reviewData);
+
+      if (response) {
+        alert(t("review.submit"));
+        setReview("");
+        setPassword("");
+        resetUpload();
+        setUploadMessage("");
+        onSuccess();
+        setInputCount(0);
+      } else {
+        alert(t("review.nosubmit"));
+        setShowModal(true);
+      }
+    } catch (error) {
+      setModalMessage(t("review.nosubmit"));
+      setShowModal(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // 이미지 삭제 함수
-  const handleRemoveImage = (index) => {
-    setImagePreviews((prevImages) => prevImages.filter((_, i) => i !== index));
-  };
-
-  // 비밀번호 로직
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value.replace(/\D/g, "")); // 숫자가 아닌 입력 제거
+    setPassword(e.target.value.replace(/\D/g, ""));
   };
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <S.Textarea $isMobile={isMobile}>
       <S.Review $isMobile={isMobile} $isTablet={isTablet}>
         <S.ReviewInput
           value={review}
-          onChange={(e) => setReview(e.target.value)}
+          onChange={handleReviewChange}
           $isMobile={isMobile}
           $isTablet={isTablet}
-          maxLength={499}
-          placeholder="모든 후기는 익명이며, 500자 이내로 작성해 주세요. (비방, 욕설 등은 숨김처리 됩니다.)"
+          placeholder={t("review.ph")}
         />
+        <S.inputCountWrapper>
+          <S.inputCount $isMobile={isMobile} $isTablet={isTablet}>
+            {inputCount} / 500
+          </S.inputCount>
+        </S.inputCountWrapper>
         <S.ImagePreviewContainer $isMobile={isMobile}>
           {imagePreviews.map((preview, index) => (
             <S.ImagePreviewBox key={index} $isMobile={isMobile}>
@@ -93,15 +197,15 @@ const ReviewInputSection = () => {
         </S.ImagePreviewContainer>
 
         <S.Divider />
-        <S.PhotoInputContainer>
+        <S.PhotoInputContainer $isMobile={isMobile}>
           <S.PhotoButton
             $isMobile={isMobile}
             $isTablet={isTablet}
             $isDesktop={isDesktop}
             onClick={handleButtonClick}
           >
-            <img src={`${mediaUrl}Review/gallery.png`} alt="gallery" />
-            사진
+            <img src={`${mediaUrl}Review/gellery.png`} alt="gellery" />
+            {t("review.photo")}
           </S.PhotoButton>
           <input
             type="file"
@@ -111,10 +215,8 @@ const ReviewInputSection = () => {
             style={{ display: "none" }}
             multiple
           />
-          <S.InputButton
-            onClick={() => handleInputButtonClick(review, password)}
-          >
-            입력
+          <S.InputButton onClick={handleSubmit}>
+            {t("review.enter")}
           </S.InputButton>
         </S.PhotoInputContainer>
       </S.Review>
@@ -125,7 +227,7 @@ const ReviewInputSection = () => {
             $isTablet={isTablet}
             $isDesktop={isDesktop}
           >
-            비밀번호
+            {t("review.pw")}
           </S.PasswordLabel>
           <S.PasswordInput
             value={password}
@@ -134,7 +236,7 @@ const ReviewInputSection = () => {
             $isTablet={isTablet}
             $isDesktop={isDesktop}
             type="password"
-            placeholder="숫자 4자리를 입력해주세요."
+            placeholder={t("review.num")}
             maxLength={4}
             inputMode="numeric"
             pattern="[0-9]*"
@@ -148,6 +250,7 @@ const ReviewInputSection = () => {
           onClose={() => setShowModal(false)}
         />
       )}
+      {uploadMessage && <pre>{uploadMessage}</pre>}
     </S.Textarea>
   );
 };

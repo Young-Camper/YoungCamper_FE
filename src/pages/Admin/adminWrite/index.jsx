@@ -1,84 +1,75 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import useMediaQueries from "../../../hooks/useMediaQueries";
+import { postAnnouncement } from "../../../lib/apis/api/postAnnouncement";
+
+import * as S from "../style";
 import TitleSet from "../../../components/ui/TitleSet";
 import { DeleteBtn } from "../style";
-import * as S from "../style";
-import { Link, useNavigate } from "react-router-dom";
-import { postAdmin } from "../../../lib/apis/api/postAdmin";
 import { ShowListContainer } from "../../Notification/detail/Style";
-import axios from "axios";
-import useMediaQueries from "../../../hooks/useMediaQueries";
 import { ContentWrapper } from "../../../style/commonStyle";
+import { useRecoilValue } from "recoil";
+import { adminState } from "../../../context/recoil/adminState";
 
 const index = () => {
-  const { isMobile, isTablet, isDesktop } = useMediaQueries();
+  const { isDesktop } = useMediaQueries();
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
   const [content, setContent] = useState("");
-  const [images, setImages] = useState([]);
+  const [imageUrl, setImageUrl] = useState(null);
+  const [fileUrl, setFileUrl] = useState(null);
+  const [isPinned, setIsPinned] = useState(false);
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
-  };
-  const handleCategoryChange = (e) => {
-    setCategory(e.target.value);
-  };
-  const handleContentChange = (e) => {
-    setContent(e.target.value);
-  };
+  const isAdmin = useRecoilValue(adminState);
 
-  // ============== BE TEST CODE - post 요청 ==============
+  // 관리자 여부 확인
+  useEffect(() => {
+    if (!isAdmin) {
+      alert("관리자 권한이 필요합니다.");
+      navigate("/admin42794");
+    }
+  }, [isAdmin, navigate]);
 
-  const handleAdminPost = async () => {
-    const check = confirm("작성하시겠습니까?");
-
-    if (check) {
-      try {
-        axios;
-        // POST로 보낼 데이터 작성 → 테스트할 json 형식에 맞춰 변경해주세요!
-        const data = {
-          title: "title",
-          category: "category",
-          content: "content",
-          images: ["img1", "img2"],
-        };
-
-        // POST 요청
-        const response = await axios.post("/api/admin", data); // API 엔드포인트
-
-        // 응답 로그
-        console.log("admin post response: ", response);
-
-        // 성공했을 때
-        alert("작성되었습니다");
-        navigate("/admin42794/list");
-      } catch (error) {
-        // 실패했을 때
-        console.error("Failed to post admin data: ", error);
-        alert("작성에 실패했습니다. 다시 시도해주세요.");
-      }
-    } else {
-      alert("취소되었습니다.");
+  // 핸들러
+  const handleTitleChange = (e) => setTitle(e.target.value);
+  const handleContentChange = (e) => setContent(e.target.value);
+  const handlePinnedChange = (e) => setIsPinned(e.target.checked);
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageUrl(file);
     }
   };
 
-  // post 요청
-  // const handleAdminPost = async () => {
-  //   const check = confirm("작성하시겠습니까?");
+  // 이미지 미리보기 URL
+  const imagePreviewUrl = imageUrl ? URL.createObjectURL(imageUrl) : null;
 
-  //   // test code
-  //   if (check) {
-  //     // const response = await postAdmin(data);
-  //     // console.log("admin post: ", response);
-  //     alert(title + category + content);
+  // ====== api post ======
+  const handleAdminPost = async () => {
+    if (isAdmin) {
+      const check = confirm("작성하시겠습니까?");
+      if (check) {
+        try {
+          const response = await postAnnouncement(
+            title,
+            content,
+            imageUrl, // presignedurl 변경 필요
+            fileUrl,
+            isPinned
+          );
 
-  //     // 실패했을 때
-
-  //     // 성공했을 때
-  //     alert("작성되었습니다");
-  //     navigate("/admin42794/list");
-  //   }
-  // };
+          console.log("admin post response: ", response);
+          alert("작성되었습니다");
+          navigate("/admin42794/list");
+        } catch (error) {
+          console.error("Failed to post admin data: ", error);
+          alert("작성에 실패했습니다. 다시 시도해주세요.");
+        }
+      } else {
+        alert("취소되었습니다.");
+      }
+    }
+  };
 
   return (
     <ContentWrapper $isDesktop={isDesktop}>
@@ -97,13 +88,28 @@ const index = () => {
               />
             </S.InputGrid>
             <S.InputGrid>
-              <S.TextCotainer>카테고리</S.TextCotainer>
-              <S.InputArea
-                placeholder="카테고리를 입력하세요"
-                onChange={handleCategoryChange}
+              <S.TextCotainer>이미지</S.TextCotainer>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
               />
+              <S.TextCotainer>필독 여부</S.TextCotainer>
+              <S.RadioBtn
+                type="checkbox"
+                checked={isPinned}
+                onChange={handlePinnedChange}
+                $isChecked={isPinned}
+              />
+              <p>{isPinned ? "필독 공지" : "일반 공지"}</p>
             </S.InputGrid>
           </S.InputContainer>
+          {imageUrl && (
+            <>
+              이미지 미리보기 :
+              <S.PreviewImg src={imagePreviewUrl} />
+            </>
+          )}
           <S.InputContent onChange={handleContentChange} />
         </S.InputWrapper>
         <Link to="/admin42794/list">

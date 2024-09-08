@@ -3,13 +3,15 @@ import * as S from "./style";
 import TitleSet from "../../components/ui/TitleSet";
 import { timetable, lineup } from "../../data/timetable";
 import useMediaQueries from "../../hooks/useMediaQueries";
+import { useTranslation } from "react-i18next";
 
 const TimeTable = ({ onArtistClick }) => {
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
   // -------------------------- hooks --------------------------
-  const { isDesktop } = useMediaQueries();
+  const { isDesktop, isMobile } = useMediaQueries();
   const [artists, setArtists] = useState([]);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     setArtists(lineup);
@@ -24,6 +26,8 @@ const TimeTable = ({ onArtistClick }) => {
   // -------------------------- components --------------------------
   const PerformanceTable = (event) => {
     const currentArtists = getArtistsByTime(event.time);
+    const index = event.index[i18n.language === "ko" ? 0 : 1];
+
     return (
       <S.Section
         key={event.id}
@@ -39,7 +43,7 @@ const TimeTable = ({ onArtistClick }) => {
         </S.EventTime>
         <S.ArtistWrapper>
           <S.EventName $isDesktop={isDesktop}>
-            <S.SmallText $isDesktop={isDesktop}>{event.index}</S.SmallText>
+            <S.SmallText $isDesktop={isDesktop}>{index}</S.SmallText>
             <S.EventText $isDesktop={isDesktop} $isRight={event.id % 2 == 0}>
               {currentArtists[0]?.name}
               <S.Arrow
@@ -57,6 +61,8 @@ const TimeTable = ({ onArtistClick }) => {
   };
 
   const GuideTable = (event) => {
+    const name = event.name[i18n.language === "ko" ? 0 : 1];
+
     return (
       <S.Section
         key={event.id}
@@ -64,7 +70,7 @@ const TimeTable = ({ onArtistClick }) => {
         $isDesktop={isDesktop}
       >
         <S.GuideTime $isDesktop={isDesktop}>{event.time}</S.GuideTime>
-        <S.GuideName $isDesktop={isDesktop}>{event.name}</S.GuideName>
+        <S.GuideName $isDesktop={isDesktop}>{name}</S.GuideName>
       </S.Section>
     );
   };
@@ -73,16 +79,6 @@ const TimeTable = ({ onArtistClick }) => {
 
   return (
     <>
-      <TitleSet
-        mainText="타임테이블"
-        subText={
-          <>
-            신나는 음악, 감동적인 퍼포먼스, 그리고 깜짝 이벤트까지!
-            <br />
-            공연을 즐기며 여러분만의 특별한 추억을 만들어보세요!
-          </>
-        }
-      />
       <S.Container $isDesktop={isDesktop}>
         {timetable &&
           timetable.map((event) =>

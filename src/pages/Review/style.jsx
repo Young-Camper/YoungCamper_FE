@@ -4,8 +4,8 @@ import useMediaQueries from "../../hooks/useMediaQueries";
 export const Container = styled.div`
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: ${(props) => (props.$isMobile ? "0px" : "100px")};
+  margin: auto;
+  padding: ${(props) => (props.$isMobile ? "0px" : "50px")};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +21,7 @@ export const TitleWrapper = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   padding: ${(props) =>
-    props.$isMobile ? "40px 24px" : props.$isTablet ? "30px" : "48px"};
+    props.$isMobile ? "40px 24px 0px 24px" : props.$isTablet ? "30px" : "0px"};
   box-sizing: border-box;
   row-gap: 24px;
   font-family: "MonSemiBold";

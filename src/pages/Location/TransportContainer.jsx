@@ -1,55 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import TransportBox from "./TransportBox";
 import * as S from "./style";
-
-
-import useMediaQueries from '../../hooks/useMediaQueries.jsx';
+import useMediaQueries from "../../hooks/useMediaQueries.jsx";
+import { useTranslation } from "react-i18next";
 
 const TransportContainer = () => {
+  const [activeIndex, setActiveIndex] = useState(null); // 클릭된 아코디언의 인덱스를 저장
 
-
-  const [activeIndex, setActiveIndex] = useState(null);
-  
-  const{ isDesktop,isTablet,isMobile } = useMediaQueries();
+  const { isMobile } = useMediaQueries();
+  const { t } = useTranslation();
 
   const toggleAccordion = (index) => {
-    setActiveIndex(activeIndex === index ? null : index); 
+    setActiveIndex(activeIndex === index ? null : index); // 같은 아코디언 클릭 시 닫기, 다른 아코디언 클릭 시 열기
   };
 
   return (
-    <div style={{ 
-      padding: isMobile ? '0px' : '24px', // isMobile 상태에 따라 padding 값 변경
-      // ... 다른 스타일 속성들
-    }}>
+    <>
       <TransportBox
-        title="페스티벌 위치지도"
+        title={t("location.map")}
         onClick={() => toggleAccordion(0)}
         isOpen={activeIndex === 0}
-        index={0} // index prop 추가
-        activeIndex={activeIndex}
-      >
-        영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다.
-      </TransportBox>
+        index={0}
+      ></TransportBox>
       <TransportBox
-        title="대중교통 오시는 길"
+        title={t("location.public")}
         onClick={() => toggleAccordion(1)}
         isOpen={activeIndex === 1}
-        index={1} // index prop 추가
-        activeIndex={activeIndex}
+        index={1}
       >
-         영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다.
+        영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한
+        축제입니다.
       </TransportBox>
       <TransportBox
-        title="주차 안내"
+        title={t("location.park")}
         onClick={() => toggleAccordion(2)}
         isOpen={activeIndex === 2}
-        index={2} // index prop 추가
-        activeIndex={activeIndex}
+        index={2}
       >
-         영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다. 영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한 축제입니다.
+        {t("location.parkContent")}
       </TransportBox>
-    </div>
+    </>
   );
 };
 
-export default TransportContainer
+export default TransportContainer;

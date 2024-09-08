@@ -149,35 +149,39 @@ export const PageNumber = styled.span`
 `;
 
 //Detail
-export const ClubDetail = styled.div`
-  padding: ${(props) => (props.$isDesktop ? "0px 170px" : "0px")};
+
+export const ContentWrapperFix = styled.div`
+  padding: ${(props) =>
+    props.$isMobile ? "0px 24px" : props.$isTablet ? "0px 48px" : "0px 170px"};
+    
+    //상단 고정
+    position: fixed;
+    margin: 0 auto;
+    width: 100%;
+    top: ${(props) => (props.$isDesktop ? "73px" : "52px")};
+    background-color: #fff;
+    z-index: 99;
 `;
 
 export const ContentWrapper = styled.div`
   padding: ${(props) =>
-    props.$isMobile ? "0px 24px" : props.$isTablet ? "0px 72px" : "0px"};
+    props.$isMobile ? "0px 24px" : props.$isTablet ? "0px 48px" : "0px 170px"};
+
+  margin-top: ${(props) => (props.$isDesktop ? "322px" : "240px")};
 `;
 
-//ClubImage
+
 export const BackContainer = styled.div`
   height: ${(props) => (props.$isDesktop ? "80px" : "45px")};
-  padding: 29px 36px;
-  padding: ${(props) => (props.$isDesktop ? "29px 36px" : "14.5px 24px")};
+  padding: ${(props) => (props.$isDesktop ? "0px 12px" : "0px 24px")};
   display: flex;
-  background: var(
-    --gradient_2,
-    linear-gradient(
-      104deg,
-      rgba(185, 255, 156, 0.2) 0%,
-      rgba(0, 104, 255, 0.2) 100%
-    )
-  );
 `;
 
 export const BackButton = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 100%;
 `;
 
 export const ArrowIcon = styled.img`
@@ -221,7 +225,7 @@ export const ClubImage = styled.div`
 export const Wrapper = styled.div`
   padding: ${(props) =>
     props.$isMobile
-      ? "48px 24px 24px 24px"
+      ? "48px 0px 24px 0px"
       : props.$isTablet
       ? "48px 24px 24px 24px"
       : "36px 0px 48px 0px"};
@@ -245,6 +249,8 @@ export const TextAndButton = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 24px;
+  height: ${(props) => (props.$isDesktop ? "80px" : "45px")};
 `;
 
 export const SchoolText = styled.div`
@@ -364,9 +370,7 @@ export const ModalContainer = styled.div`
 `;
 
 export const Modal = styled.div`
-  width: 600px;
-  max-width: 800px;
-  min-width: 340px;
+  width: ${(props) => (props.$isMobile ? "275px" : "600px")};
   background: #fff;
   border-radius: 20px;
   position: relative;
@@ -378,8 +382,8 @@ export const Modal = styled.div`
 
 export const ModalCloseBtn = styled.div`
   position: absolute;
-  top: 28px;
-  right: 28px;
+  top: ${(props) => (props.$isMobile ? "12px" : "28px")};
+  right: ${(props) => (props.$isMobile ? "12px" : "28px")};
   cursor: pointer;
   img {
     width: 24px;
@@ -388,9 +392,11 @@ export const ModalCloseBtn = styled.div`
 `;
 
 export const ModalText = styled.p`
-  margin-top: 28px;
-  margin-bottom: 24px;
-  font-size: 24px;
+  margin-top: ${(props) => (props.$isMobile ? "13px" : "28px")};
+  margin-bottom: ${(props) => (props.$isMobile ? "13px" : "24px")};
+  font-size: ${(props) => (props.$isMobile ? "16px" : "24px")};
+  text-align: center;
+  line-height: 22px;
   background: var(
     --gradient,
     linear-gradient(102deg, #0068ff 23.99%, #b9ff9c 98.08%)
@@ -398,14 +404,14 @@ export const ModalText = styled.p`
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: "MonExtraBold";
+  font-family: ${(props) => (props.$isMobile ? "MonSemiBold" : "MonExtraBold")};
 `;
 
 export const Separator = styled.div`
   width: 100%;
   height: 1px;
   background: linear-gradient(102deg, #0068ff 23.99%, #b9ff9c 98.08%);
-  margin-bottom: 60px;
+  margin-bottom: ${(props) => (props.$isMobile ? "24px" : "60px")};
 `;
 
 export const ModalFooter = styled.div`
@@ -416,14 +422,16 @@ export const ModalFooter = styled.div`
 export const QaApply = styled.p`
   font-family: "MonRegular";
   margin-bottom: 36px;
-  font-size: 20px;
-  font-style: normal;
+  font-size: ${(props) => (props.$isMobile ? "12px" : "20px")};
+  font-family: ${(props) => (props.$isMobile ? "MonRegular" : "MonSemiBold")};
   color: #637d92;
+  line-height: ${(props) => (props.$isMobile ? "18px" : "30px")};
+  white-space: pre-wrap;
 `;
 
 export const ApplyLinkSize = styled.p`
   font-family: "MonRegular";
   color: #0068ff;
-  margin-bottom: 60px;
-  font-size: 18px;
+  margin-bottom: ${(props) => (props.$isMobile ? "24px" : "60px")};
+  font-size: ${(props) => (props.$isMobile ? "12px" : "18px")};
 `;

@@ -1,7 +1,8 @@
-import React from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import * as S from "./style";
 import useMediaQueries from "../../hooks/useMediaQueries";
+import { useLocation } from 'react-router-dom';
 
 const MobileNav = ({
   logoSrc,
@@ -13,6 +14,8 @@ const MobileNav = ({
   const { t } = useTranslation();
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+
+  const location = useLocation();
 
   return (
     <S.Wrapper $isDesktop={isDesktop}>
@@ -84,7 +87,7 @@ const MobileNav = ({
                         onClick={() => setModalOpen(false)}
                       >
                         {/* 양 옆에 이미지 추가 */}
-                        {path === "promotion" ? (
+                        {location.pathname === `/${path}` ? (
                           <>
                             <S.NavIcon
                               src={`${mediaUrl}Nav/clubIcon.png`}

@@ -1,31 +1,69 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import * as S from "./Style";
 import Subtitle from "./Subtitle";
-import data from "../../../data/notice.json";
 import Urgent from "./Urgent";
 import { Link } from "react-router-dom";
 import useMediaQueries from "../../../hooks/useMediaQueries";
+import Loading from "../../../components/ui/Loading";
+import { searchNotice } from "../../../lib/apis/api/searchNotice";
+import { getAnnouncements } from "../../../lib/apis/api/getAnnouncements";
+import { useTranslation } from "react-i18next";
 
 const Content = ({ keyword }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const itemsPerPage = 10;
   const maxPage = 5;
   const { isTablet, isDesktop, isMobile } = useMediaQueries();
   const contentWrapperRef = useRef(null);
 
-  // 공지사항 필터링 (긴급 및 일반 공지)
+  const { t, i18n } = useTranslation();
+
+  // 현재 언어 코드
+  const currentLanguage = i18n.language;
+
+  // 공지사항 리스트 가져오기
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getAnnouncements(currentLanguage);
+        setData(response.data.data);
+      } catch (error) {
+        setLoading(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [currentLanguage]);
+
+  // 공지 검색
+  const fetchSearchData = async () => {
+    setLoading(true);
+    try {
+      const response = await searchNotice(keyword, currentLanguage);
+      // return response.data.data;
+      setData(response.data.data);
+    } catch (error) {
+      // console.error("Error searching notices:", error);
+      // return [];
+    }
+  };
+
+  // 필터링된 공지사항 데이터 (긴급 및 일반 공지)
   const filteredUrgentItems = data.filter(
     (item) =>
-      item.urgent === "yes" &&
-      (item.title.toLowerCase().includes(keyword.toLowerCase()) ||
-        item.content.toLowerCase().includes(keyword.toLowerCase()))
+      item.urgent === true &&
+      ((item.title?.toLowerCase() || "").includes(keyword.toLowerCase()) ||
+        (item.content?.toLowerCase() || "").includes(keyword.toLowerCase()))
   );
 
   const filteredRegularItems = data.filter(
     (item) =>
-      item.urgent !== "yes" &&
-      (item.title.toLowerCase().includes(keyword.toLowerCase()) ||
-        item.content.toLowerCase().includes(keyword.toLowerCase()))
+      item.urgent !== true &&
+      ((item.title?.toLowerCase() || "").includes(keyword.toLowerCase()) ||
+        (item.content?.toLowerCase() || "").includes(keyword.toLowerCase()))
   );
 
   // 필터링된 공지사항을 합침 (긴급 공지사항이 상단에 고정되도록)
@@ -79,17 +117,26 @@ const Content = ({ keyword }) => {
     scrollToContentWrapper();
   };
 
+  // 받아오는 날짜 데이터 포맷팅
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}.${month}.${day}`;
+  };
+
   return (
     <S.ContentWrapper
       $isDesktop={isDesktop}
       $isMobile={isMobile}
       ref={contentWrapperRef}
     >
+      {/* 제목 표시 부분 */}
       <Subtitle
-        num="번호"
-        title="제목"
-        date={isDesktop ? "날짜" : null}
-        $paddingBottom="0"
+        num={t(`notice.num`)}
+        title={t(`notice.title`)}
+        date={isDesktop ? t(`notice.date`) : null}
         color="black"
         fontFamily="MonSemiBold"
         fontWeight="600"
@@ -101,21 +148,26 @@ const Content = ({ keyword }) => {
         gap="0px"
       />
       <S.ContentContainer>
-        {currentItems.length > 0 ? (
+        {loading ? (
+          <Loading />
+        ) : currentItems.length > 0 ? (
           currentItems.map((item, index) => (
-            <Link to={`/notification/${item.num}`} key={`${item.num}-${index}`}>
+            <Link to={`/notification/${item.id}`} key={`${item.id}-${index}`}>
               <Subtitle
-                num={item.urgent === "yes" ? <Urgent /> : item.num}
+                num={item.isPinned ? <Urgent /> : item.id}
                 title={item.title}
-                date={item.date}
+                date={formatDate(item.createdAt)}
                 fontSize={isDesktop ? "22px" : "18px"}
                 isDesktop={isDesktop}
                 isTablet={isTablet}
+                isMobile={isMobile}
+                paddingBottom="25px"
+                paddingTop="25px"
               />
             </Link>
           ))
         ) : (
-          <S.NoResults>등록된 게시글이 없습니다.</S.NoResults>
+          <S.NoResults>{t(`notice.noresult`)}</S.NoResults>
         )}
       </S.ContentContainer>
       {filteredItems.length > 0 && (

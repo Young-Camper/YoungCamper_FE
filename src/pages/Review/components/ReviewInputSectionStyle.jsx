@@ -15,6 +15,7 @@ export const Textarea = styled.div`
 `;
 
 export const Review = styled.div`
+  white-space: pre-wrap;
   align-self: stretch;
   border-radius: 8px;
   background-color: #fafafa;
@@ -29,17 +30,32 @@ export const Review = styled.div`
     props.$isMobile ? "16px" : props.$isTablet ? "18px" : "20px"};
   line-height: ${(props) =>
     props.$isMobile ? "24px" : props.$isTablet ? "28px" : "30px"};
+  ::placeholder {
+    color: #ced7de;
+  }
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #ced7de;
+  }
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #ced7de;
+  }
 `;
 
 export const ReviewInput = styled.textarea`
+  white-space: pre-line;
   width: 100%;
-  padding: 12px 16px; /* textarea 박스 내부 여백 설정 */
+  min-height: 120px;
+  padding: 12px 16px;
   color: #000;
   font-size: ${(props) =>
     props.$isMobile ? "12px" : props.$isTablet ? "12px" : "20px"};
-  font-family: "PretendardRegular", sans-serif;
+  font-family: "MonRegular";
   font-weight: 400;
-  line-height: 30px;
+  line-height: ${(props) =>
+    props.$isMobile ? "20px" : props.$isTablet ? "20px" : "30px"};
   word-wrap: break-word;
   border: none;
   border-radius: 8px;
@@ -47,14 +63,35 @@ export const ReviewInput = styled.textarea`
   box-sizing: border-box;
   resize: none;
 
-  ::placeholder {
-    color: #ced7de;
-  }
-
-  // 포커스시 아웃라인 제거 확인 필요.
   :focus {
     outline: none;
   }
+
+  .hidden-br .hidden-br {
+    display: none;
+  }
+`;
+
+export const inputCountWrapper = styled.div`
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  padding: 8px;
+`;
+
+export const inputCount = styled.div`
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #ced7de;
+  font-size: ${(props) =>
+    props.$isMobile ? "12px" : props.$isTablet ? "12px" : "20px"};
+  font-family: "MonRegular";
+  font-weight: 400;
 `;
 
 export const Divider = styled.div`
@@ -115,8 +152,7 @@ export const PhotoBox = styled.div`
 export const PhotoInputContainer = styled.div`
   width: 100%;
   height: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: ${(props) => (props.$isMobile ? "0px 5px" : "0px 20px")};
   justify-content: space-between;
   align-items: center;
   display: inline-flex;

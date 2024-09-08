@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+
 import * as S from "../style";
-import { ContentWrapper } from "../../../style/commonStyle";
 import TitleSet from "../../../components/ui/TitleSet";
+import { ContentWrapper } from "../../../style/commonStyle";
 import { adminLogin } from "../../../lib/apis/api/adminLogin";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useRecoilState } from "recoil";
+import { adminState } from "../../../context/recoil/adminState";
 
 const index = () => {
   const navigate = useNavigate();
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
+  const [isAdmin, setIsAdmin] = useRecoilState(adminState);
 
   const handleIdChange = (e) => {
     setId(e.target.value);
@@ -21,25 +24,36 @@ const index = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/api/admin/login", {
-        username: id, // username을 입력된 값으로 설정
-        password: pw, // password를 입력된 값으로 설정
-      });
+      const response = await adminLogin(id, pw);
 
-      // 로그인 성공 시 응답 처리
       console.log("Login response:", response);
-      if (response.data.success) {
+      if (response.status === 200) {
         alert("로그인 성공!");
+        setIsAdmin(true);
         navigate("/admin42794/list");
       } else {
         setId("");
         setPw("");
-        alert("로그인 실패: " + response.data.message);
+        setIsAdmin(false);
+        alert("ID, Password를 다시 확인해주세요.");
       }
     } catch (error) {
-      // 로그인 실패 시 오류 처리
       console.error("Login error:", error);
-      alert("로그인에 실패했습니다. 다시 시도해주세요.");
+      setIsAdmin(false);
+      alert("ID, Password를 다시 확인해주세요.");
+
+      if (error.response) {
+        alert("ID, Password를 다시 확인해주세요.");
+        console.log(
+          "로그인 실패: " + (error.response.data.message || "서버 에러 발생")
+        );
+      } else {
+        // 서버 응답이 없는 경우 (네트워크 문제 등)
+        alert("네트워크 오류가 발생했습니다. 다시 시도해주세요.");
+      }
+
+      setId("");
+      setPw("");
     }
   };
 
