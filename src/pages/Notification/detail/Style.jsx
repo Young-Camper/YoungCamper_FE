@@ -92,6 +92,7 @@ export const ContentText = styled.div`
   /* font-weight: 400; */
   line-height: ${(props) => (props.$isDesktop ? "30px" : "18px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.02px" : "-0.06px")};
+  white-space: pre-line;
 `;
 
 //showlist.jsx
