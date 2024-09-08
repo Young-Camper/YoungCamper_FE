@@ -3,6 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import { getAnnouncements } from "../../../lib/apis/api/getAnnouncements";
 import { deleteAnnouncements } from "../../../lib/apis/api/deleteAnnouncements";
+import { getAdminCheck } from "../../../lib/apis/api/getAdminCheck";
+import { adminState } from "../../../context/recoil/adminState";
+import { useRecoilState } from "recoil";
 
 import * as S from "../../Notification/main/Style";
 import TitleSet from "../../../components/ui/TitleSet";
@@ -11,25 +14,34 @@ import Subtitle from "../../Notification/main/Subtitle";
 import { ContentWrapper } from "../../../style/commonStyle";
 import { DeleteBtn } from "../style";
 import { DeleteCheckBox } from "../style";
-import { useRecoilValue } from "recoil";
-import { adminState } from "../../../context/recoil/adminState";
 
 const index = () => {
-  const [loading, setLoading] = useState(false);
-  const { isTablet, isDesktop } = useMediaQueries();
   const navigate = useNavigate();
+  const [isAdmin, setIsAdmin] = useRecoilState(adminState);
+  const { isTablet, isDesktop } = useMediaQueries();
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [ids, setIds] = useState([]);
 
-  const isAdmin = useRecoilValue(adminState);
-
   // 관리자 여부 확인
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getAdminCheck();
+        // setIsAdmin(response.data); 추후 반영해야 함
+        console.log("admin check:", response.data);
+      } catch (error) {
+        console.error("Error admin check:", error);
+      }
+    };
+
+    fetchData();
+
     if (!isAdmin) {
       alert("관리자 권한이 필요합니다.");
       navigate("/admin42794");
     }
-  }, [isAdmin, navigate]);
+  }, []);
 
   const handleCheckboxChange = (id) => {
     if (ids.includes(id)) {

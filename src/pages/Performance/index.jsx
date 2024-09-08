@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MainTitle from "../../components/ui/MainTitle";
 import { ContentWrapper } from "../../style/commonStyle";
 import TimeTable from "./TimeTable";
 import Attention from "../../components/ui/Attention";
 import useMediaQueries from "../../hooks/useMediaQueries";
-import ArtistModal from "./ArtistModal"; // 모달을 독립적으로 관리
+import ArtistModal from "./ArtistModal";
 import { useTranslation } from "react-i18next";
 
 const index = () => {
@@ -29,6 +29,19 @@ const index = () => {
     setModalOpen(true);
   };
 
+  // 모달 열렸을 때 스크롤 막기
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [modalOpen]);
+
   return (
     <>
       <MainTitle
@@ -44,7 +57,7 @@ const index = () => {
         <TimeTable
           modalOpen={modalOpen}
           setModalOpen={setModalOpen}
-          onArtistClick={handleOpenModal} // 모달 열기 핸들러 전달
+          onArtistClick={handleOpenModal}
         />
         <Attention
           attention1={caution[0]}
