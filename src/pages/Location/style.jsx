@@ -370,7 +370,7 @@ export const WayBusNumbers = styled.div`
 export const WayImgContainer = styled.div`
   width: 100%;
   background-color: #fafafa;
-  padding: 12px 0px;
+  padding: ${(props) => props.$isMobile ? "16px" : ( props.$isTablet ? "20px" : "12px")};
   justify-content: center;
   align-items: center;
   display: inline-flex;
@@ -386,9 +386,4 @@ export const WayImg = styled.img`
   max-height: 498.5px;
   object-fit: contain;
   src: ${(props) => props.src};
-
-  width: ${(props) =>
-    props.isMobile
-      ? "100%"
-      : "100%"}; // 이미지 너비를 부모 컨테이너에 맞춰 꽉 채웁니다.
 `;
