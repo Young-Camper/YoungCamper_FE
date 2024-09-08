@@ -29,9 +29,9 @@ const index = () => {
       try {
         const response = await getAdminCheck();
         // setIsAdmin(response.data); 추후 반영해야 함
-        console.log("admin check:", response.data);
+        // console.log("admin check:", response.data);
       } catch (error) {
-        console.error("Error admin check:", error);
+        // console.error("Error admin check:", error);
       }
     };
 
@@ -61,10 +61,10 @@ const index = () => {
         const response = await getAnnouncements();
         if (isMounted && response.data) {
           setData(response.data.data);
-          console.log("Fetched data:", response.data.data);
+          // console.log("Fetched data:", response.data.data);
         }
       } catch (error) {
-        console.error("Error fetching announcements:", error);
+        // console.error("Error fetching announcements:", error);
       } finally {
         if (isMounted) {
           setLoading(false);
@@ -87,13 +87,13 @@ const index = () => {
       const check = confirm("삭제하시겠습니까?");
       if (check) {
         try {
-          console.log("요청전 id 확인 : ", ids);
+          // console.log("요청전 id 확인 : ", ids);
           const response = await deleteAnnouncements(ids);
-          console.log("admin delete: ", response);
+          // console.log("admin delete: ", response);
           alert("삭제되었습니다");
           navigate("/admin42794/list");
         } catch (error) {
-          console.error("Error deleting announcements:", error);
+          // console.error("Error deleting announcements:", error);
         }
       }
     } else {

@@ -96,15 +96,15 @@ const Index = () => {
           ],
         };
 
-        console.log("Request Body:", requestBody);
+        // console.log("Request Body:", requestBody);
 
         const response = await postAnnouncement(requestBody);
-        console.log("admin post response: ", response);
+        // console.log("admin post response: ", response);
         alert("작성되었습니다");
         setUploadMessage("");
         navigate("/admin42794/list");
       } catch (error) {
-        console.error("Failed to post admin data: ", error);
+        // console.error("Failed to post admin data: ", error);
         alert("작성에 실패했습니다. 다시 시도해주세요.");
       }
     } else {
