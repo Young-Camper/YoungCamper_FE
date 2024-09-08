@@ -2,9 +2,11 @@ import React from "react";
 import * as S from "../style";
 import clubData from "../../../data/clubData.json";
 import { useTranslation } from "react-i18next";
+import useMediaQueries from "../../../hooks/useMediaQueries";
 
 const ClubModal = ({ setModalOpen, id }) => {
   const mediaUrl = import.meta.env.VITE_MEDIA_URL; // 환경 변수에서 AWS S3 URL 가져오기
+  const { isMobile, isTablet, isDesktop } = useMediaQueries();
 
   const handleCloseModal = (event) => {
     if (event.target === event.currentTarget) {
@@ -27,15 +29,15 @@ const ClubModal = ({ setModalOpen, id }) => {
 
   return (
     <S.ModalContainer onClick={handleCloseModal}>
-      <S.Modal>
-        <S.ModalCloseBtn onClick={() => setModalOpen(false)}>
+      <S.Modal $isMobile={isMobile}>
+        <S.ModalCloseBtn $isMobile={isMobile} onClick={() => setModalOpen(false)}>
           <img src={`${mediaUrl}Promotion/close.png`} alt="Close" />
         </S.ModalCloseBtn>
-        <S.ModalText>{t("club.modalTitle")}</S.ModalText>
-        <S.Separator />
+        <S.ModalText $isMobile={isMobile}>{t("club.modalTitle")}</S.ModalText>
+        <S.Separator $isMobile={isMobile}/>
         <S.ModalFooter>
-          <S.QaApply>{t("club.modalsub")}</S.QaApply>
-          <S.ApplyLinkSize>
+          <S.QaApply $isMobile={isMobile} >{t("club.modalsub")}</S.QaApply>
+          <S.ApplyLinkSize $isMobile={isMobile}>
             <a href={club.applylink} target="_blank" rel="noopener noreferrer">
               {t("club.goLink")}
             </a>

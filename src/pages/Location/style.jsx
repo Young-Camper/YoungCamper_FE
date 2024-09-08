@@ -12,7 +12,7 @@ export const AccordionHeader = styled.div`
   border-top: ${(props) =>
     props.index === 0 && !props.$isOpen && !props.$isHovered
       ? "2px solid #0068FF"
-      : "none"};
+      : "2px transparent solid"};
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -84,7 +84,7 @@ export const AccordionContent = styled.div`
   align-self: stretch;
   /* max-height: ${(props) =>
     props.index === 0 ? "771px" : "568px"}; // 열려있을 때만 높이 설정 */
-  padding: ${(props) => (props.$isDesktop ? "48px 0px" : "24px 0px")};
+  padding: ${(props) => (props.$isDesktop ? "48px" : "24px")};
   background: white;
   flex-direction: column;
   justify-content: center;
@@ -127,11 +127,14 @@ export const Description = styled.div`
   display: flex;
   text-align: center;
   justify-content: center;
+  white-space: pre-line;
+  word-break: keep-all;
 `;
 
 export const DescriptionContainer = styled.div`
   align-self: stretch;
-  padding: ${(props) => (props.$isDesktop ? "48px" : "24px")};
+  /* padding: ${(props) =>
+    props.$isDesktop ? (props.$index === 1 ? "0px" : "48px") : "24px"}; */
   justify-content: center;
   align-items: flex-start;
   display: inline-flex;
@@ -146,7 +149,7 @@ export const LocContainer = styled.div`
   padding: ${(props) => (props.$isMobile ? "12px " : "48px ")};
   display: inline-flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: ${(props) => (props.$isMobile ? "12px" : "50px")};
 `;
@@ -155,8 +158,11 @@ export const LocContentArea = styled.div`
   align-self: stretch;
   /* height: ${(props) => (props.$isMobile ? "448px" : "1234px")}; */
   padding: ${(props) => (props.$isMobile ? "12px" : "48px")};
-  background: white;
-  border: 2px #0068ff solid;
+
+  border: 1px #fafafa solid;
+  border-radius: ${(props) => (props.$isMobile ? "20px" : "50px")};
+  background: #fafafa;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -171,8 +177,10 @@ export const LocTitle = styled.div`
   justify-content: left;
   align-items: center;
   color: #0a0b0a;
-  font-size: ${(props) => (props.$isMobile ? "16px" : "28px")};
+  font-size: ${(props) => (props.$isMobile ? "18px" : "28px")};
   font-family: "MonSemiBold";
+
+  line-height: 24px;
   word-wrap: break-word;
 `;
 
@@ -204,10 +212,13 @@ export const LocImage = styled.img`
   align-self: stretch;
   /* height: ${(props) => (props.ismobile ? "321px" : "782px")}; */
   width: ${(props) =>
-    props.isMobile
+    props.$isMobile
       ? "100%"
       : "100%"}; // 이미지 너비를 부모 컨테이너에 맞춰 꽉 채웁니다.
   src: ${(props) => props.src};
+
+  border: 1px transparent soild;
+  border-radius: 50px;
 `;
 //index.
 export const Container = styled.div`
@@ -253,7 +264,7 @@ export const WayContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: ${(props) => (props.$isMobile ? "20px" : "48px")};
+  /* gap: ${(props) => (props.$isMobile ? "20px" : "48px")}; */
 `;
 
 export const WaySection = styled.div`
@@ -265,6 +276,8 @@ export const WaySection = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 12px;
+  padding: ${(props) =>
+    props.$isDesktop ? (props.$index === 1 ? "0px" : "48px") : "24px"};
 `;
 
 export const WayTitleContainer = styled.div`
@@ -352,4 +365,30 @@ export const WayBusNumbers = styled.div`
   font-weight: 400;
   line-height: 30px;
   word-wrap: break-word;
+`;
+
+export const WayImgContainer = styled.div`
+  width: 100%;
+  background-color: #fafafa;
+  padding: 12px 0px;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  margin-top: 0;
+
+  border: 1px transparent soild;
+  border-radius: ${(props) => (props.$isMobile ? "20px" : "50px")};
+`;
+
+export const WayImg = styled.img`
+  align-self: center;
+  width: 100%; // 이미지 너비를 부모 컨테이너에 맞춰 꽉 채웁니다.
+  max-height: 498.5px;
+  object-fit: contain;
+  src: ${(props) => props.src};
+
+  width: ${(props) =>
+    props.isMobile
+      ? "100%"
+      : "100%"}; // 이미지 너비를 부모 컨테이너에 맞춰 꽉 채웁니다.
 `;

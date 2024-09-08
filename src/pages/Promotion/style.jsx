@@ -366,9 +366,7 @@ export const ModalContainer = styled.div`
 `;
 
 export const Modal = styled.div`
-  width: 600px;
-  max-width: 800px;
-  min-width: 340px;
+  width: ${(props) => (props.$isMobile ? "275px" : "600px")};
   background: #fff;
   border-radius: 20px;
   position: relative;
@@ -380,8 +378,8 @@ export const Modal = styled.div`
 
 export const ModalCloseBtn = styled.div`
   position: absolute;
-  top: 28px;
-  right: 28px;
+  top: ${(props) => (props.$isMobile ? "12px" : "28px")};
+  right: ${(props) => (props.$isMobile ? "12px" : "28px")};
   cursor: pointer;
   img {
     width: 24px;
@@ -390,9 +388,11 @@ export const ModalCloseBtn = styled.div`
 `;
 
 export const ModalText = styled.p`
-  margin-top: 28px;
-  margin-bottom: 24px;
-  font-size: 24px;
+  margin-top: ${(props) => (props.$isMobile ? "13px" : "28px")};
+  margin-bottom: ${(props) => (props.$isMobile ? "13px" : "24px")};
+  font-size: ${(props) => (props.$isMobile ? "16px" : "24px")};
+  text-align: center;
+  line-height: 22px;
   background: var(
     --gradient,
     linear-gradient(102deg, #0068ff 23.99%, #b9ff9c 98.08%)
@@ -400,14 +400,14 @@ export const ModalText = styled.p`
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: "MonExtraBold";
+  font-family: ${(props) => (props.$isMobile ? "MonSemiBold" : "MonExtraBold")};
 `;
 
 export const Separator = styled.div`
   width: 100%;
   height: 1px;
   background: linear-gradient(102deg, #0068ff 23.99%, #b9ff9c 98.08%);
-  margin-bottom: 60px;
+  margin-bottom: ${(props) => (props.$isMobile ? "24px" : "60px")};
 `;
 
 export const ModalFooter = styled.div`
@@ -418,16 +418,16 @@ export const ModalFooter = styled.div`
 export const QaApply = styled.p`
   font-family: "MonRegular";
   margin-bottom: 36px;
-  font-size: 20px;
-  font-style: normal;
+  font-size: ${(props) => (props.$isMobile ? "12px" : "20px")};
+  font-family: ${(props) => (props.$isMobile ? "MonRegular" : "MonSemiBold")};
   color: #637d92;
-  line-height: 30px;
+  line-height: ${(props) => (props.$isMobile ? "18px" : "30px")};
   white-space: pre-wrap;
 `;
 
 export const ApplyLinkSize = styled.p`
   font-family: "MonRegular";
   color: #0068ff;
-  margin-bottom: 60px;
-  font-size: 18px;
+  margin-bottom: ${(props) => (props.$isMobile ? "24px" : "60px")};
+  font-size: ${(props) => (props.$isMobile ? "12px" : "18px")};
 `;

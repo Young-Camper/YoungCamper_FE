@@ -4,7 +4,7 @@ import useMediaQueries from "../../hooks/useMediaQueries";
 export const Container = styled.div`
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
   padding: ${(props) => (props.$isMobile ? "0px" : "50px")};
   display: flex;
   flex-direction: column;

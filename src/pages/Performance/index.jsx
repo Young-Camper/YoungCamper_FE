@@ -22,9 +22,7 @@ const index = () => {
     return "24px";
   };
 
-  const caution = isMobile
-    ? t("caution.mcaution", { returnObjects: true })
-    : t("caution.caution", { returnObjects: true });
+  const caution = t("caution.caution", { returnObjects: true });
 
   const handleOpenModal = (artist) => {
     setClickedArtist(artist);
