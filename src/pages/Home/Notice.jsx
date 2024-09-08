@@ -32,8 +32,7 @@ const Notice = () => {
     const fetchData = async () => {
       try {
         const response = await getAnnouncements(currentLanguage);
-        // console.log(response);
-        setMainNotices(response.data.data);
+        setFilteredData(response.data.data);
       } catch (error) {
         // 오류 처리
       } finally {
@@ -47,9 +46,7 @@ const Notice = () => {
   useEffect(() => {
     // 필독 공지 필터링
     const urgentNotices = filteredData.filter((item) => item.isPinned === true);
-    const nonUrgentNotices = filteredData.filter(
-      (item) => item.isPinned === false
-    );
+    const nonUrgentNotices = filteredData.filter((item) => item.isPinned === false);
     setUrgentNotices(urgentNotices);
     setNonUrgentNotices(nonUrgentNotices);
   }, [filteredData]);
@@ -73,10 +70,9 @@ const Notice = () => {
         });
         updatedNotices = updatedNotices.concat(emptyNotices);
       }
-
       setMainNotices(updatedNotices);
     }
-    console.log('notice:', mainNotices);
+    
   }, [urgentNotices, nonUrgentNotices, t]);
 
   return (
