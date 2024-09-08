@@ -5,14 +5,14 @@ import * as S from "./style";
 import { useTranslation } from "react-i18next";
 
 const transportway = () => {
-  const { isMobile } = useMediaQueries();
+  const { isMobile, isTablet } = useMediaQueries();
   const { t } = useTranslation();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
 
   return (
-    <S.WayContainer $isMobile={isMobile}>
+    <S.WayContainer $isMobile={isMobile} $isTablet = {isTablet}>
 
-      <S.WayImgContainer>
+      <S.WayImgContainer $isMobile = {isMobile} $isTablet = {isTablet}>
         <S.WayImg src= {`${mediaUrl}Location/transport_pic.png`} $isMobile = {isMobile}/>
       </S.WayImgContainer>
 

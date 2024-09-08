@@ -46,7 +46,7 @@ const TransportBox = ({ title, children, index, onClick, isOpen }) => {
             <S.Icon>
               <img
                 src={
-                  isOpen || isHovered
+                  (isOpen) || (isDesktop && isHovered)
                     ? `${mediaUrl}Location/button_open.png`
                     : `${mediaUrl}Location/button.png`
                 }

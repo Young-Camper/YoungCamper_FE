@@ -47,7 +47,7 @@ const Footer = () => {
             </S.Section>
           </S.Main>
           <S.Sub>
-            <S.Content> © DGU Youngcamper. All rights reserved</S.Content>
+            <S.Content> © 학생기획위원단. All rights reserved</S.Content>
             <S.Action>
               <a
                 href="https://www.instagram.com/youngcamp_dgu"
@@ -100,7 +100,7 @@ const Footer = () => {
             </S.Section>
           </S.Main>
           <S.Sub>
-            <S.Content> © DGU Youngcamper. All rights reserved</S.Content>
+            <S.Content> © 학생기획위원단. All rights reserved</S.Content>
             <S.Action>
               <a
                 href="https://www.instagram.com/youngcamp_dgu"

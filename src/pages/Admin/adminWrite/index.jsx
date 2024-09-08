@@ -14,8 +14,10 @@ import { adminState } from "../../../context/recoil/adminState";
 const index = () => {
   const { isDesktop } = useMediaQueries();
   const navigate = useNavigate();
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [koTitle, setKoTitle] = useState("");
+  const [enTitle, setEnTitle] = useState("");
+  const [koContent, setKoContent] = useState("");
+  const [enContent, setEnContent] = useState("");
   const [imageUrl, setImageUrl] = useState(null);
   const [fileUrl, setFileUrl] = useState(null);
   const [isPinned, setIsPinned] = useState(false);
@@ -23,16 +25,18 @@ const index = () => {
   const isAdmin = useRecoilValue(adminState);
 
   // 관리자 여부 확인
-  useEffect(() => {
-    if (!isAdmin) {
-      alert("관리자 권한이 필요합니다.");
-      navigate("/admin42794");
-    }
-  }, [isAdmin, navigate]);
+  // useEffect(() => {
+  //   if (!isAdmin) {
+  //     alert("관리자 권한이 필요합니다.");
+  //     navigate("/admin42794");
+  //   }
+  // }, [isAdmin, navigate]);
 
   // 핸들러
-  const handleTitleChange = (e) => setTitle(e.target.value);
-  const handleContentChange = (e) => setContent(e.target.value);
+  const handleKoTitleChange = (e) => setKoTitle(e.target.value);
+  const handleEnTitleChange = (e) => setEnTitle(e.target.value);
+  const handleKoContentChange = (e) => setKoContent(e.target.value);
+  const handleEnContentChange = (e) => setEnContent(e.target.value);
   const handlePinnedChange = (e) => setIsPinned(e.target.checked);
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -46,29 +50,34 @@ const index = () => {
 
   // ====== api post ======
   const handleAdminPost = async () => {
-    if (isAdmin) {
-      const check = confirm("작성하시겠습니까?");
-      if (check) {
-        try {
-          const response = await postAnnouncement(
-            title,
-            content,
-            imageUrl, // presignedurl 변경 필요
-            fileUrl,
-            isPinned
-          );
+    // if (isAdmin) {
+    const check = confirm("작성하시겠습니까?");
+    if (check) {
+      try {
+        const response = await postAnnouncement(
+          imageUrl, // presignedurl 변경 필요
+          fileUrl,
+          isPinned,
+          koContent,
+          enContent,
+          koTitle,
+          enTitle
+        );
 
-          console.log("admin post response: ", response);
-          alert("작성되었습니다");
-          navigate("/admin42794/list");
-        } catch (error) {
-          console.error("Failed to post admin data: ", error);
-          alert("작성에 실패했습니다. 다시 시도해주세요.");
-        }
-      } else {
-        alert("취소되었습니다.");
+        console.log("admin post response: ", response);
+        alert("작성되었습니다");
+        navigate("/admin42794/list");
+      } catch (error) {
+        console.error("Failed to post admin data: ", error);
+        alert("작성에 실패했습니다. 다시 시도해주세요.");
       }
+    } else {
+      alert("취소되었습니다.");
     }
+    // }
+    // else {
+    //   alert("관리자 권한이 없습니다.");
+    // }
   };
 
   return (
@@ -81,10 +90,17 @@ const index = () => {
         <S.InputWrapper>
           <S.InputContainer>
             <S.InputGrid>
-              <S.TextCotainer>제목</S.TextCotainer>
+              <S.TextCotainer>제목(ko)</S.TextCotainer>
               <S.InputArea
                 placeholder="제목을 입력하세요"
-                onChange={handleTitleChange}
+                onChange={handleKoTitleChange}
+              />
+            </S.InputGrid>
+            <S.InputGrid>
+              <S.TextCotainer>제목(en)</S.TextCotainer>
+              <S.InputArea
+                placeholder="제목을 입력하세요"
+                onChange={handleEnTitleChange}
               />
             </S.InputGrid>
             <S.InputGrid>
@@ -110,7 +126,10 @@ const index = () => {
               <S.PreviewImg src={imagePreviewUrl} />
             </>
           )}
-          <S.InputContent onChange={handleContentChange} />
+          ko:
+          <S.InputContent onChange={handleKoContentChange} />
+          en:
+          <S.InputContent onChange={handleEnContentChange} />
         </S.InputWrapper>
         <Link to="/admin42794/list">
           <ShowListContainer>목록보기</ShowListContainer>
