@@ -9,11 +9,11 @@ export const faq_ko = [
     answer:
       "각 단과대학 불교동아리 가입자만 출입이 가능하며, ndrims를 통한 현장 본인 확인 및 불교동아리 가입 여부 확인 실시할 예정입니다.",
   },
-  {
-    question: "불교동아리 가입 방법",
-    answer:
-      "<a href='https://youngcamp.co.kr/promotion'>동아리 페이지</a>의 소속 단과대학 페이지 참조하여 가입 링크를 따라 가입하실 수 있습니다.",
-  },
+  // {
+  //   question: "불교동아리 가입 방법",
+  //   answer:
+  //     "<a href='https://youngcamp.co.kr/promotion'>동아리 페이지</a>의 소속 단과대학 페이지 참조하여 가입 링크를 따라 가입하실 수 있습니다.",
+  // },
   {
     question: "공연은 어디서 볼 수 있나요?",
     answer:
