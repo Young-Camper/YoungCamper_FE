@@ -4,46 +4,56 @@ import useMediaQueries from "../../../hooks/useMediaQueries";
 import { getAnnouncement } from "../../../lib/apis/api/getAnnouncement";
 
 import * as S from "../../Notification/detail/Style";
+import * as St from "../style";
 import TitleSet from "../../../components/ui/TitleSet";
 import { ContentWrapper } from "../../../style/commonStyle";
 import Loading from "../../../components/ui/Loading";
+
 import { useRecoilValue } from "recoil";
 import { adminState } from "../../../context/recoil/adminState";
+import ViewNotice from "./ViewNotice";
+import UpdateNotice from "./UpdateNotice";
 
 const index = () => {
   const { isDesktop } = useMediaQueries();
   const { id } = useParams();
+
   const [data, setData] = useState({});
+  const [enData, setEnData] = useState({});
   const [loading, setLoading] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
 
   const navigate = useNavigate();
   const isAdmin = useRecoilValue(adminState);
 
+  // == 로컬 환경 테스트를 위해 주석처리 ==
   // 관리자 여부 확인
-  useEffect(() => {
-    if (!isAdmin) {
-      alert("관리자 권한이 필요합니다.");
-      navigate("/admin42794");
-    }
-  }, [isAdmin, navigate]);
+  // useEffect(() => {
+  //   if (!isAdmin) {
+  //     alert("관리자 권한이 필요합니다.");
+  //     navigate("/admin42794");
+  //   }
+  // }, [isAdmin, navigate]);
 
   // ====== api get ======
   useEffect(() => {
-    const getData = async () => {
+    const fetchData = async () => {
+      setLoading(true);
       try {
-        const response = await getAnnouncement(id);
-        setData(response.data.data);
-        setLoading(false);
-      } catch (err) {
-        // console.error("Error fetching announcement:", err);
+        const koResponse = await getAnnouncement(id, "ko");
+        const enResponse = await getAnnouncement(id, "en");
+        console.log("koResponse", koResponse.data.data);
+        console.log("enResponse", enResponse.data.data);
+        setData(koResponse.data.data);
+        setEnData(enResponse.data.data);
+      } catch (error) {
+      } finally {
         setLoading(false);
       }
     };
 
-    if (id && isAdmin) {
-      getData();
-    }
-  }, [id, isAdmin]);
+    fetchData();
+  }, [id]);
 
   return loading ? (
     <Loading />
@@ -52,20 +62,17 @@ const index = () => {
       <ContentWrapper $isDesktop={isDesktop}>
         <TitleSet mainText="상세 페이지" />
         <S.TitleWrapper $isDesktop={isDesktop}>
-          <S.Title $isDesktop={isDesktop}>{data.title}</S.Title>
-          <S.InfoContainer $isDesktop={isDesktop}>
-            <S.Info>작성인: 관리자</S.Info>
-            <S.Info>등록일: {data.createdAt}</S.Info>
-          </S.InfoContainer>
-          <S.Line />
-          <S.ContentWrapper $isDesktop={isDesktop}>
-            {data.imageUrl != "" && (
-              <S.ContentImgContainer>
-                <S.ContentImg src={data.imageUrl} alt="이미지" />
-              </S.ContentImgContainer>
-            )}
-            <S.ContentText $isDesktop={isDesktop}>{data.content}</S.ContentText>
-          </S.ContentWrapper>
+          {isEditing ? (
+            <UpdateNotice
+              data={data}
+              enData={enData}
+              isEditing={isEditing}
+              setIsEditing={setIsEditing}
+            />
+          ) : (
+            <ViewNotice setIsEditing={setIsEditing} data={data} />
+          )}
+
           <S.ShowListWrapper>
             <Link to="/admin42794/list">
               <S.ShowListContainer $isDesktop={isDesktop}>
