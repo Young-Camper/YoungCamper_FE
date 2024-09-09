@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,forwardRef } from "react";
 import * as S from "./style";
 import PropTypes from "prop-types";
 import useMediaQueries from "../../hooks/useMediaQueries.jsx";
 import Transportway from "./transportway.jsx";
 
-const TransportBox = ({ title, children, index, onClick, isOpen }) => {
+const TransportBox = forwardRef(({ title, children, index, onClick, isOpen },ref) => {
   const [isHovered, setIsHovered] = useState(false);
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -29,6 +29,7 @@ const TransportBox = ({ title, children, index, onClick, isOpen }) => {
         display: "flex",
         padding: isDesktop ? "0 24px" : "0 0px",
       }}
+      ref = {ref}
     >
       <S.AccordionHeader
         onClick={onClick}
@@ -88,7 +89,7 @@ const TransportBox = ({ title, children, index, onClick, isOpen }) => {
       )}
     </div>
   );
-};
+});
 
 TransportBox.propTypes = {
   title: PropTypes.string.isRequired,
