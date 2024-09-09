@@ -56,7 +56,7 @@ const SubText = styled.div`
   }
 `;
 
-const Attention = ({ attention1, attention2, attention3 }) => {
+const Attention = ({ attentions = [] }) => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const { t } = useTranslation();
 
@@ -74,27 +74,16 @@ const Attention = ({ attention1, attention2, attention3 }) => {
         >
           {t("caution.title")}
         </MainText>
-        <SubText
-          $isMobile={isMobile}
-          $isTablet={isTablet}
-          $isDesktop={isDesktop}
-        >
-          {attention1}
-        </SubText>
-        <SubText
-          $isMobile={isMobile}
-          $isTablet={isTablet}
-          $isDesktop={isDesktop}
-        >
-          {attention2}
-        </SubText>
-        <SubText
-          $isMobile={isMobile}
-          $isTablet={isTablet}
-          $isDesktop={isDesktop}
-        >
-          {attention3}
-        </SubText>
+        {attentions.map((attention, index) => (
+          <SubText
+            key={index}
+            $isMobile={isMobile}
+            $isTablet={isTablet}
+            $isDesktop={isDesktop}
+          >
+            {attention}
+          </SubText>
+        ))}
       </Container>
     </Wrapper>
   );

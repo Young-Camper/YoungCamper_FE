@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 const index = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const { t } = useTranslation();
-  const caution = t("location.caution", { returnObjects: true });
+  const cautions = t("location.caution", { returnObjects: true });
 
   return (
     <>
@@ -27,11 +27,7 @@ const index = () => {
       >
         <Transport />
         <LocMap />
-        <Attention
-          attention1={caution[0]}
-          attention2={caution[1]}
-          attention3={caution[2]}
-        />
+        <Attention attentions={cautions} />
       </S.Wrapper>
     </>
   );
