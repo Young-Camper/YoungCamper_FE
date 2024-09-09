@@ -503,9 +503,10 @@ export const VideoBtn = styled.div`
 `;
 
 export const VideoBtnBox = styled.div`
-  width: 100%; height: auto;
+  width: 100%;
+  height: auto;
   display: flex;
-  padding: 12px 24px;
+  padding: ${(props) => (props.$isMobile ? "6px 12px" : "12px 24px")};
   justify-content: flex-end;
   align-items: center;
   gap: 12px;
@@ -513,16 +514,17 @@ export const VideoBtnBox = styled.div`
   border-radius: 0px 0px 25px 25px;
   opacity: var(--sds-size-stroke-border);
   background: rgba(0, 104, 255, 0.12);
-  `;
+`;
 
 export const VideoBtnText = styled.div`
-  color: var(--new-main-primary, #0068FF);
+  color: var(--new-main-primary, #0068ff);
   text-align: center;
 
   /* desktop/H2_sb */
   font-family: MonSemiBold;
   font-size: ${(props) =>
-    props.$isDesktop ? "28px" : props.$isTablet ? "20px" : "17px"};
+    props.$isDesktop ? "28px" : props.$isTablet ? "20px" : "14px"};
+  /* props.$isDesktop ? "28px" : props.$isTablet ? "20px" : "17px"}; */
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "36px" : "26px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.28px" : "-0.2px")};
@@ -1057,7 +1059,6 @@ export const SocialSliderBox = styled.div`
 }
 `;
 
-
 export const ArrowBox = styled.div`
   width: auto;
   height: auto;
@@ -1078,7 +1079,7 @@ export const ArrowBox = styled.div`
 
 export const NextArrow = styled.div`
   background: url(${mediaUrl}Home/ArrowBlack.png);
-    /* 다음 화살표 이미지 경로 */
+  /* 다음 화살표 이미지 경로 */
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
