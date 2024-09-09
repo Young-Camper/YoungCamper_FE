@@ -153,6 +153,8 @@ export const PageNumber = styled.span`
 export const ContentWrapperFix = styled.div`
   padding: ${(props) =>
     props.$isMobile ? "0px 24px" : props.$isTablet ? "0px 48px" : "0px 170px"};
+  border-bottom: ${(props) =>
+    props.$isDesktop ? "none" : "1px solid #0A0B0A"};
     
     //상단 고정
     position: fixed;
@@ -160,27 +162,29 @@ export const ContentWrapperFix = styled.div`
     width: 100%;
     top: ${(props) => (props.$isDesktop ? "73px" : "52px")};
     background-color: #fff;
-    z-index: 99;
+    z-index: 90;
 `;
 
 export const ContentWrapper = styled.div`
   padding: ${(props) =>
     props.$isMobile ? "0px 24px" : props.$isTablet ? "0px 48px" : "0px 170px"};
 
-  margin-top: ${(props) => (props.$isDesktop ? "322px" : "240px")};
+  margin-top: ${(props) => (props.$isDesktop ? "70px" : "50px")};
 `;
 
 
 export const BackContainer = styled.div`
-  height: ${(props) => (props.$isDesktop ? "80px" : "45px")};
-  padding: ${(props) => (props.$isDesktop ? "0px 12px" : "0px 24px")};
+  height: ${(props) => (props.$isDesktop ? "70px" : "50px")};
+  padding: ${(props) => (props.$isDesktop ? "0px 12px" : "0px 0px")};
   display: flex;
+  border-bottom: ${(props) =>
+    props.$isDesktop ? "1px solid #0A0B0A" : "none"};
+  
 `;
 
 export const BackButton = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
   width: 100%;
 `;
 
@@ -225,10 +229,10 @@ export const ClubImage = styled.div`
 export const Wrapper = styled.div`
   padding: ${(props) =>
     props.$isMobile
-      ? "48px 0px 24px 0px"
+      ? "24px"
       : props.$isTablet
-      ? "48px 24px 24px 24px"
-      : "36px 0px 48px 0px"};
+      ? "24px"
+      : "50px 0px 48px 0px"};
 `;
 
 export const SchoolBadgeDetail = styled.div`
@@ -241,7 +245,7 @@ export const SchoolBadgeDetail = styled.div`
   font-style: normal;
   line-height: 24px;
   letter-spacing: -0.04px;
-  margin-bottom: 36px;
+  margin-bottom: ${(props) => (props.$isDesktop ? "36px" : "12px")};
   color: #0a0b0a;
 `;
 

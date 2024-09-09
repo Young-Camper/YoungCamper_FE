@@ -225,7 +225,7 @@ export const ImagePreviewBox = styled.div`
   width: ${(props) => (props.$isMobile ? "75px" : "107px")};
   height: ${(props) => (props.$isMobile ? "75px" : "107px")};
   border-radius: 8px;
-  border: 1px solid #ced7de;
+  border: 1.5px solid #ced7de;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -298,9 +298,8 @@ export const ImageCanel = styled.div`
   font-family: "MonSemiBold";
   font-size: 13px;
   top: 0px;
-  right: 4px;
+  right: 5px;
   color: white;
-  padding: 4px;
   cursor: pointer;
   z-index: 10;
 `;

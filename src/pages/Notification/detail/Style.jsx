@@ -78,6 +78,8 @@ export const ContentImgContainer = styled.div`
 export const ContentImg = styled.img`
   margin-bottom: 48px;
   margin-top: ${(props) => (props.$isDesktop ? "24px" : "6px")};
+  width: 441px;
+  height: auto;
 
   @media (max-width: 365px) {
     width: 80%;
@@ -92,6 +94,7 @@ export const ContentText = styled.div`
   /* font-weight: 400; */
   line-height: ${(props) => (props.$isDesktop ? "30px" : "18px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.02px" : "-0.06px")};
+  white-space: pre-line;
 `;
 
 //showlist.jsx

@@ -16,9 +16,10 @@ const index = () => {
     <>
       <S.ContentWrapperFix $isDesktop={isDesktop} $isMobile={isMobile} $isTablet={isTablet}>
         <BackPage></BackPage>
-        <SubTitle id={id}></SubTitle>
+        
       </S.ContentWrapperFix>
       <S.ContentWrapper $isMobile={isMobile} $isTablet={isTablet} $isDesktop={isDesktop}>
+          <SubTitle id={id}></SubTitle>
           <ClubImage id={id}></ClubImage>
           <ClubContent id={id}></ClubContent>
           <ClubApply id={id}></ClubApply>

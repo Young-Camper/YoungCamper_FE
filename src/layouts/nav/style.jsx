@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
   top: 0;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 99;
+  z-index: 999;
 `;
 
 export const Container = styled.div`
@@ -182,7 +182,7 @@ export const SideNav = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 999;
+  /* z-index: 999; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -238,6 +238,7 @@ export const HeaderContent = styled.div`
   height: ${(props) => (props.$isMobile ? "52px" : "56px")};
   justify-content: space-between;
   padding: 12px 20px;
+  /* z-index: 999; */
 `;
 
 // 메뉴바 열기 버튼 스타일

@@ -190,7 +190,14 @@ const ReviewInputSection = ({ onSuccess }) => {
                 }}
               />
               <S.ImageCanel onClick={() => handleRemoveImage(index)}>
-                X
+                <img
+                  src={`${mediaUrl}Review/delete-circle.svg`}
+                  alt="Close"
+                  style={{
+                    width: "15px",
+                    height: "15px",
+                  }}
+                />
               </S.ImageCanel>
             </S.ImagePreviewBox>
           ))}

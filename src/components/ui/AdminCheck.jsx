@@ -15,16 +15,16 @@ const AdminCheck = () => {
       try {
         const response = await getAdminCheck();
         setIsAdmin(response.data);
-        console.log("admin check:", response.data);
+        // console.log("admin check:", response.data);
       } catch (error) {
-        console.error("Error admin check:", error);
+        // console.error("Error admin check:", error);
       }
     };
 
     fetchData();
   }, [setIsAdmin]);
 
-  // ======= api get =======
+  // ======= 로그아웃 =======
   const handleAdminLogout = async () => {
     const check = confirm("admin 로그아웃 하십니까🤓?");
     if (check) {
@@ -34,8 +34,19 @@ const AdminCheck = () => {
         setIsAdmin(false);
         navigate("/");
       } catch (error) {
-        console.error("Error admin logout:", error);
+        // console.error("Error admin logout:", error);
       }
+    }
+  };
+
+  // ======= 관리자 여부 확인 =======
+  const handleAdminCheck = async () => {
+    try {
+      const response = await getAdminCheck();
+      alert(response.data);
+      // setIsAdmin(response.data);
+    } catch (error) {
+      // console.error("Error admin check:", error);
     }
   };
 
@@ -51,6 +62,7 @@ const AdminCheck = () => {
           </h4>
           <h4 onClick={() => navigate("/admin42794/write")}>공지 글 작성</h4>
           <h4 onClick={() => navigate("/review")}>후기 삭제</h4>
+          <h4 onClick={handleAdminCheck}>Admin Check</h4>
         </div>
       </S.AdminLogout>
     )

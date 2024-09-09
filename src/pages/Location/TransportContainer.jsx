@@ -1,39 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import TransportBox from "./TransportBox";
 import * as S from "./style";
 import useMediaQueries from "../../hooks/useMediaQueries.jsx";
 import { useTranslation } from "react-i18next";
 
 const TransportContainer = () => {
-  const [activeIndex, setActiveIndex] = useState(null); // 클릭된 아코디언의 인덱스를 저장
-
-  const { isMobile } = useMediaQueries();
+  const [activeIndex, setActiveIndex] = useState(null);
   const { t } = useTranslation();
 
-  const toggleAccordion = (index) => {
-    setActiveIndex(activeIndex === index ? null : index); // 같은 아코디언 클릭 시 닫기, 다른 아코디언 클릭 시 열기
+  const publicRef = useRef(null);
+  const parkRef = useRef(null);
+
+  const toggleAccordion = (index, ref) => {
+    if (activeIndex !== index) {
+      setActiveIndex(index);
+      setTimeout(() => {
+        ref.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 100);
+    } else {
+      setActiveIndex(null);
+    }
   };
+
+  // useEffect(() => {
+  //   if (activeIndex !== null && boxRefs.current[activeIndex]) {
+  //     boxRefs.current[activeIndex].scrollIntoView({
+  //       behavior: "smooth",
+  //       block: "center",
+  //     });
+  //   }
+  // }, [activeIndex]);
 
   return (
     <>
       <TransportBox
-        title={t("location.map")}
-        onClick={() => toggleAccordion(0)}
-        isOpen={activeIndex === 0}
-        index={0}
-      ></TransportBox>
-      <TransportBox
+        ref={publicRef}
         title={t("location.public")}
-        onClick={() => toggleAccordion(1)}
+        onClick={() => toggleAccordion(1, publicRef)}
         isOpen={activeIndex === 1}
         index={1}
-      >
-        영캠프는 대한민국 대학 불교 동아리들이 연합하여 주최하는 특별한
-        축제입니다.
-      </TransportBox>
+      ></TransportBox>
       <TransportBox
+        ref={parkRef}
         title={t("location.park")}
-        onClick={() => toggleAccordion(2)}
+        onClick={() => toggleAccordion(2, parkRef)}
         isOpen={activeIndex === 2}
         index={2}
       >

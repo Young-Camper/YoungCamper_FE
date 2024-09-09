@@ -32,8 +32,7 @@ const Notice = () => {
     const fetchData = async () => {
       try {
         const response = await getAnnouncements(currentLanguage);
-        // console.log(response);
-        setMainNotices(response.data.data);
+        setFilteredData(response.data.data);
       } catch (error) {
         // 오류 처리
       } finally {
@@ -59,7 +58,7 @@ const Notice = () => {
       let updatedNotices = [];
       //필독공지 -> 최신순으로 4개 정렬
       if (urgentNotices.length >= 4) {
-        const updatedNotices = urgentNotices.slice(-4).reverse();
+        updatedNotices = urgentNotices.slice(-4).reverse();
       } else {
         const nonUrgentToAdd = 4 - urgentNotices.length;
         const addNotices = nonUrgentNotices.slice(0, nonUrgentToAdd).reverse();
@@ -67,14 +66,10 @@ const Notice = () => {
       }
       //공지가 4개 이하일 때
       if (updatedNotices.length < 4) {
-        const emptyNotices = Array(4 - updatedNotices.length).fill({
-          title: t("home.noNotice"),
-          isPinned: false,
-        });
-        updatedNotices = updatedNotices.concat(emptyNotices);
+        setMainNotices(updatedNotices);
+      } else {
+        setMainNotices([]);
       }
-
-      setMainNotices(updatedNotices);
     }
   }, [urgentNotices, nonUrgentNotices, t]);
 
