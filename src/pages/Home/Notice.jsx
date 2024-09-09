@@ -46,7 +46,9 @@ const Notice = () => {
   useEffect(() => {
     // 필독 공지 필터링
     const urgentNotices = filteredData.filter((item) => item.isPinned === true);
-    const nonUrgentNotices = filteredData.filter((item) => item.isPinned === false);
+    const nonUrgentNotices = filteredData.filter(
+      (item) => item.isPinned === false
+    );
     setUrgentNotices(urgentNotices);
     setNonUrgentNotices(nonUrgentNotices);
   }, [filteredData]);
@@ -63,16 +65,12 @@ const Notice = () => {
         updatedNotices = [...urgentNotices].reverse().concat(addNotices);
       }
       //공지가 4개 이하일 때
-      if (updatedNotices.length < 4) {
-        const emptyNotices = Array(4 - updatedNotices.length).fill({
-          title: t("home.noNotice"),
-          isPinned: false,
-        });
-        updatedNotices = updatedNotices.concat(emptyNotices);
+      if (updatedNotices.length > 0) {
+        setMainNotices(updatedNotices);
+      } else {
+        setMainNotices([]);
       }
-      setMainNotices(updatedNotices);
     }
-    
   }, [urgentNotices, nonUrgentNotices, t]);
 
   return (
