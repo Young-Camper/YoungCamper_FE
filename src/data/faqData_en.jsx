@@ -17,7 +17,7 @@ export const faq_en = [
   {
     question: "Where can I see the performance?",
     answer:
-      "It will be held on September 24th at <a href='https://youngcamp.co.kr/location'>Jangchung Gymnasium.</a>",
+      "It will be held on September 24th at <a href='https://youngcamp.co.kr/location'>Jangchung Arena.</a>",
   },
   {
     question: "If I leave during the festival, can I re-enter?",
@@ -27,7 +27,7 @@ export const faq_en = [
   {
     question: "Performance information",
     answer:
-      "It will be held at Jangchung Gymnasium from 17:00 on Tuesday the 24th. For more information, please refer to the <a href='https://youngcamp.co.kr/performance'>schedule page!</a>",
+      "It will be held at Jangchung Arena from 17:00 on Tuesday the 24th. For more information, please refer to the <a href='https://youngcamp.co.kr/performance'>schedule page!</a>",
   },
   {
     question: "Related quarantine rules",
