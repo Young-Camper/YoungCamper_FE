@@ -32,20 +32,21 @@ const ClubInfo = () => {
       </S.GalleryBox>
       <S.ClubFrameBox $isTablet={isTablet} $isDesktop={isDesktop}>
         <Link to={"./promotion"}>
-          <S.ClubBtnBox
+          <S.ClubBtn
             $isTablet={isTablet}
             $isDesktop={isDesktop}
             $ishoveringClub={isHoveringClub}
             onMouseOver={handleMouseOver4}
             onMouseOut={handleMouseOut4}
           >
-            <S.ClubBtnText
+            {t("home.moreClub")}
+           {/*  <S.ClubBtnText
               $isDesktop={isDesktop}
               $ishoveringClub={isHoveringClub}
             >
-              {t("home.moreClub")}
-            </S.ClubBtnText>
-          </S.ClubBtnBox>
+              
+            </S.ClubBtnText> */}
+          </S.ClubBtn>
         </Link>
       </S.ClubFrameBox>
     </S.ClubInfoSection>

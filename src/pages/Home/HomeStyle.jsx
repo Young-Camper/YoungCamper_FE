@@ -617,7 +617,7 @@ export const CardButton = styled.div`
   border-radius: var(--XXL, 100px);
   border: 1px solid #000;
   background: var(--Base-Real-White, #fff);
-  border: ${(props) => (props.$ishoveringVideo ? "none" : "1px solid black")};
+  border: ${(props) => (props.$ishoveringVideo ? "1px solid white" : "1px solid black")};
 
   font-family: MonRegular;
   font-size: ${(props) => (props.$isDesktop ? "20px" : "12px")};
@@ -706,7 +706,7 @@ export const ClubFrameBox = styled.div`
   gap: 12px;
 `;
 
-export const ClubBtnBox = styled.div`
+export const ClubBtn = styled.div`
   width: 100%;
   height: auto;
   padding: ${(props) => (props.$isDesktop ? "20px 24px" : "12px 16px")};
@@ -715,9 +715,10 @@ export const ClubBtnBox = styled.div`
   align-items: center;
   flex-direction: column;
   border-radius: 100px;
-  border: 1px solid #000;
   background: var(--Base-Real-White, #fff);
-  border: ${(props) => (props.$ishoveringClub ? "none" : "1px solid black")};
+  /* border: ${(props) => (props.$ishoveringClub ? "1px solid transparent" : "1px solid black")}; */
+  box-shadow: ${(props) =>
+    props.$ishoveringClub ? "none" : "inset 0 0 0 1px black"};
 
   &:hover {
     background: var(
@@ -725,20 +726,16 @@ export const ClubBtnBox = styled.div`
       linear-gradient(102deg, #0068ff 23.99%, #b9ff9c 98.08%)
     );
   }
-`;
-export const ClubBtnText = styled.div`
-  width: 100%;
-  height: auto;
+
   color: ${(props) => (props.$ishoveringClub ? "white" : "black")};
   text-align: center;
-
   font-family: MonRegular;
   font-style: normal;
   font-size: ${(props) =>
     props.$isDesktop ? "20px" : props.$isTablet ? "16px" : "12px"};
   line-height: ${(props) => (props.$isDesktop ? "30px" : "18px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.06px")};
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
 `;
 
 //4.Notice
@@ -801,7 +798,7 @@ export const NoticeBtn = styled.div`
   align-items: center;
   border-radius: var(--XXL, 100px);
   color: ${(props) => (props.$ishovering ? "white" : "black")};
-  border: ${(props) => (props.$ishovering ? "none" : "1px solid black")};
+  border: ${(props) => (props.$ishovering ? "1px solid white" : "1px solid black")};
   text-align: center;
   transition: all 0.2s ease-out;
 
@@ -819,6 +816,7 @@ export const NoticeBtn = styled.div`
       --gradient,
       linear-gradient(102deg, #0068ff 23.99%, #b9ff9c 98.08%)
     );
+    border: 1px solid white;
   }
 `;
 
