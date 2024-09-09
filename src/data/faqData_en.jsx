@@ -9,11 +9,11 @@ export const faq_en = [
     answer:
       "Only members of each college's Buddhist club can enter, and on-site identity verification and membership in the Buddhist club will be confirmed through ndrims.",
   },
-  {
-    question: "How to join a Buddhist club",
-    answer:
-      "You can sign up by referring to the affiliated college page on the <a href='https://youngcamp.co.kr/promotion'>club page</a> and following the sign-up link.",
-  },
+  // {
+  //   question: "How to join a Buddhist club",
+  //   answer:
+  //     "You can sign up by referring to the affiliated college page on the <a href='https://youngcamp.co.kr/promotion'>club page</a> and following the sign-up link.",
+  // },
   {
     question: "Where can I see the performance?",
     answer:
