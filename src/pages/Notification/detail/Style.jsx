@@ -78,6 +78,8 @@ export const ContentImgContainer = styled.div`
 export const ContentImg = styled.img`
   margin-bottom: 48px;
   margin-top: ${(props) => (props.$isDesktop ? "24px" : "6px")};
+  width: 441px;
+  height: auto;
 
   @media (max-width: 365px) {
     width: 80%;
