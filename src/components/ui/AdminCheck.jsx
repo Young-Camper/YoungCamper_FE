@@ -22,7 +22,7 @@ const AdminCheck = () => {
     };
 
     fetchData();
-  }, [setIsAdmin]);
+  }, [setIsAdmin, navigate]);
 
   // ======= 로그아웃 =======
   const handleAdminLogout = async () => {
