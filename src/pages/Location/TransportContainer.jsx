@@ -25,6 +25,15 @@ const TransportContainer = () => {
     }
   };
 
+  useEffect(() => {
+    if (activeIndex !== null && boxRefs.current[activeIndex]) {
+      boxRefs.current[activeIndex].scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [activeIndex]);
+
   return (
     <>
       <TransportBox
@@ -44,6 +53,7 @@ const TransportContainer = () => {
       >
         {t("location.parkContent")}
       </TransportBox>
+
     </>
   );
 };
