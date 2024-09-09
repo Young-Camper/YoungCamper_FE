@@ -26,7 +26,7 @@ const index = () => {
     try {
       const response = await adminLogin(id, pw);
 
-      console.log("Login response:", response);
+      // console.log("Login response:", response);
       if (response.status === 200) {
         alert("로그인 성공!");
         setIsAdmin(true);
@@ -38,15 +38,15 @@ const index = () => {
         alert("ID, Password를 다시 확인해주세요.");
       }
     } catch (error) {
-      console.error("Login error:", error);
+      // console.error("Login error:", error);
       setIsAdmin(false);
       alert("ID, Password를 다시 확인해주세요.");
 
       if (error.response) {
         alert("ID, Password를 다시 확인해주세요.");
-        console.log(
-          "로그인 실패: " + (error.response.data.message || "서버 에러 발생")
-        );
+        // console.log(
+        //   "로그인 실패: " + (error.response.data.message || "서버 에러 발생")
+        // );
       } else {
         // 서버 응답이 없는 경우 (네트워크 문제 등)
         alert("네트워크 오류가 발생했습니다. 다시 시도해주세요.");

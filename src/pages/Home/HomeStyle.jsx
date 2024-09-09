@@ -502,6 +502,43 @@ export const VideoBtn = styled.div`
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.12px")};
 `;
 
+export const VideoBtnBox = styled.div`
+  width: 100%; height: auto;
+  display: flex;
+  padding: 12px 24px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  align-self: stretch;
+  border-radius: 0px 0px 25px 25px;
+  opacity: var(--sds-size-stroke-border);
+  background: rgba(0, 104, 255, 0.12);
+  `;
+
+export const VideoBtnText = styled.div`
+  color: var(--new-main-primary, #0068FF);
+  text-align: center;
+
+  /* desktop/H2_sb */
+  font-family: MonSemiBold;
+  font-size: ${(props) =>
+    props.$isDesktop ? "28px" : props.$isTablet ? "20px" : "17px"};
+  font-style: normal;
+  line-height: ${(props) => (props.$isDesktop ? "36px" : "26px")};
+  letter-spacing: ${(props) => (props.$isDesktop ? "-0.28px" : "-0.2px")};
+`;
+
+export const VideoBtnImg = styled.div`
+  width: ${(props) =>
+    props.$isDesktop ? "34.453px" : props.$isTablet ? "26px" : "20px"};
+  height: ${(props) =>
+    props.$isDesktop ? "30px" : props.$isTablet ? "22px" : "16px"};
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(${mediaUrl}Home/ArrowBlue.png);
+`;
+
 export const CardSecionBox = styled.div`
   width: ${(props) => (props.$isDesktop ? "100%" : "100%")};
   height: ${(props) =>
@@ -982,28 +1019,44 @@ export const SocialSliderBox = styled.div`
 
   .slick-slide {
     margin: ${(props) => (props.$isDesktop ? "0px 10px" : "0px 4.737px")};
+    position: relative;
   }
   .slick-track {
     display: flex;
     align-items: flex-start;
   }
-  .slick-prev:before,
-  .slick-next:before {
+  .slick-prev:before, .slick-next:before {
+    content: ''; /* 기본 화살표를 덮어쓰기 위한 빈 content */
+    background: url(${mediaUrl}Home/ArrowBlack.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: ${(props) => (props.$isDesktop ? "20px" : "10px")};
+    height: ${(props) => (props.$isDesktop ? "20px" : "10px")};
+    position: absolute;
     opacity: 0;
+    z-index: 10;
+    transition: opacity 0.3s ease; 
   }
+
+   .slick-prev:hover:before, .slick-next:hover:before,
+   .slick-prev:focus:before, .slick-next:focus:before {
+    background: url(${mediaUrl}Home/ArrowBlack.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: ${(props) => (props.$isDesktop ? "20px" : "10px")};
+    height: ${(props) => (props.$isDesktop ? "20px" : "10px")};
+    position: absolute;
+    opacity: 1;
+    z-index: 1;
+    transition: opacity 0.3s ease; 
+  }
+
+  
+}
 `;
 
-export const SocialBtn = styled.button`
-  width: auto;
-  height: auto;
-  opacity: 1;
-  &:hover,
-  &:focus,
-  &:active {
-    opacity: 1; /* 호버 및 클릭 상태에서도 불투명도 유지 */
-    outline: none;
-  }
-`;
 
 export const ArrowBox = styled.div`
   width: auto;
@@ -1024,33 +1077,22 @@ export const ArrowBox = styled.div`
 `;
 
 export const NextArrow = styled.div`
-  background: url(${mediaUrl}Home/SocialArrow.png),
+  background: url(${mediaUrl}Home/ArrowBlack.png);
     /* 다음 화살표 이미지 경로 */
-      var(
-        --gradient_2,
-        linear-gradient(
-          104deg,
-          rgba(185, 255, 156, 0.2) 0%,
-          rgba(0, 104, 255, 0.2) 100%
-        )
-      );
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  width: ${(props) => (props.$isDesktop ? "32px" : "16px")};
-  height: ${(props) => (props.$isDesktop ? "26px" : "13px")};
-  right: -25px;
+  width: ${(props) => (props.$isDesktop ? "20px" : "10px")};
+  height: ${(props) => (props.$isDesktop ? "20px" : "10px")};
+  transform: translateX(50%) translateY(50%) rotate(45deg);
   position: absolute;
-  border-radius: 50px;
-  z-index: 1;
 `;
 
 export const PrevArrow = styled(NextArrow)`
-  transform: translateY(-50%) rotate(180deg);
-  left: -10px;
+  transform: translateX(50%) translateY(50%) rotate(225deg);
 `;
 
-export const FrameCard = styled.div`
+export const FrameCard = styled.a`
   width: 100%;
   height: auto;
   gap: ${(props) => (props.$isDesktop ? "12px" : "5.684px")};
@@ -1103,7 +1145,7 @@ export const FrameText = styled.div`
   flex-direction: column;
 `;
 
-export const FrameImg = styled.a`
+export const FrameImg = styled.div`
   width: ${(props) => (props.$isDesktop ? "45.6px" : "21.6px")};
   height: ${(props) => (props.$isDesktop ? "49px" : "23.2px")};
   display: flex;

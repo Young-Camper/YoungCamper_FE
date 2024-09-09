@@ -30,7 +30,7 @@ const Content = ({ keyword }) => {
         const response = await getAnnouncements(currentLanguage);
         setData(response.data.data);
       } catch (error) {
-        setLoading(true);
+        // console.error("Error fetching announcements:", error);
       } finally {
         setLoading(false);
       }
@@ -39,46 +39,69 @@ const Content = ({ keyword }) => {
   }, [currentLanguage]);
 
   // 공지 검색
-  const fetchSearchData = async () => {
-    setLoading(true);
-    try {
-      const response = await searchNotice(keyword, currentLanguage);
-      // return response.data.data;
-      setData(response.data.data);
-    } catch (error) {
-      // console.error("Error searching notices:", error);
-      // return [];
+  useEffect(() => {
+    if (keyword) {
+      const fetchSearchData = async () => {
+        setLoading(true);
+        try {
+          const response = await searchNotice(keyword, currentLanguage);
+          setData(response.data.data);
+        } catch (error) {
+          // console.error("Error searching notices:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchSearchData();
     }
-  };
+  }, [keyword, currentLanguage]);
 
-  // 필터링된 공지사항 데이터 (긴급 및 일반 공지)
+  // ============ 공지사항 필더링 부분 =====================
   const filteredUrgentItems = data.filter(
     (item) =>
-      item.urgent === true &&
+      item.isPinned === true &&
       ((item.title?.toLowerCase() || "").includes(keyword.toLowerCase()) ||
         (item.content?.toLowerCase() || "").includes(keyword.toLowerCase()))
   );
 
   const filteredRegularItems = data.filter(
     (item) =>
-      item.urgent !== true &&
+      item.isPinned !== true &&
       ((item.title?.toLowerCase() || "").includes(keyword.toLowerCase()) ||
         (item.content?.toLowerCase() || "").includes(keyword.toLowerCase()))
   );
 
-  // 필터링된 공지사항을 합침 (긴급 공지사항이 상단에 고정되도록)
-  const filteredItems = [...filteredUrgentItems, ...filteredRegularItems];
+  // 최신순으로 정렬
+  const sortedUrgentItems = [...filteredUrgentItems].sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
 
+  const sortedRegularItems = [...filteredRegularItems].sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
+
+  // num 매기기
+  const numberedRegularItems = sortedRegularItems.map((item, index) => ({
+    ...item,
+    num: sortedRegularItems.length - index,
+  }));
+
+  // 긴급 공지사항과 일반 공지사항을 결합
+  const combinedItems = [...sortedUrgentItems, ...numberedRegularItems];
+
+  // 페이지당 아이템 가져오기
   const getCurrentPageItems = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
 
-    return filteredItems.slice(startIndex, endIndex);
+    return combinedItems.slice(startIndex, endIndex);
   };
 
   const currentItems = getCurrentPageItems();
 
-  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+  //============= 페이지네이션 부분 =====================
+
+  const totalPages = Math.ceil(combinedItems.length / itemsPerPage);
 
   const startPage = Math.max(
     1,
@@ -151,10 +174,10 @@ const Content = ({ keyword }) => {
         {loading ? (
           <Loading />
         ) : currentItems.length > 0 ? (
-          currentItems.map((item, index) => (
-            <Link to={`/notification/${item.id}`} key={`${item.id}-${index}`}>
+          currentItems.map((item) => (
+            <Link to={`/notification/${item.id}`} key={item.id}>
               <Subtitle
-                num={item.isPinned ? <Urgent /> : item.id}
+                num={item.isPinned ? <Urgent /> : item.num}
                 title={item.title}
                 date={formatDate(item.createdAt)}
                 fontSize={isDesktop ? "22px" : "18px"}
@@ -170,7 +193,7 @@ const Content = ({ keyword }) => {
           <S.NoResults>{t(`notice.noresult`)}</S.NoResults>
         )}
       </S.ContentContainer>
-      {filteredItems.length > 0 && (
+      {combinedItems.length > 0 && (
         <S.Pagination>
           {startPage > 1 && (
             <S.PageArrow onClick={handlePrevClick}>&lt;</S.PageArrow>

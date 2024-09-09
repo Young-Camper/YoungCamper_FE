@@ -30,6 +30,7 @@ export const BtnWrapper = styled.button`
 
 // Button Component
 export const DeleteBtn = styled.div`
+  z-index: 999;
   position: fixed;
   right: ${(props) => (props.$isDelete ? "20%" : "10%")};
   bottom: 5%;

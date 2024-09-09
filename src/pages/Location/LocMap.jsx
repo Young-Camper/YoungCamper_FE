@@ -8,23 +8,10 @@ import { useTranslation } from "react-i18next";
 
 
 const LocMap = () => {
-  const [floor, setFloor] = useState(1);
   const { isMobile } = useMediaQueries();
   const mediaUrl = import.meta.env.VITE_MEDIA_URL;
   const { t } = useTranslation();
 
-  const floorData = {
-    1: {
-      title: "좌석배치도",
-      image: `${mediaUrl}Location/location_pic.png`,
-      image_mobile: `${mediaUrl}Location/location_pic.png`,
-    },
-    2: {
-      title: "좌석배치도",
-      image: `${mediaUrl}Location/location_pic.png`,
-      image_mobile: `${mediaUrl}Location/location_pic.png`,
-    },
-  };
   return (
     <>
       <TitleSet
@@ -33,14 +20,14 @@ const LocMap = () => {
       />
       <S.LocContainer $isMobile={isMobile}>
         <S.LocContentArea $isMobile={isMobile}>
-          <S.LocTitle $isMobile={isMobile}>{floorData[floor].title}</S.LocTitle>
+          <S.LocTitle $isMobile={isMobile}>{t("location.seatingChart")}</S.LocTitle>
           <S.LocImageContainer $isMobile={isMobile}>
             {!isMobile && (
-              <S.LocImage src={floorData[floor].image} $isMobile={isMobile} />
+              <S.LocImage src={`${mediaUrl}Location/location_pic.png`} $isMobile={isMobile} />
             )}
             {isMobile && (
               <S.LocImage
-                src={floorData[floor].image_mobile}
+                src={`${mediaUrl}Location/location_pic.png`}
                 $isMobile={isMobile}
               />
             )}

@@ -15,9 +15,9 @@ const AdminCheck = () => {
       try {
         const response = await getAdminCheck();
         setIsAdmin(response.data);
-        console.log("admin check:", response.data);
+        // console.log("admin check:", response.data);
       } catch (error) {
-        console.error("Error admin check:", error);
+        // console.error("Error admin check:", error);
       }
     };
 
@@ -34,7 +34,7 @@ const AdminCheck = () => {
         setIsAdmin(false);
         navigate("/");
       } catch (error) {
-        console.error("Error admin logout:", error);
+        // console.error("Error admin logout:", error);
       }
     }
   };
@@ -46,7 +46,7 @@ const AdminCheck = () => {
       alert(response.data);
       // setIsAdmin(response.data);
     } catch (error) {
-      console.error("Error admin check:", error);
+      // console.error("Error admin check:", error);
     }
   };
 

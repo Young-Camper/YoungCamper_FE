@@ -205,7 +205,7 @@ export const ModalText = styled.div`
   font-size: ${(props) => (props.$isMobile ? "16px" : "27px")};
   font-family: "MonRegular";
   font-weight: 400;
-  line-height: 38px;
+  line-height: ${(props) => (props.$isMobile ? "25px" : "38px")};
   overflow-wrap: break-word;
   white-space: pre-line;
 `;
@@ -314,59 +314,35 @@ export const ModalOverlay = styled.div`
 
 export const ImageModalContent = styled.div`
   position: relative;
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
   width: ${(props) =>
-    props.$isMobile ? "80vw" : "50vh"}; /* 정사각형 사이즈 조정 */
+    props.$isMobile ? "80vw" : "50vh"}; /* 정사각형 크기로 설정 */
   height: ${(props) =>
     props.$isMobile ? "80vw" : "50vh"}; /* 정사각형 크기로 설정 */
+  border-radius: 8px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      102deg,
-      rgba(0, 104, 255, 0.5) 0%,
-      rgba(185, 255, 156, 0.5) 100%
-    );
-    z-index: 1;
-    pointer-events: none;
-    border-radius: 8px;
-  }
-
   img {
-    position: relative;
-    z-index: 2;
     width: 100%;
     height: 100%;
-    border-radius: 8px;
-    object-fit: cover; /* 정사각형 영역에 맞게 이미지 자르기 */
+    object-fit: cover; /* 정사각형 안에 이미지를 채우기 */
+    border-radius: 8px; /* 이미지에 둥근 모서리 적용 */
   }
 `;
 
 export const CloseButton = styled.button`
   position: absolute;
   top: 5px;
-  right: 5px;
+  right: 10px;
   background: none;
   border: none;
-  font-size: 18px;
   cursor: pointer;
-  font-family: "MonRegular";
-  color: #fff;
-`;
+  z-index: 3;
 
-export const Image = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 8px;
+  img {
+    width: 15px;
+    height: 15px;
+  }
 `;
