@@ -109,6 +109,17 @@ export const AccordionContent = styled.div`
   display: flex;
   transition: height 0.3s ease; // 부드러운 높이 변화 애니메이션
   border: 2px solid #0068ff;
+  ${
+    props => (!(props.$isOpen) ?
+      `
+       overflow: hidden;
+      `
+      :
+      `
+        overflow: visible;
+      `
+    )
+  }
 `;
 
 export const ContentInner = styled.div`
