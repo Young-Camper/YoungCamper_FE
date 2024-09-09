@@ -84,7 +84,7 @@ const Notice = () => {
             <S.NoticeBtn
               $isTablet={isTablet}
               $isDesktop={isDesktop}
-              ishovering={hoveredIndex === "button"}
+              $ishovering={hoveredIndex === "button"}
               onMouseOver={() => handleMouseOver("button")}
               onMouseOut={handleMouseOut}
             >
