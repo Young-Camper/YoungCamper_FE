@@ -103,7 +103,7 @@
   },
   "location": {
     "bannerTitle": "Location",
-    "bannerSubtitle": "We are waiting for you at Jangchung Gymnasium.",
+    "bannerSubtitle": "We are waiting for you at Jangchung Arena.",
     "title": "How to get here?",
     "map": "YoungCamp map",
     "public": "Public Transportation",
@@ -120,7 +120,7 @@
     "subway": "subway",
     "subwayContent": "Dongguk University Station, Subway Line 3, Exit 5 (directly connected to the gym)",
     "bus": "bus",
-    "buslocation": "In front of Jangchung Gymnasium",
+    "buslocation": "In front of Jangchung Arena",
     "busnumber": "02-201(Seoul) N13, 144, 301, 7212",
     "station": "Dongguk University Station, Jangchung-dong",
     "stationNum": "02-222(Seoul) 05, 02, 03",
