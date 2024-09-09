@@ -72,7 +72,7 @@ export const AdminLogout = styled.div`
   left: 10px;
   color: #fff;
   background-color: #111;
-  z-index: 100;
+  z-index: 1000;
   padding: 10px;
   display: flex;
   flex-direction: column;
