@@ -65,7 +65,7 @@ const Notice = () => {
         updatedNotices = [...urgentNotices].reverse().concat(addNotices);
       }
       //공지가 4개 이하일 때
-      if (updatedNotices.length > 0) {
+      if (updatedNotices.length < 4) {
         setMainNotices(updatedNotices);
       } else {
         setMainNotices([]);
