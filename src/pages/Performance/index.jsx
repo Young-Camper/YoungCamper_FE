@@ -22,7 +22,7 @@ const index = () => {
     return "24px";
   };
 
-  const caution = t("caution.caution", { returnObjects: true });
+  const cautions = t("caution.caution", { returnObjects: true });
 
   const handleOpenModal = (artist) => {
     setClickedArtist(artist);
@@ -59,11 +59,7 @@ const index = () => {
           setModalOpen={setModalOpen}
           onArtistClick={handleOpenModal}
         />
-        <Attention
-          attention1={caution[0]}
-          attention2={caution[1]}
-          attention3={caution[2]}
-        />
+        <Attention attentions={cautions} />
       </ContentWrapper>
       {modalOpen && (
         <ArtistModal artist={clickedArtist} setModalOpen={setModalOpen} />

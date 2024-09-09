@@ -61,13 +61,11 @@
     "title": "Notice",
     "caution": [
       "Please follow the staff's instructions for your safety!",
-      "Re-entry is not allowed after exit!",
-      "No storage of items is available inside the venue!"
+      "Re-entry is not allowed after exit!"
     ],
     "mcaution": [
       "Please follow the staff's instructions for your safety!",
-      "Re-entry is not allowed after exit!",
-      "No storage of items \nis available inside the venue!"
+      "Re-entry is not allowed after exit!"
     ]
   },
   "member": {
