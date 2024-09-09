@@ -41,10 +41,18 @@ const Video = () => {
           muted
           playsInline
         />
-        <Link to={`https://youtube.com/@youngcamp_dgu?si=varFM5dZcDp2CaaU`} style={{ width: "100%" }}>
-          <S.VideoBtnBox>
-            <S.VideoBtnText $isTablet={isTablet} $isDesktop={isDesktop}>영상 보러가기</S.VideoBtnText>
-            <S.VideoBtnImg $isTablet={isTablet} $isDesktop={isDesktop}></S.VideoBtnImg>
+        <Link
+          to={`https://youtube.com/@youngcamp_dgu?si=varFM5dZcDp2CaaU`}
+          style={{ width: "100%" }}
+        >
+          <S.VideoBtnBox $isMobile={isMobile}>
+            <S.VideoBtnText $isTablet={isTablet} $isDesktop={isDesktop}>
+              영상 보러가기
+            </S.VideoBtnText>
+            <S.VideoBtnImg
+              $isTablet={isTablet}
+              $isDesktop={isDesktop}
+            ></S.VideoBtnImg>
           </S.VideoBtnBox>
         </Link>
       </S.VideoSectionBox>
