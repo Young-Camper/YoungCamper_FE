@@ -18,7 +18,7 @@
 |팀장|팀원|팀원|팀원|
 |:---:|:---:|:---:|:---:|
 |<img src="https://github.com/user-attachments/assets/8bce9fd8-6189-4cf3-8fa2-d2cd77cec988" width="700" /> | <img src="https://github.com/user-attachments/assets/947c65b9-9103-42fb-93f3-1bbc924162fd" width="700" /> | <img src="https://github.com/user-attachments/assets/a2b975d0-217a-48d1-8508-770256574b5d" width="700" /> | <img src="https://github.com/user-attachments/assets/92ee33d1-fc3b-4cfd-b110-e53a86aebe3f" width="700" /> |
-|[오찬주](https://github.com/ohchanju3)|[강신지](https://github.com/akstp1717)|[백동민](https://github.com/nm2200521)|[이민수](https://github.com/penpenguin2018)|
+|[오찬주](https://github.com/coldweek3)|[강신지](https://github.com/ksinji)|[백동민](https://github.com/dongmin0204)|[이민수](https://github.com/penpenguin2018)|
 |정치외교학전공|컴퓨터공학전공|멀티미디어공학과|일어일문학과|
 
 ### 💁 FE 2팀
@@ -26,7 +26,7 @@
 |팀장|팀원|팀원|팀원|
 |:---:|:---:|:---:|:---:|
 |<img src="https://github.com/user-attachments/assets/1892518a-6933-4979-b839-a3c9a56afa2b" width="700" /> | <img src="https://github.com/user-attachments/assets/2c5ba2c0-d42e-4836-a2bf-02d5ba49bbbc" width="700" />| <img src="https://github.com/user-attachments/assets/bef343e5-0936-4ecd-b34c-46fecb775e2a" width="700" /> | <img src="https://github.com/user-attachments/assets/4c7a54e4-d592-4c73-9865-fbc1e8adae28" width="700" /> |
-|[설현아](https://github.com/ohchanju3)|[김수빈](https://github.com/dewbeeny)|[오세인](https://github.com/osein607)|[이유진](https://github.com/jenny7732)|
+|[설현아](https://github.com/hyeona01)|[김수빈](https://github.com/dewbeeny)|[오세인](https://github.com/osein607)|[이유진](https://github.com/jenny7732)|
 |융합보안학과|불교학부|글로벌무역학과|멀티미디어소프트웨어공학전공|
 
 
