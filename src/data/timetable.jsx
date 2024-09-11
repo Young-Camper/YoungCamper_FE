@@ -12,7 +12,7 @@ export const timetable = [
   {
     id: 2,
     name: ["수계식", "Precept ceremony"],
-    time: "17:30",
+    time: "17:20",
     index: "",
     is_event: false,
     cover_image: "",
@@ -51,7 +51,7 @@ export const timetable = [
   },
   {
     id: 7,
-    name: ["디제잉 공연", "DJing"],
+    name: ["2부 디제잉 공연", "DJing"],
     time: "19:15",
     index: "",
     is_event: false,
