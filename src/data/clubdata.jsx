@@ -201,4 +201,11 @@ export const ClubImages = [
     name: "동불",
     link: "./promotion/16",
   },
+  {
+    id: 17,
+    imageurl: `${mediaUrl}Promotion/club17.png`,
+    tag: ["듀이카", "DUICA"],
+    name: "반야듀",
+    link: "./promotion/17",
+  },
 ];
