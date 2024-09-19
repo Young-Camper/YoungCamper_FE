@@ -85,7 +85,7 @@ export const ContentTitle = styled.div`
   white-space: pre-wrap;
 
   /* desktop/H3_sb */
-  font-family: "MonSeimiBold";
+  font-family: "MonSemiBold";
   font-size: ${(props) => (props.$isDesktop ? "24px" : "16px")};
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "28px" : "22px")};
@@ -134,7 +134,7 @@ export const JoinBtn = styled.div`
   text-align: center;
 
   /* desktop/Body2_sb */
-  font-family: "MonSeimiBold";
+  font-family: "MonSemiBold";
   font-size: ${(props) => (props.$isDesktop ? "20px" : "12px")};
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "28px" : "18px")};
