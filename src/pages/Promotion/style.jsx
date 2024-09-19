@@ -155,14 +155,14 @@ export const ContentWrapperFix = styled.div`
     props.$isMobile ? "0px 24px" : props.$isTablet ? "0px 48px" : "0px 170px"};
   border-bottom: ${(props) =>
     props.$isDesktop ? "none" : "1px solid #0A0B0A"};
-    
-    //상단 고정
-    position: fixed;
-    margin: 0 auto;
-    width: 100%;
-    top: ${(props) => (props.$isDesktop ? "73px" : "52px")};
-    background-color: #fff;
-    z-index: 90;
+
+  //상단 고정
+  position: fixed;
+  margin: 0 auto;
+  width: 100%;
+  top: ${(props) => (props.$isDesktop ? "73px" : "52px")};
+  background-color: #fff;
+  z-index: 90;
 `;
 
 export const ContentWrapper = styled.div`
@@ -172,14 +172,12 @@ export const ContentWrapper = styled.div`
   margin-top: ${(props) => (props.$isDesktop ? "70px" : "50px")};
 `;
 
-
 export const BackContainer = styled.div`
   height: ${(props) => (props.$isDesktop ? "70px" : "50px")};
   padding: ${(props) => (props.$isDesktop ? "0px 12px" : "0px 0px")};
   display: flex;
   border-bottom: ${(props) =>
     props.$isDesktop ? "1px solid #0A0B0A" : "none"};
-  
 `;
 
 export const BackButton = styled.div`
@@ -218,7 +216,7 @@ export const ClubImage = styled.div`
     props.$hasimage
       ? `url(${props.src})`
       : "linear-gradient(to bottom, #00000000, rgba(10, 11, 10, 0.48))"};
-  background-size: cover;
+  background-size: ${(props) => (props.$isLong ? "contain" : "cover")};
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -228,11 +226,7 @@ export const ClubImage = styled.div`
 //SubTitle
 export const Wrapper = styled.div`
   padding: ${(props) =>
-    props.$isMobile
-      ? "24px"
-      : props.$isTablet
-      ? "24px"
-      : "50px 0px 48px 0px"};
+    props.$isMobile ? "24px" : props.$isTablet ? "24px" : "50px 0px 48px 0px"};
 `;
 
 export const SchoolBadgeDetail = styled.div`

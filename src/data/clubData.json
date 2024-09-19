@@ -289,9 +289,9 @@
   },
   {
     "id": 17,
-    "name": "반아듀",
+    "name": "반야듀",
     "school": ["듀이카", "DUICA"],
-    "image": "emptylogo.png",
+    "image": "club17.png",
     "intro": [
       "불교용어 “반야”와 듀이카의 “듀”의 합성어로 다양한 불교활동을 통해 부처님의 가르침을 익히고 실천하는 불교동아리입니다.",
       "It is a combination of the Buddhist terms \"Banya\" and \"Du\" of DUICA, and it is a Buddhist club that learns and practices Buddha's teachings through various Buddhist activities."],
@@ -299,7 +299,7 @@
       "학생들을 주체로 한 다양한 불교전법활동을 통해 학업에 지친 심신을 달래고 마음의 안정을 찾으며 부처님의 가르침을 익히고 실천해 나아가겠습니다.",
       "Through various Buddhist tactics activities with students as the main subjects, we will learn and practice Buddha's teachings by soothing the mind and body tired of studying, finding peace of mind and stability."
     ],
-    "detailImg": "emptyImage.png",
+    "detailImg": "club17.png",
     "playimg": [],
     "applylink": "",
     "insta": ""
