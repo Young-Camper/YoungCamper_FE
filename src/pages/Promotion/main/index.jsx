@@ -14,7 +14,7 @@ const Index = () => {
   const { isMobile, isTablet, isDesktop } = useMediaQueries();
   const { t } = useTranslation();
   const mainText = isMobile ? t("club.mbannerTitle") : t("club.bannerTitle");
-  const highlightedNumber = "16";
+  const highlightedNumber = "17";
   const subText = t("club.bannerSubtitle");
 
   useEffect(() => {
