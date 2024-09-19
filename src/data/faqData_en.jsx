@@ -7,7 +7,7 @@ export const faq_en = [
   {
     question: "Young Camp entry requirements",
     answer:
-      "Only members of each college's Buddhist club can enter, and on-site identity verification and membership in the Buddhist club will be confirmed through ndrims.",
+      "Only members of Dongguk University Buddhist club can enter, and on-site identity verification and membership in the Buddhist club will be confirmed through ndrims.",
   },
   // {
   //   question: "How to join a Buddhist club",
