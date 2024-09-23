@@ -85,7 +85,7 @@ export const ContentTitle = styled.div`
   white-space: pre-wrap;
 
   /* desktop/H3_sb */
-  font-family: "MonSeimiBold";
+  font-family: "MonSemiBold";
   font-size: ${(props) => (props.$isDesktop ? "24px" : "16px")};
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "28px" : "22px")};
@@ -134,9 +134,22 @@ export const JoinBtn = styled.div`
   text-align: center;
 
   /* desktop/Body2_sb */
-  font-family: "MonSeimiBold";
+  font-family: "MonSemiBold";
   font-size: ${(props) => (props.$isDesktop ? "20px" : "12px")};
   font-style: normal;
   line-height: ${(props) => (props.$isDesktop ? "28px" : "18px")};
   letter-spacing: ${(props) => (props.$isDesktop ? "-0.2px" : "-0.12px")};
+
+  border: 1px solid #000;
+  background: var(--Base-Real-White, #fff);
+  transition: 0.3s ease;
+  color: #000;
+  &:hover {
+    background: var(
+      --gradient,
+      linear-gradient(102deg, #0068ff 23.99%, #b9ff9c 98.08%)
+    );
+    border: none;
+    color: #fff;
+  }
 `;
