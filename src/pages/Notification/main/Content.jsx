@@ -22,6 +22,7 @@ const Content = ({ keyword }) => {
 
   // 현재 언어 코드
   const currentLanguage = i18n.language;
+  // const isEnglish = lang === "en";
 
   // 공지사항 리스트 가져오기
   useEffect(() => {
@@ -98,6 +99,12 @@ const Content = ({ keyword }) => {
   };
 
   const currentItems = getCurrentPageItems();
+
+  //글자수 관리
+  // 제목이 모바일에서 18자를 넘으면 "..." 처리
+  const truncateTitle = (title) => {
+    return isMobile && title.length > 20 ? title.slice(0, 20) + "..." : title;
+  };
 
   //============= 페이지네이션 부분 =====================
 
@@ -178,7 +185,7 @@ const Content = ({ keyword }) => {
             <Link to={`/notification/${item.id}`} key={item.id}>
               <Subtitle
                 num={item.isPinned ? <Urgent /> : item.num}
-                title={item.title}
+                title={truncateTitle(item.title)}
                 date={formatDate(item.createdAt)}
                 fontSize={isDesktop ? "22px" : "18px"}
                 isDesktop={isDesktop}

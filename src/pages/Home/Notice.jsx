@@ -56,20 +56,24 @@ const Notice = () => {
   useEffect(() => {
     if (urgentNotices.length > 0 || nonUrgentNotices.length > 0) {
       let updatedNotices = [];
-      //필독공지 -> 최신순으로 4개 정렬
+
+      //최신순으로 설정
       if (urgentNotices.length >= 4) {
-        updatedNotices = urgentNotices.slice(-4).reverse();
+        updatedNotices = urgentNotices
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .slice(0, 4);
       } else {
         const nonUrgentToAdd = 4 - urgentNotices.length;
-        const addNotices = nonUrgentNotices.slice(0, nonUrgentToAdd).reverse();
-        updatedNotices = [...urgentNotices].reverse().concat(addNotices);
+        const addNotices = nonUrgentNotices
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .slice(0, nonUrgentToAdd);
+        updatedNotices = urgentNotices
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .concat(addNotices);
       }
-      //공지가 4개 이하일 때
-      if (updatedNotices.length < 4) {
-        setMainNotices(updatedNotices);
-      } else {
-        setMainNotices([]);
-      }
+
+      // 공지사항 리스트 업데이트
+      setMainNotices(updatedNotices.slice(0, 4));
     }
   }, [urgentNotices, nonUrgentNotices, t]);
 
